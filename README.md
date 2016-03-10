@@ -138,3 +138,13 @@ The following example illustrates a way to deep merge and redraw the gui when it
 Again, this may change in the future, but for the time being, this means of updating state makes it easier for developers to undestand what is happening in their GUI
 
 
+###Reconciliation
+DUI reconciles all primitive types (number, string, boolean) except Symbol
+
+```
+{
+	number -> slider,
+	boolean -> checkbox,
+	string -> textbox
+}
+```
