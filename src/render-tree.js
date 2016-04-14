@@ -1,7 +1,7 @@
-import { isPrimitive }  from './primitives'
 import React  from 'react'
-import { setAnnotation, getAnnotation }  from './annotate'
-import { getComponent, hasComponent }  from './component'
+import { isPrimitive }  from './primitives'
+import WrappedComponent from './components/WrappedComponent.jsx'
+import { getAnnotation }  from './annotate'
 import merge from 'lodash.merge'
 
 
@@ -90,39 +90,73 @@ import { colorpicker } from 'custom-comps'
 */
 
 
+
 export default ( obj, primitives, onChange ) => {
 
-    let metadata,
-        value,
-        component,
+    let annotation,
+        Component,
         components = []
 
-    // iterate through enumerable props in `obj`
+    /*
+        Iterate through enumerable properties of `obj`
+    */
     for( var key in obj ){
 
-        // if there's any metadata associated with the property pass this along
-        metadata = getAnnotation( obj, key ) || {}
 
-        component = null
+        let Element,
+            Component,
+            value = obj[key]
 
-        value = obj[key]
 
-        // for each primitive, find a corresponding component
-        if( isPrimitive( value )){
+        /*
+            If there's any annotation associated with the property collect them
+            and pass them along to the Component instance
+        */
+        annotation = getAnnotation( obj, key ) || {}
 
-            component = primitives[ typeof value ]
 
-        }else if( hasComponent( obj, key )){
+        /*
+            Users can associate a property with a specific Components by including
+            the `control` annotation
+        */
+        Component = annotation.control
 
-            component = getComponent( obj, key )
+
+        /*
+            However if no Component has been declared and the value is one of the
+            primtive types, use one of the default Components
+        */
+        if( !Component && isPrimitive( value )){
+
+            Component = primitives[ typeof value ]
 
         }
 
-        let onMetadataChange = change => setAnnotation( obj, key, merge( metadata, change ))
 
-        // console.log( key, value )
-        if( component ) components.push( React.createElement( component, { propKey:key, key, value, metadata, onChange, onMetadataChange }))
+        // let onMetadataChange = function( propKey, change ) {
+        //     setAnnotation( obj, propKey, merge( getAnnotation( obj, propKey ), change ))
+        //     onChange({})
+        // }
 
+        /*
+            Create the Element based on the provided annotaions and the required Component
+        */
+        Element = <Component label={key} {...annotation} value={value} />
+
+
+        /*
+            If the Element is valid according to React, then it's eligible for
+            rendering. Here we wrap it with a dumb Component that handles the
+            onChange propogation. Doing so means the onChange callback doesn't
+            unneccessarily change often, allowing complex components to make use
+            of `shouldComponentUpdate` where needed
+        */
+
+        if( React.isValidElement( Element ) ) {
+
+            components.push( <WrappedComponent key={key} propKey={key} onChange={onChange}>{ Element }</WrappedComponent>)
+
+        }
     }
 
     return components

@@ -3,17 +3,35 @@ import dom from 'react-dom'
 import createTree from './render-tree'
 import primitives from './primitive-components'
 import merge from 'lodash.merge'
+import BaseComponent from './components/BaseComponent.jsx'
 
 
 
 var element = document.createElement( 'div' )
+element.style.position = 'absolute'
+element.style.top = '0.5em'
 document.body.appendChild( element )
 
-export default ( obj, onChange ) => {
+var objectMergeMap = new WeakMap()
 
-    onChange = change => merge( obj, change )
+let mergeWithObject = ( object, cb ) => {
 
-    let renderList = createTree( obj, primitives, onChange )
-    dom.render( <div>{ renderList }</div>, element )
+    let mergeWithKey = ( key, change ) => cb( merge( object, { [key]: change }))
+
+    objectMergeMap.set( object, mergeWithKey )
+
+    return mergeWithKey
+}
+
+
+export default ( object, callback ) => {
+
+
+    // if( callback && typeof callback !== 'function ') // WARNING
+
+    let onChange = objectMergeMap.get( object ) || mergeWithObject( object, callback || function(){} )
+
+    let renderList = createTree( object, primitives, onChange )
+    dom.render( <BaseComponent>{ renderList }</BaseComponent>, element )
 
 }

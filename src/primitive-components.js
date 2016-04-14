@@ -1,9 +1,14 @@
-import React from 'react'
+import Slider from 'core-controllers/components/slider'
+import Checkbox from 'core-controllers/components/checkbox'
+import TextInput from 'core-controllers/components/textinput'
+import WrappedButton from './components/WrappedButton.jsx'
+import WrappedFolder from './components/WrappedFolder.jsx'
 
-import { Checkbox, TextInput, Slider } from 'dui.components'
 
 export default {
   number: Slider,
   string: TextInput,
-  boolean: Checkbox
+  boolean: Checkbox,
+  function: WrappedButton,
+  object: WrappedFolder,
 }
