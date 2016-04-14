@@ -4,9 +4,10 @@
   "description": "A prototyping library to create UI for instrumenting code",
   "main": "build/dui.min.js",
   "scripts": {
-    "build": "npm run production",
-    "production": "NODE_ENV=production browserify --standalone dui -t babelify -g envify -g uglifyify src/index.js | uglifyjs -m -c > build/dui.min.js",
-    "start": "NODE_ENV=production budo index.js --live -- -t babelify -t envify",
+    "build": "npm run production && npm run dev",
+    "production": "NODE_ENV=production browserify --standalone dui -t babelify -g envify -g uglifyify src/index.js | uglifyjs -m > build/dui.min.js",
+    "dev": "NODE_ENV=production browserify -d --standalone dui -t babelify -g envify -g uglifyify src/index.js > build/dui.js",
+    "start": "NODE_ENV=development budo index.js --live -- -t babelify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,7 +26,8 @@
   "homepage": "https://github.com/marklundin/dui#readme",
   "dependencies": {
     "core-controllers": "github:marklundin/core-controllers",
-    "lodash.merge": "^4.3.2",
+    "deepmerge": "^0.2.10",
+    "es7-reflect-metadata": "^1.6.0",
     "react": "^15.0.1",
     "react-addons-shallow-compare": "^15.0.1",
     "react-dom": "^15.0.1",

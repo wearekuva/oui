@@ -1,5 +1,5 @@
 import render from './renderer'
-import merge from 'lodash.merge'
+import merge from 'deepmerge'
 import { annotate } from './annotate'
 
 let watch = obj => {

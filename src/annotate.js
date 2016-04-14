@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import 'es7-reflect-metadata'
 
 /*
   Annotate

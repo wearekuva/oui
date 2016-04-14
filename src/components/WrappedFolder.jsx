@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Folder from 'core-controllers/components/folder'
 import createTree from '../render-tree'
 import primitives from '../primitive-components'
-import merge from 'lodash.merge'
+import merge from 'deepmerge'
 
 
 /**
