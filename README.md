@@ -13,7 +13,7 @@ in code editors.
 
 `npm install oui`
 
-Create an api and define some properties
+Create an object, add some properties
 ```javascript
 
 let api = {
@@ -25,7 +25,7 @@ let api = {
 oui( api )
 ```
 
-And this creates
+And hey presto,
 
 ![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
 
