@@ -26,8 +26,8 @@ let obj = {
 
     //
     // // @plotter()
-    // @graph({max: 80, min: 0})
-    // fps: new Float32Array( 100 ),
+
+    fps: 5//new Float32Array( 100 ),
     // //
     // // // @annotate({max: 50, control:Dial})
     // num: 5,
@@ -48,7 +48,7 @@ let obj = {
     // a: a,
 
     //@dial({min:3})
-    num2: 5,
+    // num2: 5,
 
 
 
@@ -67,6 +67,7 @@ let obj = {
     // dir2:a
 }
 
+graph({max: 80, min: 0})(obj, 'fps' )
 
 // let watch = obj => {
 //     let onChange = ( key, change ) => draw( merge( obj, { [key]: change }))
@@ -82,13 +83,13 @@ let pushOnStack = ( stack, num ) => {
 let update = ( t ) => {
 
 
-    document.body.style.backgroundColor = 'rgb(' + Math.round( obj.color.r ) + ', ' + Math.round( obj.color.g ) + ', ' + Math.round( obj.color.b ) + ')'
+    // document.body.style.backgroundColor = 'rgb(' + Math.round( obj.color.r ) + ', ' + Math.round( obj.color.g ) + ', ' + Math.round( obj.color.b ) + ')'
     //
     // //console.log( 'rgb(' + Math.round( obj.color.r ) + ', ' + Math.round( obj.color.g ) + ', ' + Math.round( obj.color.b ) + ')')
     let delta = t - time
     time = t
     //
-    pushOnStack( obj.fps, 1000/delta )
+    // pushOnStack( obj.fps, 1000/delta )
     // watch( obj )
     render( obj )
     requestAnimationFrame( update )
