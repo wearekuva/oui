@@ -1,11 +1,11 @@
-# OUI
+# Oui
 
 DUI is a stupidly simple way of instrumenting code and making user interfaces.
 You declare your UI using plain old javascript objects and DUI handles the rest.
 Objects go in and UI's come out. It's that simple
 
 I made this library for quickly prototyping code and testing parameters. Often you
-want to create a program and shape it's output. Oui essentially covers what's missing 
+want to create a program and shape it's output. Oui essentially covers what's missing
 in code editors.
 
 
@@ -30,11 +30,11 @@ And this creates
 ![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
 
 Oui ships with a set of default [components](https://github.com/marklundin/core-controllers),
-any primitives you declare get automatically wired up to a control. Numbers turn into sliders, 
-strings turn into text boxes, objects into folders. In fact anything you throw at it 
+any primitives you declare get automatically wired up to a control. Numbers turn into sliders,
+strings turn into text boxes, objects into folders. In fact anything you throw at it
 has a corresponding controller of some type. Not only that, but any interaction with the ui
-at runtime updates the original object. This means you effectively define a nice 
-clean api for you application and Oui lets you play with those parameters and shape 
+at runtime updates the original object. This means you effectively define a nice
+clean api for you application and Oui lets you play with those parameters and shape
 the output.
 
 
@@ -46,7 +46,7 @@ the string '#ff0000' than the default text input field.
 
 Oui also bundles a set of additional nifty controls such a [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph), [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker)
 and more the cover many more use cases. You simply tag the property with the controller
-you want to use and DUI will render that instead. 
+you want to use and DUI will render that instead.
 
 Here's some examples of the other controls. Check the [core controllers
 documentation](http://marklundin.github.io/core-controllers/documentation) for the full list.
@@ -74,7 +74,7 @@ draw({
 })
 ```
 
-This is useful for passing information about a property to a controller. Think of 
+This is useful for passing information about a property to a controller. Think of
 it as a way to declare metadata about a property. Not only does it inform the controllers, but
 it makes your code eay to understand.
 
@@ -85,3 +85,13 @@ and yes it's still only a proposal. Having said that decorators are just syntact
 so you can still do the same thing in es5 land with the admittedly clunky `annotate({ min:3, max: 100 })( obj, 'num' )`
 If, however you want to go all es7, drop `babel-plugin-transform-decorators-legacy`
 or similar in your transform pipeline.
+
+
+### Issues
+
+#### Where's my UI
+For the moment, every call to Oui replaces the entire ui display. This means you can't
+define multiple UI's defined in different parts of your application. Whilst this is
+kinda intentional - it forces you to surface important aspects of your programs interface -
+it's also a massive pain and which doesn't scale well. I'm planning on supporting this soon.
+See #1
