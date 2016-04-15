@@ -1,4 +1,4 @@
-# OUI.
+# OUI
 
 DUI is a stupidly simple way of instrumenting code and making user interfaces.
 You declare your UI using plain old javascript objects and DUI handles the rest.
