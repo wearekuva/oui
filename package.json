@@ -1,18 +1,18 @@
 {
-  "name": "dui",
+  "name": "oui",
   "version": "0.0.1",
   "description": "A stupidly simple way of instrumenting code and making user interfaces",
-  "main": "build/dui.min.js",
+  "main": "build/oui.min.js",
   "scripts": {
     "compile:npm": "babel src --out-dir lib",
-    "compile:prod": "NODE_ENV=production browserify --standalone dui -t babelify -g envify -g uglifyify src/index.js | uglifyjs -m > dist/dui.min.js",
-    "compile:dev": "NODE_ENV=production browserify -d --standalone dui -t babelify -g envify -g uglifyify src/index.js > dist/dui.js",
+    "compile:prod": "NODE_ENV=production browserify --standalone oui -t babelify -g envify -g uglifyify src/index.js | uglifyjs -m > dist/oui.min.js",
+    "compile:dev": "NODE_ENV=production browserify -d --standalone oui -t babelify -g envify -g uglifyify src/index.js > dist/oui.js",
     "start": "NODE_ENV=development budo index.js --live -- -t babelify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marklundin/dui.git"
+    "url": "git+https://github.com/marklundin/oui.git"
   },
   "keywords": [
     "gui",
@@ -21,9 +21,9 @@
   "author": "Mark Lundin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marklundin/dui/issues"
+    "url": "https://github.com/marklundin/oui/issues"
   },
-  "homepage": "https://github.com/marklundin/dui#readme",
+  "homepage": "https://github.com/marklundin/oui#readme",
   "dependencies": {
     "core-controllers": "github:marklundin/core-controllers",
     "es7-reflect-metadata": "^1.6.0",

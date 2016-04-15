@@ -1,7 +1,7 @@
 # Oui
 
-DUI is a stupidly simple way of instrumenting code and making user interfaces.
-You declare your UI using plain old javascript objects and DUI handles the rest.
+Oui is a stupidly simple way of instrumenting code and making user interfaces.
+You declare your UI using plain old javascript objects and Oui handles the rest.
 Objects go in and UI's come out. It's that simple
 
 I made this library for quickly prototyping code and testing parameters. Often you
@@ -11,7 +11,7 @@ in code editors.
 
 ## Getting Started
 
-`npm install dui`
+`npm install oui`
 
 Create an api and define some properties
 ```javascript
@@ -46,7 +46,7 @@ the string '#ff0000' than the default text input field.
 
 Oui also bundles a set of additional nifty controls such a [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph), [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker)
 and more the cover many more use cases. You simply tag the property with the controller
-you want to use and DUI will render that instead.
+you want to use and Oui will render that instead.
 
 Here's some examples of the other controls. Check the [core controllers
 documentation](http://marklundin.github.io/core-controllers/documentation) for the full list.
