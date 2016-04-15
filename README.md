@@ -13,7 +13,7 @@ in code editors.
 
 `npm install dui`
 
-Import dui and render a slider
+Create an api and define some properties
 ```javascript
 
 let api = {
@@ -25,7 +25,9 @@ let api = {
 oui( api )
 ```
 
-![Slider](http://g.recordit.co/RBXY4Q6JXN.gif)
+And this creates
+
+![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
 
 Oui ships with a set of default [components](https://github.com/marklundin/core-controllers),
 any primitives you declare get automatically wired up to a control. Numbers turn into sliders, 
@@ -42,12 +44,12 @@ truly represent what you're trying to convey. What if you want an unbounded numb
 thats something a slider can't handle. Or say you want a better way of editing
 the string '#ff0000' than the default text input field.
 
-Oui also bundles a set of additional nifty controls such a [XYPads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph), [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker)
+Oui also bundles a set of additional nifty controls such a [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph), [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker)
 and more the cover many more use cases. You simply tag the property with the controller
-you want to use and DUI will render that instead. Check the [core controllers
-documentation](http://marklundin.github.io/core-controllers/documentation) for the full list.
+you want to use and DUI will render that instead. 
 
-Here's an example of some of the other controlls:
+Here's some examples of the other controls. Check the [core controllers
+documentation](http://marklundin.github.io/core-controllers/documentation) for the full list.
 
 ![XYPad, Graph, Color](http://g.recordit.co/FCmMPYjuTn.gif)
 
