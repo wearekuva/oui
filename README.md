@@ -22,7 +22,7 @@ render({
 })
 ```
 
-![http://recordit.co/JOr2TAqRH4]
+![Slider](http://recordit.co/JOr2TAqRH4)
 
 DUI ships with a set of [common controls](marklundin/core-controllers) that cover
 many scenarios, and by default, any primitives you declare get automatically wired
