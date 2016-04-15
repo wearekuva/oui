@@ -1,4 +1,4 @@
-# DUI
+# OUI. objects => UI
 
 DUI is a stupidly simple way of instrumenting code and making user interfaces.
 You declare your UI using plain old javascript objects and DUI handles the rest.
@@ -14,7 +14,7 @@ missing in code editors.
 `npm install dui`
 
 Import dui and render a slider
-```
+```javascript
 import { render } from 'dui'
 
 render({
@@ -57,7 +57,7 @@ and update the property.
 
 Here's an example of how you'd tag a number and constrain it with the range of 3 and 100.
 
-```
+```javascript
 draw({
   @annotate({ min:3, max: 100 })
   numeric: 5
