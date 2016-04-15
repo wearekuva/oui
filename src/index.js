@@ -1,5 +1,4 @@
 import render from './renderer'
-import merge from 'deepmerge'
 import { annotate } from './annotate'
 
 let watch = obj => {
@@ -8,4 +7,4 @@ let watch = obj => {
     render( obj, watch )
 }
 
-export { render, merge, annotate, watch }
+export { render, annotate, watch }

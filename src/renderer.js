@@ -2,7 +2,6 @@ import React from 'react'
 import dom from 'react-dom'
 import createTree from './render-tree'
 import primitives from './primitive-components'
-//import obj from './merge'
 import assign from 'fast.js/object/assign'
 import BaseComponent from './components/BaseComponent.jsx'
 

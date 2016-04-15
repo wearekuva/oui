@@ -26,7 +26,6 @@
   "homepage": "https://github.com/marklundin/dui#readme",
   "dependencies": {
     "core-controllers": "github:marklundin/core-controllers",
-    "deepmerge": "^0.2.10",
     "es7-reflect-metadata": "^1.6.0",
     "fast.js": "^0.1.1",
     "react": "^15.0.1",

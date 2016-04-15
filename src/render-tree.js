@@ -2,7 +2,6 @@ import React  from 'react'
 import { isPrimitive }  from './primitives'
 import WrappedComponent from './components/WrappedComponent.jsx'
 import { getAnnotation }  from './annotate'
-import merge from 'deepmerge'
 
 
 /*

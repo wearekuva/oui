@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Folder from 'core-controllers/components/folder'
 import createTree from '../render-tree'
 import primitives from '../primitive-components'
-import merge from 'deepmerge'
+import assign from 'fast.js/object/assign'
 
 
 /**
@@ -22,7 +22,22 @@ class WrappedFolder extends Component {
 
         super()
 
-        let mergeWithKey = ( key, change ) =>  merge( this.props.value, { [key]: change })
+        let mergeWithKey = ( key, change ) => {
+
+            let slot = this.props.value
+
+            if( typeof change === 'object' ){
+
+                assign( slot[key], change )
+
+            }else{
+                slot[key] = change
+            }
+
+            return slot
+
+        }
+
         let onChange = ( key, change ) => this.props.onChange( mergeWithKey( key, change ))
         this.tree = _ => createTree( this.props.value, primitives, onChange )
 

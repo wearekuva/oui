@@ -4,9 +4,12 @@ import { dial, stepper, color, xypad, graph } from './src/components'
 // let plotter = component( LineChart, {height: 100, min: 0, max: 100 } )
 //
 
-let str = 'bals'
+let str = 5
+var aa = { str:str }
+console.log( aa )
 let a ={
-    str:str
+    aa: aa,
+    test:'sdfsdf'
 }
 //
 //
@@ -35,24 +38,24 @@ let obj = {
 
     @graph({fill:false, min: 0, max:80})
     fps: new Float32Array( 100 ),
+    // // //
+    // // // // @annotate({max: 50, control:Dial})
+    // // num: 5,
+    // // //
     // //
-    // // // @annotate({max: 50, control:Dial})
-    // num: 5,
+    // @color()
+    // color: {r:1, g:5, b:3},
     // //
-    //
-    @color()
-    color: {r:1, g:5, b:3},
-    //
-    @color()
-    color2: {r:1, g:5, b:3},
-    // folder:{
-    @xypad()
-    vector: { x: 10, y: 10},
+    // @color()
+    // color2: {r:1, g:5, b:3},
+    // // folder:{
+    // @xypad()
+    // vector: { x: 10, y: 10},
     //
     //     num: 10
     // },
     //
-    // a: a,
+    a: a,
 
     //@dial({min:3})
     // num2: 5,
