@@ -1,10 +1,9 @@
 {
   "name": "dui",
   "version": "0.0.1",
-  "description": "A prototyping library to create UI for instrumenting code",
+  "description": "A stupidly simple way of instrumenting code and making user interfaces",
   "main": "build/dui.min.js",
   "scripts": {
-    
     "compile:npm": "babel src --out-dir lib",
     "compile:prod": "NODE_ENV=production browserify --standalone dui -t babelify -g envify -g uglifyify src/index.js | uglifyjs -m > dist/dui.min.js",
     "compile:dev": "NODE_ENV=production browserify -d --standalone dui -t babelify -g envify -g uglifyify src/index.js > dist/dui.js",
