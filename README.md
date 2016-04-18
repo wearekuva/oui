@@ -11,7 +11,7 @@ in code editors.
 
 ## Getting Started
 
-`npm install oui`
+`npm install @marklundin/oui`
 
 Create an api and define some properties
 ```javascript

@@ -1,5 +1,5 @@
 {
-  "name": "oui",
+  "name": "@marklundin/oui",
   "version": "0.0.1",
   "description": "A stupidly simple way of instrumenting code and making user interfaces",
   "main": "build/oui.min.js",
