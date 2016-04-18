@@ -13,7 +13,7 @@ in code editors.
 
 `npm install @marklundin/oui`
 
-Create an api and define some properties
+Create an object, add some properties
 ```javascript
 
 let api = {
@@ -25,7 +25,7 @@ let api = {
 oui( api )
 ```
 
-And this creates
+And hey presto,
 
 ![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
 
@@ -38,7 +38,7 @@ clean api for you application and Oui lets you play with those parameters and sh
 the output.
 
 
-### Sliders are boring
+### But sliders are boring
 The common set of controllers cover most scenarios, but sometimes they don't
 truly represent what you're trying to convey. What if you want an unbounded number?
 thats something a slider can't handle. Or say you want a better way of editing
@@ -58,7 +58,7 @@ want a vertical slider instead, or something more complex like a 3D rotation con
 Just create your component, import it, and tag the property with it.
 
 
-### Tagging and annotations
+### What about constraints?
 Tagging properties is not just useful for choosing different controllers, it's
 also a way to declare additional information about a property. You can for example,
 specify the minimum and maximum range for a number, or provide some useful description
@@ -79,7 +79,7 @@ it as a way to declare metadata about a property. Not only does it inform the co
 it makes your code eay to understand.
 
 
-### What on earth is @annotate
+### What on earth is @annotate?
 @annotate is a decorator. It's part of the [es7 specification](https://github.com/wycats/javascript-decorators),
 and yes it's still only a proposal. Having said that decorators are just syntactic sugar,
 so you can still do the same thing in es5 land with the admittedly clunky `annotate({ min:3, max: 100 })( obj, 'num' )`
@@ -89,7 +89,7 @@ or similar in your transform pipeline.
 
 ### Issues
 
-#### Where's my UI
+#### Where's my UI?
 For the moment, every call to Oui replaces the entire ui display. This means you can't
 define multiple UI's defined in different parts of your application. Whilst this is
 kinda intentional - it forces you to surface important aspects of your programs interface -
