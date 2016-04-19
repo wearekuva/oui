@@ -31,10 +31,10 @@ let mergeWithObject = ( object, cb ) => {
             assign( object[key], change )
 
         }else{
-            obj[key] = change
+            object[key] = change
         }
 
-        return obj
+        return object
 
     }
 

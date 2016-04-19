@@ -40,7 +40,7 @@ let obj = {
     fps: new Float32Array( 100 ),
     // // //
     // // // // @annotate({max: 50, control:Dial})
-    // // num: 5,
+    num: 5,
     // // //
     // //
     // @color()

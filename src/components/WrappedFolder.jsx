@@ -45,9 +45,15 @@ class WrappedFolder extends Component {
 
     render(){
 
-        return <Folder { ...this.props } value={this.tree} />
+        return <Folder { ...this.props } style={style} value={this.tree} />
 
     }
+}
+
+var style = {
+    paddingBottom: '0.5em',
+    paddingTop: '0.5em',
+    borderBottom: '1px solid rgb( 230, 230, 230 )'
 }
 
 export default WrappedFolder

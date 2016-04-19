@@ -1,5 +1,7 @@
 import render from './renderer'
 import { annotate } from './annotate'
+import { dial, xypad, stepper, color, graph } from './components'
+
 
 let watch = obj => {
     //let onChange = ( key, change ) => draw( merge( obj, { [key]: change }))
@@ -7,4 +9,6 @@ let watch = obj => {
     render( obj, watch )
 }
 
-export { render, annotate, watch }
+let components = { dial, xypad, stepper, color, graph }
+
+export { render, annotate, watch, components }

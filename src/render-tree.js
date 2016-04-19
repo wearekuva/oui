@@ -132,11 +132,6 @@ export default ( obj, primitives, onChange ) => {
         }
 
 
-        // let onMetadataChange = function( propKey, change ) {
-        //     setAnnotation( obj, propKey, merge( getAnnotation( obj, propKey ), change ))
-        //     onChange({})
-        // }
-
         /*
             Create the Element based on the provided annotaions and the required Component
         */
