@@ -35,6 +35,8 @@ let mergeWithObject = ( object, cb ) => {
             object[key] = change
         }
 
+        cb( object )
+
         return object
 
     }
