@@ -1,5 +1,8 @@
 # Oui
 
+> [![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges)
+This is all still extremely experimental. Dragons be here
+
 Oui is a stupidly simple way of instrumenting code and making user interfaces.
 You declare your UI using plain old javascript objects and Oui handles the rest.
 Objects go in and UI's come out. It's that simple
