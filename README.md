@@ -1,7 +1,7 @@
 # Oui
 
 > [![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges)
-This is all still extremely experimental. Dragons be here
+This is all still extremely experimental. 'Ere be dragons!
 
 Oui is a stupidly simple way of instrumenting code and making user interfaces.
 You declare your UI using plain old javascript objects and Oui handles the rest.
@@ -84,13 +84,20 @@ it makes your code eay to understand.
 
 ### What on earth is @annotate?
 @annotate is a decorator. It's part of the [es7 specification](https://github.com/wycats/javascript-decorators),
-and yes it's still only a proposal. Having said that decorators are just syntactic sugar,
-so you can still do the same thing in es5 land with the admittedly clunky `annotate({ min:3, max: 100 })( obj, 'num' )`
+and yes it's still only a proposal. Having said that, decorators are just syntactic sugar,
+you can still do the same thing in es5 land with the admittedly awkward `annotate({ min:3, max: 100 })( obj, 'num' )`
 If, however you want to go all es7, drop `babel-plugin-transform-decorators-legacy`
 or similar in your transform pipeline.
 
 
-### Issues
+### FAQ
+
+#### Why so big?
+Well, it's built on React, and React is kinda chunky. Having said that, Oui is really only meant for prototyping, not for production facing sites.
+
+#### OK, but why React?
+It's true there are a number of great reactive libraries to choose from. deku, vue, mithril, riot. All of these are great, and many. The list goes on. I chose React because it's a well supported product and it's unlikely that it will stagnate. I don't want to be dealing with a dead dependancy next year.
+
 
 #### Where's my UI?
 For the moment, every call to Oui replaces the entire ui display. This means you can't
