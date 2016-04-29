@@ -30,20 +30,13 @@
       "babel-register"
     ]
   },
-  "aliasify": {
-        "aliases": {
-            "react": "react-lite",
-            "react-dom": "react-lite"
-        }
-    },
   "dependencies": {
     "core-controllers": "github:marklundin/core-controllers",
     "es7-reflect-metadata": "^1.6.0",
     "fast.js": "^0.1.1",
     "react": "^15.0.1",
     "react-addons-shallow-compare": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-lite": "^0.15.9"
+    "react-dom": "^15.0.1"
   },
   "devDependencies": {
     "aliasify": "^2.0.0",
