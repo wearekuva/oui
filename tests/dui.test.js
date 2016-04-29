@@ -1,5 +1,6 @@
 import test from 'ava'
 
+import { render, merge, annotate, watch } from '../src/index'
 
 // Check correct Compnents render
 
@@ -50,6 +51,16 @@ test.todo( 'Checkbox change mutates Boolean' )
 test.todo( 'TextInput change mutates String' )
 
 test.todo( 'Button click calls Function' )
+
+
+// Generic
+
+test.todo( 'Updates are deeply merged')
+
+test.todo( 'Callback is called on change')
+
+
+// Render Tree
 
 
 //

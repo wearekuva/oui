@@ -43,8 +43,8 @@ let obj = {
     num: 5,
     // // //
     // //
-    // @color()
-    // color: {r:1, g:5, b:3},
+    @color()
+    color: {r:1, g:5, b:3},
     // //
     // @color()
     // color2: {r:1, g:5, b:3},
