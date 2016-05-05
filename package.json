@@ -6,7 +6,7 @@
   "scripts": {
     "compile:npm": "babel src --out-dir lib",
     "compile:prod": "NODE_ENV=production browserify --standalone oui -t babelify -g aliasify -g envify -g uglifyify src/index.js | uglifyjs -m > dist/oui.min.js",
-    "compile:dev": "NODE_ENV=production browserify -d --standalone oui -t babelify -g aliasify -g envify -g uglifyify src/index.js > dist/oui.js",
+    "compile:dev": "NODE_ENV=development browserify -d --standalone oui -t babelify -g aliasify -g envify -g uglifyify src/index.js > dist/oui.js",
     "start": "NODE_ENV=development budo index.js --live -- -t babelify -g aliasify",
     "test": "ava tests -v"
   },
@@ -47,7 +47,9 @@
     "babelify": "^7.2.0",
     "budo": "^8.2.1",
     "envify": "^3.4.0",
+    "enzyme": "^2.2.0",
     "jsdom": "^8.4.0",
+    "sinon": "^1.17.4",
     "uglify-js": "^2.6.2",
     "uglifyify": "^3.0.1"
   }

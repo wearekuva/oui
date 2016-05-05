@@ -43,8 +43,10 @@ let obj = {
     num: 5,
     // // //
     // //
-    @color()
-    color: {r:1, g:5, b:3},
+    // as:{
+        @color()
+        color: [220, 10, 30, 4],
+    // }
     // //
     // @color()
     // color2: {r:1, g:5, b:3},

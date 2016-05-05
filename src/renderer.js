@@ -9,6 +9,7 @@ import BaseComponent from './components/BaseComponent.jsx'
 
 var element = document.createElement( 'div' )
 element.style.position = 'absolute'
+element.style.zIndex = '999999999'
 element.style.top = '0.5em'
 element.style.left = '0.5em'
 document.body.appendChild( element )
