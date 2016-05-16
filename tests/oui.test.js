@@ -2,48 +2,97 @@ import test from 'ava'
 
 
 // Annotations
-import { annotate } from '../src/annotate'
+import { annotate, getAnnotation } from '../src/annotate'
 
-test.todo( 'An annotation can be set' )
+test( 'An annotation can be set/red', t => {
 
-test.todo( 'An existing annotation can be read' )
+    const obj = {prop:10}
+    const value = 10
+    annotate({ value })( obj, 'prop' )
+    const annotationValue = getAnnotation( obj, 'prop' ).value
+    t.is( annotationValue, value )
 
-test.todo( 'An existing annotation can be overwritten' )
+})
+
+test( 'An existing annotation can be overwritten', t => {
+
+    const obj = {prop:10}
+    const first = 10
+    const second = 20
+    annotate({ value:first })( obj, 'prop' )
+    annotate({ value:second })( obj, 'prop' )
+    const annotationValue = getAnnotation( obj, 'prop' ).value
+    t.is( annotationValue, second )
+
+} )
+
 
 
 // Component Annotations
-test.todo( "`graph()` adds a controller type annotation whose value is `Graph`" )
-
-test.todo( "'xypad()' adds a controller type annotation whose value is `XYPad`" )
-
-test.todo( "'dial()' adds a controller type annotation whose value is `Dial`" )
-
-test.todo( "'color()' adds a controller type annotation whose value is `ColorPicker`" )
-
-test.todo( "'stepper()' adds a controller type annotation whose value is `NumericStepper`" )
-
-test.todo( "'combo()' adds a controller type annotation whose value is `ComboBox`" )
+import { graph } from '../src/components'
+import Graph from 'core-controllers/es5/graph'
+test( "`graph()` adds a type annotation whose value is `Graph`", t => {
+    const obj = { prop: true }
+    graph({})( obj, 'prop' )
+    var type = getAnnotation( obj, 'prop' ).control
+    t.is( type, Graph )
+})
 
 
-// Primitives
-import isPrimitive from '../src/primitives'
+import { xypad } from '../src/components'
+import XYPad from 'core-controllers/es5/xypad'
+test( "`xypad()` adds a type annotation whose value is `XYPad`", t => {
+    const obj = { prop: true }
+    xypad({})( obj, 'prop' )
+    var type = getAnnotation( obj, 'prop' ).control
+    t.is( type, XYPad )
+})
 
-test( '`isPrimitive` returns true for a number', t => t.true( isPrimitive( 10 )))
 
-test( '`isPrimitive` returns true for a string', t =>t.true( isPrimitive( 'string' )))
+import { dial } from '../src/components'
+import Dial from 'core-controllers/es5/dial'
+test( "`dial()` adds a type annotation whose value is `Dial`", t => {
+    const obj = { prop: true }
+    dial({})( obj, 'prop' )
+    var type = getAnnotation( obj, 'prop' ).control
+    t.is( type, Dial )
+})
 
-test( '`isPrimitive` returns true for a boolean', t => t.true( isPrimitive( false )))
 
-test( '`isPrimitive` returns false for an object', t => t.false( isPrimitive( {} )))
+import { color } from '../src/components'
+import ColorPicker from 'core-controllers/es5/colorpicker'
+test( "`color()` adds a type annotation whose value is `ColorPicker`", t => {
+    const obj = { prop: true }
+    color({})( obj, 'prop' )
+    var type = getAnnotation( obj, 'prop' ).control
+    t.is( type, ColorPicker )
+})
 
-test( '`isPrimitive` returns false for an array', t => t.false( isPrimitive( [] )))
 
-test( '`isPrimitive` returns false for a function', t => t.true( isPrimitive( _ => _ )))
+import { stepper } from '../src/components'
+import NumericStepper from 'core-controllers/es5/numericstepper'
+test( "`stepper()` adds a type annotation whose value is `NumericStepper`", t => {
+    const obj = { prop: true }
+    stepper({})( obj, 'prop' )
+    var type = getAnnotation( obj, 'prop' ).control
+    t.is( type, NumericStepper )
+})
+
+
+import { combobox } from '../src/components'
+import Combobox from 'core-controllers/es5/combobox'
+test( "`combo()`` adds a type annotation whose value is `ComboBox`", t => {
+    const obj = { prop: true }
+    combobox({})( obj, 'prop' )
+    var type = getAnnotation( obj, 'prop' ).control
+    t.is( type, Combobox )
+})
+
 
 
 
 // Mutations
-import merge from '../src/merge'
+import merge from '../src/deep-merge'
 
 test( 'Shallow primitives are merged', t =>{
 
@@ -58,7 +107,9 @@ test( 'Shallow primitives are merged', t =>{
         value:1
     }
 
-    t.deepEqual( merge( target, { num, str, bool }), { num, str, bool, value:1 } )
+    const a = merge( target, { num, str, bool })
+    const b = { num, str, bool, value:1 }
+    t.deepEqual( a, b )
 })
 
 
@@ -69,19 +120,15 @@ test( 'Deep primitives are merged', t => {
     const bool = false
 
     const target = {
-        deep: {
-            num: 1,
-            str: 'incorrect',
-            bool: true
-        },
+        deep: {},
         value:1
     }
 
     const source = {
-        deep : { num, str, bool }
+        deep : { deeper: { num, str, bool }}
     }
 
-    t.deepEqual( merge( target, source ), { deep: { num, str, bool }, value:1} )
+    t.deepEqual( merge( target, source ), { deep: { deeper:{ num, str, bool }}, value:1} )
 
 })
 
@@ -100,7 +147,7 @@ test( 'Objects are not assigned', t => {
     const source = { a:{ value: 10 }}
     const target = { a:{ value: 20 }}
 
-    t.false( merge( target, source ).a, source.a )
+    t.false( merge( target, source ).a === source.a )
 
 })
 
@@ -109,33 +156,5 @@ test( 'Target and Source are not referentially equal `===`', t => {
     const source = { a:10 }
     const target = { a:20 }
 
-    t.false( merge( target, source ), source )
+    t.false( merge( target, source ) === source )
 })
-
-test.todo( 'Merge handles frozen properties' )
-
-test.todo( 'Merge handles sealed properties' )
-
-test.todo( 'Merge handles read-only properties' )
-
-
-// Render Tree
-import tree from '../src/render-tree'
-import Checkbox from 'core-controllers/lib/checkbox'
-import Slider from 'core-controllers/slider'
-import TextInput from 'core-controllers/textinput'
-import WrappedFolder from '../src/components/WrappedFolder'
-
-test( 'A boolean property returns an array with a CheckBox', t => t.is( tree({ value: false })[0], Checkbox ))
-
-test( 'A number property returns an array with a Slider', t => t.is( tree({ value: 10 })[0], Slider ))
-
-test( 'A string property returns an array with a TextInput', t => t.is( tree({ value: 'string' })[0], TextInput ))
-
-test( 'A function property returns an empty array', t => t.equals( tree({ value: false }).length, 0 ))
-
-test( 'A null property value returns an empty array', t => t.equals( tree({ value: false }).length, 0 ))
-
-test( 'An object property returns an array with a Folder', t => t.is( tree({ value: {} })[0], WrappedFolder ))
-
-test( 'An array property returns an array with a Folder', t => t.is( tree({ value: [] })[0], WrappedFolder ))

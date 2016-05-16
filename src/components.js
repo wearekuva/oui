@@ -19,11 +19,12 @@
 
 */
 
-import Dial from 'core-controllers/components/dial'
-import NumericStepper from 'core-controllers/components/numericstepper'
-import ColorPicker from 'core-controllers/components/colorpicker'
-import XYPad from 'core-controllers/components/xypad'
-import Graph from 'core-controllers/components/graph'
+import Dial from 'core-controllers/es5/dial'
+import NumericStepper from 'core-controllers/es5/numericstepper'
+import ColorPicker from 'core-controllers/es5/colorpicker'
+import XYPad from 'core-controllers/es5/xypad'
+import Graph from 'core-controllers/es5/graph'
+import ComboBox from 'core-controllers/es5/combobox'
 
 import { annotate, setAnnotation } from './annotate'
 
@@ -36,3 +37,4 @@ export const xypad = createDecorator( XYPad )
 export const stepper = createDecorator( NumericStepper )
 export const color = createDecorator( ColorPicker )
 export const graph = createDecorator( Graph )
+export const combobox = createDecorator( ComboBox )

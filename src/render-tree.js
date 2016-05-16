@@ -1,5 +1,4 @@
 import React  from 'react'
-import { isPrimitive }  from './primitives'
 import WrappedComponent from './components/WrappedComponent.jsx'
 import { getAnnotation }  from './annotate'
 
@@ -99,19 +98,19 @@ export default ( obj, primitives, onChange ) => {
     /*
         Iterate through enumerable properties of `obj`
     */
-    for( var key in obj ){
+    for( var prop in obj ){
 
 
         let Element,
             Component,
-            value = obj[key]
+            value = obj[prop]
 
 
         /*
             If there's any annotation associated with the property collect them
             and pass them along to the Component instance
         */
-        annotation = getAnnotation( obj, key ) || {}
+        annotation = getAnnotation( obj, prop ) || {}
 
 
         /*
@@ -125,32 +124,19 @@ export default ( obj, primitives, onChange ) => {
             However if no Component has been declared and the value is one of the
             primtive types, use one of the default Components
         */
-        if( !Component && isPrimitive( value )){
-
-            Component = primitives[ typeof value ]
-
+        if( !Component && value !== null && primitives.has( typeof value )){
+            Component = primitives.get( typeof value )
         }
 
 
         /*
             Create the Element based on the provided annotaions and the required Component
         */
-        Element = <Component label={key} {...annotation} value={value} />
-
-
-        /*
-            If the Element is valid according to React, then it's eligible for
-            rendering. Here we wrap it with a dumb Component that handles the
-            onChange propogation. Doing so means the onChange callback doesn't
-            unneccessarily change often, allowing complex components to make use
-            of `shouldComponentUpdate` where needed
-        */
-
-        if( React.isValidElement( Element ) ) {
-
-            components.push( <WrappedComponent key={key} propKey={key} onChange={onChange}>{ Element }</WrappedComponent>)
-
+        if( Component ){
+            components.push( <Component key={prop} id={prop} label={prop} {...annotation} onChange={onChange} value={value} /> )
         }
+
+
     }
 
     return components

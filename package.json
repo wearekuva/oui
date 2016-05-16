@@ -26,9 +26,10 @@
   "homepage": "https://github.com/marklundin/oui#readme",
   "ava": {
     "require": [
-      "./tests/helpers/setup-browser-env.js",
-      "babel-register"
-    ]
+        "babel-register",
+        "./tests/helpers/setup-browser-env.js"
+    ],
+    "babel": "inherit"
   },
   "dependencies": {
     "core-controllers": "github:marklundin/core-controllers",
@@ -47,7 +48,7 @@
     "babelify": "^7.2.0",
     "budo": "^8.2.1",
     "envify": "^3.4.0",
-    "enzyme": "^2.2.0",
+    "enzyme": "^2.3.0",
     "jsdom": "^8.4.0",
     "sinon": "^1.17.4",
     "uglify-js": "^2.6.2",

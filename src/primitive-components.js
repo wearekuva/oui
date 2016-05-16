@@ -1,14 +1,15 @@
-import Slider from 'core-controllers/components/slider'
-import Checkbox from 'core-controllers/components/checkbox'
-import TextInput from 'core-controllers/components/textinput'
-import WrappedButton from './components/WrappedButton.jsx'
-import WrappedFolder from './components/WrappedFolder.jsx'
+import Slider from 'core-controllers/es5/slider'
+import Checkbox from 'core-controllers/es5/checkbox'
+import TextInput from 'core-controllers/es5/textinput'
+// import WrappedFolder from './components/WrappedFolder'
+import Folder from 'core-controllers/es5/folder'
+import WrappedComponent from './components/WrappedComponent'
 
 
-export default {
-  number: Slider,
-  string: TextInput,
-  boolean: Checkbox,
-  function: WrappedButton,
-  object: WrappedFolder,
-}
+
+export default new Map([
+  [ 'number', WrappedComponent( Slider ) ],
+  [ 'string', WrappedComponent( TextInput )],
+  [ 'boolean', WrappedComponent( Checkbox )],
+  [ 'object', WrappedComponent( Folder )]
+])

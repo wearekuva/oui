@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from 'core-controllers/components/button'
+import Button from 'core-controllers/es5/button'
 
 export default props => {
 

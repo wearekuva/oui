@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Folder from 'core-controllers/components/folder'
+import Folder from 'core-controllers/es5/folder'
 import createTree from '../render-tree'
 import primitives from '../primitive-components'
 import assign from 'fast.js/object/assign'
