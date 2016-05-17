@@ -105,3 +105,56 @@ define multiple UI's defined in different parts of your application. Whilst this
 kinda intentional - it forces you to surface important aspects of your programs interface -
 it's also a massive pain and which doesn't scale well. I'm planning on supporting this soon.
 See #1
+
+#### What about panels?
+
+On anything larger than a demo, you'll more then likely be working with other people, and they'll probably
+want their own UI to test. Oui encourages you to surface parts of your code as an api, but this isn't always
+practical when prototyping. This is where panels come in.
+
+Panels are a way to create distinct UI elements. They're effectively sub sections of the UI display.
+
+Here's how you'd do that.
+
+```
+import panel from 'oui/panel'
+
+let opts = { title:"A title", }
+let oui = panel( opts ) // Creates a namespace. A unique panel
+let obs = oui.once({num: 10}) // Renders api, returns an observable or similar
+let obs = oui({num: 10}) // Continuous render. Watches api for changes
+
+// Methods
+oui.destroy()
+
+```
+
+How's that implemented?
+
+```
+
+let panel = opts => (
+
+    var element = document.createElement('div')
+
+    return {
+
+        render( api ){
+            dom.render( <Panel { ...opts, ...api } />, element )
+        }
+
+        watch( api ){
+            if( element ){
+                render( api )
+                rAF( watch )
+            }
+        }
+
+        destroy(){
+            react.unmountComponentAtNode( element )
+            element = null
+        }
+    }
+)
+
+```

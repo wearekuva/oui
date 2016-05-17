@@ -26,10 +26,10 @@ import XYPad from 'core-controllers/es5/xypad'
 import Graph from 'core-controllers/es5/graph'
 import ComboBox from 'core-controllers/es5/combobox'
 
-import { annotate, setAnnotation } from './annotate'
+import { annotate } from './annotate'
 
 let createDecorator = Controller => {
-    return value => ( obj, prop ) => setAnnotation( obj, prop, {...value, control:Controller })
+    return value => ( obj, prop ) => annotate({ ...value, control:Controller })( obj, prop, )
 }
 
 export const dial = createDecorator( Dial )

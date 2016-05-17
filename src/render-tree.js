@@ -1,6 +1,6 @@
 import React  from 'react'
-import WrappedComponent from './components/WrappedComponent.jsx'
 import { getAnnotation }  from './annotate'
+import primitives from './primitive-components'
 
 
 /*
@@ -89,7 +89,7 @@ import { colorpicker } from 'custom-comps'
 
 
 
-export default ( obj, primitives, onChange ) => {
+export default ( obj, onChange = _ => _) => {
 
     let annotation,
         Component,
@@ -104,6 +104,13 @@ export default ( obj, primitives, onChange ) => {
         let Element,
             Component,
             value = obj[prop]
+
+
+        /*
+            Null properties are discarded regardless of type annotation
+        */
+
+        if( value === null ) continue
 
 
         /*
@@ -124,7 +131,7 @@ export default ( obj, primitives, onChange ) => {
             However if no Component has been declared and the value is one of the
             primtive types, use one of the default Components
         */
-        if( !Component && value !== null && primitives.has( typeof value )){
+        if( !Component && primitives.has( typeof value )){
             Component = primitives.get( typeof value )
         }
 
