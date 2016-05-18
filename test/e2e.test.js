@@ -1,29 +1,23 @@
 import React from 'react'
 import ReactTestUtils from 'react-addons-test-utils'
-import {shallow, mount} from 'enzyme'
+
+
 import imperative from '../src/imperative-api'
-
-
 import dom from '../src/dom'
 import Panel from '../src/components/panel'
 
 describe( 'e2e', () => {
 
     afterEach(() => {
-
         while( dom.children.length > 0 ){
             dom.children[0].remove()
         }
-
     })
 
     it( 'should render a Panel in the page', () => {
 
-        const ui = imperative()
-        const node = ui.render({ value: 10 })
-        const tree = mount(<div />).wrap( node )
+        imperative().render({ value: 10 })
 
-        expect( tree.find( Panel )).toBeTruthy()
         expect( dom.children.length ).toBe( 1 )
 
     })
@@ -33,9 +27,6 @@ describe( 'e2e', () => {
 
         const a = imperative().render({ value: 10 })
         const b = imperative().render({ value: 10 })
-
-        const treeA = mount(<div />).wrap( a )
-        const treeB = mount(<div />).wrap( b )
 
         expect( dom.children.length ).toBe( 2 )
 
@@ -52,9 +43,46 @@ describe( 'e2e', () => {
         expect( dom.children.length ).toBe( 0 )
 
     })
-    //
-    // test.todo( 'Panel should reflect api mutation' )
-    //
-    // test.todo( 'Api should reflect Panel change' )
+
+
+    it( 'should update the panel to reflect a new api', () => {
+
+        let actual
+        const ui = imperative()
+
+        ui.render({ value: true })
+        actual = dom.querySelector('input').checked
+        expect( actual ).toBeTruthy()
+
+        ui.render({ value: false })
+        actual = dom.querySelector('input').checked
+        expect( actual ).toBeFalsy()
+
+    })
+
+
+    it( 'should update api properties on user interaction', () => {
+
+        let api = { prop: true }
+        imperative().render( api )
+
+        const input = dom.querySelector('input')
+        ReactTestUtils.Simulate.change( input, { target: { checked: false }} )
+
+        expect( api.prop ).toBeFalsy()
+
+    })
+
+
+    it( 'should redraw the ui on user interaction', () => {
+
+        imperative().render( { prop: true } )
+
+        const input = dom.querySelector('input')
+        ReactTestUtils.Simulate.change( input, { target: { checked: false }} )
+
+        expect( input.checked ).toBeFalsy()
+
+    })
 
 })

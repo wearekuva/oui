@@ -32,7 +32,6 @@
     "babel": "inherit"
   },
   "dependencies": {
-    "core-controllers": "github:marklundin/core-controllers",
     "es7-reflect-metadata": "^1.6.0",
     "fast.js": "^0.1.1",
     "react": "^15.0.1",
@@ -51,6 +50,7 @@
     "envify": "^3.4.0",
     "enzyme": "^2.3.0",
     "jasmine-core": "^2.4.1",
+    "jasmine-enzyme": "^1.0.0",
     "jsdom": "^8.4.0",
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.5",

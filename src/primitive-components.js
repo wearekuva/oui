@@ -1,15 +1,13 @@
-import Slider from 'core-controllers/es5/slider'
-import Checkbox from 'core-controllers/es5/checkbox'
-import TextInput from 'core-controllers/es5/textinput'
-import WrappedFolder from './components/WrappedFolder'
-import Folder from 'core-controllers/es5/folder'
-import WrappedComponent from './components/WrappedComponent'
-
-
+import Slider from './components/slider'
+import Checkbox from './components/checkbox'
+import TextInput from './components/textinput'
+import Folder from './components/folder'
+import withTree from './components/with-tree'
+import withChangeObject from './components/with-change-object'
 
 export default new Map([
-  [ 'number', WrappedComponent( Slider ) ],
-  [ 'string', WrappedComponent( TextInput )],
-  [ 'boolean', WrappedComponent( Checkbox )],
-  [ 'object', WrappedComponent( WrappedFolder( Folder ))]
+  [ 'number', withChangeObject( Slider ) ],
+  [ 'string', withChangeObject( TextInput )],
+  [ 'boolean', withChangeObject( Checkbox )],
+  [ 'object', withChangeObject( withTree( Folder ))]
 ])

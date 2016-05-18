@@ -2,11 +2,10 @@ import React from 'react'
 import {shallow, mount} from 'enzyme'
 import Tree from '../src/render-tree'
 
-
-import Checkbox from 'core-controllers/es5/checkbox'
-import TextInput from 'core-controllers/es5/textinput'
-import Slider from 'core-controllers/es5/slider'
-import Folder from 'core-controllers/es5/folder'
+import Checkbox from '../src/components/checkbox'
+import TextInput from '../src/components/textinput'
+import Slider from '../src/components/slider'
+import Folder from '../src/components/folder'
 
 describe( 'Reconciliation:', () => {
 
@@ -51,7 +50,7 @@ describe( 'Reconciliation:', () => {
 
     })
 
-    
+
     it( 'maps an Array to a tree containing a `Folder`', () => {
 
         const tree = Tree({ prop : [] })[0]
@@ -74,7 +73,7 @@ describe( 'Reconciliation:', () => {
 
 
 import { annotate } from '../src/annotate'
-import NumericStepper from 'core-controllers/es5/numericstepper'
+import NumericStepper from '../src/components/numericstepper'
 
 describe( 'Type Annotations', () => {
 

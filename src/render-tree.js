@@ -1,8 +1,3 @@
-import React  from 'react'
-import { getAnnotation }  from './annotate'
-import primitives from './primitive-components'
-
-
 /*
   This is where we reconcile the object and decide what should and should not
   end up in the renderTree. Essentially it is a mapping between an object literal
@@ -88,8 +83,12 @@ import { colorpicker } from 'custom-comps'
 */
 
 
+import React  from 'react'
+import { getAnnotation }  from './annotate'
+import primitives from './primitive-components'
 
-export default ( obj, onChange = _ => _) => {
+
+export default ( obj, onChange ) => {
 
     let annotation,
         Component,

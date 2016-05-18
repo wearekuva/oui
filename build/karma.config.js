@@ -8,8 +8,14 @@ module.exports = function (config) {
         basePath:'../',
 
         files: [
-            "src/**/*.js*",
-            'test/*.test.js'
+            { pattern: 'src/**/*.js', included: false, served: false },
+            'test/*.test.js',
+            'src/**/*.test.js'
+        ],
+
+        exclude: [
+            //'src/**/*.test.js',
+            'src/**/test.js'
         ],
 
         preprocessors: {
@@ -26,7 +32,7 @@ module.exports = function (config) {
         browserify: {
             debug: true,
             transform: [
-                ['babelify', { presets: ['airbnb'] }]
+                ['babelify'/*, { presets: ['airbnb'] }*/]
             ],
             configure: function(bundle) {
                 bundle.on('prebundle', function() {

@@ -1,11 +1,4 @@
-import React, { PropTypes } from 'react'
-import Folder from 'core-controllers/es5/folder'
-import createTree from '../render-tree'
-import primitives from '../primitive-components'
-import assign from 'fast.js/object/assign'
-
-
-/**
+/*
     The `core-controllers` Folder component generates it's children using a function
     passed in it's props. This is only called when it's open meaning that the whole
     render tree is lazily instantiated, and only as much as neccesary.
@@ -16,26 +9,35 @@ import assign from 'fast.js/object/assign'
     normalize the api in 'render-tree'
 */
 
-export default Component => {
+import Tree from "../render-tree"
+import React, { PropTypes } from 'react'
 
-    class WrappedFolder extends Component {
+
+export default ( Component ) => {
+
+    let style = {
+        paddingBottom: '0.5em',
+        paddingTop: '0.5em',
+        borderBottom: '1px solid rgb( 230, 230, 230 )'
+    }
+
+    class WrappedComponent extends Component {
 
         constructor(){
 
             super()
-
-            this.tree = _ => createTree( this.props.value, this.props.onChange )
+            this.tree = _ => Tree( this.props.value, this.props.onChange )
 
         }
 
         render(){
 
-            return <Component { ...this.props } style={style} value={this.tree} />
+            return <Component { ...this.props } style={style} value={ this.tree } />
 
         }
     }
 
-    WrappedFolder.propTypes = {
+    WrappedComponent.propTypes = {
 
         value : PropTypes.oneOfType([
             PropTypes.object,
@@ -50,11 +52,6 @@ export default Component => {
 
     }
 
-    return WrappedFolder
-}
+    return WrappedComponent
 
-var style = {
-    paddingBottom: '0.5em',
-    paddingTop: '0.5em',
-    borderBottom: '1px solid rgb( 230, 230, 230 )'
 }
