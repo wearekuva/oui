@@ -51,7 +51,7 @@ describe( 'Reconciliation:', () => {
 
     })
 
-
+    
     it( 'maps an Array to a tree containing a `Folder`', () => {
 
         const tree = Tree({ prop : [] })[0]

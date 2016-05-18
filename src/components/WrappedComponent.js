@@ -10,22 +10,19 @@ var style = {
     borderTop: '1px solid rgb(210, 210, 210)'
 }
 
-// export default let Component => class WrappedComponent extends Component {
-//
-//     constructor(){
-//
-//         super()
-//
-//         this.onChildChange = change => this.props.onChange({ [this.props.id]: change })
-//
-//     }
-//
-//     render() {
-//
-//         return <Component { ...this.props } onChange={ this.onChildChange } />
-//
-//     }
-// }
+export default Component => class WrappedComponent extends Component {
 
-let a = _ => _
-export default a 
+    constructor(){
+
+        super()
+
+        this.onChildChange = change => this.props.onChange({ [this.props.id]: change })
+
+    }
+
+    render() {
+
+        return <Component { ...this.props } onChange={ this.onChildChange } />
+
+    }
+}

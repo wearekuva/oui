@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PropTypes } from 'react'
 import Folder from 'core-controllers/es5/folder'
 import createTree from '../render-tree'
 import primitives from '../primitive-components'
@@ -16,38 +16,41 @@ import assign from 'fast.js/object/assign'
     normalize the api in 'render-tree'
 */
 
-class WrappedFolder extends Component {
+export default Component => {
 
-    constructor(){
+    class WrappedFolder extends Component {
 
-        super()
+        constructor(){
 
-        let mergeWithKey = ( key, change ) => {
+            super()
 
-            let slot = this.props.value
-
-            if( typeof change === 'object' ){
-
-                assign( slot[key], change )
-
-            }else{
-                slot[key] = change
-            }
-
-            return slot
+            this.tree = _ => createTree( this.props.value, this.props.onChange )
 
         }
 
-        let onChange = ( key, change ) => this.props.onChange( mergeWithKey( key, change ))
-        this.tree = _ => createTree( this.props.value, primitives, onChange )
+        render(){
+
+            return <Component { ...this.props } style={style} value={this.tree} />
+
+        }
+    }
+
+    WrappedFolder.propTypes = {
+
+        value : PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.array,
+        ]).isRequired,
+
+        onChange: PropTypes.func,
+
+        label: PropTypes.string,
+
+        style: PropTypes.object
 
     }
 
-    render(){
-
-        return <Folder { ...this.props } style={style} value={this.tree} />
-
-    }
+    return WrappedFolder
 }
 
 var style = {
@@ -55,5 +58,3 @@ var style = {
     paddingTop: '0.5em',
     borderBottom: '1px solid rgb( 230, 230, 230 )'
 }
-
-export default WrappedFolder
