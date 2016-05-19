@@ -5,18 +5,15 @@
 
 _Objects go in, UI comes out_
 
-Oui is a super simple way to instrument your code and create controls for data. Pass it an object and Oui renders a set of controls that allow you to visualise and shape your app.
+A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
 ##### Why?
 
 Devtools are great, but sometime you want to reach into your code and manipulate it at run time. This is often the case for programs that have some time component, such as animations or games.
 
-Oui provides a declarative way to do this. You pass it an object, and Oui creates an appropriate UI. Numbers turn into sliders, strings make text boxes and booleans make checkboxes. You define a nice clean api for you application and Oui lets you play with the parameters to shape the output.
+Oui provides a declarative way to do this. You pass it an object, and Oui generates an appropriate UI. Numbers turn into sliders, strings make text boxes and booleans make checkboxes. You define a nice clean api for you application and Oui lets you play with the parameters to shape the output.
 
-# Usage
 ## Usage
-### Usage
-#### Usage
 
 First add Oui to your project.
 
@@ -46,7 +43,7 @@ This generates a set of controllers mapped to the `api`s properties. Modifying a
 Controllers are automatically selected based on the properties data type. Nested objects and arrays map to collapsible folders. This provides a super simple way to declare your UI and instrument more complex structures.
 
 
-### Ok, but sliders are boring...
+### Additional Components
 
 The basic controllers cover all data types, but sometimes your data describes something more complicated such as a rotation, or a color, or a 2 dimensional vector. In these situations there's an additional set of controllers you can import that override Oui's default behaviour. Install them and you can use [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker), [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
 You simply annotate a property with a type controller.
