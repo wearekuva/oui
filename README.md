@@ -1,23 +1,19 @@
 # Oui
 
 > [![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges)
-This is all still extremely experimental. 'Ere be dragons!
+This is all still pretty experimental. The api is likely to change without support. You have been warned!
 
-Oui is a stupidly simple way of instrumenting code and making user interfaces.
-You declare your UI using plain old javascript objects and Oui handles the rest.
-Objects go in and UI's come out. It's that simple
+Oui is a stupidly simple way to instrument code and control a program.
+Pass it some data an oui renders a set of controllers that allow you to
+visualise, control and shape your program. Objects go in and UI's come out.
 
-I made this library for quickly prototyping code and testing parameters. Often you
-want to create a program and shape it's output. Oui essentially covers what's missing
-in code editors.
-
-
-## Getting Started
+## 5 second demo
 
 `npm install @marklundin/oui`
 
 Create an object, add some properties
 ```javascript
+import oui from 'oui'
 
 let api = {
   numeric : 10,
@@ -28,37 +24,42 @@ let api = {
 oui( api )
 ```
 
-And hey presto,
+And hey presto...
 
 ![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
 
-Oui ships with a set of default [components](https://github.com/marklundin/core-controllers),
-any primitives you declare get automatically wired up to a control. Numbers turn into sliders,
-strings turn into text boxes, objects into folders. In fact anything you throw at it
-has a corresponding controller of some type. Not only that, but any interaction with the ui
-at runtime updates the original object. This means you effectively define a nice
-clean api for you application and Oui lets you play with those parameters and shape
-the output.
+
+## Why?
+
+Devtools are great, but sometime you want to reach into your code and manipulate
+it at run time. This is often the case for programs that have some time component,
+such as animations or games.
+
+Oui provides a declarative way to do this. You pass it an object, and Oui
+creates an appropriate UI. Numbers turn into sliders, strings make text boxes and
+booleans make checkboxes. You define a nice clean api for you application and
+Oui lets you play with the parameters to shape the output.
 
 
-### But sliders are boring
-The common set of controllers cover most scenarios, but sometimes they don't
-truly represent what you're trying to convey. What if you want an unbounded number?
-thats something a slider can't handle. Or say you want a better way of editing
-the string '#ff0000' than the default text input field.
+### sliders are boring...
 
-Oui also bundles a set of additional nifty controls such a [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph), [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker)
-and more the cover many more use cases. You simply tag the property with the controller
-you want to use and Oui will render that instead.
+The basic set of controllers cover many simple scenarios, but often your data
+describes something more complicated such as rotations, colors, or a periodic function.
+For those situations, there's an additional set of controllers such as [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker) [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
+You simply annotate a property with a type controller.
 
-Here's some examples of the other controls. Check the [core controllers
-documentation](http://marklundin.github.io/core-controllers/documentation) for the full list.
+Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
+for the full list.
 
 ![XYPad, Graph, Color](http://g.recordit.co/FCmMPYjuTn.gif)
 
-If these controllers don't quite cut it though you can always roll your own. Maybe you
+### rolling your own
+
+Of course, if these controllers don't quite cut it though you can always roll your own. You
 want a vertical slider instead, or something more complex like a 3D rotation control.
 Just create your component, import it, and tag the property with it.
+
+Follow the guide to [rolling you're own controller](/docs/custom_controllers).
 
 
 ### What about constraints?
@@ -92,19 +93,10 @@ or similar in your transform pipeline.
 
 ### FAQ
 
-#### Why so big?
-Well, it's built on React, and React is kinda chunky. Having said that, Oui is really only meant for prototyping, not for production facing sites.
 
 #### OK, but why React?
 It's true there are a number of great reactive libraries to choose from. deku, vue, mithril, riot. All of these are great, and many. The list goes on. I chose React because it's a well supported product and it's unlikely that it will stagnate. I don't want to be dealing with a dead dependancy next year.
 
-
-#### Where's my UI?
-For the moment, every call to Oui replaces the entire ui display. This means you can't
-define multiple UI's defined in different parts of your application. Whilst this is
-kinda intentional - it forces you to surface important aspects of your programs interface -
-it's also a massive pain and which doesn't scale well. I'm planning on supporting this soon.
-See #1
 
 #### What about panels?
 
@@ -129,32 +121,12 @@ oui.destroy()
 
 ```
 
-How's that implemented?
+Oh, and we :heart dat.gui
 
-```
 
-let panel = opts => (
+#### License
 
-    var element = document.createElement('div')
+[MIT](./LICENSE.md)
 
-    return {
 
-        render( api ){
-            dom.render( <Panel { ...opts, ...api } />, element )
-        }
-
-        watch( api ){
-            if( element ){
-                render( api )
-                rAF( watch )
-            }
-        }
-
-        destroy(){
-            react.unmountComponentAtNode( element )
-            element = null
-        }
-    }
-)
-
-```
+Copyright © 2016 Mark Lundin
