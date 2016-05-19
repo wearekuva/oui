@@ -3,20 +3,21 @@
 
 > This is still experimental. The api is likely to change without support. You have been warned!
 
-Oui is a super simple way to instrument your code and create a controls for data. Pass it an object and Oui will renders a set of controllers that allow you to visualise and control and shape your application. 
+_Objects go in, UI comes out_
 
-_Objects go in and UI's come out._
+Oui is a super simple way to instrument your code and create a controls for data. Pass it an object and Oui will renders a set of controllers that allow you to visualise and control and shape your application. 
 
 ## Usage
 
-First add Oui to your project. 
-You can grab a copy from the [dist](./dist) folder, or alternatively use npm.
+First add Oui to your project.
 
 ```
 npm install @marklundin/oui --save
 ```
 
-Once installed, create an object containing some properties or reference to an existing object. Call `Oui()` with this object to instrument it.
+You can also grab a copy from the [dist](./dist) folder. It comes in minified and production flavours.
+
+Once installed, create an object containing some properties or reference to an existing object. Calling `Oui()` with an object will instrument it.
 
 ```javascript
 import oui from 'oui'
@@ -31,14 +32,14 @@ oui( api )
 
 ```
 
-This generates a UI and maps a set of controllers to the `api`s properties. Updating a controller mutates the `api` which allows you to modify your program without setting breakpoints. 
+This generates a set of controllers mapped to the `api`s properties. Modifying a controller also updates the associated property by mutating the `api`. This allows you to modify your program at runtime without setting breakpoints. 
 
-Controllers are automatically selected based on the properties data type. Theres one for each primitive and nested objects and arrays map to collapsible folders giving you a heirachical representation of your data. This provides a clear way to declare your UI and instruments complex data structures.
+Controllers are automatically selected based on the properties data type. Nested objects and arrays map to collapsible folders. This provides a super simple way to declare your UI and instrument more complex structures.
 
 
 ### Ok, but sliders are boring...
 
-The basic controllers cover all data types, but sometimes your data describes something more complicated such as a rotation, or a color, or a 2 dimensional vector. In these situations there's an additional set of controllers you can import that override Oui's default behaviour. Install them and you can use [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker) [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
+The basic controllers cover all data types, but sometimes your data describes something more complicated such as a rotation, or a color, or a 2 dimensional vector. In these situations there's an additional set of controllers you can import that override Oui's default behaviour. Install them and you can use [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker), [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
 You simply annotate a property with a type controller.
 
 Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
