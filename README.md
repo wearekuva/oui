@@ -1,15 +1,16 @@
 # Oui
+![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
 
-> ![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
-> This is all still pretty experimental. The api is likely to change without support. You have been warned!
+> This is still experimental. The api is likely to change without support. You have been warned!
 
-Oui is a stupidly simple way to instrument code and control a program.
-Pass it some data an oui renders a set of controllers that allow you to
-visualise, control and shape your program. Objects go in and UI's come out.
+Oui is a super simple way to instrument your code and create a controls for data. Pass it an object and Oui will renders a set of controllers that allow you to visualise and control and shape your application. 
+
+_Objects go in and UI's come out._
 
 ## Usage
 
-First add Oui to your project. You can grab a copy from the [dist](./dist) folder, or alternatively use npm.
+First add Oui to your project. 
+You can grab a copy from the [dist](./dist) folder, or alternatively use npm.
 
 ```
 npm install @marklundin/oui --save
