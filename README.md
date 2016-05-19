@@ -5,9 +5,18 @@
 
 _Objects go in, UI comes out_
 
-Oui is a super simple way to instrument your code and create a controls for data. Pass it an object and Oui will renders a set of controllers that allow you to visualise and control and shape your application. 
+Oui is a super simple way to instrument your code and create controls for data. Pass it an object and Oui renders a set of controls that allow you to visualise and shape your app.
 
+##### Why?
+
+Devtools are great, but sometime you want to reach into your code and manipulate it at run time. This is often the case for programs that have some time component, such as animations or games.
+
+Oui provides a declarative way to do this. You pass it an object, and Oui creates an appropriate UI. Numbers turn into sliders, strings make text boxes and booleans make checkboxes. You define a nice clean api for you application and Oui lets you play with the parameters to shape the output.
+
+# Usage
 ## Usage
+### Usage
+#### Usage
 
 First add Oui to your project.
 
@@ -44,18 +53,6 @@ You simply annotate a property with a type controller.
 
 Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
 for the full list.
-
-
-## Why?
-
-Devtools are great, but sometime you want to reach into your code and manipulate
-it at run time. This is often the case for programs that have some time component,
-such as animations or games.
-
-Oui provides a declarative way to do this. You pass it an object, and Oui
-creates an appropriate UI. Numbers turn into sliders, strings make text boxes and
-booleans make checkboxes. You define a nice clean api for you application and
-Oui lets you play with the parameters to shape the output.
 
 
 
