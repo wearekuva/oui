@@ -7,12 +7,6 @@ _Objects go in, UI comes out_
 
 A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
-##### Why?
-
-Devtools are great, but sometime you want to reach into your code and manipulate it at run time. This is often the case for programs that have some time component, such as animations or games.
-
-Oui provides a declarative way to do this. You pass it an object, and Oui generates an appropriate UI. Numbers turn into sliders, strings make text boxes and booleans make checkboxes. You define a nice clean api for you application and Oui lets you play with the parameters to shape the output.
-
 ## Usage
 
 First add Oui to your project.
@@ -51,18 +45,11 @@ You simply annotate a property with a type controller.
 Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
 for the full list.
 
-
-
-
 ![XYPad, Graph, Color](http://g.recordit.co/FCmMPYjuTn.gif)
 
-### rolling your own
+### Roll your own
 
-Of course, if these controllers don't quite cut it though you can always roll your own. You
-want a vertical slider instead, or something more complex like a 3D rotation control.
-Just create your component, import it, and tag the property with it.
-
-Follow the guide to [rolling you're own controller](/docs/custom_controllers).
+Of course, if these controllers don't quite cut it, you can always roll your own. Oui is built upon the P(React) paradigm, which makes it's extremly easy to develop and add your own custom controls. Once you've developed your custom 3D arball controlller, just import it, and annotate a property with it. Follow the guide to [creating you're own controls](/docs/custom_controls), and check the [React](https://facebook.github.io/react/docs/getting-started.html) and [Preact](https://preactjs.com/guide/getting-started) docs for more general information on JSX.
 
 
 ### What about constraints?
@@ -96,9 +83,15 @@ or similar in your transform pipeline.
 
 ### FAQ
 
+##### Why?
 
-#### OK, but why React?
-It's true there are a number of great reactive libraries to choose from. deku, vue, mithril, riot. All of these are great, and many. The list goes on. I chose React because it's a well supported product and it's unlikely that it will stagnate. I don't want to be dealing with a dead dependancy next year.
+Devtools are great, but sometime you want to reach into your code and manipulate it at run time without setting breakpoints. This is often the case for time based programs such as animations, games or audio based experiences. For these type of progams, its often hard to understand how a seemingly insignificant value affects the overall behaviour or feel of the app. Tools such as dat.gui have proved invaluable in theses areas.
+
+Oui extends the idea of dat.gui, by delivering a wider range of controls, providing an easy way to create new controls, fast performance and modern language features.
+
+
+#### How?
+Oui is built around the [Preact](https://github.com/developit/preact) library, a tiny [React](https://facebook.github.io/react/) compatible framework for front end development. Preact brings with it all the tricks of React at a fraction of the size. The main reason I chose P(React) stack however, is for it's low overhead in [developing new controls](./docs/custom-controls.md). It's very easy for non React developers to get up to speed and hopefully this will lead to a host of new controls. 
 
 
 #### What about panels?
@@ -124,7 +117,7 @@ oui.destroy()
 
 ```
 
-Oh, and we :heart dat.gui
+Oh, and we :heart: dat.gui
 
 
 #### License
