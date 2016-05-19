@@ -140,7 +140,7 @@ class Slider extends React.Component{
 
         let offsetPercentage = map( clamp( value, min, max ), min, max, 0, 100 ) + '%'
         value = this.validate( value )
-        console.log( includeStepper )
+
         return <div style={ base }>
             { includeStepper ? <NumericStepper {...stepperProps} onChange={ this.onNumericStepperChange }/> : null }
             <svg width='100%' height="0.9em" xmlns="http://www.w3.org/2000/svg"

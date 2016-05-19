@@ -1,6 +1,5 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import sinon from 'sinon';
 import Slider from './slider'
 import NumericStepper from '../numericstepper'
 
@@ -27,11 +26,8 @@ describe( 'Slider', () => {
 
         const label = 'A label'
         const component = mount( <Slider includeStepper={false} value={5} label={label}/> )
-        // console.log( component.find( NumericStepper ) )
         expect( component.find( NumericStepper ).length ).toBe( 0 )
 
     })
-
-
 
 })
