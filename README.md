@@ -1,17 +1,22 @@
 # Oui
 
-> [![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges)
-This is all still pretty experimental. The api is likely to change without support. You have been warned!
+> ![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
+> This is all still pretty experimental. The api is likely to change without support. You have been warned!
 
 Oui is a stupidly simple way to instrument code and control a program.
 Pass it some data an oui renders a set of controllers that allow you to
 visualise, control and shape your program. Objects go in and UI's come out.
 
-## 5 second demo
+## Usage
 
-`npm install @marklundin/oui`
+First add Oui to your project. You can grab a copy from the [dist](./dist) folder, or alternatively use npm.
 
-Create an object, add some properties
+```
+npm install @marklundin/oui --save
+```
+
+Once installed, create an object containing some properties or reference to an existing object. Call `Oui()` with this object to instrument it.
+
 ```javascript
 import oui from 'oui'
 
@@ -22,11 +27,21 @@ let api = {
 }
 
 oui( api )
+
 ```
 
-And hey presto...
+This generates a UI and maps a set of controllers to the `api`s properties. Updating a controller mutates the `api` which allows you to modify your program without setting breakpoints. 
 
-![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
+Controllers are automatically selected based on the properties data type. Theres one for each primitive and nested objects and arrays map to collapsible folders giving you a heirachical representation of your data. This provides a clear way to declare your UI and instruments complex data structures.
+
+
+### Ok, but sliders are boring...
+
+The basic controllers cover all data types, but sometimes your data describes something more complicated such as a rotation, or a color, or a 2 dimensional vector. In these situations there's an additional set of controllers you can import that override Oui's default behaviour. Install them and you can use [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker) [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
+You simply annotate a property with a type controller.
+
+Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
+for the full list.
 
 
 ## Why?
@@ -41,15 +56,7 @@ booleans make checkboxes. You define a nice clean api for you application and
 Oui lets you play with the parameters to shape the output.
 
 
-### sliders are boring...
 
-The basic set of controllers cover many simple scenarios, but often your data
-describes something more complicated such as rotations, colors, or a periodic function.
-For those situations, there's an additional set of controllers such as [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker) [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
-You simply annotate a property with a type controller.
-
-Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
-for the full list.
 
 ![XYPad, Graph, Color](http://g.recordit.co/FCmMPYjuTn.gif)
 
