@@ -148,15 +148,15 @@ class Slider extends React.Component{
                 onMouseDown={this.onMouseDown}
                 onTouchStart={this.onMouseDown}
                 ref={ref => this.domRef = ref}>
-                <rect width='100%' height="100%" style={[ defaultStyle, backgroundBar, style.backgroundBar ]}/>
-                <rect width='100%' height="100%" style={[ defaultStyle, bar, style.bar ]} width={ offsetPercentage }/>
-                <circle cy={'50%'} cx={offsetPercentage} r='0.45em' style={[defaultStyle, thumb, style.thumb ]}/>
+                <rect width='100%' height="100%" style={{ ...defaultStyle, ...backgroundBar, ...style.backgroundBar }}/>
+                <rect width='100%' height="100%" style={{ ...defaultStyle, ...bar, ...style.bar }} width={ offsetPercentage }/>
+                <circle cy={'50%'} cx={offsetPercentage} r='0.45em' style={{ ...defaultStyle, ...thumb, ...style.thumb }}/>
             </svg>
         </div>
     }
 }
 
-Slider = radium( Slider )
+// Slider = radium( Slider )
 
 Slider.propTypes = {
 

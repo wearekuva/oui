@@ -42,12 +42,12 @@ class NumericStepper extends React.Component{
                     -webkit-appearance: none;
                 }
             `}</style>
-            <input type='number' {...this.props} style={[ defaultStyle ]} value={value} inInput={ onChange } onChange={ onChange } ref={ref => (this.domRef = ref )} />
+            <input type='number' {...this.props} style={ defaultStyle } value={value} inInput={ onChange } onChange={ onChange } ref={ref => (this.domRef = ref )} />
         </div>
     }
 }
 
-NumericStepper = radium( NumericStepper )
+// NumericStepper = radium( NumericStepper )
 
 NumericStepper.propTypes = {
 

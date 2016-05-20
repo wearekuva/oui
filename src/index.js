@@ -22,4 +22,8 @@
 //
 // let components = { dial, xypad, stepper, color, graph }
 
-export default {};//{ annotate }
+import panel from './imperative-api'
+
+const defaultPanel = panel()
+
+export default defaultPanel;//{ annotate }
