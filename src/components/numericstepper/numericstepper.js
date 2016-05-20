@@ -25,7 +25,8 @@ class NumericStepper extends React.Component{
             validate = v => Math.round( clamp( v, min, max ) * ( 1 / step )) / ( 1 / step ),
             value = validate( this.props.value ),
             onChange = e => {
-                if( !isNaN( this.domRef.value )) this.props.onChange( validate( parseFloat( this.domRef.value )))
+                let value = parseFloat( this.domRef.value )
+                if( !isNaN( value )) this.props.onChange( validate( value ))
             }
 
         return <div style={[ base, style ]}>
