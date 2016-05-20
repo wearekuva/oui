@@ -143,11 +143,10 @@ class Slider extends React.Component{
 
         return <div style={ base }>
             { includeStepper ? <NumericStepper {...stepperProps} onChange={ this.onNumericStepperChange }/> : null }
-            <svg width='100%' height="0.9em" xmlns="http://www.w3.org/2000/svg"
+            <svg width='100%' height="0.9em"
                 style={ defaultStyle }
                 onMouseDown={this.onMouseDown}
-                onTouchStart={this.onMouseDown}
-                ref={ref => this.domRef = ref}>
+                onTouchStart={this.onMouseDown}>
                 <rect width='100%' height="100%" style={{ ...defaultStyle, ...backgroundBar, ...style.backgroundBar }}/>
                 <rect width='100%' height="100%" style={{ ...defaultStyle, ...bar, ...style.bar }} width={ offsetPercentage }/>
                 <circle cy={'50%'} cx={offsetPercentage} r='0.45em' style={{ ...defaultStyle, ...thumb, ...style.thumb }}/>

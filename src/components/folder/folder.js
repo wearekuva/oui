@@ -26,14 +26,16 @@ class Folder extends Component {
     render(){
 
         let { label, value, style } = this.props,
-            { open } = this.state
+            { open } = this.state,
+            Chevron = open ? MdExpandMore : MdChevronLeft
 
-        return <div style={{ ...base, ...style }}>
-            <div onClick={this.toggleOpen}>
+        return <div style={base}>
+            <div onClick={this.toggleOpen} style={{display:'flex'}}>
                 <label>{ label }</label>
-                { open ? <MdExpandMore /> : <MdChevronLeft/> }
+                <MdChevronLeft style={{marginLeft:'auto', display: open ? 'none' : 'visible'}} />
+                <MdExpandMore style={{marginLeft:'auto', display: open ? 'visible' : 'none'}} />
             </div>
-            { open ? <div style={{width:'100%'}}>{ Tree( this.props.value, this.props.onChange ) }</div> : null }
+            { open ? <div>{ Tree( this.props.value, this.props.onChange ) }</div> : null }
         </div>
 
     }
@@ -67,7 +69,7 @@ Folder.propTypes = {
 }
 
 var floatRight = {
-    float: 'right'
+    // float: 'right'
 }
 
 export default Folder

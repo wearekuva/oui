@@ -13,9 +13,9 @@ class Checkbox extends React.Component {
 
 		const { value, label, onChange } = this.props
 
-		return <div style={base}>
+		return <div style={{...base, ...defaultStyle }}>
 			<label style={base} onClick={evt => onChange( !value )}>{ label }</label>
-			<input checked={ value } style={defaultStyle} type="checkbox" onChange={evt => onChange( evt.target.checked )} />
+			<input checked={ value } style={alignRight} type="checkbox" onChange={evt => onChange( evt.target.checked )} />
 		</div>
 	}
 }
@@ -52,7 +52,11 @@ Checkbox.defaultProps = {
 
 
 var defaultStyle = {
-	float:'right'
+	display: 'flex'
+}
+
+var alignRight = {
+	marginLeft: 'auto'
 }
 
 

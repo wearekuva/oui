@@ -13,10 +13,13 @@ class BaseComponent extends Component {
 }
 
 var style = {
+    boxSizing: 'border-box',
     width: 250,
     background: 'rgb( 250, 250, 250 )',
-    borderRadius: 3,
-    padding: '0.5em'
+    borderRadius: 2,
+    padding: '0.5em',
+    margin: '0.5em',
+    marginBottom: '0'
 }
 
 export default BaseComponent

@@ -1,12 +1,13 @@
 
 import oui from './src'
+import panel from './src/imperative-api'
 // import { dial, stepper, color, xypad, graph } from './src/components'
 // let plotter = component( LineChart, {height: 100, min: 0, max: 100 } )
 //
 
 let str = 5
 var aa = { str:str }
-console.log( aa )
+
 let a ={
     aa: aa,
     test:'sdfsdf'
@@ -67,16 +68,18 @@ let obj = {
     //
 
     // str: 'sdfsdf',
-    bool: 3,
+    // bool: 3,
     a:{
-        bool:10
+        // num: false,
+        n:10,
+
     },
     // b:a,
     //
     // boom: function(){console.log('boom')}
 
-    // num: 5,
-    // text:'sfd'
+
+    // text:true
 
     // @folder({open:true, smalls:"dfgh"})
     // dir2:a
@@ -97,6 +100,7 @@ let obj = {
 //     draw( obj )
 // }
 //
+
 let time = 0
 let pushOnStack = ( stack, num ) => {
     stack.copyWithin( stack, 1 ).set( [num], stack.length - 1 )
@@ -104,13 +108,30 @@ let pushOnStack = ( stack, num ) => {
 
 let update = function( t ) {
 
-
+    oui.render( obj )
+    // p.render(api2)
+    // // console.log( api2.str, api2.num )
+    // p2.render(api2)
     // requestAnimationFrame( update )
 }
 
 window.obj = obj
 // window.a =
 // console.log( oui.render )
-oui.render( obj )
+// oui.render( obj )
 // debugger;
 // watch( obj )
+
+
+let api2 = {
+
+    num:1,
+    str:'sdfswooot'
+
+}
+
+var p = panel()
+var p2 = panel()
+
+window.api2 = api2
+update()
