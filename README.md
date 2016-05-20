@@ -100,7 +100,7 @@ Panels are individual instances of Oui that can be managed independantly. They'r
 
 Here's a quick example.
 
-```
+```javascript
 import panel from 'oui/panel'
 
 let p = panel()
