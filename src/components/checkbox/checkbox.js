@@ -6,15 +6,21 @@ import { base } from '../styles'
  	Another stupidly simple component, it effectively wraps the native checkbox.
 	Documentation included for completeness
  */
-let Checkbox = ({ value, label, onChange }) => {
+class Checkbox extends React.Component {
 
-	return <div style={[base]}>
-		<label style={[base]} onClick={evt => onChange( !value )}>{ label }</label>
-		<input checked={ value } style={defaultStyle} type="checkbox" onChange={evt => onChange( evt.target.checked )} />
-	</div>
+
+	render(){
+
+		const { value, label, onChange } = this.props
+
+		return <div style={base}>
+			<label style={base} onClick={evt => onChange( !value )}>{ label }</label>
+			<input checked={ value } style={defaultStyle} type="checkbox" onChange={evt => onChange( evt.target.checked )} />
+		</div>
+	}
 }
 
-Checkbox = radium( Checkbox )
+// Checkbox = radium( Checkbox )
 
 Checkbox.propTypes = {
 

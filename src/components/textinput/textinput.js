@@ -1,5 +1,5 @@
 import React from 'react'
-import radium from 'radium'
+// import radium from 'radium'
 import { base, highlight, secondary } from '../styles'
 
 /**
@@ -9,16 +9,22 @@ import { base, highlight, secondary } from '../styles'
 
 */
 
-let TextInput = ({ value, label, onChange, style }) => {
+class TextInput extends React.Component {
 
-	return <div style={[base, style]}>
-		<label>{ label }</label>
-        <input type="text" value={value}
-            style={[base, defaultStyle]} onChange={evt => onChange( evt.target.value )}/>
-	</div>
+
+	render( props ) {
+
+		const { value, label, onChange, style } = props
+
+		return <div style={{ ...base, ...style }}>
+			<label>{ label }</label>
+	        <input type="text" value={value}
+	            style={{ ...base, ...defaultStyle }} onChange={evt => onChange( evt.target.value )}/>
+		</div>
+	}
 }
 
-TextInput = radium( TextInput )
+// TextInput = radium( TextInput )
 
 TextInput.propTypes = {
 

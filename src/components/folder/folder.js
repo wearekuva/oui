@@ -28,16 +28,19 @@ class Folder extends Component {
         let { label, value, style } = this.props,
             { open } = this.state
 
-        return <div style={[base, style]}>
-            <label onClick={this.toggleOpen}>{ label }{ open ? <MdExpandMore style={floatRight}/> : <MdChevronLeft style={floatRight}/> }</label>
-            { open && this.props.value ? <div>{ Tree( this.props.value, this.props.onChange ) }</div> : null }
+        return <div style={{ ...base, ...style }}>
+            <div onClick={this.toggleOpen}>
+                <label>{ label }</label>
+                { open ? <MdExpandMore /> : <MdChevronLeft/> }
+            </div>
+            { open ? <div style={{width:'100%'}}>{ Tree( this.props.value, this.props.onChange ) }</div> : null }
         </div>
 
     }
 }
 
 
-Folder = radium( Folder )
+// Folder = radium( Folder )
 
 
 Folder.defaultProps = {

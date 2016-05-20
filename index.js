@@ -67,13 +67,16 @@ let obj = {
     //
 
     // str: 'sdfsdf',
-    // bool: false,
-    // a:a,
+    bool: 3,
+    a:{
+        bool:10
+    },
     // b:a,
     //
     // boom: function(){console.log('boom')}
 
-    num: 5,
+    // num: 5,
+    // text:'sfd'
 
     // @folder({open:true, smalls:"dfgh"})
     // dir2:a

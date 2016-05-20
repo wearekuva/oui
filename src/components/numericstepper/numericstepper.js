@@ -25,7 +25,11 @@ class NumericStepper extends React.Component{
             validate = v => Math.round( clamp( v, min, max ) * ( 1 / step )) / ( 1 / step ),
             value = validate( this.props.value ),
             onChange = e => {
-                let value = parseFloat( this.domRef.value )
+
+                e.preventDefault()
+
+                let value = parseFloat( e.currentTarget.value )
+
                 if( !isNaN( value )) this.props.onChange( validate( value ))
             }
 
@@ -42,7 +46,7 @@ class NumericStepper extends React.Component{
                     -webkit-appearance: none;
                 }
             `}</style>
-            <input type='number' {...this.props} style={ defaultStyle } value={value} inInput={ onChange } onChange={ onChange } ref={ref => (this.domRef = ref )} />
+            <input type='number' {...this.props} style={ defaultStyle } value={value} onInput={ onChange } onChange={ onChange } ref={ref => (this.domRef = ref )} />
         </div>
     }
 }
@@ -114,7 +118,7 @@ var defaultStyle = {
     backgroundColor : 'transparent',
     outline: 'none',
     textAlign: 'center',
-    float:'right',
+    // float:'right',
     ":focus":{
         borderColor : highlight.color
     },

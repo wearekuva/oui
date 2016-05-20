@@ -70,7 +70,7 @@ class Slider extends React.Component{
                 results. However because of performance gains, this is acceptable
                 behaviour as changes to size are expected to be rare enough
             */
-            var rect = this.domRef.getBoundingClientRect()
+            var rect = e.currentTarget.getBoundingClientRect()
 
 
             this.setState({drag:true, rect })
