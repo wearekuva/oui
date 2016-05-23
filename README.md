@@ -1,17 +1,24 @@
 # Oui
+![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
 
-> [![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges)
-This is all still pretty experimental. The api is likely to change without support. You have been warned!
+> This is still experimental. The api is likely to change without support. You have been warned!
 
-Oui is a stupidly simple way to instrument code and control a program.
-Pass it some data an oui renders a set of controllers that allow you to
-visualise, control and shape your program. Objects go in and UI's come out.
+_Objects go in, UI comes out_
 
-## 5 second demo
+A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
-`npm install @marklundin/oui`
+## Usage
 
-Create an object, add some properties
+First add Oui to your project.
+
+```
+npm install @marklundin/oui --save
+```
+
+You can also grab a copy from the [dist](./dist) folder. It comes in minified and production flavours.
+
+Once installed, create an object containing some properties or reference to an existing object. Calling `Oui()` with an object will instrument it.
+
 ```javascript
 import oui from 'oui'
 
@@ -22,30 +29,17 @@ let api = {
 }
 
 oui( api )
+
 ```
 
-And hey presto...
+This generates a set of controllers mapped to the `api`s properties. Modifying a controller also updates the associated property by mutating the `api`. This allows you to modify your program at runtime without setting breakpoints. 
 
-![oui](http://g.recordit.co/RBXY4Q6JXN.gif)
-
-
-## Why?
-
-Devtools are great, but sometime you want to reach into your code and manipulate
-it at run time. This is often the case for programs that have some time component,
-such as animations or games.
-
-Oui provides a declarative way to do this. You pass it an object, and Oui
-creates an appropriate UI. Numbers turn into sliders, strings make text boxes and
-booleans make checkboxes. You define a nice clean api for you application and
-Oui lets you play with the parameters to shape the output.
+Controllers are automatically selected based on the properties data type. Nested objects and arrays map to collapsible folders. This provides a super simple way to declare your UI and instrument more complex structures.
 
 
-### sliders are boring...
+### Additional Components
 
-The basic set of controllers cover many simple scenarios, but often your data
-describes something more complicated such as rotations, colors, or a periodic function.
-For those situations, there's an additional set of controllers such as [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker) [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
+The basic controllers cover all data types, but sometimes your data describes something more complicated such as a rotation, or a color, or a 2 dimensional vector. In these situations there's an additional set of controllers you can import that override Oui's default behaviour. Install them and you can use [color pickers](http://marklundin.github.io/core-controllers/documentation/#ColorPicker), [xy pads](http://marklundin.github.io/core-controllers/documentation/#XYPad), [graphs](http://marklundin.github.io/core-controllers/documentation/#Graph) and more.
 You simply annotate a property with a type controller.
 
 Check the [core controllers documentation](http://marklundin.github.io/core-controllers/documentation)
@@ -53,75 +47,68 @@ for the full list.
 
 ![XYPad, Graph, Color](http://g.recordit.co/FCmMPYjuTn.gif)
 
-### rolling your own
+### Rolling your own
 
-Of course, if these controllers don't quite cut it though you can always roll your own. You
-want a vertical slider instead, or something more complex like a 3D rotation control.
-Just create your component, import it, and tag the property with it.
-
-Follow the guide to [rolling you're own controller](/docs/custom_controllers).
+Of course, if these controllers don't quite cut it, you can always roll your own. Oui is built upon the P(React) paradigm, which makes it's extremly easy to develop and add your own custom controls. Once you've developed your custom 3D arcball controlller, just import it, and annotate a property with it. You can find out more about [type annotations](./docs/annotations) here and follow the guide to [creating you're own controls](/docs/custom_controls), and check the [React](https://facebook.github.io/react/docs/getting-started.html) and [Preact](https://preactjs.com/guide/getting-started) docs for more general information on JSX.
 
 
 ### What about constraints?
-Tagging properties is not just useful for choosing different controllers, it's
-also a way to declare additional information about a property. You can for example,
-specify the minimum and maximum range for a number, or provide some useful description
-of what the property actually does. These help controllers understand how to display
-and update the property.
+Annotating properties is not just useful for choosing alternative controls, it's also a way to declare additional information about a property. You can for example, specify the minimum and maximum range of a number, or provide some useful human readable description of what the property actually does. These help controls understand how to display and treat the property.
 
 Here's an example of how you'd constrain a number to within 3 and 100.
 
 ```javascript
-draw({
-  @annotate({ min:3, max: 100, desc:'This property is very, very interesting' })
+import annotate form 'oui/annotate'
+
+let api = {
+
+  @annotate({ min:3, max: 100})
   numeric: 5
+  
 })
 ```
 
-This is useful for passing information about a property to a controller. Think of
-it as a way to declare metadata about a property. Not only does it inform the controllers, but
-it makes your code eay to understand.
+This is useful for declaring informationor metadata about a property. Not only does it inform the control, but it makes it easy to understand how your code should behave.
+
+Theres a full guide on how to constrain and annotate properties in the [annotations docs](./docs/annotations.md)
 
 
-### What on earth is @annotate?
-@annotate is a decorator. It's part of the [es7 specification](https://github.com/wycats/javascript-decorators),
-and yes it's still only a proposal. Having said that, decorators are just syntactic sugar,
-you can still do the same thing in es5 land with the admittedly awkward `annotate({ min:3, max: 100 })( obj, 'num' )`
-If, however you want to go all es7, drop `babel-plugin-transform-decorators-legacy`
-or similar in your transform pipeline.
+#### What on earth is `@annotate`?
+@annotate is a type of decorator which is an [es7 specification](https://github.com/wycats/javascript-decorators),
+and yes it's still only at a [proposal stage](https://github.com/tc39/proposals). Having said that, decorators are just syntactic sugar, you can still do the same thing in es5 land with the admittedly awkward `annotate({ min:3, max: 100 })( obj, 'num' )`. If you want to go all es7 however, drop [`babel-plugin-transform-decorators-legacy`](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) into your babel pipeline.
 
 
-### FAQ
+### FAQ's
+
+##### Why?
+
+Devtools are great, but sometime you want to reach into your code and manipulate it at run time without setting breakpoints. This is often the case for time based programs such as animations, games or audio based experiences. For these type of progams, its often hard to understand how a seemingly insignificant value affects the overall behaviour or feel of the app. Tools such as dat.gui have proved invaluable in theses areas.
+
+Oui extends the idea of dat.gui, by delivering a wider range of controls, providing an easy way to create new controls, fast performance and modern language features.
 
 
-#### OK, but why React?
-It's true there are a number of great reactive libraries to choose from. deku, vue, mithril, riot. All of these are great, and many. The list goes on. I chose React because it's a well supported product and it's unlikely that it will stagnate. I don't want to be dealing with a dead dependancy next year.
+#### How?
+Oui is built around the [Preact](https://github.com/developit/preact) library, a tiny [React](https://facebook.github.io/react/) compatible framework for front end development. Preact brings with it all the tricks of React at a fraction of the size. The main reason I chose P(React) stack however, is for it's low overhead in [developing new controls](./docs/custom-controls.md). It's very easy for non React developers to get up to speed and hopefully this will lead to a host of new controls. 
 
 
-#### What about panels?
+#### What about bigger projects?
+You'll likely find situations where multiple developers working on the same project will want to test their code independantly. This is where dat.gui usually had problems both in it's api and layout. 
 
-On anything larger than a demo, you'll more then likely be working with other people, and they'll probably
-want their own UI to test. Oui encourages you to surface parts of your code as an api, but this isn't always
-practical when prototyping. This is where panels come in.
+Oui solves this using `panels`.
 
-Panels are a way to create distinct UI elements. They're effectively sub sections of the UI display.
+Panels are individual instances of Oui that can be managed independantly. They're effectively sub sections of the UI that allow you to create distinct controls and decouple areas of your code instrumentation.
 
-Here's how you'd do that.
+Here's a quick example.
 
-```
+```javascript
 import panel from 'oui/panel'
 
-let opts = { title:"A title", }
-let oui = panel( opts ) // Creates a namespace. A unique panel
-let obs = oui.once({num: 10}) // Renders api, returns an observable or similar
-let obs = oui({num: 10}) // Continuous render. Watches api for changes
-
-// Methods
-oui.destroy()
+let p = panel()
+p({num: 10}) // Continuous render. Watches api for changes
 
 ```
 
-Oh, and we :heart dat.gui
+Panels have the same functionality as the default `oui()` method. In fact, `oui()` is actually an panel
 
 
 #### License
