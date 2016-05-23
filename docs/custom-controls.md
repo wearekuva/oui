@@ -1,46 +1,71 @@
 # Custom controls
 
-Although any data structure can be handled with the default controls, sometimes
-it represents something that can be more easily described and controlled with a
-different control. An array of 3 numbers can be controlled via a set of sliders
-but they could represent a color or a 3d rotation. In those situations, it makes
-more sense to use something other than a set of sliders.
+Oui can handle any data structure with the built in standard controls. However,
+data can represent different things. An array of 3 numbers, could be a rotation,
+a position or a color, and theres no real way to automatically infer which.
+In these situations, you can [annotate your property with a control](./annotations)
+which infers a type by explicitly associating it with a control. It's like a form
+of strict typing.
 
-Custom controls allow you to define new control sets that might be better suited
-to your application than the default set. You can find a collection of common controls
-in the `common-controls` library, which includes controls such as a color picker,
-graphs and xypads. But you can also create your own.
+There's a collection of `common-controls`, but you can also create your own.
 
 ### Creating your own
 
-Oui is developed around Preact, is a React-like library with a much smaller
-footprint. If you want to build your own control you'll need to be familiar
-with (P)React syntax.
+It's a fairly straight forward process. Oui is developed around Preact, a React-ish library
+with much smaller footprint. If your already familiar with building components in React, then your
+more than half way there. If not, I'd suggest reading through the [React documentation](https://facebook.github.io/react/docs/getting-started.html).
 
-#### Create your Component.
-
-Let's create a control that displays a number and increments it on click.
+Let's create a simple component that displays a number that increments as you click;
 
 ```javascript
-let clickIncrementer = ({ value, onChange }) => <div onClick={onChange( value + 1 )}>{ value }</div>
+let Incrementer = ({ value, onChange, label }) => (
+    <div onClick={ onChange( value + 1 )}>{ label + ' is' + value }</div>
+)
+
+Incrementer.propType = {
+    value: PropType.number.isRequired
+}
 ```
 
-Here we displaying a the value inside a div container. When the div is clicked it
-fires the onChange callback.
+This control has a `value`, `label` and an `onChange` callback. The `value` is what needs to be
+displayed, the label contains a description of what the value represents, and the `onChange`
+is a function that should be called if the value needs to update in response to user interaction.
+In this example, when as the user clicks the control, we pass back the `value` + 1.
 
-In order for the component to be compatible with Oui, it must accept a `value`
-and and optionally `onChange` callback.  The `value` is what needs to be displayed and the
-`onChange` is how to propagate it's change. If a control doesn't implement an
-`onChange` it becomes a read-only control. The [graph](common-controllers/src/graph)
-is an example of a read-only control.
+The `propType` field is a way to declare the expected type of `value`. For this control, it should
+be a number, but you can describe much more [complex types](https://facebook.github.io/react/docs/reusable-components.html)
+of data with this syntax. It's a way to guarantee that the `value` that get's passed to your component
+is valid. Oui uses this to ensure property and control compatibility.
 
-# Validation
+*At minimum, all controls _must_ accept a `value` property and declare a `propType`
+object containing a `value` field. `onChange` and `label` are optional.*
 
-When Oui associates a value with a control, it firsts ensure the two are compatible.
-It does the by validating the property against the controls [`propTypes`](npm proptypes).
-This checks the properties signature
+There may be other properties your control depends on to constrain it's output. The [Slider](./components/Slider),
+for example, has a minimum and maximum value it uses to cap it's visible range. These values are
+declared using property [annotations](./annotations) and are passed to the control at runtime.
+
+In general it's best to include these optionally, providing default or computed values if not explicitly declared
+
+
+### Validating
+
+You can check whether your control is valid using the `isValidControl` predicate;
 
 ```javascript
-import PropTypes from 'proptypes'
-clickIncrementer.propTypes = PropTypes.number.isRequired
+import { isValidControl } from 'oui/controls'
+isValidControl( Incrementer )
 ```
+
+### Usage
+
+Once you have validated your control, you can use it by annotating a property
+
+```javascript
+oui({
+
+    annotate({type:Incrementer})
+    num:10
+})
+```
+
+This will override the default Slider with the `Incrementer` control.
