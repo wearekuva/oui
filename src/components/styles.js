@@ -1,6 +1,6 @@
 export const base = {
     fontFamily: "Menlo, Inconcolata, Consolas",
-    marginBottom: '0.5em',
+    // marginBottom: '0.5em',
     fontSize: 11,
     color: 'rgb(66,66,66)',
     borderRadius:2

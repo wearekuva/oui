@@ -86,6 +86,8 @@ import { colorpicker } from 'custom-comps'
 import React  from 'react'
 import { getAnnotation }  from './annotate'
 import primitives from './primitive-components'
+import validate from './prop-validation'
+import warn from './warn'
 
 
 export default ( obj, onChange ) => {
@@ -126,12 +128,25 @@ export default ( obj, onChange ) => {
         Component = annotation.control
 
 
+
         /*
-            However if no Component has been declared and the value is one of the
-            primtive types, use one of the default Components
+            If the property has a type annotation, validate the property against
+            the controls propTypes.
         */
-        if( !Component && primitives.has( typeof value )){
+
+        if( Component ){
+
+            validate( obj, prop, Component )
+
+        }else if ( !Component && primitives.has( typeof value )){
+
+            /*
+                However if no Component has been declared and the value is one of the
+                primtive types, use one of the default Components
+            */
+
             Component = primitives.get( typeof value )
+            
         }
 
 

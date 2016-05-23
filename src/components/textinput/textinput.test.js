@@ -1,5 +1,5 @@
 import React from 'react'
-import {shallow} from 'enzyme'
+import {shallow, mount} from 'enzyme'
 import sinon from 'sinon';
 import TextInput from './textinput'
 
@@ -9,7 +9,7 @@ describe( 'TextInput', () => {
     it('renders the correct label', () => {
 
         const label = 'A label'
-        const wrapper = shallow(<TextInput label={label}/>)
+        const wrapper = mount(<TextInput label={label}/>)
         expect( wrapper.text() ).toBe( label )
 
     })
@@ -18,7 +18,7 @@ describe( 'TextInput', () => {
     it('renders the correct value', () => {
 
         const value = 'A value'
-        const wrapper = shallow(<TextInput value={value}/>)
+        const wrapper = mount(<TextInput value={value}/>)
         expect( wrapper.find({ value })).toBeTruthy()
 
     })
@@ -28,9 +28,9 @@ describe( 'TextInput', () => {
 
         const onChange = sinon.spy();
         const change = 'Change!'
-        const wrapper = shallow(<TextInput onChange={onChange}/>)
-        wrapper.find('input').simulate('change', { target:{ value: change}});
-        expect( onChange.calledWith( change )).toBeTruthy()
+        const wrapper = mount(<TextInput onChange={onChange}/>)
+        wrapper.find('input').simulate('input', { target:{ value: change}});
+        expect( onChange.calledOnce ).toBeTruthy()
 
     })
 

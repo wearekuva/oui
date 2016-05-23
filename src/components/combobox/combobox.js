@@ -63,6 +63,8 @@ ComboBox.propTypes = {
         PropTypes.objectOf( PropTypes.any ).isRequired,
     ]),
 
+    value: PropTypes.bool.isRequired,
+
     onChange: PropTypes.func
 
 }

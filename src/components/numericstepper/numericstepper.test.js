@@ -9,7 +9,7 @@ describe( 'Stepper', () => {
     it( 'renders the correct label', () => {
 
         const label = 'A label'
-        const component = shallow(<NumericStepper label={label}/>)
+        const component = shallow(<NumericStepper value={5} label={label}/>)
         expect( component.find('label').text() ).toBe( label )
 
     })

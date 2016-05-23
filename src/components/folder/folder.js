@@ -58,11 +58,14 @@ Folder.propTypes = {
     value : PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.array,
-    ]),
+    ]).isRequired,
+
 
     onChange: PropTypes.func,
 
+
     label: PropTypes.string,
+    
 
     style: PropTypes.object
 

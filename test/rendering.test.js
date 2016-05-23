@@ -6,8 +6,15 @@ import Checkbox from '../src/components/checkbox'
 import TextInput from '../src/components/textinput'
 import Slider from '../src/components/slider'
 import Folder from '../src/components/folder'
+import validate from '../src/prop-validation'
+import sinon from 'sinon'
 
 describe( 'Reconciliation:', () => {
+
+
+    beforeEach( () => sinon.spy( console, 'warn' ))
+
+    afterEach( () => console.warn.restore() )
 
 
     it( 'maps a Boolean to a tree containing a `Checkbox`', () => {
@@ -43,7 +50,7 @@ describe( 'Reconciliation:', () => {
 
     it( 'maps an Object to a tree containing a `Folder`', () => {
 
-        const tree = Tree({ prop : {} })[0]
+        const tree = Tree({ prop : { n: 10 } })[0]
         const actual = mount( tree )
 
         expect( actual.find( Folder )).toBeTruthy()
@@ -53,7 +60,7 @@ describe( 'Reconciliation:', () => {
 
     it( 'maps an Array to a tree containing a `Folder`', () => {
 
-        const tree = Tree({ prop : [] })[0]
+        const tree = Tree({ prop : [10] })[0]
         const actual = mount( tree )
 
         expect( actual.find( Folder )).toBeTruthy()
@@ -66,6 +73,20 @@ describe( 'Reconciliation:', () => {
         const actual = Tree({ prop : null })[0]
 
         expect( actual ).toBeUndefined()
+
+    })
+
+
+    it( 'expects a warning to be raised if validation fails', () => {
+
+        // let warn = sinon.spy(console, 'warn')
+        const api = { num: 'str' }
+
+        validate( api, 'num', Slider )
+
+        expect( console.warn.calledOnce ).toBe( true )
+
+        // console.warn.restore()
 
     })
 

@@ -12,9 +12,9 @@ import { base, highlight, secondary } from '../styles'
 class TextInput extends React.Component {
 
 
-	render( props ) {
+	render() {
 
-		const { value, label, onChange, style } = props
+		const { value, label, onChange, style } = this.props
 
 		return <div style={{ ...base, ...style }}>
 			<label>{ label }</label>
