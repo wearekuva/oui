@@ -4,6 +4,7 @@
   "description": "A stupidly simple way of instrumenting code and making user interfaces",
   "main": "lib",
   "scripts": {
+    "build": "node build/build.js",
     "compile:npm": "babel src --out-dir lib",
     "compile:prod": "NODE_ENV=production browserify --standalone oui -t babelify -g aliasify -g envify -g uglifyify src/index.js | uglifyjs -m > dist/oui.min.js",
     "compile:dev": "NODE_ENV=development browserify -d --standalone oui -t babelify -g aliasify -g envify -g uglifyify src/index.js > dist/oui.js",
