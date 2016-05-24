@@ -1,11 +1,11 @@
 # Oui
 ![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
 
-> This is still experimental. The api is likely to change without support. You have been warned!
-
 _Objects go in, UI comes out_
 
 A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
+
+> This is still experimental. The api is likely to change without support. You have been warned!
 
 ## Usage
 
@@ -32,7 +32,7 @@ oui( api )
 
 ```
 
-This generates a set of controllers mapped to the `api`s properties. Modifying a controller also updates the associated property by mutating the `api`. This allows you to modify your program at runtime without setting breakpoints. 
+This generates a set of controllers mapped to the `api`s properties. Modifying a controller also updates the associated property by mutating the `api`. This allows you to modify your program at runtime without setting breakpoints.
 
 Controllers are automatically selected based on the properties data type. Nested objects and arrays map to collapsible folders. This provides a super simple way to declare your UI and instrument more complex structures.
 
@@ -64,7 +64,7 @@ let api = {
 
   @annotate({ min:3, max: 100})
   numeric: 5
-  
+
 })
 ```
 
@@ -88,11 +88,11 @@ Oui extends the idea of dat.gui, by delivering a wider range of controls, provid
 
 
 #### How?
-Oui is built around the [Preact](https://github.com/developit/preact) library, a tiny [React](https://facebook.github.io/react/) compatible framework for front end development. Preact brings with it all the tricks of React at a fraction of the size. The main reason I chose P(React) stack however, is for it's low overhead in [developing new controls](./docs/custom-controls.md). It's very easy for non React developers to get up to speed and hopefully this will lead to a host of new controls. 
+Oui is built around the [Preact](https://github.com/developit/preact) library, a tiny [React](https://facebook.github.io/react/) compatible framework for front end development. Preact brings with it all the tricks of React at a fraction of the size. The main reason I chose P(React) stack however, is for it's low overhead in [developing new controls](./docs/custom-controls.md). It's very easy for non React developers to get up to speed and hopefully this will lead to a host of new controls.
 
 
 #### What about bigger projects?
-You'll likely find situations where multiple developers working on the same project will want to test their code independantly. This is where dat.gui usually had problems both in it's api and layout. 
+You'll likely find situations where multiple developers working on the same project will want to test their code independantly. This is where dat.gui usually had problems both in it's api and layout.
 
 Oui solves this using `panels`.
 
