@@ -34,17 +34,17 @@ In this example, when as the user clicks the control, we pass back the `value` +
 
 The `propType` field is a way to declare the expected type of `value`. For this control, it should
 be a number, but you can describe much more [complex types](https://facebook.github.io/react/docs/reusable-components.html)
-of data with this syntax. It's a way to guarantee that the `value` that get's passed to your component
+of data with this syntax. It's a way to guarantee that the `value` that get's passed to your control
 is valid. Oui uses this to ensure property and control compatibility.
 
 *At minimum, all controls _must_ accept a `value` property and declare a `propType`
 object containing a `value` field. `onChange` and `label` are optional.*
 
-There may be other properties your control depends on to constrain it's output. The [Slider](./components/Slider),
+There may be other properties your control depends on to constrain it's output. The [Slider](./controls/Slider),
 for example, has a minimum and maximum value it uses to cap it's visible range. These values are
 declared using property [annotations](./annotations) and are passed to the control at runtime.
 
-In general it's best to include these optionally, providing default or computed values if not explicitly declared
+In general it's best to include these optionally, providing default or computed values if not explicitly declared.
 
 
 ### Validating
