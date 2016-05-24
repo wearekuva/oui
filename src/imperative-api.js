@@ -14,7 +14,7 @@
 */
 
 
-import React from 'react'
+import * as React from 'react'
 import dom from 'react-dom'
 import Tree from './render-tree'
 import Panel from './controls/panel'

@@ -1,8 +1,8 @@
 import React from 'react'
 import radium from 'radium'
-import { clamp } from 'math'
+import { clamp } from '../../math'
 import { base, secondary, highlight } from '../styles'
-import shallowCompare from 'react-addons-shallow-compare'
+import shallowCompare from '../../shallow-compare'
 
 
 /**

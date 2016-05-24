@@ -6,7 +6,7 @@
     object containing a `value` field. `onChange` and `label` are optional.*
 */
 
-import React from 'react'
+import * as React from 'react'
 
 export default Component => (
 
