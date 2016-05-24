@@ -2,19 +2,14 @@ import React from 'react'
 import {shallow, mount} from 'enzyme'
 import Tree from '../src/render-tree'
 
-import Checkbox from '../src/components/checkbox'
-import TextInput from '../src/components/textinput'
-import Slider from '../src/components/slider'
-import Folder from '../src/components/folder'
-import validate from '../src/prop-validation'
+import Checkbox from '../src/controls/checkbox'
+import TextInput from '../src/controls/textinput'
+import Slider from '../src/controls/slider'
+import Folder from '../src/controls/folder'
+import { validateProp } from '../src/validation'
 import sinon from 'sinon'
 
 describe( 'Reconciliation:', () => {
-
-
-    beforeEach( () => sinon.spy( console, 'warn' ))
-
-    afterEach( () => console.warn.restore() )
 
 
     it( 'maps a Boolean to a tree containing a `Checkbox`', () => {
@@ -77,16 +72,52 @@ describe( 'Reconciliation:', () => {
     })
 
 
-    it( 'expects a warning to be raised if validation fails', () => {
 
-        // let warn = sinon.spy(console, 'warn')
+
+})
+
+
+import isValidControl from '../src/control'
+describe( 'Validation', () => {
+
+    beforeEach( () => sinon.spy( console, 'warn' ))
+
+    afterEach( () => console.warn.restore() )
+
+    it( 'correctly validates a Control', () => {
+
+        let Comp = {}
+        expect( isValidControl( Comp )).toBeFalsy()
+
+        Comp = _ => _
+        expect( isValidControl( Comp )).toBeFalsy()
+
+        Comp = _ => _
+        Comp.propTypes = {}
+        expect( isValidControl( Comp )).toBeFalsy()
+
+        Comp = _ => _
+        Comp.propTypes = {}
+        expect( isValidControl( Comp )).toBeFalsy()
+
+        Comp = _ => _
+        Comp.propTypes = { value : {} }
+        expect( isValidControl( Comp )).toBeFalsy()
+
+
+        Comp = _ => _
+        Comp.propTypes = { value : _ => null }
+        expect( isValidControl( Comp )).toBeTruthy()
+
+    })
+
+    it( 'expects a warning to be raised if prop validation fails', () => {
+
         const api = { num: 'str' }
 
-        validate( api, 'num', Slider )
+        validateProp( api, 'num', Slider )
 
         expect( console.warn.calledOnce ).toBe( true )
-
-        // console.warn.restore()
 
     })
 
@@ -94,7 +125,7 @@ describe( 'Reconciliation:', () => {
 
 
 import { annotate } from '../src/annotate'
-import NumericStepper from '../src/components/numericstepper'
+import NumericStepper from '../src/controls/numericstepper'
 
 describe( 'Type Annotations', () => {
 

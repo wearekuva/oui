@@ -17,7 +17,7 @@
 import React from 'react'
 import dom from 'react-dom'
 import Tree from './render-tree'
-import Panel from './components/panel'
+import Panel from './controls/panel'
 import domElement from './dom'
 import merge from './deep-merge'
 

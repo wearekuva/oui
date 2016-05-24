@@ -4,7 +4,7 @@ import sinon from 'sinon'
 
 import imperative from '../src/imperative-api'
 import dom from '../src/dom'
-import Panel from '../src/components/panel'
+import Panel from '../src/controls/panel'
 import { annotate } from '../src/annotate'
 
 describe( 'e2e', () => {

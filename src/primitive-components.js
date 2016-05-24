@@ -1,8 +1,8 @@
-import Slider from './components/slider'
-import Checkbox from './components/checkbox'
-import TextInput from './components/textinput'
-import Folder from './components/folder'
-import withChangeObject from './components/with-change-object'
+import Slider from './controls/slider'
+import Checkbox from './controls/checkbox'
+import TextInput from './controls/textinput'
+import Folder from './controls/folder'
+import withChangeObject from './controls/with-change-object'
 
 export default new Map([
   [ 'number', withChangeObject( Slider ) ],
