@@ -25,23 +25,8 @@
     "url": "https://github.com/marklundin/oui/issues"
   },
   "homepage": "https://github.com/marklundin/oui#readme",
-  "ava": {
-    "require": [
-      "babel-register",
-      "./tests/helpers/setup-browser-env.js"
-    ],
-    "babel": "inherit"
-  },
-  "aliasify": {
-    "aliases": {
-      "react": "preact-compat",
-      "react-dom": "preact-compat",
-      "react-addons-shallow-compare": "preact-shallow-compare"
-    }
-  },
   "dependencies": {
     "es7-reflect-metadata": "^1.6.0",
-    "fast.js": "^0.1.1",
     "preact-compat": "^1.7.1",
     "preact-shallow-compare": "^1.0.1",
     "react": "^15.0.1",
