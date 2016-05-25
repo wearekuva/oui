@@ -14,7 +14,7 @@
 */
 
 
-import * as React from 'react'
+import React from 'react'
 import dom from 'react-dom'
 import Tree from './render-tree'
 import Panel from './controls/panel'
@@ -24,25 +24,30 @@ import merge from './deep-merge'
 
 export default opts => {
 
-    /*
-
-    */
-
-    let container = document.createElement('div')
-    domElement.appendChild( container )
+    let container = null
 
     const render = api => {
-        let onChange = change => render( merge( api, change ))
-        let Element = <Panel { ...opts }>{ Tree( api, onChange )}</Panel>
-        dom.render( Element , container )
+
+        if( !api ){
+
+            dom.unmountComponentAtNode( container )
+            domElement.removeChild( container )
+            container = null
+
+        }else if( container === null ){
+
+            container = document.createElement('div')
+            domElement.appendChild( container )
+
+        }
+
+        if( api ){
+            let onChange = change => render( merge( api, change ))
+            let Element = <Panel { ...opts }>{ Tree( api, onChange )}</Panel>
+            dom.render( Element , container )
+        }
     }
 
-    const destroy = _ => {
-        dom.unmountComponentAtNode( container )
-        domElement.removeChild( container )
-        container = null
-    }
-
-    return { render, destroy }
+    return render
 
 }

@@ -16,7 +16,7 @@ module.exports = config => {
             'tests.js'
         ],
 
-        plugins:[ webpack, 'karma-jasmine', 'karma-chrome-launcher' ],
+        plugins:[ webpack, 'karma-jasmine', 'karma-chrome-launcher', 'karma-coverage', 'karma-spec-reporter' ],
 
         browsers: ['Chrome'],
 
@@ -38,7 +38,15 @@ module.exports = config => {
 
         webpackServer: { noInfo: true },
 
-        reporters: ['progress'],
+        reporters: [ 'spec', 'coverage' ],
+        coverageReporter: {
+            dir: '../coverage',
+            reporters: [
+                { type: 'html', subdir: 'report-html' },
+                { type: 'lcov', subdir: 'report-lcov' },
+                { type: 'cobertura', subdir: '.', file: 'cobertura.txt' }
+            ]
+        },
 
     })
 }

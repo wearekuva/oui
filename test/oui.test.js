@@ -97,6 +97,19 @@ describe( 'Annotations:', () => {
 })
 
 
+import compare from '../src/shallow-compare'
+describe( 'Comparing', () => {
+
+    it( 'matches shalow objects', () => {
+
+        const a = { a: 10, b:false, c:'string' }
+        const b = { b: 10, b:false, c:'string' }
+
+        expect( compare( a, b )).toBeTruthy()
+    })
+
+})
+
 
 import merge from '../src/deep-merge'
 describe( 'Merging', () => {

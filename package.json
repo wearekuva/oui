@@ -5,10 +5,11 @@
   "version": "0.0.1",
   "author": "Mark Lundin",
   "license": "MIT",
-  "main": "lib",
+  "main": "dist/oui.common.js",
+  "jsnext:main": "oui/oui",
   "scripts": {
     "build": "node build/build.js",
-    "test": "NODE_ENV=production karma start build/karma.config.js"
+    "test": "NODE_ENV=production karma start --single-run --no-auto-watch build/karma.config.js"
   },
   "bugs": {
     "url": "https://github.com/marklundin/oui/issues"
@@ -30,11 +31,14 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "enzyme": "^2.3.0",
+    "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",

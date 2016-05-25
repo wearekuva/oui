@@ -7,7 +7,28 @@ import TextInput from '../src/controls/textinput'
 import Slider from '../src/controls/slider'
 import Folder from '../src/controls/folder'
 import { validateProp } from '../src/validation'
-// import sinon from 'sinon'
+import throttle from '../src/controls/utils/throttle'
+
+describe( 'Utils', () => {
+
+    it( 'Throttles corectly on the next Animation Frame', () => {
+
+        let on = { change: _=> _ }
+
+        spyOn( on, 'change' )
+
+        let throttled = throttle( on.change )
+
+        throttled()
+        throttled()
+        throttled()
+        throttled()
+
+        expect( on.change ).not.toHaveBeenCalled()
+
+    })
+
+})
 
 describe( 'Reconciliation:', () => {
 

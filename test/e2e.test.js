@@ -10,18 +10,15 @@ import { annotate } from '../src/annotate'
 describe( 'e2e', () => {
 
 
-    // beforeEach( () => sinon.spy( console, 'warn' ))
-
     afterEach(() => {
         while( dom.children.length > 0 ){
-            dom.children[0].remove()
+            dom.children[dom.children.length -1].remove()
         }
-        // console.warn.restore()
     })
 
     it( 'should render a Panel in the page', () => {
 
-        imperative().render({ value: 10 })
+        imperative()({ value: 10 })
 
         expect( dom.children.length ).toBe( 1 )
 
@@ -30,8 +27,8 @@ describe( 'e2e', () => {
 
     it( 'should render the correct number of Panels in the page', () => {
 
-        const a = imperative().render({ value: 10 })
-        const b = imperative().render({ value: 10 })
+        const a = imperative()({ value: 10 })
+        const b = imperative()({ value: 10 })
 
         expect( dom.children.length ).toBe( 2 )
 
@@ -41,10 +38,10 @@ describe( 'e2e', () => {
     it( 'Should remove a Panel from the page', () => {
 
         const ui = imperative()
-        const node = ui.render({ value: 10 })
+        const node = ui({ value: 10 })
 
         expect( dom.children.length ).toBe( 1 )
-        ui.destroy()
+        ui()
         expect( dom.children.length ).toBe( 0 )
 
     })
@@ -55,33 +52,33 @@ describe( 'e2e', () => {
         let actual
         const ui = imperative()
 
-        ui.render({ value: true })
+        ui({ value: true })
         actual = dom.querySelector('input').checked
         expect( actual ).toBeTruthy()
 
-        ui.render({ value: false })
+        ui({ value: false })
         actual = dom.querySelector('input').checked
         expect( actual ).toBeFalsy()
 
     })
 
 
-    // it( 'should update api properties on user interaction', () => {
-    //
-    //     let api = { prop: true }
-    //     imperative().render( api )
-    //
-    //     const input = dom.querySelector('input')
-    //     ReactTestUtils.Simulate.change( input, { target: { checked: false }})
-    //
-    //     expect( api.prop ).toBeFalsy()
-    //
-    // })
+    it( 'should update api properties on user interaction', () => {
+
+        let api = { prop: true }
+        imperative()( api )
+
+        const input = dom.querySelector('input')
+        ReactTestUtils.Simulate.change( input, { target: { checked: false }})
+
+        expect( api.prop ).toBeFalsy()
+
+    })
 
 
     it( 'should redraw the ui on user interaction', () => {
 
-        imperative().render( { prop: true } )
+        imperative()({ prop: true })
 
         const input = dom.querySelector('input')
         ReactTestUtils.Simulate.change( input, { target: { checked: false }})
@@ -103,11 +100,51 @@ describe( 'e2e', () => {
         const api = { prop: true }
         annotate({control:Component})(api, 'prop')
 
-        imperative().render( api )
+        imperative()( api )
 
         expect( console.warn ).toHaveBeenCalled()
 
 
     })
+
+})
+
+
+import oui from '../src/oui'
+
+describe( 'Oui', () => {
+
+    afterEach(() => {
+
+        oui()
+
+        while( dom.children.length > 0 ){
+            // console.log( dom.children.length )
+            dom.children[0].remove()
+        }
+
+    })
+
+    it( 'should only redraw the default panel, not add new ones', () => {
+
+        oui({ prop: true })
+        oui({ nun: 10 })
+        oui({ bool: false })
+
+        expect( dom.children.length ).toBe( 1 )
+
+    })
+
+
+    // it( 'expects the default panel to render with a custom panel', () => {
+    //
+    //     oui({ prop: true })
+    //     imperative()({ nun: 10 })
+    //     imperative()({ bool: false })
+    //
+    //     expect( dom.children.length ).toBe( 3 )
+    //
+    // })
+
 
 })
