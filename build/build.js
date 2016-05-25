@@ -81,8 +81,8 @@ var productionConfig = Object.assign( webpackconfig, {
     ]
 })
 
-webpack( productionConfig ).run( output => {
-  buildInfo( productionConfig.output )
+webpack( productionConfig ).run(( err, stats ) => {
+  buildInfo( productionConfig.output )( err, stats )
   zip()
 })
 
@@ -112,7 +112,7 @@ function write (dest, code) {
   return new Promise(function (resolve, reject) {
     fs.writeFile(dest, code, function (err) {
       if (err) return reject(err)
-      console.log(blue(dest) + ' ' + getSize(code))
+      console.log(blue('   min+gzip ' + getSize(code)))
       resolve()
     })
   })
