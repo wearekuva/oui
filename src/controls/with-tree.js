@@ -13,15 +13,15 @@ import Tree from "../render-tree"
 import React, { PropTypes } from 'react'
 
 
-export default ( Component ) => {
+export default ( FolderComponent ) => {
 
-    let style = {
-        paddingBottom: '0.5em',
-        paddingTop: '0.5em',
-        borderBottom: '1px solid rgb( 230, 230, 230 )'
-    }
+    // let style = {
+    //     paddingBottom: '0.5em',
+    //     paddingTop: '0.5em',
+    //     borderBottom: '1px solid rgb( 230, 230, 230 )'
+    // }
 
-    class WrappedComponent extends Component {
+    class WrappedComponent extends FolderComponent {
 
         constructor(){
 
@@ -32,7 +32,7 @@ export default ( Component ) => {
 
         render(){
 
-            return <Component { ...this.props } style={style} value={ this.tree } />
+            return <FolderComponent { ...this.props } value={ this.tree } />
 
         }
     }

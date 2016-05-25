@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import radium from 'radium'
-import Tree from "../../render-tree"
+// import radium from 'radium'
+// import Tree from "../../render-tree"
 import { base } from '../styles'
 import MdChevronLeft from 'react-icons/lib/md/chevron-left'
 import MdExpandMore from 'react-icons/lib/md/expand-more'
@@ -35,7 +35,7 @@ class Folder extends Component {
                 <MdChevronLeft style={{marginLeft:'auto', display: open ? 'none' : 'visible'}} />
                 <MdExpandMore style={{marginLeft:'auto', display: open ? 'visible' : 'none'}} />
             </div>
-            { open ? <div>{ Tree( this.props.value, this.props.onChange ) }</div> : null }
+            { open ? <div>{ value() }</div> : null }
         </div>
 
     }
@@ -55,17 +55,19 @@ Folder.defaultProps = {
 
 Folder.propTypes = {
 
-    value : PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.array,
-    ]).isRequired,
+    // value : PropTypes.oneOfType([
+    //     PropTypes.object,
+    //     PropTypes.array,
+    // ]).isRequired,
+
+    value: PropTypes.func.isRequired,
 
 
     onChange: PropTypes.func,
 
 
     label: PropTypes.string,
-    
+
 
     style: PropTypes.object
 

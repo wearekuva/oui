@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactTestUtils from 'react-addons-test-utils'
-import sinon from 'sinon'
+// import sinon from 'sinon'
 
 import imperative from '../src/imperative-api'
 import dom from '../src/dom'
@@ -10,13 +10,13 @@ import { annotate } from '../src/annotate'
 describe( 'e2e', () => {
 
 
-    beforeEach( () => sinon.spy( console, 'warn' ))
+    // beforeEach( () => sinon.spy( console, 'warn' ))
 
     afterEach(() => {
         while( dom.children.length > 0 ){
             dom.children[0].remove()
         }
-        console.warn.restore()
+        // console.warn.restore()
     })
 
     it( 'should render a Panel in the page', () => {
@@ -93,7 +93,7 @@ describe( 'e2e', () => {
 
     it( 'should warn if props are incompatible with their type annotated control', () => {
 
-        // let warn = sinon.spy(console, 'warn')
+        spyOn(console, 'warn')
 
         let Component = _ => <div/>
         Component.propTypes = {
@@ -105,9 +105,8 @@ describe( 'e2e', () => {
 
         imperative().render( api )
 
-        expect( console.warn.calledOnce ).toBe( true )
+        expect( console.warn ).toHaveBeenCalled()
 
-        // console.warn.restore()
 
     })
 

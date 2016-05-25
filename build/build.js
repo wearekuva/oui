@@ -1,16 +1,9 @@
 var fs = require('fs')
 var zlib = require('zlib')
 var path = require('path')
-// var rollup = require('rollup')
-var uglify = require('uglify-js')
 var webpack = require("webpack");
-// var babel = require('rollup-plugin-babel')
-// var replace = require('rollup-plugin-replace')
-// var npm = require( 'rollup-plugin-node-resolve' )
-// var commonjs = require('rollup-plugin-commonjs')
-// var alias = require('rollup-plugin-alias')
 var version = process.env.VERSION || require('../package.json').version
-var webpackconfig = require( './webpack.config.js' )
+var webpackconfig = require( './webpack.base.config.js' )
 
 
 console.log( 'Building Oui...' )

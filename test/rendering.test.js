@@ -7,7 +7,7 @@ import TextInput from '../src/controls/textinput'
 import Slider from '../src/controls/slider'
 import Folder from '../src/controls/folder'
 import { validateProp } from '../src/validation'
-import sinon from 'sinon'
+// import sinon from 'sinon'
 
 describe( 'Reconciliation:', () => {
 
@@ -80,9 +80,9 @@ describe( 'Reconciliation:', () => {
 import isValidControl from '../src/control'
 describe( 'Validation', () => {
 
-    beforeEach( () => sinon.spy( console, 'warn' ))
-
-    afterEach( () => console.warn.restore() )
+    // beforeEach( () => sinon.spy( console, 'warn' ))
+    //
+    // afterEach( () => console.warn.restore() )
 
     it( 'correctly validates a Control', () => {
 
@@ -115,9 +115,11 @@ describe( 'Validation', () => {
 
         const api = { num: 'str' }
 
+        spyOn( console, 'warn' )
+
         validateProp( api, 'num', Slider )
 
-        expect( console.warn.calledOnce ).toBe( true )
+        expect( console.warn ).toHaveBeenCalled()
 
     })
 

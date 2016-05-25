@@ -1,53 +1,44 @@
+var webpack = require('karma-webpack');
+var webpackconfig = require('./webpack.karma.config')
 
-// shared config for all unit tests
-module.exports = function (config) {
+
+module.exports = config => {
     config.set({
 
-        frameworks: [ 'browserify', 'jasmine' ],
+        frameworks: [ 'jasmine' ],
 
-        basePath:'../',
+        // basePath:'../',
 
         files: [
-            { pattern: 'src/**/*.js', included: false, served: false },
-            'test/*.test.js',
-            'src/**/*.test.js'
+            // { pattern: 'src/**/*.js', included: false, served: false },
+            '../test/*.test.js',
+            // 'src/controls/folder/*.test.js'
+            'tests.js'
         ],
 
-        exclude: [
-            //'src/**/*.test.js',
-            'src/**/test.js'
-        ],
-
-        preprocessors: {
-            'src/**/*.js': ['browserify'],
-            'test/*.js': ['browserify']
-        },
-
-        babelPreprocessor: {
-            options: {
-                presets: ['airbnb']
-            }
-        },
-
-        browserify: {
-            debug: true,
-            transform: [
-                ['babelify'/*, { presets: ['airbnb'] }*/]
-            ],
-            configure: function(bundle) {
-                bundle.on('prebundle', function() {
-                    bundle.external('react/addons');
-                    bundle.external('react/lib/ReactContext');
-                    bundle.external('react/lib/ExecutionEnvironment');
-                });
-            }
-        },
-
-        //singleRun: true,
+        plugins:[ webpack, 'karma-jasmine', 'karma-chrome-launcher' ],
 
         browsers: ['Chrome'],
 
-        reporters: ['progress']
+        exclude: [
+            // 'src/**/*.test.js',
+            // 'src/**/test.js'
+        ],
+
+        preprocessors: {
+            'tests.js': ['webpack'],
+            // 'src/**/*.js': ['webpack'],
+            // 'src/controls/folder/*.test.js': ['webpack'],
+            // 'src/controls/folder/*.js': ['webpack'],
+
+            '../test/*.test.js': ['webpack']
+        },
+
+        webpack: webpackconfig,
+
+        webpackServer: { noInfo: true },
+
+        reporters: ['progress'],
 
     })
 }

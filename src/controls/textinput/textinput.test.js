@@ -1,6 +1,6 @@
 import React from 'react'
 import {shallow, mount} from 'enzyme'
-import sinon from 'sinon';
+//import sinon from 'sinon';
 import TextInput from './textinput'
 
 describe( 'TextInput', () => {
@@ -26,11 +26,12 @@ describe( 'TextInput', () => {
 
     it('change event fires with correct value', () => {
 
-        const onChange = sinon.spy();
+        let on = { change: _ => _ }
+        spyOn( on, 'change' )
         const change = 'Change!'
-        const wrapper = mount(<TextInput onChange={onChange}/>)
+        const wrapper = mount(<TextInput onChange={on.change}/>)
         wrapper.find('input').simulate('input', { target:{ value: change}});
-        expect( onChange.calledOnce ).toBeTruthy()
+        expect( on.change ).toHaveBeenCalled()
 
     })
 

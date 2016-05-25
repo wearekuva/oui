@@ -8,13 +8,13 @@
 import React, { PropTypes } from 'react'
 
 
-export default Component => {
+export default Comp => {
 
     var style = {
         borderTop: '1px solid rgb(210, 210, 210)'
     }
 
-    class WrappedComponent extends Component {
+    class WrappedComponent extends Comp {
 
         constructor(){
 
@@ -26,7 +26,7 @@ export default Component => {
 
         render() {
 
-            return <Component { ...this.props } onChange={ this.onChildChange } />
+            return <Comp { ...this.props } onChange={ this.onChildChange } />
 
         }
     }

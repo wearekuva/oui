@@ -15,7 +15,6 @@ export default fn => {
     */
 
     let debounced = ( a ) => {
-        // console.log( performance.now() - t)
         fn( a )
         cancelAnimationFrame( rafID )
         rafID = null

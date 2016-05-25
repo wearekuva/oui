@@ -1,6 +1,6 @@
 import React from 'react'
 import {shallow, mount} from 'enzyme'
-import sinon from 'sinon';
+// import sinon from 'sinon';
 import NumericStepper from './numericstepper'
 
 describe( 'Stepper', () => {
@@ -26,11 +26,12 @@ describe( 'Stepper', () => {
 
     it( 'responds to change events', () => {
 
-        const onChange = sinon.spy()
-        const component = mount(<NumericStepper value={4} onChange={onChange}/>)
+        let on = { change: _ => _ }
+        spyOn( on, 'change' )
+        const component = mount(<NumericStepper value={4} onChange={on.change}/>)
         component.find('input').get(0).value = 5
         component.find('input').simulate( 'change' )
-        expect( onChange.calledWith( 5 )).toBeTruthy()
+        expect( on.change ).toHaveBeenCalledWith( 5 )
 
     })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import sinon from 'sinon';
+// import sinon from 'sinon';
 import Checkbox from './checkbox'
 
 describe( 'Checkbox', () => {
@@ -24,10 +24,11 @@ describe( 'Checkbox', () => {
 
     it( 'expects the `onChange` event to be called with the correct value', () => {
 
-        const onChange = sinon.spy();
-        const wrapper = shallow(<Checkbox value={false} onChange={onChange}/>)
+        let on = { change : _ => _ }
+        spyOn( on, 'change' )
+        const wrapper = shallow(<Checkbox value={false} onChange={on.change}/>)
         wrapper.find('label').simulate('click');
-        expect( onChange.calledWith( true )).toBeTruthy()
+        expect( on.change ).toHaveBeenCalledWith( true )
 
     })
 
