@@ -97,15 +97,49 @@ describe( 'Annotations:', () => {
 })
 
 
-import compare from '../src/shallow-compare'
+import equals from '../src/shallow-equal'
 describe( 'Comparing', () => {
 
-    it( 'matches shalow objects', () => {
+    it( 'matches shallow objects', () => {
 
         const a = { a: 10, b:false, c:'string' }
-        const b = { b: 10, b:false, c:'string' }
+        const b = { a: 10, b:false, c:'string' }
 
-        expect( compare( a, b )).toBeTruthy()
+        expect( equals( a, b )).toBeTruthy()
+    })
+
+    it( 'matches same objects', () => {
+
+        const a = { a: 10, b:false, c:'string' }
+        const b = a
+
+        expect( equals( a, b )).toBeTruthy()
+    })
+
+
+    it( 'fails fails different objects', () => {
+
+        const a = { a: 10, b:false, c:'string' }
+        const b = { b: 10, b:false, c:'string', d:10 }
+
+        expect( equals( a, b )).toBeFalsy()
+    })
+
+
+    it( 'fails fails similar objects', () => {
+
+        const a = { a: 10, b:false, c:'string' }
+        const b = { b: 10, b:true, c:'string' }
+
+        expect( equals( a, b )).toBeFalsy()
+    })
+
+    it( 'fails null objects', () => {
+
+        const a = { a: 10, b:false, c:'string' }
+        const b = null
+
+        expect( equals( a, b )).toBeFalsy()
     })
 
 })
