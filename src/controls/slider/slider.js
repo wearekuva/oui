@@ -2,7 +2,7 @@ import React from 'react'
 import NumericStepper from '../numericstepper'
 import shallowCompare from '../../shallow-compare'
 import { map, clamp } from '../../math'
-import radium from 'radium'
+// import radium from 'radium'
 import throttle from '../utils/throttle'
 import { base, secondary, highlight } from '../styles'
 

@@ -3,7 +3,7 @@ var zlib = require('zlib')
 var path = require('path')
 var webpack = require("webpack");
 var version = process.env.VERSION || require('../package.json').version
-var webpackconfig = require( './webpack.base.config.js' )
+var webpackconfig = require( './webpack.build.config.js' )
 
 
 console.log( 'Building Oui...' )
@@ -48,10 +48,10 @@ var productionConfig = Object.assign( webpackconfig, {
     plugins: [
         new webpack.BannerPlugin( banner ),
         new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()
     ]
 })

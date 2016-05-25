@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import radium from 'radium'
+// import radium from 'radium'
 import { base } from '../styles'
 
 
