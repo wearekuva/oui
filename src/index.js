@@ -1,6 +1,6 @@
-import panel from './imperative-api'
+import panel from './imperative-api';
 
-let Oui = panel()
+let Oui = panel();
 Oui.version = 0;
 
-export default Oui
+export default Oui;

@@ -15,13 +15,13 @@ module.exports = {
             {
                 loader: 'babel-loader',
                 exclude: /(node_modules|bower_components)/,
-                query: {
-                    // compact: false,
-                    babelrc: false,
-                    presets: [/*"es2015",*/ 'airbnb', 'react' ],
-                    "plugins": ["transform-es2015-modules-commonjs", "transform-object-rest-spread"]
-                    // plugins: ["]
-                }
+                // query: {
+                //     // compact: false,
+                //     // babelrc: false,
+                //     presets: [/*"es2015",*/ 'airbnb', 'react' ],
+                //     "plugins": ["transform-es2015-modules-commonjs", "transform-object-rest-spread"]
+                //     // plugins: ["]
+                // }
             }
         ]
     },
