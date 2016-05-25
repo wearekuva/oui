@@ -36,28 +36,6 @@ webpack( commonjsConfig ).run( buildInfo( commonjsConfig.output ))
 
 
 
-// Standalone Production Build
-var productionConfig = Object.assign( webpackconfig, {
-    output:{
-        library: 'oui',
-        path: 'dist',
-        filename: 'oui.min.js',
-        libraryTarget: 'umd',
-        umdNamedDefine: true
-    },
-    plugins: [
-        new webpack.BannerPlugin( banner ),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
-        }),
-        new webpack.optimize.UglifyJsPlugin()
-    ]
-})
-
-webpack( productionConfig ).run( buildInfo( productionConfig.output ))
-
 
 // Standalone Dev Build
 var devConfig = Object.assign( webpackconfig, {
@@ -80,6 +58,35 @@ var devConfig = Object.assign( webpackconfig, {
 webpack( devConfig ).run( buildInfo( devConfig.output ) )
 
 
+
+
+
+// Standalone Production Build
+var productionConfig = Object.assign( webpackconfig, {
+    output:{
+        library: 'oui',
+        path: 'dist',
+        filename: 'oui.min.js',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
+    },
+    plugins: [
+        new webpack.BannerPlugin( banner ),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        }),
+        new webpack.optimize.UglifyJsPlugin()
+    ]
+})
+
+webpack( productionConfig ).run( output => {
+  buildInfo( productionConfig.output )
+  zip()
+})
+
+
 function buildInfo( output ){
     return function onBuilt(err, stats) {
 
@@ -94,12 +101,10 @@ function buildInfo( output ){
 
 
 function chunkinfo( output ){
-    fs.readFile( path.join( output.path, output.filename ), 'utf8', function (err, code ) {
-        if( err ) return
-        console.log( blue( '    Built:  ' ), output.filename )
-        console.log( blue( '    Size:   ' ), getSize( code ))
-        console.log( '' )
-    })
+    var code = fs.readFileSync( path.join( output.path, output.filename ), 'utf8' )
+    console.log( blue( '    Built:  ' ), output.filename )
+    console.log( blue( '    Size:   ' ), getSize( code ))
+    console.log( '' )
 }
 
 
