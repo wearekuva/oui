@@ -3,7 +3,7 @@ let oui = function(){}
 
 if( process.env.NODE_ENV !== 'production' ){
 
-    oui = require( './oui' )
+    oui = require( './oui' ).default
 
 }
 

@@ -113,6 +113,7 @@ class Slider extends React.Component{
 
 
     shouldComponentUpdate( nextProps, nextState ){
+        console.log( 'should update', shallowCompare( this, nextProps, nextState ) )
         return shallowCompare( this, nextProps, nextState )
     }
 
@@ -134,6 +135,8 @@ class Slider extends React.Component{
 
 
     render(){
+
+        console.log( 'slider render')
 
         let { value, label, min, max, step, onChange, includeStepper, style } = this.props,
             stepperProps = { value, label, min, max, step, onChange }

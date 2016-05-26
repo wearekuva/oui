@@ -11,4 +11,13 @@
     </body>
     <script src='dist/oui.js'></script>
 
+    <script>
+
+        let a = {b:10}
+        // oui.annotate({ options:{aaa:20, bbbb:30, cccc:40}, control:oui.ComboBox })( a, 'b' )
+        oui.annotate({ options:[20, 10, 40], control:oui.ComboBox })( a, 'b' )
+        oui( a )
+
+    </script>
+
 </html>

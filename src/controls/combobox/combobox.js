@@ -16,29 +16,34 @@ let defaultStyle = {
     of key value tuples, or an object.
 */
 
-export let ComboBox = ({ label, options, value, onChange }) => {
+class ComboBox extends React.Component {
 
-    let isArray = Array.isArray( options )
-    let valueSelected = false
+    render({ label, options, value, onChange }) {
 
-    var optionsElems = []
+        let isArray = Array.isArray( options )
+        let valueSelected = false
 
-    for( var i in options ){
-        let element;
-        if( options[i] === value && !valueSelected){
-            valueSelected = true
-            element = <option key={i} value={options[i]} selected >{ isArray? options[i] : i }</option>
-        } else {
-            element = <option key={i} value={options[i]}>{ isArray? options[i] : i }</option>
+        var optionsElems = [],
+            arrOptions = []
+
+        for( var i in options ){
+            let element;
+            arrOptions.push( options[i] )
+            if( options[i] === value && !valueSelected){
+                valueSelected = true
+                element = <option key={i} value={options[i]} selected >{ isArray? options[i] : i }</option>
+            } else {
+                element = <option key={i} value={options[i]}>{ isArray? options[i] : i }</option>
+            }
+            optionsElems.push( element )
         }
-        optionsElems.push( element )
+
+        return <div style={base}>
+            <label>{ label }</label>
+            <select onChange={ e => onChange( arrOptions[e.target.selectedIndex] )} style={defaultStyle}>{ optionsElems }</select>
+        </div>
+
     }
-
-    return <div style={base}>
-        <label>{ label }</label>
-        <select onChange={ e => onChange( e.target.value )} style={defaultStyle}>{ optionsElems }</select>
-    </div>
-
 }
 
 // ComboBox = radium( ComboBox )
@@ -66,15 +71,14 @@ ComboBox.propTypes = {
     label: PropTypes.any,
 
     options: PropTypes.oneOfType([
-        PropTypes.arrayOf( PropTypes.string ).isRequired,
-        PropTypes.arrayOf( PropTypes.arrayOf( PropTypes.any )).isRequired,
+        PropTypes.arrayOf( PropTypes.any ).isRequired,
         PropTypes.objectOf( PropTypes.any ).isRequired,
     ]),
 
-    value: PropTypes.bool.isRequired,
+    value: PropTypes.any.isRequired,
 
     onChange: PropTypes.func
 
 }
 
-export default options => annotate({ options })
+export default ComboBox

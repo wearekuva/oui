@@ -31,11 +31,15 @@ export default Comp => {
         }
     }
 
+    // WrappedComponent.name = 'Wrapped'+Comp.name
+
     WrappedComponent.propTypes = {
 
         onChange : PropTypes.func.isRequired,
 
-        id : PropTypes.string.isRequired
+        id : PropTypes.string.isRequired,
+
+        value: Comp.propTypes.value
 
     }
 

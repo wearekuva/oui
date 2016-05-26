@@ -1,7 +1,6 @@
 var config = require('./webpack.base.config')
 
 module.exports = Object.assign( {}, config, {
-    // context: './src',
     resolve: {
         alias: {
             'react': 'preact-compat',

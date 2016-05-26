@@ -6,10 +6,9 @@ import shallowEqual from './shallow-equal'
  * See ReactComponentWithPureRenderMixin
  * See also https://facebook.github.io/react/docs/shallow-compare.html
  */
-const shallowCompare = (instance, nextProps, nextState, nextContext) => (
+const shallowCompare = (instance, nextProps, nextState) => (
     !shallowEqual(instance.props, nextProps) ||
-    !shallowEqual(instance.state, nextState) ||
-    !shallowEqual(instance.context, nextContext)
+    !shallowEqual(instance.state, nextState)
 )
 
 export default shallowCompare;
