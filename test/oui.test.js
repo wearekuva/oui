@@ -10,7 +10,7 @@ import { annotate, getAnnotation, hasAnnotation } from '../src/annotate'
 // import { stepper } from '../src/components'
 // import NumericStepper from 'core-controllers/es5/numericstepper'
 // import { combobox } from '../src/components'
-// import Combobox from 'core-controllers/es5/combobox'
+import oneOf, { ComboBox } from '../src/controls/combobox'
 
 
 describe( 'Annotations:', () => {
@@ -42,6 +42,17 @@ describe( 'Annotations:', () => {
         annotate({ value:second })( obj, 'prop' )
         const expected = getAnnotation( obj, 'prop' ).value
         expect( expected ).toBe( second )
+    })
+
+
+    it( '`oneOf` decorator creates a ComboBox annotation', () => {
+
+        const obj = { b: 'c'}
+        oneOf(['a', 'b', 'c'])( obj, 'c' )
+
+        const expected = getAnnotation( obj, 'c' ).type
+
+        expect( expected ).toBe( ComboBox )
     })
 
 

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-// import radium from 'radium'
+import { annotate } from '../../annotate'
 import { base } from '../styles'
 
 
@@ -16,14 +16,22 @@ let defaultStyle = {
     of key value tuples, or an object.
 */
 
-let ComboBox = ({ label, options, value, onChange }) => {
+export let ComboBox = ({ label, options, value, onChange }) => {
 
     let isArray = Array.isArray( options )
+    let valueSelected = false
 
-    var optionsElems = [<option key={ value.toString() } value={value}>{ isArray? value: value.toString() }</option>]
+    var optionsElems = []
 
     for( var i in options ){
-        optionsElems.push( <option key={i} value={options[i]}>{ isArray? options[i] : i }</option> )
+        let element;
+        if( options[i] === value && !valueSelected){
+            valueSelected = true
+            element = <option key={i} value={options[i]} selected >{ isArray? options[i] : i }</option>
+        } else {
+            element = <option key={i} value={options[i]}>{ isArray? options[i] : i }</option>
+        }
+        optionsElems.push( element )
     }
 
     return <div style={base}>
@@ -33,7 +41,7 @@ let ComboBox = ({ label, options, value, onChange }) => {
 
 }
 
-ComboBox = radium( ComboBox )
+// ComboBox = radium( ComboBox )
 
 ComboBox.defaultProps = {
 
@@ -69,4 +77,4 @@ ComboBox.propTypes = {
 
 }
 
-export default ComboBox
+export default options => annotate({ options })
