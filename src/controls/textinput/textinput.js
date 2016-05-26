@@ -16,7 +16,7 @@ class TextInput extends React.Component {
 
 		const { value, label, onChange, style } = this.props
 
-		return <div style={{ ...base, ...style }}>
+		return <div style={{ ...base, ...style, display:'flex' }}>
 			<label>{ label }</label>
 	        <input type="text" value={value}
 	            style={{ ...base, ...defaultStyle }} onInput={evt => onChange( evt.target.value )}/>
@@ -68,7 +68,7 @@ var defaultStyle = {
     borderLeft: 'none',
     borderRight: 'none',
     borderRadius: 'none',
-    // float:'right',
+    marginLeft:'auto',
     textAlign: 'right',
     borderBottom : '1px solid ' + secondary.color,
     backgroundColor : 'transparent',

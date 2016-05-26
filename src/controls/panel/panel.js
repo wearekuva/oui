@@ -6,7 +6,7 @@ class BaseComponent extends Component {
 
         let { children } = this.props
 
-        return <div style={style}>
+        return <div style={style} class='oui-panel' >
             { children }
         </div>
     }

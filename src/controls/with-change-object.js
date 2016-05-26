@@ -26,7 +26,7 @@ export default Comp => {
 
         render() {
 
-            return <Comp { ...this.props } onChange={ this.onChildChange } />
+            return <Comp { ...this.props } class='oui-control' onChange={ this.onChildChange } />
 
         }
     }
