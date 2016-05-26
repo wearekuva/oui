@@ -168,6 +168,35 @@ describe( 'Merging', () => {
 
     })
 
+    it( 'raises a warning when attempting to merge a read only property', () => {
+
+        spyOn( console, 'warn' )
+
+        let target = {
+            get b() { return 10 }
+        }
+
+        const source = { b : 20 }
+        const a = merge( target, source )
+
+        expect( console.warn ).toHaveBeenCalled()
+
+    })
+
+
+    it( 'raises a warning when attempting to merge into a frozen object', () => {
+
+        spyOn( console, 'warn' )
+
+        const target = {}
+        Object.freeze( target )
+        const source = { b : 20 }
+        const a = merge( target, source )
+        console.log( a, target )
+        expect( console.warn ).toHaveBeenCalled()
+
+    })
+
 
     it( 'merges deep primitives', () => {
 

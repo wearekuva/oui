@@ -20,6 +20,7 @@ import Tree from './render-tree'
 import Panel from './controls/panel'
 import domElement from './dom'
 import merge from './deep-merge'
+import warn from './warn'
 
 
 export default opts => {
@@ -42,7 +43,14 @@ export default opts => {
         }
 
         if( api ){
-            let onChange = change => render( merge( api, change ))
+
+            let onChange = change => {
+
+                let isFrozen = Object.isFrozen( api )
+                warn( Object.isFrozen( api ), 'The `api` object is frozen an cannot be mutated.' )
+                if( !isFrozen ) render( merge( api, change ))
+            }
+
             let Element = <Panel { ...opts }>{ Tree( api, onChange )}</Panel>
             dom.render( Element , container )
         }

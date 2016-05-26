@@ -1,7 +1,6 @@
 var config = require('./webpack.base.config')
 var path = require( 'path' )
 
-console.log( path.resolve(__dirname, "../src"))
 module.exports = Object.assign( {}, config, {
     // devtool: 'inline-source-map',
     externals: {

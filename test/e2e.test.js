@@ -119,7 +119,6 @@ describe( 'Oui', () => {
         oui()
 
         while( dom.children.length > 0 ){
-            // console.log( dom.children.length )
             dom.children[0].remove()
         }
 
@@ -136,15 +135,15 @@ describe( 'Oui', () => {
     })
 
 
-    // it( 'expects the default panel to render with a custom panel', () => {
-    //
-    //     oui({ prop: true })
-    //     imperative()({ nun: 10 })
-    //     imperative()({ bool: false })
-    //
-    //     expect( dom.children.length ).toBe( 3 )
-    //
-    // })
+    it( 'expects the default panel to render with a custom panel', () => {
+
+        oui({ prop: true })
+        imperative()({ nun: 10 })
+        imperative()({ bool: false })
+
+        expect( dom.children.length ).toBe( 3 )
+
+    })
 
 
 })
