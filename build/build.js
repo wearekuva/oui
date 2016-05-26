@@ -5,7 +5,6 @@ var webpack = require("webpack");
 var version = process.env.VERSION || require('../package.json').version
 var webpackconfig = require( './webpack.build.config.js' )
 
-
 console.log( 'Building Oui...' )
 
 var banner =
