@@ -27,6 +27,7 @@ let deepmerge = ( a, b ) => {
             let writable = isWritable( a, prop )
             warn( !writable, 'The property `' + prop + '` is not writable and cannot be mutated.' )
             if( writable ) a[prop] = b[prop]
+            
         }
     }
     return a
