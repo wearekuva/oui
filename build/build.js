@@ -47,10 +47,10 @@ var devConfig = Object.assign( webpackconfig, {
         new webpack.BannerPlugin( banner ),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"development"'
-        }),
-
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': '"production"'
+        // }),
+        // new webpack.optimize.UglifyJsPlugin()
     ]
 })
 
@@ -73,9 +73,9 @@ var productionConfig = Object.assign( webpackconfig, {
         new webpack.BannerPlugin( banner ),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"'
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': '"production"'
+        // }),
         new webpack.optimize.UglifyJsPlugin()
     ]
 })

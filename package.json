@@ -9,7 +9,7 @@
   "jsnext:main": "oui/oui",
   "scripts": {
     "build": "node build/build.js",
-    "test": "NODE_ENV=production karma start --single-run --no-auto-watch build/karma.config.js"
+    "test": "karma start --single-run --no-auto-watch build/karma.config.js"
   },
   "bugs": {
     "url": "https://github.com/marklundin/oui/issues"
