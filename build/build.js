@@ -21,17 +21,7 @@ fs.writeFileSync('src/index.js', main)
 
 
 // CommonJS build.
-// this is used as the "main" field in package.json
-// and used by bundlers like Webpack and Browserify.
-var commonjsConfig = Object.assign( webpackconfig, {
-    output:{
-        library: 'oui',
-        path: 'dist',
-        filename: 'oui.common.js',
-        libraryTarget: 'commonjs'
-    }
-})
-webpack( commonjsConfig ).run( buildInfo( commonjsConfig.output ))
+
 
 
 
