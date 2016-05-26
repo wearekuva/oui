@@ -15,15 +15,13 @@
     "url": "https://github.com/marklundin/oui/issues"
   },
   "dependencies": {
-    "babel-core": "^6.9.0",
     "es7-reflect-metadata": "^1.6.0",
     "preact-compat": "^1.7.1",
-    "preact-shallow-compare": "^1.0.1",
     "react": "^15.1.0",
-    "react-addons-shallow-compare": "^15.1.0",
     "react-dom": "^15.1.0"
   },
   "devDependencies": {
+    "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",

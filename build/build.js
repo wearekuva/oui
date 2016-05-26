@@ -16,7 +16,7 @@ var banner =
 // update main file
 var main = fs
   .readFileSync('src/index.js', 'utf-8')
-  .replace(/Oui\.version = '[\d\.]+'/, "Oui.version = '" + version + "'")
+  .replace(/oui\.version = '[\d\.]+'/, "oui.version = '" + version + "'")
 fs.writeFileSync('src/index.js', main)
 
 
