@@ -14,7 +14,7 @@ class BaseComponent extends Component {
 
 var style = {
     boxSizing: 'border-box',
-    width: 250,
+    width: 350,
     background: 'rgb( 250, 250, 250 )',
     borderRadius: 2,
     padding: '0.5em',

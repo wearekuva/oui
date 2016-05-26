@@ -13,9 +13,17 @@
 
     <script>
 
-        let a = {b:10}
+        let a = {
+            someProp:10,
+            anotherValue:true,
+
+            folder:{
+                someOtherValue: 'This is a string'
+            }
+
+        }
         // oui.annotate({ options:{aaa:20, bbbb:30, cccc:40}, control:oui.ComboBox })( a, 'b' )
-        oui.annotate({ options:[20, 10, 40], control:oui.ComboBox })( a, 'b' )
+        oui.oneOf({ options:[20, 10, 40], control:oui.ComboBox })( a, 'b' )
         oui( a )
 
     </script>

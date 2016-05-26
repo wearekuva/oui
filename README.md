@@ -22,14 +22,11 @@ Once installed, create an object containing some properties or reference to an e
 ```javascript
 import oui from 'oui'
 
-let api = {
+oui({
   numeric : 10,
   stringy : "It's a string!",
   bool: false
-}
-
-oui( api )
-
+})
 ```
 
 This generates a set of controllers mapped to the `api`s properties. Modifying a controller also updates the associated property by mutating the `api`. This allows you to modify your program at runtime without setting breakpoints.
