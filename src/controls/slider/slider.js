@@ -113,7 +113,6 @@ class Slider extends React.Component{
 
 
     shouldComponentUpdate( nextProps, nextState ){
-        console.log( 'should update', shallowCompare( this, nextProps, nextState ) )
         return shallowCompare( this, nextProps, nextState )
     }
 
@@ -136,8 +135,6 @@ class Slider extends React.Component{
 
     render(){
 
-        console.log( 'slider render')
-
         let { value, label, min, max, step, onChange, includeStepper, style } = this.props,
             stepperProps = { value, label, min, max, step, onChange }
 
@@ -146,13 +143,13 @@ class Slider extends React.Component{
 
         return <div style={ base }>
             { includeStepper ? <NumericStepper {...stepperProps} onChange={ this.onNumericStepperChange }/> : null }
-            <svg width='100%' height="0.9em"
+            <svg width='100%' height="1em"
                 style={ defaultStyle }
                 onMouseDown={this.onMouseDown}
                 onTouchStart={this.onMouseDown}>
                 <rect width='100%' height="100%" style={{ ...defaultStyle, ...backgroundBar, ...style.backgroundBar }}/>
                 <rect width='100%' height="100%" style={{ ...defaultStyle, ...bar, ...style.bar }} width={ offsetPercentage }/>
-                <circle cy={'50%'} cx={offsetPercentage} r='0.45em' style={{ ...defaultStyle, ...thumb, ...style.thumb }}/>
+                <circle cy={'50%'} cx={offsetPercentage} r='0.5em' style={{ ...defaultStyle, ...thumb, ...style.thumb }}/>
             </svg>
         </div>
     }

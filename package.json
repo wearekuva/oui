@@ -9,6 +9,7 @@
   "jsnext:main": "oui/oui",
   "scripts": {
     "build": "node build/build.js",
+    "dev": "webpack-dev-server --watch --inline --config build/webpack.dev.config.js --host 0.0.0.0",
     "test": "karma start --single-run --no-auto-watch build/karma.config.js"
   },
   "bugs": {
@@ -40,7 +41,8 @@
     "karma-webpack": "^1.7.0",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "repository": {
     "type": "git",
