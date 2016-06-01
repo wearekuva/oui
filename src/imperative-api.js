@@ -39,6 +39,7 @@ export default opts => {
         }else if( container === null ){
 
             container = document.createElement('div')
+            container.style.margin = '0.5em'
             domElement.appendChild( container )
 
         }

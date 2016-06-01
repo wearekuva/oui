@@ -5,9 +5,6 @@
             body{
                 background-color: red;
             }
-            .oui-panel{
-                background-color:blue;
-            }
         </style>
     </head>
     <body>
@@ -28,6 +25,14 @@
 
         oui.oneOf({ options:[20, 10, 40], control:oui.ComboBox })( a, 'b' )
         oui( a )
+
+
+        var panel = oui.panel()
+        panel( a )
+
+        var panel = oui.panel()
+        panel( a )
+
 
     </script>
 

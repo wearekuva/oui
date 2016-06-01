@@ -1,9 +1,9 @@
 export const base = {
     fontFamily: "Menlo, Inconcolata, Consolas",
-    margin: '1em',
+    // margin: '0.5em',
     fontSize: 11,
     color: 'rgb(66,66,66)',
-    borderRadius:2
+    // borderRadius:2
 }
 
 export const secondary = {
