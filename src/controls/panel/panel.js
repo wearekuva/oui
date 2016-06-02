@@ -1,18 +1,35 @@
 import React, { Component } from 'react'
 import { base } from '../styles'
+import MdChevronLeft from 'react-icons/lib/md/chevron-left'
+import MdExpandMore from 'react-icons/lib/md/expand-more'
 
-class BaseComponent extends Component {
+class Panel extends Component {
+
+    constructor(){
+
+        super()
+
+        this.state = { open: true }
+
+        this.toggleOpen = _ => this.setState({ open:!this.state.open })
+
+    }
 
     render(){
 
-        let { children } = this.props
+        let { children } = this.props,
+            { open } = this.state,
+            Chevron = open ? MdExpandMore : MdChevronLeft
 
         return <div style={{ ...base, ...style }} class='oui-panel' >
-            <header style={{lineHeight:'11px'}}>
-                <label>Panel</label>
-                <hr style={{border:'1px solid rgb(210,210,210)', borderBottom: 0 }}/>
+            <header style={{lineHeight:'11px'}} onClick={this.toggleOpen}>
+                <div style={{display:'flex'}}>
+                    <label>Panel</label>
+                    <Chevron style={{marginLeft:'auto'}} />
+                </div>
+                { open ? <hr style={{border:'1px solid rgb(210,210,210)', borderBottom: 0 }}/> : null }
             </header>
-            { children }
+            { open ? children : null }
         </div>
     }
 }
@@ -32,13 +49,8 @@ var style = {
     borderRadius: 2,
     padding: '1em',
     // border: 'green'
-    margin: 0,
+    margin: 0
     // marginBottom: '0'
 }
 
-// element.style.flexDirection = 'column'
-// element.style.flexWrap = 'wrap'
-// element.style.alignItems = 'flex-start'
-// element.style.alignContent = 'flex-start'
-
-export default BaseComponent
+export default Panel
