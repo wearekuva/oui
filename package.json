@@ -19,7 +19,8 @@
     "es7-reflect-metadata": "^1.6.0",
     "preact-compat": "^1.7.1",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "react-icons": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",

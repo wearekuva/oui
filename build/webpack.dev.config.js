@@ -2,19 +2,20 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index',
-  // resolve: {
-  //     alias: {
-  //         'react': 'preact-compat',
-  //         'react-dom': 'preact-compat'
-  //     }
-  // },
+  entry: './test/index',
+  resolve: {
+      alias: {
+          'oui' : '../src/index'
+        //   'react': 'preact-compat',
+        //   'react-dom': 'preact-compat'
+      }
+  },
   output: {
     path: path.resolve( __dirname, './dist'),
-    filename: 'oui.dev.js',
-    library: 'oui',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    filename: 'bundle.js',
+    // library: 'oui',
+    // libraryTarget: 'umd',
+    // umdNamedDefine: true
   },
   module: {
     loaders: [

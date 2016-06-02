@@ -19,7 +19,7 @@ class TextInput extends React.Component {
 		return <div style={{ ...base, ...style, display:'flex' }}>
 			<label>{ label }</label>
 	        <input type="text" value={value}
-	            style={{ ...base, ...defaultStyle }} onInput={evt => onChange( evt.target.value )}/>
+	            style={{ ...defaultStyle }} onInput={evt => onChange( evt.target.value )}/>
 		</div>
 	}
 }
@@ -64,6 +64,8 @@ TextInput.defaultProps = {
 
 var defaultStyle = {
     fontFamily: 'inherit',
+	fontSize: 'inherit',
+	color: 'inherit',
     borderTop: 'none',
     borderLeft: 'none',
     borderRight: 'none',

@@ -40,6 +40,8 @@ export default opts => {
 
             container = document.createElement('div')
             container.style.margin = '0.5em'
+            container.style.backgroundColor = 'green'
+            container.style.flexBasis = 'auto'
             domElement.appendChild( container )
 
         }

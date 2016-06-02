@@ -10,10 +10,6 @@ import React, { PropTypes } from 'react'
 
 export default Comp => {
 
-    var style = {
-        borderTop: '1px solid rgb(210, 210, 210)'
-    }
-
     class WrappedComponent extends Comp {
 
         constructor(){

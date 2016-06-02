@@ -30,12 +30,11 @@ class Folder extends Component {
             Chevron = open ? MdExpandMore : MdChevronLeft
 
         return <div style={base}>
-            <div onClick={this.toggleOpen} style={{display:'flex'}}>
+            <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>
                 <label>{ label }</label>
-                <MdChevronLeft style={{marginLeft:'auto', display: open ? 'none' : 'visible'}} />
-                <MdExpandMore style={{marginLeft:'auto', display: open ? 'visible' : 'none'}} />
+                <Chevron style={{marginLeft:'auto'}} />
             </div>
-            { open ? <div>{ value() }</div> : null }
+            { open ? <div style={{padding:'1em', backgroundColor: 'rgba( 1, 1, 1, 0.05 )', borderRadius:2}}>{ value() }</div> : null }
         </div>
 
     }
