@@ -26,7 +26,7 @@ var style = {
     // flexDirection: 'column',
     // flexWrap: 'wrap',
     // alignItems: 'baseline',
-
+    overflow:'scroll',
     width: 300,
     background: 'rgb( 250, 250, 250 )',
     borderRadius: 2,
