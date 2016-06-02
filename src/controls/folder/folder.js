@@ -34,7 +34,7 @@ class Folder extends Component {
                 <label>{ label }</label>
                 <Chevron style={{marginLeft:'auto'}} />
             </div>
-            { open ? <div style={{padding:'1em', backgroundColor: 'rgba( 1, 1, 1, 0.05 )', borderRadius:2}}>{ value() }</div> : null }
+            { open ? <div style={{padding:'1em', backgroundColor: 'rgba( 1, 1, 1, 0.04 )', borderRadius:2}}>{ value() }</div> : null }
         </div>
 
     }
