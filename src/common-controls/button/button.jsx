@@ -1,5 +1,5 @@
 import React from 'react'
-import radium from 'radium'
+// import radium from 'radium'
 import { base, highlight } from '../styles'
 
 let defaultStyle = {
@@ -24,7 +24,7 @@ let defaultStyle = {
 let Button = props => <button {...props} style={[ base, defaultStyle, props.style ]} >{ props.label }</button>
 
 
-Button = radium( Button )
+// Button = radium( Button )
 
 Button.defaultProps = {
 
