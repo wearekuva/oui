@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import radium from 'radium'
+// import radium from 'radium'
 import { base } from '../styles'
 
 
@@ -33,7 +33,7 @@ let ComboBox = ({ label, options, value, onChange }) => {
 
 }
 
-ComboBox = radium( ComboBox )
+// ComboBox = radium( ComboBox )
 
 ComboBox.defaultProps = {
 
