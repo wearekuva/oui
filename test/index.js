@@ -1,8 +1,11 @@
-import oui from 'oui'
+import { oui, oneOf } from 'oui'
+import { color } from 'common-controls/colorpicker'
 
-console.log( oui )
+
 
 let a = {
+
+    b: 10,
     someProp:10,
     someProp2:10,
     someProp3:10,
@@ -11,6 +14,9 @@ let a = {
     someProp6:10,
     someProp7:10,
     anotherValue:true,
+
+
+    col:[ 1, 1, 1],
 
     folder:{
         someOtherValue: 'This is a string',
@@ -39,7 +45,8 @@ let a = {
     oooh:'its a string'
 }
 
-oui.oneOf({ options:[20, 10, 40], control:oui.ComboBox })( a, 'b' )
+oneOf({ options:[20, 10, 40] })( a, 'b' )
+color()( a, 'col' )
 oui( a )
 
 

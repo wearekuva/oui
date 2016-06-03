@@ -21,7 +21,7 @@ let defaultStyle = {
     Pretty self explanatory. Documentation included for completeness
 */
 
-let Button = props => <button {...props} style={[ base, defaultStyle, props.style ]} >{ props.label }</button>
+let Button = props => <button {...props} style={{ ...base, ...defaultStyle, ...props.style }} >{ props.label }</button>
 
 
 // Button = radium( Button )

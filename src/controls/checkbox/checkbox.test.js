@@ -27,7 +27,7 @@ describe( 'Checkbox', () => {
         let on = { change : _ => _ }
         spyOn( on, 'change' )
         const wrapper = shallow(<Checkbox value={false} onChange={on.change}/>)
-        wrapper.find('label').simulate('click');
+        wrapper.simulate('click');
         expect( on.change ).toHaveBeenCalledWith( true )
 
     })

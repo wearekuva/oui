@@ -1,5 +1,4 @@
 import React from 'react'
-import radium from 'radium'
 import Colr from 'colr'
 import { PropTypes } from 'react'
 import Button from '../../button'

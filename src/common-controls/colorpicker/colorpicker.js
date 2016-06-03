@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import radium from 'radium'
 import HSVColorPicker from './hsv/hsv-colorpicker'
 import Colr from 'colr'
 import Palette from './palette/palette'
 import FaAdd from 'react-icons/lib/md/add';
 import Button from '../button'
 import { base, secondary, highlight } from '../styles'
-import shallowCompare from 'react-addons-shallow-compare'
 import getConverterForColorType from './color-converter'
 import { rgbObject, rgbArray, hsvObject, hslObject } from './validators'
 
@@ -29,8 +27,6 @@ from `staging.com`.
 
 
 class ColorPicker extends Component {
-
-    //shouldComponentUpdate: shallowCompare,
 
     constructor(){
         super()
@@ -77,17 +73,17 @@ class ColorPicker extends Component {
             hsvColor = toHsv( value )
 
 
-        return <div style={[base, style, {height:'auto'}]}>
+        return <div style={{ ...base, ...style, height:'auto'}}>
             <div onClick={ v => this.setState({open:!open})}>
                 { label }
-                <span style={[ colorDropletStyle, {backgroundColor:Colr.fromHsvObject( hsvColor ).toHex() } ]}></span>
+                <span style={{ ...colorDropletStyle, backgroundColor:Colr.fromHsvObject( hsvColor ).toHex() }}></span>
             </div>
             { open ?
                 <div>
                     <HSVColorPicker style={ style } value={ hsvColor } onChange={ this.onColorChange } />
                     <Palette key={'user-palette'} values={ palette.map( toHsv ) } onSelect={ this.onColorChange } />
                     <Palette key={'system-palette'} values={ JSON.parse( localStorage.getItem( 'dui.colorpicker' )) } onSelect={ this.onColorChange } onDeselect={ this.onRemoveColorClick.bind( this ) } />
-                    <span style={[ base, addButton ]}><FaAdd onClick={ e => this.onAddColorClick( toHsv( value )) }/></span>
+                    <span style={{ ...base, ...addButton }}><FaAdd onClick={ e => this.onAddColorClick( toHsv( value )) }/></span>
                 </div>
             : null }
         </div>
@@ -97,7 +93,7 @@ class ColorPicker extends Component {
 ColorPicker.displayName = 'ColorPicker'
 
 // ColorPicker = saveState( ColorPicker )
-ColorPicker = radium( ColorPicker )
+// ColorPicker = radium( ColorPicker )
 
 let ValuePropTypeError = ( propName, componentName ) => new Error( 'Invalid prop `' + propName + '` supplied to' +
   ' `' + componentName + '`. Validation failed.' )

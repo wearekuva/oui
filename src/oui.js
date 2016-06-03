@@ -1,12 +1,16 @@
 import panel from './imperative-api'
-import ComboBox from './controls/combobox'
+import ComboBox, { oneOf } from './controls/combobox'
 import { annotate } from './annotate'
 import withChange from './controls/with-change-object'
 
 let oui = panel()
 
-oui.annotate = annotate
-oui.panel = panel
-oui.oneOf = options => annotate({ control:withChange( ComboBox ), options })
+// oui.annotate = annotate
+// oui.panel = panel
+// oui.oneOf = oneOf
 
-export default oui
+console.log( ComboBox. oneOf )
+
+export default { oui, panel, annotate, oneOf }
+// export { panel, oneOf }
+// export oneOf

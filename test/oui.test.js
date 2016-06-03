@@ -10,7 +10,7 @@ import { annotate, getAnnotation, hasAnnotation } from '../src/annotate'
 // import { stepper } from '../src/components'
 // import NumericStepper from 'core-controllers/es5/numericstepper'
 // import { combobox } from '../src/components'
-import oneOf, { ComboBox } from '../src/controls/combobox'
+import ComboBox from '../src/controls/combobox'
 
 
 describe( 'Annotations:', () => {
@@ -51,7 +51,7 @@ describe( 'Annotations:', () => {
         oneOf(['a', 'b', 'c'])( obj, 'c' )
 
         const expected = getAnnotation( obj, 'c' ).type
-
+        console.log( Co)
         expect( expected ).toBe( ComboBox )
     })
 

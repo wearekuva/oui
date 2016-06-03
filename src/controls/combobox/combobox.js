@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import { annotate } from '../../annotate'
 import { base } from '../styles'
 
 
@@ -18,7 +17,9 @@ let defaultStyle = {
 
 class ComboBox extends React.Component {
 
-    render({ label, options, value, onChange }) {
+    render() {
+
+        let { label, options, value, onChange } = this.props
 
         let isArray = Array.isArray( options )
         let valueSelected = false
@@ -45,8 +46,6 @@ class ComboBox extends React.Component {
 
     }
 }
-
-// ComboBox = radium( ComboBox )
 
 ComboBox.defaultProps = {
 
