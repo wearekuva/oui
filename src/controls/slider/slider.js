@@ -209,8 +209,8 @@ Slider.defaultProps = {
     label: 'Slider',
     includeStepper: true,
     min: 0,
-    max: 10,
-    step: 0.1,
+    max: 100,
+    step: 1,
     onChange: a=>a,
     style:{width:'100%'}
 
