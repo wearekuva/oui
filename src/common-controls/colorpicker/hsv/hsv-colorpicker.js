@@ -50,7 +50,7 @@ class HSVColorPicker extends React.Component {
                 behaviour as changes to size are expected to be rare enough
             */
 
-            var rect = this.domRef.getBoundingClientRect()
+            var rect = e.currentTarget.getBoundingClientRect()
 
             this.setState({drag:true, boundingRect: rect })
             this.props.onChange( computeHsvaFromMouseEvent( e, rect ))
@@ -121,7 +121,7 @@ class HSVColorPicker extends React.Component {
         return <div>
             <div style={{ ...base, ...style }}>
                 <svg width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    ref={ref => this.domRef = ref} style={defaultStyle}
+                    style={defaultStyle}
                     onMouseDown={this.onMouseDown}
                     onMouseMove={this.state.drag ? this.onMouseMove : null}
                     onMouseUp={this.onMouseUp}

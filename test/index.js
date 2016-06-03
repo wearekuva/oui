@@ -7,10 +7,12 @@ let a = {
 
     // b: 10,
     bb:{
-        someProp:10
-    }
-    // someProp2:10,
-    // someProp3:10,
+        someProp:10,
+        col:[ 1, 1, 1],
+    },
+    col:[ 1, 1, 1],
+    someProp2:10,
+    someProp3:10
     // someProp4:10,
     // someProp5:10,
     // someProp6:10,
@@ -18,7 +20,7 @@ let a = {
     // anotherValue:true,
     //
     //
-    // col:[ 1, 1, 1],
+
     //
     // folder:{
     //     someOtherValue: 'This is a string',
@@ -48,7 +50,8 @@ let a = {
 }
 
 // oneOf({ options:[20, 10, 40] })( a, 'b' )
-// color({open:true})( a, 'col' )
+color({open:true})( a.bb, 'col' )
+color({open:true})( a, 'col' )
 // oui( a )
 // oui( a )
 // oui( a )
