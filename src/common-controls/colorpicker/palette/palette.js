@@ -3,6 +3,7 @@ import Colr from 'colr'
 import { PropTypes } from 'react'
 import Button from '../../button'
 import { base } from '../../styles'
+import MdRemove from 'react-icons/lib/md/remove';
 
 /**
  * The ColorButton is simply a coloured button used as
@@ -10,24 +11,24 @@ import { base } from '../../styles'
  */
 let ColorButton = props => {
 
-    let { value, onClick } = props
+    let { value, onClick, children } = props
 
     let color = Colr.fromHsvObject( value ).toHex()
 
     let style = {
         backgroundColor: color,
         width: '1em', height: '1em',
-        marginLeft: '0.3em',
+        // marginLeft: '0.3em',
         marginBottom: '0.5em',
-        marginRight: '0.3em',
-        padding: '0.7em',
+        marginRight: '0.5em',
+        padding: '0.5em',
         display: 'inline-block',
         ':hover':{
             backgroundColor: color
         }
     }
 
-    return <Button {...props} style={style} />
+    return <Button label='' {...props} style={style} >{ children }</Button>
 
 }
 
@@ -52,10 +53,11 @@ class Palette extends React.Component {
 
         return <div>
             { values.map(( color, i ) => <ColorButton key={i} value={color}
-                label={ i === hover ? '-' : '' }
                 onMouseOver={ e => ( areColoursRemoveable && e.shiftKey ? this.setState({hover:i}) : null )}
                 onMouseOut={ areColoursRemoveable ? e => this.setState({hover:null}) : null }
-                onClick={ e => ( e.shiftKey ? onDeselect( color, i ) : onSelect( color ))}/>
+                onClick={ e => ( e.shiftKey ? onDeselect( color, i ) : onSelect( color ))}>
+                    { i === hover ? <MdRemove/> : null }
+                </ColorButton>
             )}
         </div>
 

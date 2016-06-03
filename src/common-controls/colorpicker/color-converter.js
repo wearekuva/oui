@@ -13,7 +13,7 @@ export let rgbArr2Hsv = c => withAlpha( Colr.fromRgbArray(c.map( channel => chan
 export let hsv2Hsv = c => c
 
 rgb2Hsv.invert = c => withAlpha( Colr.fromHsvObject(c).toRawRgbObject(), c.a )
-rgbArr2Hsv.invert = c => Colr.fromHsvObject(c).toRawRgbArray().map( channel => channel / 255 ).concat( [c.a] )
+rgbArr2Hsv.invert = c => Colr.fromHsvObject(c).toRawRgbArray().map( channel => channel / 255 ).concat([ c.a ])
 hsv2Hsv.invert = c => c
 
 export default value => {

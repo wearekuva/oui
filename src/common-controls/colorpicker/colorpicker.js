@@ -3,7 +3,7 @@ import HSVColorPicker from './hsv/hsv-colorpicker'
 import Colr from 'colr'
 import Palette from './palette/palette'
 import FaAdd from 'react-icons/lib/md/add';
-import Button from '../button'
+
 import { base, secondary, highlight } from '../styles'
 import getConverterForColorType from './color-converter'
 import { rgbObject, rgbArray, hsvObject, hslObject } from './validators'
@@ -39,6 +39,7 @@ class ColorPicker extends Component {
         this.onColorChange = hsv => {
 
             let color = getConverterForColorType( this.props.value ).invert( hsv )
+            console.log( color, this.props.value )
             this.props.onChange( color )
         }
     }
@@ -85,7 +86,7 @@ class ColorPicker extends Component {
                     <HSVColorPicker style={ style } value={ hsvColor } onChange={ this.onColorChange } />
                     <Palette key={'user-palette'} values={ palette.map( toHsv ) } onSelect={ this.onColorChange } />
                     <Palette key={'system-palette'} values={ this.getSystemColors() } onSelect={ this.onColorChange } onDeselect={ this.onRemoveColorClick.bind( this ) } />
-                    <span style={{ ...base, ...addButton }}><FaAdd onClick={ e => this.onAddColorClick( toHsv( value )) }/></span>
+                    <FaAdd onClick={ e => this.onAddColorClick( toHsv( value )) }/>
                 </div>
             : null }
         </div>

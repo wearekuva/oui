@@ -7,8 +7,8 @@ module.exports = {
       alias: {
           'oui' : '../src',
           'common-controls': '../src/common-controls',
-          'react': 'preact-compat',
-          'react-dom': 'preact-compat'
+        //   'react': 'preact-compat',
+        //   'react-dom': 'preact-compat'
       }
   },
   output: {
