@@ -39,7 +39,6 @@ class ColorPicker extends Component {
         this.onColorChange = hsv => {
 
             let color = getConverterForColorType( this.props.value ).invert( hsv )
-            console.log( color, this.props.value )
             this.props.onChange( color )
         }
     }

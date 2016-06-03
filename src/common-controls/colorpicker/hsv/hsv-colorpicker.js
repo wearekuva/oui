@@ -17,7 +17,7 @@ class HSVColorPicker extends React.Component {
         super()
 
 
-        this.state = {drag:false, boundingRect: null, color: null };
+        this.state = {drag:false, boundingRect: null, value: null };
 
 
         let computeHsvaFromMouseEvent = ( e, bounds ) => {
@@ -25,8 +25,9 @@ class HSVColorPicker extends React.Component {
             let x = e.clientX === undefined ? e.touches[0].clientX : e.clientX,
                 y = e.clientY === undefined ? e.touches[0].clientY : e.clientY
 
+            let value = this.state.value || this.props.value
 
-            let h = this.props.value.h,
+            let h = value.h,
                 s = ( x - bounds.left ) / bounds.width * 100,
                 v = ( bounds.height - ( y - bounds.top )) / bounds.height * 100,
                 a = this.props.value.a
@@ -52,8 +53,9 @@ class HSVColorPicker extends React.Component {
 
             var rect = e.currentTarget.getBoundingClientRect()
 
-            this.setState({drag:true, boundingRect: rect })
-            this.props.onChange( computeHsvaFromMouseEvent( e, rect ))
+            let hsv = computeHsvaFromMouseEvent( e, rect )
+            this.setState({drag:true, boundingRect: rect, value:null })
+            this.props.onChange( hsv )
         }
 
 
@@ -72,19 +74,22 @@ class HSVColorPicker extends React.Component {
             let { s, v, a } = this.props.value
 
             if( s === 0 && v === 0 ){
-                this.setState({ color:{ h, s, v, a }}, _=> console.log( 'ersdf'))
+                this.setState({ value:{ h, s, v, a }})
             }else{
+                this.setState({value:null})
                 this.props.onChange({ h, s, v, a })
             }
         }
 
         this.onSaturationChange = s => {
-            let { h, v, a } = this.props.value
+            let { h, v, a } = this.state.value || this.props.value
+            this.setState({value:null})
             this.props.onChange({ h, s, v, a })
         }
 
         this.onValueChange = v => {
-            let { h, s, a } = this.props.value
+            let { h, s, a } = this.state.value || this.props.value
+            this.setState({value:null})
             this.props.onChange({ h, s, v, a })
         }
 
@@ -95,18 +100,18 @@ class HSVColorPicker extends React.Component {
     }
 
 
-    shouldComponentUpdate( nextProps, nextState ){
-
-        let { h, s, v, a } = this.props.value,
-            color = nextProps.value
-
-        return ( h !== color.h
-            || s !== color.s
-            || v !== color.v
-            || a !== color.a )
-            && shallowCompare( this, nextProps, nextState )
-
-    }
+    // shouldComponentUpdate( nextProps, nextState ){
+    //
+    //     let { h, s, v, a } = this.props.value,
+    //         color = nextProps.value
+    //
+    //     return ( h !== color.h
+    //         || s !== color.s
+    //         || v !== color.v
+    //         || a !== color.a )
+    //         && shallowCompare( this, nextProps, nextState )
+    //
+    // }
 
 
 
@@ -114,13 +119,11 @@ class HSVColorPicker extends React.Component {
 
     render(){
 
-        console.log( this.state.color )
-
 
         let { label, onChange, value, style } = this.props,
-            { h, s, v, a } = this.state.color || value
+            { h, s, v, a } = this.state.value || value
 
-
+        console.log( this.state.value )
 
         // Preact does not pick up Components defaultProps
         style = style || HSVColorPicker.defaultProps.style
