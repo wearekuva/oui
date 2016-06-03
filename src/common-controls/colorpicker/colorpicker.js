@@ -48,7 +48,8 @@ class ColorPicker extends Component {
 
         let colors = this.getSystemColors()
         colors.push( color )
-        localStorage.setItem( 'oui.colorpicker', JSON.stringify( colors ))
+        this.setSystemColors( colors )
+        this.forceUpdate()
     }
 
 
@@ -57,6 +58,7 @@ class ColorPicker extends Component {
         let colors = this.getSystemColors()
         colors.splice( index, 1 )
         this.setSystemColors( colors )
+        this.forceUpdate()
     }
 
 
