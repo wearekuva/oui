@@ -22,7 +22,6 @@ import domElement from './dom'
 import merge from './deep-merge'
 import warn from './warn'
 
-let noop = _ => _
 
 export default opts => {
 
