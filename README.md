@@ -5,7 +5,7 @@ _Objects go in, UI comes out_
 
 A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
-> This is still experimental. The api is likely to change without support. You have been warned!
+> This is still experimental. The api is likely to change. You have been warned!
 
 ## Usage
 
@@ -14,8 +14,6 @@ First add Oui to your project.
 ```
 npm install @marklundin/oui --save
 ```
-
-You can also grab a copy from the [dist](./dist) folder. It comes in minified and production flavours.
 
 Once installed, create an object containing some properties or reference to an existing object. Calling `Oui()` with an object will instrument it.
 
