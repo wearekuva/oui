@@ -113,9 +113,14 @@ class HSVColorPicker extends React.Component {
         let { label, onChange, value, style } = this.props,
             { h, s, v, a } = value
 
+
+        // Preact does not pick up Components defaultProps
+        style = style || HSVColorPicker.defaultProps.style
+
+
         return <div>
             <div style={{ ...base, ...style }}>
-                <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
+                <svg width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
                     ref={ref => this.domRef = ref} style={defaultStyle}
                     onMouseDown={this.onMouseDown}
                     onMouseMove={this.state.drag ? this.onMouseMove : null}
@@ -125,22 +130,22 @@ class HSVColorPicker extends React.Component {
                     onTouchEnd={this.onMouseUp}>
                     <defs>
                         <linearGradient id="horizontal-gradient">
-                            <stop offset="0%" stopColor="white"/>
-                            <stop offset="100%" stopColor={"hsl("+h+",100%,50%)"}/>
+                            <stop offset="0%" stop-color="white"/>
+                            <stop offset="100%" stop-color={"hsl("+h+",100%,50%)"}/>
                         </linearGradient>
                         <linearGradient id="vertical-gradient" x1="0" x2="0" y1="0" y2="1">
-                            <stop offset="0%" stopColor="black" stopOpacity="0"/>
-                            <stop offset="100%" stopColor="black"/>
+                            <stop offset="0%" stop-color="black" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="black"/>
                         </linearGradient>
                         <linearGradient id="alpha-gradient" x1="0" x2="1" y1="0" y2="0">
-                            <stop offset="0%" stopColor={"hsl("+h+",100%,50%)"} stopOpacity="0"/>
-                            <stop offset="100%" stopColor={"hsl("+h+",100%,50%)"} stopOpacity="100"/>
+                            <stop offset="0%" stop-color={"hsl("+h+",100%,50%)"} stop-opacity="0"/>
+                            <stop offset="100%" stop-color={"hsl("+h+",100%,50%)"} stop-opacity="100"/>
                         </linearGradient>
                         <linearGradient id='hsv-gradient'>{ stops }</linearGradient>
                     </defs>
                     <rect width='100%' height='100%' style={rect} fill='url(#horizontal-gradient)'/>
                     <rect width='100%' height='100%' style={rect} fill='url(#vertical-gradient)'/>
-                    <circle fill='none' stroke='white' strokeWidth="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
+                    <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
                 </svg>
             </div>
             <Slider includeStepper={false} label={''} step={1} min={1} max={360} value={h} style={hueSlider} onChange={this.onHueChange}/>
@@ -154,9 +159,6 @@ class HSVColorPicker extends React.Component {
 
     }
 }
-
-// HSVColorPicker = radium( HSVColorPicker )
-
 
 
 HSVColorPicker.defaultProps = {
@@ -238,7 +240,7 @@ var createLinearGradientOfSVGStops = steps => {
         stops = []
 
     while( l++ < steps ){
-        stops.push(<stop offset={String(i*l)+"%"} key={l} stopColor={"hsl( "+(l*360/steps)+", 100%, 50% )"} />)
+        stops.push(<stop offset={String(i*l)+"%"} key={l} stop-color={"hsl( "+(l*360/steps)+", 100%, 50% )"} />)
     }
 
     return stops
