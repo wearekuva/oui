@@ -29,14 +29,27 @@ class Folder extends Component {
             { open } = this.state,
             Chevron = open ? MdExpandMore : MdChevronLeft
 
-        return <div style={base}>
-            <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>
-                <label>{ label }</label>
-                <Chevron style={{marginLeft:'auto'}} />
-            </div>
-            { open ? <div style={{padding:'1em', backgroundColor: 'rgba( 1, 1, 1, 0.04 )', borderRadius:2}}>{ value() }</div> : null }
-        </div>
+        /*
+            There seems to be a bug with Preact and adjacent SVG's,
+            therefore I've used this somewhat clunky impl of the folder
+        */
 
+        return <div style={base}>
+            { open ?
+                <div>
+                    <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>
+                        <label>{ label }</label>
+                        <MdExpandMore style={{marginLeft:'auto'}} />
+                    </div>
+                    <div style={{padding:'1em', backgroundColor: 'rgba( 1, 1, 1, 0.04 )', borderRadius:2}}>{ value() }</div>
+                </div>
+                :
+                <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>
+                    <label>{ label }</label>
+                    <MdChevronLeft style={{marginLeft:'auto'}} />
+                </div>
+            }
+        </div>
     }
 }
 
