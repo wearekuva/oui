@@ -33,8 +33,8 @@ class ColorPicker extends Component {
         this.state = {colors:[]}
 
 
-        this.getSystemColors = _ => JSON.parse( localStorage.getItem( 'dui.colorpicker' )) || []
-        this.setSystemColors = colors => localStorage.setItem( 'dui.colorpicker', JSON.stringify( colors ))
+        this.getSystemColors = _ => JSON.parse( localStorage.getItem( 'oui.colorpicker' )) || []
+        this.setSystemColors = colors => localStorage.setItem( 'oui.colorpicker', JSON.stringify( colors ))
 
         this.onColorChange = hsv => {
 
@@ -48,22 +48,22 @@ class ColorPicker extends Component {
 
         let colors = this.getSystemColors()
         colors.push( color )
-        localStorage.setItem( 'dui.colorpicker', JSON.stringify( colors ))
+        localStorage.setItem( 'oui.colorpicker', JSON.stringify( colors ))
     }
 
 
     onRemoveColorClick( color, index ){
 
-
         let colors = this.getSystemColors()
         colors.splice( index, 1 )
         this.setSystemColors( colors )
-
     }
+
 
     componentWillMount(){
-        this.setState({ open: this.props.isOpen })
+        this.setState({ open: this.props.open })
     }
+
 
     render(){
 
@@ -82,7 +82,7 @@ class ColorPicker extends Component {
                 <div>
                     <HSVColorPicker style={ style } value={ hsvColor } onChange={ this.onColorChange } />
                     <Palette key={'user-palette'} values={ palette.map( toHsv ) } onSelect={ this.onColorChange } />
-                    <Palette key={'system-palette'} values={ JSON.parse( localStorage.getItem( 'dui.colorpicker' )) } onSelect={ this.onColorChange } onDeselect={ this.onRemoveColorClick.bind( this ) } />
+                    <Palette key={'system-palette'} values={ this.getSystemColors() } onSelect={ this.onColorChange } onDeselect={ this.onRemoveColorClick.bind( this ) } />
                     <span style={{ ...base, ...addButton }}><FaAdd onClick={ e => this.onAddColorClick( toHsv( value )) }/></span>
                 </div>
             : null }
@@ -92,8 +92,6 @@ class ColorPicker extends Component {
 
 ColorPicker.displayName = 'ColorPicker'
 
-// ColorPicker = saveState( ColorPicker )
-// ColorPicker = radium( ColorPicker )
 
 let ValuePropTypeError = ( propName, componentName ) => new Error( 'Invalid prop `' + propName + '` supplied to' +
   ' `' + componentName + '`. Validation failed.' )
@@ -129,7 +127,7 @@ ColorPicker.propTypes = {
     /**
      *  If true, the color picker will be initially open
      */
-    isOpen : PropTypes.bool,
+    open : PropTypes.bool,
 
 
     /**
@@ -177,8 +175,8 @@ ColorPicker.defaultProps = {
 
 var addButton = {
     ':hover': secondary,
-    marginLeft: '0.3em',
-    marginRight: '0.3em'
+    // marginLeft: '0.3em',
+    // marginRight: '0.3em'
 }
 
 

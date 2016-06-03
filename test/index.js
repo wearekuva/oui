@@ -46,7 +46,7 @@ let a = {
 }
 
 oneOf({ options:[20, 10, 40] })( a, 'b' )
-color()( a, 'col' )
+color({open:true})( a, 'col' )
 oui( a )
 
 

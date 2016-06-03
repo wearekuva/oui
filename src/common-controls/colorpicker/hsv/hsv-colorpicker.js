@@ -207,8 +207,8 @@ var alphaSlider = {
 }
 
 var stepperStyle = {
-    marginLeft: '0.3em',
-    marginRight: '0.3em'
+    // marginLeft: '0.3em',
+    // marginRight: '0.3em'
 }
 
 var componentLabels = {display:'inline'}
