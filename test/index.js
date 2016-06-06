@@ -10,7 +10,7 @@ let a = {
         someProp:10,
         col:[ 1, 1, 1],
     },
-    col:[ 0., 0., 0., 1 ],
+    col:[ 1, 1, 1, 1 ],
     someProp2:10,
     someProp3:10
     // someProp4:10,
