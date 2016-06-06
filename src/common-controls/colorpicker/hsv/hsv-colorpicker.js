@@ -3,7 +3,7 @@ import hsvCatch from './catch-degenerate-hsv'
 import Slider from '../../../controls/slider'
 import NumericStepper from '../../../controls/numericstepper'
 import { map } from '../../../math'
-import throttle from '../../utils/throttle'
+import throttle from '../../../controls/utils/throttle'
 import { base, secondary } from '../../styles'
 import shallowCompare from '../../../shallow-compare'
 

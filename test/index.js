@@ -1,5 +1,6 @@
 import { oui, oneOf, panel } from 'oui'
 import { color } from 'common-controls/colorpicker'
+import { xypad } from 'common-controls/xypad'
 
 
 
@@ -12,7 +13,8 @@ let a = {
     },
     col:[ 1, 1, 1, 1 ],
     someProp2:10,
-    someProp3:10
+    someProp3:{x:10, y:30},
+    somePropsdf:10
     // someProp4:10,
     // someProp5:10,
     // someProp6:10,
@@ -52,6 +54,7 @@ let a = {
 // oneOf({ options:[20, 10, 40] })( a, 'b' )
 color({open:true})( a.bb, 'col' )
 color({open:true})( a, 'col' )
+xypad()( a, 'someProp3' )
 // oui( a )
 // oui( a )
 // oui( a )

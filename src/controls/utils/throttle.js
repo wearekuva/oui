@@ -15,6 +15,7 @@ export default fn => {
     */
 
     let debounced = ( a ) => {
+        // console.log( performance.now() - t)
         fn( a )
         cancelAnimationFrame( rafID )
         rafID = null
@@ -29,7 +30,7 @@ export default fn => {
         //t = performance.now()
         if( !rafID ){
             // fn( e )
-            // if( e.persist ) e.persist()
+            if( e.persist ) e.persist()
             requestAnimationFrame( _ => {
                 rafID = requestAnimationFrame( debounced.bind( this, e ))
             })

@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
-import NumericStepper from '../numericstepper'
-import { map } from 'math'
-import throttle from '../utils/throttle'
-import radium from 'radium'
+import NumericStepper from '../../controls/numericstepper'
+import { map } from '../../math'
+import throttle from '../../controls/utils/throttle'
 import { base, secondary } from '../styles'
 
 
@@ -46,7 +45,7 @@ class XYPad extends React.Component {
                 results. However because of performance gains, this is acceptable
                 behaviour as changes to size are expected to be rare enough
             */
-            var rect = this.domRef.getBoundingClientRect()
+            var rect = e.currentTarget.getBoundingClientRect()
 
             this.setState({drag:true, rect })
             this.props.onChange( computeXYfromMouseEvent( e, rect ))
@@ -97,34 +96,29 @@ class XYPad extends React.Component {
             yVis = map( y, min.y, max.y, 0, 100 ) + '%'
 
 
-        return <div style={base}>
+        return <div style={{ ...base, height:'auto' }}>
             <div>{ label }</div>
-            <div style={[style]}>
-                <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
-                    style={defaultStyle}
-                    ref={ref => this.domRef = ref}
-                    onMouseDown={ this.onMouseDown}
-                    onMouseMove={ this.state.drag ? this.onMouseMove : null }
-                    onMouseUp={ this.onMouseUp }
+            <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
+                style={{ ...defaultStyle, ...style }}
+                ref={ref => this.domRef = ref}
+                onMouseDown={ this.onMouseDown}
+                onMouseMove={ this.state.drag ? this.onMouseMove : null }
+                onMouseUp={ this.onMouseUp }
 
-                    onTouchStart={ this.onMouseDown }
-                    onTouchMove={ this.onTouchMove }
-                    onTouchEnd={ this.onMouseUp }>
+                onTouchStart={ this.onMouseDown }
+                onTouchMove={ this.onTouchMove }
+                onTouchEnd={ this.onMouseUp }>
 
-                    <rect fill='none' stroke={secondary.color} strokeWidth='1' width='100%' height='100%' />
-                    <line x1={xVis} x2={xVis} y1={0} y2='100%' style={[defaultStyle, style, crisp]}/>
-                    <line x1={0} x2='100%' y1={yVis} y2={yVis} style={[defaultStyle, style, crisp]}/>
-                    <circle r={3} cx={xVis} cy={yVis} style={circle} />
-                </svg>
-                <NumericStepper style={{ ...componentLabels, width:style.width }} min={min.x} max={max.x} value={x} onChange={ this.onXChange } label={'X'}/>
-                <NumericStepper style={{ ...componentLabels, width:style.width }} min={min.y} max={max.y} value={y} onChange={ this.onYChange } label={'Y'}/>
-            </div>
-            <div style={{clear: 'both'}}></div>
+                <rect fill='none' stroke={secondary.color} strokeWidth='1' width='100%' height='100%' />
+                <line x1={xVis} x2={xVis} y1={0} y2='100%' style={{ ...defaultStyle, ...style, ...crisp }}/>
+                <line x1={0} x2='100%' y1={yVis} y2={yVis} style={{ ...defaultStyle, ...style, ...crisp }}/>
+                <circle r={3} cx={xVis} cy={yVis} style={circle} />
+            </svg>
+            <NumericStepper style={{ ...componentLabels, width:style.width }} min={min.x} max={max.x} value={x} onChange={ this.onXChange } label={'X'}/>
+            <NumericStepper style={{ ...componentLabels, width:style.width }} min={min.y} max={max.y} value={y} onChange={ this.onYChange } label={'Y'}/>
         </div>
     }
 }
-
-XYPad = radium( XYPad )
 
 XYPad.propTypes = {
 
@@ -194,7 +188,7 @@ var circle = {
     stroke:'none'
 }
 
-var componentLabels = {display:'inline'}
+var componentLabels = {display:'visible'}
 
 
 export default XYPad
