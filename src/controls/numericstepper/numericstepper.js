@@ -118,6 +118,8 @@ var defaultStyle = {
     backgroundColor : 'transparent',
     outline: 'none',
     textAlign: 'center',
+    width:30,
+    color: base.color,
     // float:'right',
     marginLeft:'auto',
     ":focus":{
