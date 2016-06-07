@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { base } from '../styles'
+import { base, secondary } from '../styles'
 import MdChevronLeft from 'react-icons/lib/md/chevron-left'
 import MdExpandMore from 'react-icons/lib/md/expand-more'
 
@@ -27,11 +27,22 @@ class Panel extends Component {
                     <label>Panel</label>
                     <Chevron style={{marginLeft:'auto'}} />
                 </div>
-                { open ? <hr style={{border:'1px solid rgb(210,210,210)', borderBottom: 0 }}/> : null }
+                { open ? <hr style={ lineStyle }/> : null }
             </header>
             { open ? children : null }
         </div>
     }
+}
+
+var lineStyle = {
+    borderWidth: '0px 0px 1px 0px',
+    borderTopStyle: 'solid',
+    borderRightStyle: 'solid',
+    borderLeftStyle: 'solid',
+    borderTopColor: secondary.color,
+    borderRightColor: secondary.color,
+    borderLeftColor: secondary.color,
+    borderBottomColor: secondary.color
 }
 
 var style = {

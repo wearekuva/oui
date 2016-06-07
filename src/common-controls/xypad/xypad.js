@@ -22,7 +22,7 @@ class XYPad extends React.Component {
         super()
 
 
-        this.state = {drag:false}
+        this.state = {drag:false, open:true}
 
 
         let computeXYfromMouseEvent = ( e, bounds ) => ({
@@ -86,6 +86,7 @@ class XYPad extends React.Component {
     render(){
 
         let { value, label, onChange, style } = this.props,
+            { open } = this.state,
             { x, y } = value
 
         let min = { ...this.props.min, ...XYPad.min },
@@ -97,14 +98,14 @@ class XYPad extends React.Component {
 
 
         return <div style={{ ...base, height:'auto' }}>
-            <div style={{display:'flex'}}>
-                <label>{ label }</label>
+            <div style={{display:'flex', alignItems: 'center'}}>
+                <label onClick={ v => this.setState({open:!open})}>{ label }</label>
                 <div style={{display:'flex', marginLeft:'auto'}}>
                     <NumericStepper style={ componentLabels } min={min.x} max={max.x} value={x} onChange={ this.onXChange } label={'X'}/>
                     <NumericStepper style={ componentLabels } min={min.y} max={max.y} value={y} onChange={ this.onYChange } label={'Y'}/>
                 </div>
             </div>
-            <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
+            { open ? <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
                 style={{ ...defaultStyle, ...style }}
                 ref={ref => this.domRef = ref}
                 onMouseDown={ this.onMouseDown}
@@ -119,7 +120,7 @@ class XYPad extends React.Component {
                 <line x1={xVis} x2={xVis} y1={0} y2='100%' style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <line x1={0} x2='100%' y1={yVis} y2={yVis} style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <circle r={3} cx={xVis} cy={yVis} style={circle} />
-            </svg>
+            </svg> : null }
         </div>
     }
 }
