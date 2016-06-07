@@ -33,7 +33,7 @@ class NumericStepper extends React.Component{
                 if( !isNaN( value )) this.props.onChange( validate( value ))
             }
 
-        return <div style={{ ...base, display:'flex', ...style }}>
+        return <div style={{ ...base, display:'flex', alignItems: 'baseline', ...style }}>
             <label >{ label }</label>
             <style>{`
                 input[type=number] {
@@ -119,6 +119,8 @@ var defaultStyle = {
     outline: 'none',
     textAlign: 'center',
     width:30,
+    fontSize: base.fontSize,
+    // lineHeight: '15  px',
     color: base.color,
     // float:'right',
     marginLeft:'auto',
