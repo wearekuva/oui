@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import NumericStepper from '../../controls/numericstepper'
 import { map } from '../../math'
 import throttle from '../../controls/utils/throttle'
-import { base, secondary } from '../styles'
+import { base, secondary } from '../../controls/styles'
 
 
 /**
@@ -97,7 +97,13 @@ class XYPad extends React.Component {
 
 
         return <div style={{ ...base, height:'auto' }}>
-            <div>{ label }</div>
+            <div style={{display:'flex'}}>
+                <label>{ label }</label>
+                <div style={{display:'flex', marginLeft:'auto'}}>
+                    <NumericStepper style={ componentLabels } min={min.x} max={max.x} value={x} onChange={ this.onXChange } label={'X'}/>
+                    <NumericStepper style={ componentLabels } min={min.y} max={max.y} value={y} onChange={ this.onYChange } label={'Y'}/>
+                </div>
+            </div>
             <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
                 style={{ ...defaultStyle, ...style }}
                 ref={ref => this.domRef = ref}
@@ -114,8 +120,6 @@ class XYPad extends React.Component {
                 <line x1={0} x2='100%' y1={yVis} y2={yVis} style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <circle r={3} cx={xVis} cy={yVis} style={circle} />
             </svg>
-            <NumericStepper style={{ ...componentLabels, width:style.width }} min={min.x} max={max.x} value={x} onChange={ this.onXChange } label={'X'}/>
-            <NumericStepper style={{ ...componentLabels, width:style.width }} min={min.y} max={max.y} value={y} onChange={ this.onYChange } label={'Y'}/>
         </div>
     }
 }
@@ -188,7 +192,7 @@ var circle = {
     stroke:'none'
 }
 
-var componentLabels = {display:'visible'}
+var componentLabels = {display:'inline'}
 
 
 export default XYPad

@@ -4,7 +4,7 @@ import Colr from 'colr'
 import Palette from './palette/palette'
 import FaAdd from 'react-icons/lib/md/add';
 
-import { base, secondary, highlight } from '../styles'
+import { base, secondary, highlight } from '../../controls/styles'
 import getConverterForColorType from './color-converter'
 import { rgbObject, rgbArray, hsvObject, hslObject } from './validators'
 
@@ -76,9 +76,9 @@ class ColorPicker extends Component {
 
 
         return <div style={{ ...base, ...style, height:'auto'}}>
-            <div onClick={ v => this.setState({open:!open})}>
-                { label }
-                <span style={{ ...colorDropletStyle, backgroundColor:Colr.fromHsvObject( hsvColor ).toHex() }}></span>
+            <div style={{display:'flex', alignItems: 'baseline'}} onClick={ v => this.setState({open:!open})}>
+                <label>{ label }</label>
+                <span style={{ ...colorDropletStyle, marginLeft:'auto', backgroundColor:Colr.fromHsvObject( hsvColor ).toHex() }}></span>
             </div>
             { open ?
                 <div>

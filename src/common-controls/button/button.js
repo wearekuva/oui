@@ -1,6 +1,6 @@
 import React from 'react'
 // import radium from 'radium'
-import { base, highlight } from '../styles'
+import { base, highlight } from '../../controls/styles'
 
 let defaultStyle = {
     cursor: 'pointer',

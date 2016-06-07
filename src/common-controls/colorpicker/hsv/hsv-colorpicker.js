@@ -4,7 +4,7 @@ import Slider from '../../../controls/slider'
 import NumericStepper from '../../../controls/numericstepper'
 import { map } from '../../../math'
 import throttle from '../../../controls/utils/throttle'
-import { base, secondary } from '../../styles'
+import { base, secondary } from '../../../controls/styles'
 import shallowCompare from '../../../shallow-compare'
 
 
