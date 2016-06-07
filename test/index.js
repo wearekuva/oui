@@ -1,6 +1,7 @@
 import { oui, oneOf, panel } from 'oui'
 import { color } from 'common-controls/colorpicker'
 import { xypad } from 'common-controls/xypad'
+import { graph } from 'common-controls/graph'
 
 
 
@@ -14,7 +15,9 @@ let a = {
     col:[ 1, 1, 1, 1 ],
     someProp2:10,
     someProp3:{x:10, y:30},
-    somePropsdf:10
+    somePropsdf:10,
+
+    someGraph: [10, 20, 10, 20, 10, 20 ],
     // someProp4:10,
     // someProp5:10,
     // someProp6:10,
@@ -55,6 +58,7 @@ let a = {
 color({open:true})( a.bb, 'col' )
 color({open:true})( a, 'col' )
 xypad()( a, 'someProp3' )
+graph()( a, 'someGraph' )
 // oui( a )
 // oui( a )
 // oui( a )
