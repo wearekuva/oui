@@ -5,11 +5,9 @@
   "version": "0.0.1",
   "author": "Mark Lundin <hi@mark-lundin.com>",
   "license": "MIT",
-  "main": "lib",
-  "jsnext:main": "oui/oui",
+  "main": "dist/oui.min.js",
   "scripts": {
     "build": "node build/build.js",
-    "babel": "babel src --out-dir lib",
     "dev": "webpack-dev-server --watch --inline --config build/webpack.dev.config.js --host 0.0.0.0",
     "test": "karma start --single-run --no-auto-watch build/karma.config.js"
   },

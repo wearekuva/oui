@@ -12,7 +12,7 @@ let a = {
         someProp:10,
         col:[ 1, 1, 1],
     },
-    col:[ 1, 1, 1, 1 ],
+    col:[ 1, 1, 1 ],
     someProp2:10,
     'bool':false,
     someString:'This is a string',
@@ -114,7 +114,7 @@ let drawOui = t => {
     pp( b )
     ppp( c )
     b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
-    requestAnimationFrame( drawOui )
+    // requestAnimationFrame( drawOui )
 }
 
 drawOui( Date.now())
