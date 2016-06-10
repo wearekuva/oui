@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "author": "Mark Lundin <hi@mark-lundin.com>",
   "license": "MIT",
-  "main": "dist/oui.js",
+  "main": "dist/oui.min.js",
   "jsnext:main": "oui/oui",
   "scripts": {
     "build": "node build/build.js",
