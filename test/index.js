@@ -10,9 +10,10 @@ let a = {
     // b: 10,
     dir:{
         someProp:10,
-        col:[ 1, 1, 1],
+
     },
-    col:[ 1, 1, 1 ],
+    col1:[ 1, 1, 1],
+    col2:[ 1, 1, 1 ],
     someProp2:10,
     'bool':false,
     someString:'This is a string',
@@ -91,7 +92,8 @@ let c = {
 // oneOf({ options:[20, 10, 40] })( a, 'b' )
 color({open:true})( a.dir, 'col' )
 color({open:true})( b.folder, 'col' )
-color({open:true})( a, 'col' )
+color({open:true})( a, 'col1' )
+color({open:true})( a, 'col2' )
 xypad()( b, 'someProp3' )
 graph({fill:true})( b, 'someGraph' )
 graph()( c, 'someGraph' )
@@ -110,10 +112,13 @@ let ppp = panel()
 // p( a )
 
 let drawOui = t => {
+    b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
     p( a )
     pp( b )
     ppp( c )
-    b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
+
+    a.sdfsdf = 20
+
     // requestAnimationFrame( drawOui )
 }
 

@@ -5,8 +5,17 @@
  * Released under the MIT License.
  * 
  */
-var oui =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define("oui", [], factory);
+	else if(typeof exports === 'object')
+		exports["oui"] = factory();
+	else
+		root["oui"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -4620,4 +4629,6 @@ var oui =
 	module.exports = exports['default'];
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;

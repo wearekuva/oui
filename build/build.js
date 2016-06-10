@@ -31,7 +31,9 @@ var devConfig = Object.assign( webpackconfig, {
     output:{
         library: 'oui',
         path: 'dist',
-        filename: 'oui.js'
+        filename: 'oui.js',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
     plugins: [
         new webpack.BannerPlugin( banner ),
