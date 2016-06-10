@@ -22,9 +22,9 @@
     "preact-svg": "^1.6.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-icons": "^2.1.0"
-  },
-  "devDependencies": {
+    "react-icons": "^2.1.0",
+
+
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
@@ -46,6 +46,9 @@
     "phantomjs-prebuilt": "^2.1.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+
   },
   "repository": {
     "type": "git",
