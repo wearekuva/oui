@@ -1,9 +1,10 @@
 # Oui
-![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
-
-![Oui](http://imgur.com/GCqgzWw)
 
 _Objects go in, UI comes out_
+
+![Oui](http://i.imgur.com/GCqgzWw.png)
+
+![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
 
 A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
