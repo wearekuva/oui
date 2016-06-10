@@ -59,7 +59,6 @@ class Graph extends React.Component{
             length = value.length, n,
             interval = 100 / ( length - 1 )
 
-
         for( let i = 0 ; i < length ;i++ ){
             n = value[i]
             value2D.push( String( i * interval ))

@@ -30,10 +30,10 @@ export default Comp => class RGB2HSV extends React.Component {
 
     }
 
-    render( props, state ){
+    render(){
 
-        return <Comp { ...props }
-            value={ state.value || props.value }
+        return <Comp { ...this.props }
+            value={ this.state.value || this.props.value }
             onChange={change => this.conditionalChange( change )} />
 
     }
