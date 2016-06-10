@@ -9,6 +9,7 @@
   "jsnext:main": "oui/oui",
   "scripts": {
     "build": "node build/build.js",
+    "babel": "babel src --out-dir lib",
     "dev": "webpack-dev-server --watch --inline --config build/webpack.dev.config.js --host 0.0.0.0",
     "test": "karma start --single-run --no-auto-watch build/karma.config.js"
   },
