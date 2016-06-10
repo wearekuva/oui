@@ -122,6 +122,10 @@ class HSVColorPicker extends React.Component {
         style = style || HSVColorPicker.defaultProps.style
 
 
+        // Used to prevent collisions between fill() refs
+        let uuid = Math.floor( Math.random() * 999999999999999 )
+
+
         return <div>
             <div style={{ ...base, ...style }}>
                 <svg width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -133,11 +137,11 @@ class HSVColorPicker extends React.Component {
                     onTouchMove={this.state.drag ? this.onMouseMove : null}
                     onTouchEnd={this.onMouseUp}>
                     <defs>
-                        <linearGradient id="horizontal-gradient">
+                        <linearGradient id={"horizontal-gradient" + uuid }>
                             <stop offset="0%" stop-color="white"/>
                             <stop offset="100%" stop-color={"hsl("+h+",100%,50%)"}/>
                         </linearGradient>
-                        <linearGradient id="vertical-gradient" x1="0" x2="0" y1="0" y2="1">
+                        <linearGradient id={"vertical-gradient" + uuid } x1="0" x2="0" y1="0" y2="1">
                             <stop offset="0%" stop-color="black" stop-opacity="0"/>
                             <stop offset="100%" stop-color="black"/>
                         </linearGradient>
@@ -147,8 +151,8 @@ class HSVColorPicker extends React.Component {
                         </linearGradient>
                         <linearGradient id='hsv-gradient'>{ stops }</linearGradient>
                     </defs>
-                    <rect width='100%' height='100%' style={rect} fill='url(#horizontal-gradient)'/>
-                    <rect width='100%' height='100%' style={rect} fill='url(#vertical-gradient)'/>
+                    <rect width='100%' height='100%' style={rect} fill={'url(#horizontal-gradient'+uuid+')'}/>
+                    <rect width='100%' height='100%' style={rect} fill={'url(#vertical-gradient'+uuid+')'}/>
                     <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
                 </svg>
             </div>
