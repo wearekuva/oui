@@ -17,6 +17,7 @@
     "url": "https://github.com/marklundin/oui/issues"
   },
   "dependencies": {
+    "colr": "^1.2.2",
     "es7-reflect-metadata": "^1.6.0",
     "preact-compat": "^1.7.1",
     "preact-svg": "^1.6.0",
