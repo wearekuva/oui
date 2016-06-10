@@ -11,7 +11,7 @@
     "build": "node build/build.js",
     "dev": "webpack-dev-server --watch --inline --config build/webpack.dev.config.js --host 0.0.0.0",
     "test": "karma start --single-run --no-auto-watch build/karma.config.js",
-    "postinstall": "npm run build"
+    "postinstall": "npm install && npm run build"
   },
   "bugs": {
     "url": "https://github.com/marklundin/oui/issues"
