@@ -29,6 +29,7 @@ class Folder extends Component {
             { open } = this.state,
             Chevron = open ? MdExpandMore : MdChevronLeft
 
+        console.log( open )
 
         return <div style={base}>
                 <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>

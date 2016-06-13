@@ -18,13 +18,14 @@ class Panel extends Component {
     render(){
 
         let { children } = this.props,
-            { open } = this.state
+            { open } = this.state,
+            Chevron = open ? MdExpandMore : MdChevronLeft
 
         return <div style={{ ...base, ...style }} class='oui-panel' >
             <header style={{lineHeight:'11px'}} onClick={this.toggleOpen}>
                 <div style={{display:'flex'}}>
                     <label>Panel</label>
-                    <MdExpandMore style={{marginLeft:'auto'}} />
+                    <Chevron style={{marginLeft:'auto'}} />
                 </div>
                 { open ? <hr style={ lineStyle }/> : null }
             </header>
