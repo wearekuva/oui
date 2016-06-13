@@ -2130,7 +2130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * The default color of the component
 	     */value:_react2.default.PropTypes.shape({h:_react2.default.PropTypes.number.isRequired,s:_react2.default.PropTypes.number.isRequired,v:_react2.default.PropTypes.number.isRequired}).isRequired, /**
 	     * Optional component styling
-	     */style:_react2.default.PropTypes.object};var defaultStyle={cursor:'default'};var hueSlider={backgroundBar:{fill:'url(#hsv-gradient)'},bar:{fill:'none'},thumb:{fill:'white'},padding:'1em'};var alphaSlider={backgroundBar:{fill:'url(#alpha-gradient)'},bar:{fill:'none'},thumb:{fill:'white'},padding:'1em'};var stepperStyle={ // marginLeft: '0.3em',
+	     */style:_react2.default.PropTypes.object};var defaultStyle={cursor:'default',display:'block'};var hueSlider={backgroundBar:{fill:'url(#hsv-gradient)'},bar:{fill:'none'},thumb:{fill:'white'},padding:'1em'};var alphaSlider={backgroundBar:{fill:'url(#alpha-gradient)'},bar:{fill:'none'},thumb:{fill:'white'},padding:'1em'};var stepperStyle={ // marginLeft: '0.3em',
 	// marginRight: '0.3em'
 	};var componentLabels={display:'inline'};var colorDrop={borderRadius:"50%",width:'1em',height:'1em',float:'right'};var rect={rx:_styles.base.borderRadius,ry:_styles.base.borderRadius}; /*
 	    Creates an array of svg `<stop>` elements representing a full linear gradient
@@ -2318,7 +2318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *  If false, the numeric stepper is not displayed
 	     */includeStepper:_react2.default.PropTypes.bool, /**
 	     * Optional component styling
-	     */style:_react2.default.PropTypes.object};Slider.defaultProps={label:'Slider',includeStepper:true,min:0,max:100,step:1,onChange:function onChange(a){return a;},style:{width:'100%'}};var defaultStyle={overflow:'visible',cursor:'default',stroke:'none',rx:2,ry:2};var thumb={fill:'none'};var backgroundBar={fill:_styles.secondary.color};var bar={fill:_styles.highlight.color};exports.default=Slider;
+	     */style:_react2.default.PropTypes.object};Slider.defaultProps={label:'Slider',includeStepper:true,min:0,max:100,step:1,onChange:function onChange(a){return a;},style:{width:'100%'}};var defaultStyle={display:'block',overflow:'visible',cursor:'default',stroke:'none',rx:2,ry:2};var thumb={fill:'none'};var backgroundBar={fill:_styles.secondary.color};var bar={fill:_styles.highlight.color};exports.default=Slider;
 
 /***/ },
 /* 38 */
