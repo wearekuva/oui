@@ -218,6 +218,7 @@ Slider.defaultProps = {
 
 
 var defaultStyle = {
+    display: 'block',
     overflow:'visible',
     cursor: 'default',
     stroke: 'none',

@@ -200,7 +200,10 @@ HSVColorPicker.propTypes = {
 
 }
 
-let defaultStyle = { cursor: 'default' }
+let defaultStyle = {
+    cursor: 'default',
+    display: 'block'
+ }
 
 var hueSlider = {
     backgroundBar:{ fill:'url(#hsv-gradient)'},

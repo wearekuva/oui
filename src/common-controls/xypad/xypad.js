@@ -179,6 +179,7 @@ XYPad.defaultProps = {
 
 
 var defaultStyle = {
+    display:'block',
     cursor: 'default',
     stroke: secondary.color,
     strokeWidth: 1
