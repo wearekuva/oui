@@ -114,12 +114,12 @@ let ppp = panel()
 let drawOui = t => {
     b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
     p( a )
-    // pp( b )
-    // ppp( c )
+    pp( b )
+    ppp( c )
 
     a.sdfsdf = 20
 
-    // requestAnimationFrame( drawOui )
+    requestAnimationFrame( drawOui )
 }
 
 drawOui( Date.now())

@@ -55,7 +55,7 @@ var style = {
     // flexWrap: 'wrap',
     // alignItems: 'baseline',
     // overflow:'scroll',
-    width: 300,
+    width: 275,
     background: 'rgb( 250, 250, 250 )',
     borderRadius: 2,
     padding: '1em',

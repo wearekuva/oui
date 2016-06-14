@@ -171,7 +171,7 @@ class HSVColorPicker extends React.Component {
 
 HSVColorPicker.defaultProps = {
     label: 'HSVColorPicker',
-    style:{ width:'100%', height: 200 },
+    style:{ width:'100%', height: 150 },
     value:{ h:0, s:80, l:50 }
 }
 
