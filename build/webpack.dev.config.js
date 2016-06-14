@@ -6,9 +6,7 @@ module.exports = {
   resolve: {
       alias: {
           'oui' : '../src',
-          'common-controls': '../src/common-controls',
-          'react': 'preact-compat',
-          'react-dom': 'preact-compat'
+          'common-controls': '../src/common-controls'
       }
   },
   output: {

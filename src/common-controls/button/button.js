@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact-compat'
 // import radium from 'radium'
 import { base, highlight } from '../../controls/styles'
 

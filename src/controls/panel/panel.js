@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'preact-compat'
 import { base, secondary } from '../styles'
 import MdChevronLeft from 'react-icons/lib/md/chevron-left'
 import MdExpandMore from 'react-icons/lib/md/expand-more'
 
-class Panel extends Component {
+class Panel extends React.Component {
 
     constructor(){
 

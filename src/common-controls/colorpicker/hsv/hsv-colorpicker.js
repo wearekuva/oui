@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact-compat'
 import hsvCatch from './catch-degenerate-hsv'
 import Slider from '../../../controls/slider'
 import NumericStepper from '../../../controls/numericstepper'

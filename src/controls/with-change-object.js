@@ -5,7 +5,7 @@
     to have unneccesary references directly in components.
 */
 
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'preact-compat'
 
 
 export default Comp => {

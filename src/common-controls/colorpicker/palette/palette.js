@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { PropTypes } from 'preact-compat'
 import Colr from 'colr'
-import { PropTypes } from 'react'
 import Button from '../../button'
 import { base } from '../../../controls/styles'
 import MdRemove from 'react-icons/lib/md/remove';

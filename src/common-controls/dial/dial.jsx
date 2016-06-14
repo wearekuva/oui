@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'preact-compat'
 import radium from 'radium'
 import NumericStepper from '../numericstepper'
 import throttle from '../utils/throttle'

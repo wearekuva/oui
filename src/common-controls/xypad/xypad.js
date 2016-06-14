@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'preact-compat'
 import NumericStepper from '../../controls/numericstepper'
 import { map } from '../../math'
 import throttle from '../../controls/utils/throttle'

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'preact-compat'
 import { base } from '../styles'
 
 

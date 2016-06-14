@@ -83,7 +83,7 @@ import { colorpicker } from 'custom-comps'
 */
 
 
-import * as React from 'react'
+import * as React from 'preact-compat'
 import { getAnnotation }  from './annotate'
 import primitives from './primitive-components'
 import { validateProp } from './validation'

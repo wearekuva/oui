@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact-compat'
 import NumericStepper from '../numericstepper'
 import shallowCompare from '../../shallow-compare'
 import { map, clamp } from '../../math'

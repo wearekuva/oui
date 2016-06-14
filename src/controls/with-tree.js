@@ -10,7 +10,7 @@
 */
 
 import Tree from "../render-tree"
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'preact-compat'
 
 
 export default ( FolderComponent ) => {

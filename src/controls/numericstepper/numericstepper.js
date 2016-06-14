@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact-compat'
 // import radium from 'radium'
 import { clamp } from '../../math'
 import { base, secondary, highlight } from '../styles'

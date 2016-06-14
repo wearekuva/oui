@@ -14,8 +14,8 @@
 */
 
 
-import React from 'react'
-import dom from 'react-dom'
+import React from 'preact-compat'
+import dom from 'preact-compat'
 import Tree from './render-tree'
 import Panel from './controls/panel'
 import domElement from './dom'

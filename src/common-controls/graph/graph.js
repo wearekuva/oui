@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'preact-compat'
 import { base, secondary, highlight } from '../../controls/styles'
 import { map } from '../../math'
 import warning from '../../controls/utils/warning'
