@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'preact-compat'
 // import radium from 'radium'
 // import Tree from "../../render-tree"
 import { base } from '../styles'
-import MdChevronLeft from 'react-icons/lib/md/chevron-left'
-import MdExpandMore from 'react-icons/lib/md/expand-more'
+import MdChevronLeft from '../../icons/expand-less'
+import MdExpandMore from '../../icons/expand-more'
 
 /*
     The Folder is a container component that can be toggled opened and closed.
@@ -28,8 +28,6 @@ class Folder extends Component {
         let { label, value, style } = this.props,
             { open } = this.state,
             Chevron = open ? MdExpandMore : MdChevronLeft
-
-        console.log( open )
 
         return <div style={base}>
                 <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>

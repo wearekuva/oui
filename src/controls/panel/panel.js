@@ -1,7 +1,7 @@
 import React from 'preact-compat'
 import { base, secondary } from '../styles'
-import MdChevronLeft from 'react-icons/lib/md/chevron-left'
-import MdExpandMore from 'react-icons/lib/md/expand-more'
+import MdChevronLeft from '../../icons/expand-less'
+import MdExpandMore from '../../icons/expand-more'
 
 class Panel extends React.Component {
 
