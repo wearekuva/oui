@@ -94,18 +94,18 @@ class HSVColorPicker extends React.Component {
     }
 
 
-    // shouldComponentUpdate( nextProps, nextState ){
-    //
-    //     let { h, s, v, a } = this.props.value,
-    //         color = nextProps.value
-    //
-    //     return ( h !== color.h
-    //         || s !== color.s
-    //         || v !== color.v
-    //         || a !== color.a )
-    //         && shallowCompare( this, nextProps, nextState )
-    //
-    // }
+    shouldComponentUpdate( nextProps, nextState ){
+
+        let { h, s, v, a } = this.props.value,
+            color = nextProps.value
+
+        return ( h !== color.h
+            || s !== color.s
+            || v !== color.v
+            || a !== color.a )
+            && shallowCompare( this, nextProps, nextState )
+
+    }
 
 
 
