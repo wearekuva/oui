@@ -117,7 +117,7 @@ let drawOui = t => {
     pp( b )
     ppp( c )
 
-    a.sdfsdf = 20
+    // a.sdfsdf = 20
 
     requestAnimationFrame( drawOui )
 }
