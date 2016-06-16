@@ -1,7 +1,5 @@
 import React from 'preact-compat'
 
-console.log( 'expand less')
-
 export default props => <svg
     fill="currentColor"
     fit="true"
