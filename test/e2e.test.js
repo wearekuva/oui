@@ -2,10 +2,10 @@ import React from 'react'
 import ReactTestUtils from 'react-addons-test-utils'
 // import sinon from 'sinon'
 
-import imperative from '../src/imperative-api'
-import dom from '../src/dom'
-import Panel from '../src/controls/panel'
-import { annotate } from '../src/annotate'
+import imperative from '../es2015/imperative-api'
+import dom from '../es2015/dom'
+import Panel from '../es2015/controls/panel'
+import { annotate } from '../es2015/annotate'
 
 describe( 'e2e', () => {
 
@@ -110,7 +110,7 @@ describe( 'e2e', () => {
 })
 
 
-import oui from '../src/oui'
+import oui from '../es2015/oui'
 
 describe( 'Oui', () => {
 

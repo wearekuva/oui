@@ -1,6 +1,6 @@
 
-import { render, merge, annotate, watch } from './src'
-import { dial, stepper, color, xypad, graph } from './src/components'
+import { render, merge, annotate, watch } from '.es2015'
+import { dial, stepper, color, xypad, graph } from './es2015/components'
 // let plotter = component( LineChart, {height: 100, min: 0, max: 100 } )
 //
 

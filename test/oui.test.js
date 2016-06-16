@@ -1,16 +1,16 @@
-import { annotate, getAnnotation, hasAnnotation } from '../src/annotate'
-// import { graph } from '../src/components'
+import { annotate, getAnnotation, hasAnnotation } from '../es2015/annotate'
+// import { graph } from '../es2015/components'
 // import Graph from 'core-controllers/es5/graph'
-// import { xypad } from '../src/components'
+// import { xypad } from '../es2015/components'
 // import XYPad from 'core-controllers/es5/xypad'
-// import { dial } from '../src/components'
+// import { dial } from '../es2015/components'
 // import Dial from 'core-controllers/es5/dial'
-// import { color } from '../src/components'
+// import { color } from '../es2015/components'
 // import ColorPicker from 'core-controllers/es5/colorpicker'
-// import { stepper } from '../src/components'
+// import { stepper } from '../es2015/components'
 // import NumericStepper from 'core-controllers/es5/numericstepper'
-// import { combobox } from '../src/components'
-import ComboBox from '../src/controls/combobox'
+// import { combobox } from '../es2015/components'
+import ComboBox from '../es2015/controls/combobox'
 
 
 describe( 'Annotations:', () => {
@@ -108,7 +108,7 @@ describe( 'Annotations:', () => {
 })
 
 
-import equals from '../src/shallow-equal'
+import equals from '../es2015/shallow-equal'
 describe( 'Comparing', () => {
 
     it( 'matches shallow objects', () => {
@@ -156,7 +156,7 @@ describe( 'Comparing', () => {
 })
 
 
-import merge from '../src/deep-merge'
+import merge from '../es2015/deep-merge'
 describe( 'Merging', () => {
 
     it( 'merges shallow primitives', () =>{

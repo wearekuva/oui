@@ -38,7 +38,7 @@ export default opts => {
         }else if( container === null ){
 
             container = document.createElement('div')
-            container.style.margin = '0.5em'
+            container.style.margin = '0.25em'
             container.style.flexBasis = 'auto'
             domElement.appendChild( container )
 

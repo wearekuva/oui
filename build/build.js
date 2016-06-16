@@ -15,9 +15,9 @@ var banner =
 
 // update main file
 var main = fs
-  .readFileSync('src/index.js', 'utf-8')
+  .readFileSync('./es2015/index.js', 'utf-8')
   .replace(/oui\.version = '[\d\.]+'/, "oui.version = '" + version + "'")
-fs.writeFileSync('src/index.js', main)
+fs.writeFileSync('./es2015/index.js', main)
 
 
 // CommonJS build.

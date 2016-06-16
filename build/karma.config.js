@@ -10,9 +10,9 @@ module.exports = config => {
         // basePath:'../',
 
         files: [
-            // { pattern: 'src/**/*.js', included: false, served: false },
+            // { pattern: 'es2015/**/*.js', included: false, served: false },
             '../test/*.test.js',
-            // 'src/controls/folder/*.test.js'
+            // 'es2015/controls/folder/*.test.js'
             'tests.js'
         ],
 
@@ -21,15 +21,15 @@ module.exports = config => {
         browsers: ['Chrome'],
 
         exclude: [
-            // 'src/**/*.test.js',
-            // 'src/**/test.js'
+            // 'es2015/**/*.test.js',
+            // 'es2015/**/test.js'
         ],
 
         preprocessors: {
             'tests.js': ['webpack'],
-            // 'src/**/*.js': ['webpack'],
-            // 'src/controls/folder/*.test.js': ['webpack'],
-            // 'src/controls/folder/*.js': ['webpack'],
+            // 'es2015/**/*.js': ['webpack'],
+            // 'es2015/controls/folder/*.test.js': ['webpack'],
+            // 'es2015/controls/folder/*.js': ['webpack'],
 
             '../test/*.test.js': ['webpack']
         },

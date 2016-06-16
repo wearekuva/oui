@@ -1,13 +1,13 @@
 import React from 'react'
 import {shallow, mount} from 'enzyme'
-import Tree from '../src/render-tree'
+import Tree from '../es2015/render-tree'
 
-import Checkbox from '../src/controls/checkbox'
-import TextInput from '../src/controls/textinput'
-import Slider from '../src/controls/slider'
-import Folder from '../src/controls/folder'
-import { validateProp } from '../src/validation'
-import throttle from '../src/controls/utils/throttle'
+import Checkbox from '../es2015/controls/checkbox'
+import TextInput from '../es2015/controls/textinput'
+import Slider from '../es2015/controls/slider'
+import Folder from '../es2015/controls/folder'
+import { validateProp } from '../es2015/validation'
+import throttle from '../es2015/controls/utils/throttle'
 
 describe( 'Utils', () => {
 
@@ -98,7 +98,7 @@ describe( 'Reconciliation:', () => {
 })
 
 
-import isValidControl from '../src/control'
+import isValidControl from '../es2015/control'
 describe( 'Validation', () => {
 
     // beforeEach( () => sinon.spy( console, 'warn' ))
@@ -147,8 +147,8 @@ describe( 'Validation', () => {
 })
 
 
-import { annotate } from '../src/annotate'
-import NumericStepper from '../src/controls/numericstepper'
+import { annotate } from '../es2015/annotate'
+import NumericStepper from '../es2015/controls/numericstepper'
 
 describe( 'Type Annotations', () => {
 

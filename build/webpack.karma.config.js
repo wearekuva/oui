@@ -11,7 +11,7 @@ module.exports = Object.assign( {}, config, {
     module: Object.assign({}, config.module, {
         postLoaders: [{
           test: /\.(js|jsx)$/,
-          include: [ path.resolve(__dirname, "../src")],
+          include: [ path.resolve(__dirname, "../es2015")],
           exclude: /(\S*\.test\.js|node_modules)/,
           loader: 'istanbul-instrumenter'
         }]
