@@ -29,7 +29,10 @@ class Panel extends React.Component {
                 </div>
                 { open ? <hr style={ lineStyle }/> : null }
             </header>
-            { open ? children : null }
+            { open ?
+                <div style={{overflowY:'scroll'}}>{ children }</div>
+            : null }
+
         </div>
     }
 }
@@ -47,21 +50,14 @@ var lineStyle = {
 
 var style = {
     boxSizing: 'border-box',
-
     lineHeight: '2em',
-
-    // display: 'flex',
-    // flexDirection: 'column',
-    // flexWrap: 'wrap',
-    // alignItems: 'baseline',
-    // overflow:'scroll',
+    display: 'flex',
+    flexDirection: 'column',
     width: 275,
     background: 'rgb( 250, 250, 250 )',
     borderRadius: 2,
     padding: '1em',
-    // border: 'green'
     margin: 0
-    // marginBottom: '0'
 }
 
 export default Panel
