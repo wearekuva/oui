@@ -8,7 +8,7 @@ var banner =
   'Released under the MIT License.\n'
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './es2015/index',
     module:{
         loaders:[
             { test: /\.json$/, loader: "json-loader" },
