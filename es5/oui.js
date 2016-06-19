@@ -12,7 +12,7 @@ var _combobox = require('./controls/combobox');
 
 var _combobox2 = _interopRequireDefault(_combobox);
 
-var _colorpicker = require('./common-controls/colorpicker');
+var _colorpicker = require('./controls/colorpicker');
 
 var _annotate = require('./annotate');
 

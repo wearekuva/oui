@@ -1,6 +1,6 @@
 import panel from './imperative-api'
 import ComboBox, { oneOf } from './controls/combobox'
-import { color } from './common-controls/colorpicker'
+import { color } from './controls/colorpicker'
 import { annotate } from './annotate'
 import withChange from './controls/with-change-object'
 

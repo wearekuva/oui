@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
       alias: {
           'oui' : '../es2015',
-          'common-controls': '../es2015/common-controls'
+          'controls': '../es2015/controls'
       }
   },
   output: {

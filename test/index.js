@@ -1,7 +1,7 @@
 import { oui, oneOf, panel } from 'oui'
-import { color } from 'common-controls/colorpicker'
-import { xypad } from 'common-controls/xypad'
-import { graph } from 'common-controls/graph'
+import { color } from 'controls/colorpicker'
+import { xypad } from 'controls/xypad'
+import { graph } from 'controls/graph'
 
 
 
