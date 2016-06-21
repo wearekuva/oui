@@ -1,13 +1,14 @@
 var config = require('./webpack.base.config')
 var path = require( 'path' )
+var webpack = require('webpack')
 
-module.exports = Object.assign( {}, config, {
+module.exports = Object.assign( {}, {}, {
     // devtool: 'inline-source-map',
-    externals: {
-      'react/addons': true,
-      'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': true
-    },
+    // externals: {
+    //   'react/addons': true,
+    //   'react/lib/ExecutionEnvironment': true,
+    //   'react/lib/ReactContext': true
+    // },
     module: Object.assign({}, config.module, {
         postLoaders: [{
           test: /\.(js|jsx)$/,
@@ -16,5 +17,13 @@ module.exports = Object.assign( {}, config, {
           loader: 'istanbul-instrumenter'
         }]
     }),
+
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: '"development"'
+        }
+      })
+    ]
 
 })

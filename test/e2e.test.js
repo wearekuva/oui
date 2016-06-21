@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'preact-compat'
+import simulant from 'simulant'
 import ReactTestUtils from 'react-addons-test-utils'
 // import sinon from 'sinon'
 
@@ -15,6 +16,7 @@ describe( 'e2e', () => {
             dom.children[dom.children.length -1].remove()
         }
     })
+
 
     it( 'should render a Panel in the page', () => {
 
@@ -69,7 +71,7 @@ describe( 'e2e', () => {
         imperative()( api )
 
         const input = dom.querySelector('input')
-        ReactTestUtils.Simulate.change( input, { target: { checked: false }})
+        simulant.fire( input, 'click', { target: { checked: false }});
 
         expect( api.prop ).toBeFalsy()
 
@@ -81,7 +83,7 @@ describe( 'e2e', () => {
         imperative()({ prop: true })
 
         const input = dom.querySelector('input')
-        ReactTestUtils.Simulate.change( input, { target: { checked: false }})
+        simulant.fire( input, 'click', { target: { checked: false }});
 
         expect( input.checked ).toBeFalsy()
 
@@ -90,7 +92,7 @@ describe( 'e2e', () => {
 
     it( 'should warn if props are incompatible with their type annotated control', () => {
 
-        spyOn(console, 'warn')
+        spyOn( console, 'warn' )
 
         let Component = _ => <div/>
         Component.propTypes = {
@@ -116,7 +118,7 @@ describe( 'Oui', () => {
 
     afterEach(() => {
 
-        oui()
+        oui.oui()
 
         while( dom.children.length > 0 ){
             dom.children[0].remove()
@@ -126,9 +128,9 @@ describe( 'Oui', () => {
 
     it( 'should only redraw the default panel, not add new ones', () => {
 
-        oui({ prop: true })
-        oui({ nun: 10 })
-        oui({ bool: false })
+        oui.oui({ prop: true })
+        oui.oui({ nun: 10 })
+        oui.oui({ bool: false })
 
         expect( dom.children.length ).toBe( 1 )
 
@@ -137,7 +139,7 @@ describe( 'Oui', () => {
 
     it( 'expects the default panel to render with a custom panel', () => {
 
-        oui({ prop: true })
+        oui.oui({ prop: true })
         imperative()({ nun: 10 })
         imperative()({ bool: false })
 

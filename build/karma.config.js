@@ -12,8 +12,9 @@ module.exports = config => {
         files: [
             // { pattern: 'es2015/**/*.js', included: false, served: false },
             '../test/*.test.js',
+            // '../test/rendering.test.js',
             // 'es2015/controls/folder/*.test.js'
-            'tests.js'
+            // 'tests.js'
         ],
 
         plugins:[ webpack, 'karma-jasmine', 'karma-chrome-launcher', 'karma-coverage', 'karma-spec-reporter' ],

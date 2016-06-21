@@ -10,7 +10,7 @@ import { annotate, getAnnotation, hasAnnotation } from '../es2015/annotate'
 // import { stepper } from '../es2015/components'
 // import NumericStepper from 'core-controllers/es5/numericstepper'
 // import { combobox } from '../es2015/components'
-import ComboBox from '../es2015/controls/combobox'
+//import ComboBox, { oneOf } from '../es2015/controls/combobox'
 
 
 describe( 'Annotations:', () => {
@@ -45,15 +45,14 @@ describe( 'Annotations:', () => {
     })
 
 
-    it( '`oneOf` decorator creates a ComboBox annotation', () => {
-
-        const obj = { b: 'c'}
-        oneOf(['a', 'b', 'c'])( obj, 'c' )
-
-        const expected = getAnnotation( obj, 'c' ).type
-        console.log( Co)
-        expect( expected ).toBe( ComboBox )
-    })
+    // it( '`oneOf` decorator creates a ComboBox annotation', () => {
+    //
+    //     const obj = { b: 'c'}
+    //     oneOf(['a', 'b', 'c'])( obj, 'c' )
+    //
+    //     const expected = getAnnotation( obj, 'c' ).type
+    //     expect( expected ).toBe( ComboBox )
+    // })
 
 
     // it( 'expects a `graph()` adds a type annotation whose value is `Graph`', () => {

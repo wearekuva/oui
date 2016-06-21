@@ -8,9 +8,9 @@ import warn from './warn'
 
 export const validateProp = ( prop, propName,  Comp ) => {
 
-    // let name = Comp.displayName || Comp.name
-	// let err = Comp.propTypes.value( prop, propName, name, 'prop' )
-    // warn( err, err ? err.message : '' );
+    let name = Comp.displayName || Comp.name
+	let err = Comp.propTypes.value( prop, propName, name, 'prop' )
+    warn( err, err ? err.message : '' );
 
 }
 
