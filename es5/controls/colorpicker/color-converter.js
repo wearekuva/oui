@@ -20,11 +20,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 let withAlpha = (color, a) => a !== undefined ? _extends({ a }, color) : color;
 
-let rgb2Hsv = exports.rgb2Hsv = c => withAlpha(_colr2.default.fromRgbObject(c).toRawHsvObject(), c.a);
+let normalizeRGB = c => ({ r: c.r * 255, g: c.g * 255, b: c.b * 255 });
+let deNormalizeRGB = c => ({ r: c.r / 255, g: c.g / 255, b: c.b / 255 });
+
+let rgb2Hsv = exports.rgb2Hsv = c => withAlpha(_colr2.default.fromRgbObject(normalizeRGB(c)).toRawHsvObject(), c.a);
 let rgbArr2Hsv = exports.rgbArr2Hsv = c => withAlpha(_colr2.default.fromRgbArray(c.map(channel => channel * 255)).toRawHsvObject(), c[3]);
 let hsv2Hsv = exports.hsv2Hsv = c => c;
 
-rgb2Hsv.invert = c => withAlpha(_colr2.default.fromHsvObject(c).toRawRgbObject(), c.a);
+rgb2Hsv.invert = c => withAlpha(deNormalizeRGB(_colr2.default.fromHsvObject(c).toRawRgbObject()), c.a);
 rgbArr2Hsv.invert = c => _colr2.default.fromHsvObject(c).toRawRgbArray().map(channel => channel / 255).concat([c.a]);
 hsv2Hsv.invert = c => c;
 

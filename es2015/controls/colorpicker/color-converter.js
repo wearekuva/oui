@@ -8,11 +8,14 @@ import Colr from 'colr'
 
 let withAlpha = ( color, a ) => a !== undefined ? { a, ...color } : color
 
-export let rgb2Hsv = c => withAlpha( Colr.fromRgbObject(c).toRawHsvObject(), c.a )
+let normalizeRGB = c => ({ r:c.r*255, g:c.g*255, b:c.b*255})
+let deNormalizeRGB = c => ({ r:c.r/255, g:c.g/255, b:c.b/255})
+
+export let rgb2Hsv = c => withAlpha( Colr.fromRgbObject( normalizeRGB( c )).toRawHsvObject(), c.a )
 export let rgbArr2Hsv = c => withAlpha( Colr.fromRgbArray(c.map( channel => channel * 255 )).toRawHsvObject(), c[3] )
 export let hsv2Hsv = c => c
 
-rgb2Hsv.invert = c => withAlpha( Colr.fromHsvObject(c).toRawRgbObject(), c.a )
+rgb2Hsv.invert = c => withAlpha( deNormalizeRGB( Colr.fromHsvObject(c).toRawRgbObject() ), c.a )
 rgbArr2Hsv.invert = c => Colr.fromHsvObject(c).toRawRgbArray().map( channel => channel / 255 ).concat([ c.a ])
 hsv2Hsv.invert = c => c
 
