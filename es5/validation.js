@@ -17,11 +17,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const validateProp = exports.validateProp = (prop, propName, Comp) => {}
+const validateProp = exports.validateProp = (prop, propName, Comp) => {
 
-// let name = Comp.displayName || Comp.name
-// let err = Comp.propTypes.value( prop, propName, name, 'prop' )
-// warn( err, err ? err.message : '' );
+    let name = Comp.displayName || Comp.name;
+    let err = Comp.propTypes.value(prop, propName, name, 'prop');
+    (0, _warn2.default)(err, err ? err.message : '');
+};
 
 /*
     Validates a control.
@@ -30,7 +31,6 @@ const validateProp = exports.validateProp = (prop, propName, Comp) => {}
     object containing a `value` field. `onChange` and `label` are optional.*
 */
 
-;
 /*
     Validates an object against a components `propTypes`
 */
