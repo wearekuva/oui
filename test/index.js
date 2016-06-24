@@ -72,21 +72,26 @@ let b = {
 let c = {
 
     // b: 10,
-    someProp2:10,
-    'A boolean':false,
-    folder:{
-        'A string':'This is editable!',
-        someProp:true,
-        someProp:10,
-        someGraph: new Float32Array([0, 1, 0.2, 1, 0.2, 1, 0]),
-        someProp:true,
-    },
-    someProp:5,
-    bool:true,
-    string:'Edit this!',
+    // someProp2:10,
+    // 'A boolean':false,
+    // folder:{
+    //     'A string':'This is editable!',
+    //     someProp:true,
+    //     someProp:10,
+    //     someGraph: new Float32Array([0, 1, 0.2, 1, 0.2, 1, 0]),
+    //     someProp:true,
+    // },
+    // someProp:5,
+    // bool:true,
+    // string:'Edit this!',
+
+
+    baaahh: 'test'
 
 }
 
+
+oneOf({ options:[ 'a', 'b', 'd', 'e' ] })( c, 'baaahh' )
 
 
 // oneOf({ options:[20, 10, 40] })( a, 'b' )
@@ -96,8 +101,8 @@ color({open:true})( a, 'col1' )
 color({open:true})( a, 'col2' )
 xypad()( b, 'someProp3' )
 graph({fill:true})( b, 'someGraph' )
-graph()( c, 'someGraph' )
-graph()( c.folder, 'someGraph' )
+// graph()( c, 'someGraph' )
+// graph()( c.folder, 'someGraph' )
 
 
 
