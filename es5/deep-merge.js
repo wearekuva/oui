@@ -24,6 +24,9 @@ let deepmerge = (a, b) => {
     (0, _warn2.default)(isFrozen, 'The merge target is frozen and cannot be mutated');
     if (isFrozen) return a;
 
+    let breakOn = Array.isArray(a) && b.length;
+    let index = 0;
+
     for (var prop in b) {
         if (typeof a[prop] === 'object') {
 
@@ -36,6 +39,8 @@ let deepmerge = (a, b) => {
             (0, _warn2.default)(!writable, 'The property `' + prop + '` is not writable and cannot be mutated.');
             if (writable) a[prop] = b[prop];
         }
+
+        if (breakOn === ++index) a.splice(breakOn);
     }
     return a;
 };
