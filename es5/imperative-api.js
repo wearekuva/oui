@@ -34,7 +34,7 @@ exports.default = opts => {
 
     let container = null;
 
-    const render = api => {
+    const render = (api, callback) => {
 
         if (!api) {
 
@@ -55,7 +55,10 @@ exports.default = opts => {
 
                 let isFrozen = Object.isFrozen(api);
                 (0, _warn2.default)(Object.isFrozen(api), 'The `api` object is frozen an cannot be mutated.');
-                if (!isFrozen) render((0, _deepMerge2.default)(api, change));
+                if (!isFrozen) {
+                    render((0, _deepMerge2.default)(api, change));
+                    callback(api);
+                }
             };
 
             let Element = _preactCompat2.default.createElement(
