@@ -15,7 +15,7 @@ A super simple way to instrument your code and controls your data. Pass it an ob
 First add Oui to your project.
 
 ```
-npm install @marklundin/oui --save
+npm install @wearekuva/oui --save
 ```
 
 Once installed, create an object containing some properties or reference to an existing object. Calling `Oui()` with an object will instrument it.
