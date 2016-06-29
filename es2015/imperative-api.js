@@ -27,7 +27,7 @@ export default opts => {
 
     let container = null
 
-    const render = ( api, callback ) => {
+    const render = ( api, callback = _ => _ ) => {
 
         if( !api ){
 
@@ -51,7 +51,7 @@ export default opts => {
                 let isFrozen = Object.isFrozen( api )
                 warn( Object.isFrozen( api ), 'The `api` object is frozen an cannot be mutated.' )
                 if( !isFrozen ) {
-                    render( merge( api, change ))
+                    render( merge( api, change ), callback )
                     callback( api )
                 }
             }
