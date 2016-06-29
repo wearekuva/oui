@@ -27,7 +27,7 @@ export default opts => {
 
     let container = null
 
-    const render = api => {
+    const render = ( api, callback ) => {
 
         if( !api ){
 
@@ -50,7 +50,10 @@ export default opts => {
 
                 let isFrozen = Object.isFrozen( api )
                 warn( Object.isFrozen( api ), 'The `api` object is frozen an cannot be mutated.' )
-                if( !isFrozen ) render( merge( api, change ))
+                if( !isFrozen ) {
+                    render( merge( api, change ))
+                    callback( api )
+                }
             }
 
             let Element = <Panel { ...opts }>{ Tree( api, onChange )}</Panel>

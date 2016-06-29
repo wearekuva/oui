@@ -119,7 +119,7 @@ let ppp = panel()
 
 let drawOui = t => {
     b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
-    p( a )
+    p( a, t => console.log( 'change' ) )
     pp( b )
     ppp( c )
 
