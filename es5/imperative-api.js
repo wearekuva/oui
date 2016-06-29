@@ -34,7 +34,7 @@ exports.default = opts => {
 
     let container = null;
 
-    const render = (api, callback) => {
+    const render = (api, callback = _ => _) => {
 
         if (!api) {
 
@@ -56,7 +56,7 @@ exports.default = opts => {
                 let isFrozen = Object.isFrozen(api);
                 (0, _warn2.default)(Object.isFrozen(api), 'The `api` object is frozen an cannot be mutated.');
                 if (!isFrozen) {
-                    render((0, _deepMerge2.default)(api, change));
+                    render((0, _deepMerge2.default)(api, change), callback);
                     callback(api);
                 }
             };
