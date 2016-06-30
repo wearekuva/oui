@@ -48,6 +48,11 @@ Button.defaultProps = {
 
 Button.propTypes = {
 
+    /*
+        function to call on click
+    */
+    value: _preactCompat2.default.propTypes.func.isRequired,
+
     /**
      * A text label
      */

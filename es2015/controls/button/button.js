@@ -32,6 +32,10 @@ Button.defaultProps = {
 
 Button.propTypes = {
 
+    /*
+        function to call on click
+    */
+    value: React.propTypes.func.isRequired,
 
     /**
      * A text label
