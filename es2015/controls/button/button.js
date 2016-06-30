@@ -35,7 +35,7 @@ Button.propTypes = {
     /*
         function to call on click
     */
-    value: React.propTypes.func.isRequired,
+    value: React.PropTypes.func.isRequired,
 
     /**
      * A text label
