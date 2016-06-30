@@ -51,7 +51,7 @@ Button.propTypes = {
     /*
         function to call on click
     */
-    value: _preactCompat2.default.propTypes.func.isRequired,
+    value: _preactCompat2.default.PropTypes.func.isRequired,
 
     /**
      * A text label

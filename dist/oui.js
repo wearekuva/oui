@@ -3309,7 +3309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Pretty self explanatory. Documentation included for completeness
 	*/var Button=function Button(props){return _preactCompat2.default.createElement('button',_extends({},props,{style:_extends({},_styles.base,defaultStyle,props.style),onClick:props.value}),props.label);};Button.defaultProps={label:'Button'};Button.propTypes={ /*
 	        function to call on click
-	    */value:_preactCompat2.default.propTypes.func.isRequired, /**
+	    */value:_preactCompat2.default.PropTypes.func.isRequired, /**
 	     * A text label
 	     */label:_preactCompat2.default.PropTypes.string, /**
 	     * Optional component styling
