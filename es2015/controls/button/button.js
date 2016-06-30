@@ -1,5 +1,4 @@
 import React from 'preact-compat'
-// import radium from 'radium'
 import { base, highlight } from '../../controls/styles'
 
 let defaultStyle = {
@@ -7,6 +6,7 @@ let defaultStyle = {
     outline: 'none',
     border: 'none',
     padding: '1em',
+    borderRadius: 2,
     verticalAlign: 'middle',
     textAlign: 'center',
     lineHeight: '50%',
@@ -21,10 +21,8 @@ let defaultStyle = {
     Pretty self explanatory. Documentation included for completeness
 */
 
-let Button = props => <button {...props} style={{ ...base, ...defaultStyle, ...props.style }} >{ props.label }</button>
+let Button = props => <button {...props} style={{ ...base, ...defaultStyle, ...props.style }} onClick={props.value} >{ props.label }</button>
 
-
-// Button = radium( Button )
 
 Button.defaultProps = {
 

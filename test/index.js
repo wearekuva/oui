@@ -7,12 +7,12 @@ import { graph } from 'controls/graph'
 
 let a = {
 
-    // b: 10,
+    button: _ => console.log('called'),
     // dir:{
     //     someProp:10,
     //
     // },
-    oneof: ['a', 'b', 'c'],
+    // oneof: ['a', 'b', 'c'],
     // col1:[ 1, 1, 1],
     // col2:[ 1, 1, 1 ],
     // someProp2:10,
@@ -120,8 +120,8 @@ let ppp = panel()
 let drawOui = t => {
     b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
     p( a, t => console.log( 'change' ) )
-    pp( b )
-    ppp( c )
+    // pp( b )
+    // ppp( c )
 
     // a.sdfsdf = 20
 

@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-// import radium from 'radium'
-
 
 var _preactCompat = require('preact-compat');
 
@@ -21,6 +19,7 @@ let defaultStyle = {
     outline: 'none',
     border: 'none',
     padding: '1em',
+    borderRadius: 2,
     verticalAlign: 'middle',
     textAlign: 'center',
     lineHeight: '50%',
@@ -37,11 +36,9 @@ let defaultStyle = {
 
 let Button = props => _preactCompat2.default.createElement(
     'button',
-    _extends({}, props, { style: _extends({}, _styles.base, defaultStyle, props.style) }),
+    _extends({}, props, { style: _extends({}, _styles.base, defaultStyle, props.style), onClick: props.value }),
     props.label
 );
-
-// Button = radium( Button )
 
 Button.defaultProps = {
 

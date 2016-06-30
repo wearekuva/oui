@@ -20,6 +20,10 @@ var _folder = require('./controls/folder');
 
 var _folder2 = _interopRequireDefault(_folder);
 
+var _button = require('./controls/button');
+
+var _button2 = _interopRequireDefault(_button);
+
 var _withChangeObject = require('./controls/with-change-object');
 
 var _withChangeObject2 = _interopRequireDefault(_withChangeObject);
@@ -30,4 +34,4 @@ var _withTree2 = _interopRequireDefault(_withTree);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = new Map([['number', (0, _withChangeObject2.default)(_slider2.default)], ['string', (0, _withChangeObject2.default)(_textinput2.default)], ['boolean', (0, _withChangeObject2.default)(_checkbox2.default)], ['object', (0, _withChangeObject2.default)((0, _withTree2.default)(_folder2.default))]]);
+exports.default = new Map([['function', _button2.default], ['number', (0, _withChangeObject2.default)(_slider2.default)], ['string', (0, _withChangeObject2.default)(_textinput2.default)], ['boolean', (0, _withChangeObject2.default)(_checkbox2.default)], ['object', (0, _withChangeObject2.default)((0, _withTree2.default)(_folder2.default))]]);
