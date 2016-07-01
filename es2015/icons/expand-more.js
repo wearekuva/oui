@@ -1,9 +1,9 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
-import svg from 'preact-svg';
+import SVG from 'preact-svg';
 
 export default props => (
-    <svg
+    <SVG
         fill="currentColor"
         fit="true"
         height="1em" width="1em"
@@ -11,5 +11,5 @@ export default props => (
         preserveAspectRatio="xMidYMid meet"
         style={{ verticalAlign: 'middle', ...props.style }}>
         <g><path d="m27.7 14.3l2.3 2.3-10 10-10-10 2.3-2.3 7.7 7.7z"></path></g>
-    </svg>
+    </SVG>
 )

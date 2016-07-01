@@ -18,7 +18,7 @@ var _preactSvg2 = _interopRequireDefault(_preactSvg);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = props => _preact2.default.h(
-    'svg',
+    _preactSvg2.default,
     {
         fill: 'currentColor',
         fit: 'true',
