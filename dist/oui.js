@@ -167,65 +167,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(72), __webpack_require__(71), __webpack_require__(32)) :
-		typeof define === 'function' && define.amd ? define(['exports', 'proptypes', 'preact-svg', 'preact'], factory) :
-		(factory((global.preactCompat = global.preactCompat || {}),global.PropTypes,global.preactSvg,global.preact));
-	}(this, function (exports,PropTypes,SVG,preact) { 'use strict';
+		 true ? module.exports = factory(__webpack_require__(72), __webpack_require__(71), __webpack_require__(32)) :
+		typeof define === 'function' && define.amd ? define(['proptypes', 'preact-svg', 'preact'], factory) :
+		(global.preactCompat = factory(global.PropTypes,global.preactSvg,global.preact));
+	}(this, function (PropTypes,SVG,preact) {
 
 		PropTypes = 'default' in PropTypes ? PropTypes['default'] : PropTypes;
 		SVG = 'default' in SVG ? SVG['default'] : SVG;
 
-		var babelHelpers = {};
-
-		babelHelpers.classCallCheck = function (instance, Constructor) {
-		  if (!(instance instanceof Constructor)) {
-		    throw new TypeError("Cannot call a class as a function");
-		  }
-		};
-
-		babelHelpers.createClass = function () {
-		  function defineProperties(target, props) {
-		    for (var i = 0; i < props.length; i++) {
-		      var descriptor = props[i];
-		      descriptor.enumerable = descriptor.enumerable || false;
-		      descriptor.configurable = true;
-		      if ("value" in descriptor) descriptor.writable = true;
-		      Object.defineProperty(target, descriptor.key, descriptor);
-		    }
-		  }
-
-		  return function (Constructor, protoProps, staticProps) {
-		    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-		    if (staticProps) defineProperties(Constructor, staticProps);
-		    return Constructor;
-		  };
-		}();
-
-		babelHelpers.inherits = function (subClass, superClass) {
-		  if (typeof superClass !== "function" && superClass !== null) {
-		    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-		  }
-
-		  subClass.prototype = Object.create(superClass && superClass.prototype, {
-		    constructor: {
-		      value: subClass,
-		      enumerable: false,
-		      writable: true,
-		      configurable: true
-		    }
-		  });
-		  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-		};
-
-		babelHelpers.possibleConstructorReturn = function (self, call) {
-		  if (!self) {
-		    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		  }
-
-		  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-		};
-
-		babelHelpers;
+		var version = '15.1.0';
 
 		var ELEMENTS = 'a abbr address area article aside audio b base bdi bdo big blockquote body br button canvas caption cite code col colgroup data datalist dd del details dfn dialog div dl dt em embed fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 head header hgroup hr html i iframe img input ins kbd keygen label legend li link main map mark menu menuitem meta meter nav noscript object ol optgroup option output p param picture pre progress q rp rt ruby s samp script section select small source span strong style sub summary sup table tbody td textarea tfoot th thead time title tr track u ul var video wbr circle clipPath defs ellipse g image line linearGradient mask path pattern polygon polyline radialGradient rect stop svg text tspan'.split(' ');
 
@@ -272,6 +222,18 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.attributes = v;
 			}
 		});
+
+		var oldVnodeHook = preact.options.vnode || EmptyComponent;
+		preact.options.vnode = function (vnode) {
+			var a = vnode.attributes;
+			if (!a) a = vnode.attributes = {};
+
+			if (Object.isExtensible && !Object.isExtensible(a)) {
+				a = extend({}, a, true);
+			}
+			a.children = vnode.children;
+			oldVnodeHook(vnode);
+		};
 
 		function render$1(vnode, parent, callback) {
 			var prev = parent._preactCompatRendered;
@@ -321,13 +283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var currentComponent = void 0;
 
 		function createFactory(type) {
-			return function () {
-				for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-					args[_key] = arguments[_key];
-				}
-
-				return createElement.apply(undefined, [type].concat(args));
-			};
+			return createElement.bind(null, type);
 		}
 
 		var DOM = {};
@@ -352,12 +308,17 @@ return /******/ (function(modules) { // webpackBootstrap
 			return vnode;
 		}
 
-		function cloneElement(element, props) {
-			for (var _len2 = arguments.length, children = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-				children[_key2 - 2] = arguments[_key2];
+		function cloneElement$1(element, props) {
+			var node = preact.h(element.nodeName || element.type, element.attributes || element.props, element.children || element.props.children);
+
+			for (var _len = arguments.length, children = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+				children[_key - 2] = arguments[_key];
 			}
 
-			return createElement.apply(undefined, [element.nodeName || element.type, extend({}, element.attributes || element.props || {}, props)].concat(children));
+			if (preact.cloneElement) {
+				return preact.cloneElement.apply(undefined, [node, props].concat(children));
+			}
+			return createElement.apply(undefined, [node.nodeName, extend(extend({}, node.attributes || {}), props)].concat(children.length && children || node.children || []));
 		}
 
 		function isValidElement(element) {
@@ -384,19 +345,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (cl) attributes.className = cl;
 		}
 
-		function extend(base) {
-			for (var _len3 = arguments.length, objs = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-				objs[_key3 - 1] = arguments[_key3];
-			}
-
-			for (var i = 0; i < objs.length; i++) {
-				for (var key in objs[i]) {
-					if (objs[i].hasOwnProperty(key)) {
-						var v = objs[i][key];
-						if (v !== null && v !== undefined) {
-							base[key] = v;
-						}
-					}
+		function extend(base, props, all) {
+			for (var key in props) {
+				if (all === true || props[key] != null) {
+					base[key] = props[key];
 				}
 			}
 			return base;
@@ -409,12 +361,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		function F() {}
 
 		function createClass(obj) {
-			var cl = function (props, context) {
+			function cl(props, context) {
 				extend(this, obj);
 				Component$1.call(this, props, context, BYPASS_HOOK);
 				bindAll(this);
 				newComponentHook.call(this, props, context);
-			};
+			}
 
 			if (obj.propTypes) {
 				cl.propTypes = obj.propTypes;
@@ -436,10 +388,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		function bindAll(ctx) {
-			for (var i in ctx) {
-				var v = ctx[i];
-				if (typeof v === 'function' && !v.__bound && !AUTOBIND_BLACKLIST.hasOwnProperty(i)) {
-					(ctx[i] = v.bind(ctx)).__bound = true;
+			for (var _i in ctx) {
+				var v = ctx[_i];
+				if (typeof v === 'function' && !v.__bound && !AUTOBIND_BLACKLIST.hasOwnProperty(_i)) {
+					(ctx[_i] = v.bind(ctx)).__bound = true;
 				}
 			}
 		}
@@ -454,19 +406,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		function multihook() {
-			for (var _len4 = arguments.length, hooks = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-				hooks[_key4] = arguments[_key4];
-			}
-
+			var hooks = arguments;
 			return function () {
 				var ret = void 0;
-
-				for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-					args[_key5] = arguments[_key5];
-				}
-
-				for (var i = 0; i < hooks.length; i++) {
-					var r = callMethod(this, hooks[i], args);
+				for (var _i2 = 0; _i2 < hooks.length; _i2++) {
+					var r = callMethod(this, hooks[_i2], arguments);
 					if (r !== undefined) ret = r;
 				}
 				return ret;
@@ -515,51 +459,31 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		}
 
-		var Component$1 = function (_PreactComponent) {
-			babelHelpers.inherits(Component, _PreactComponent);
-
-			function Component(props, context, opts) {
-				babelHelpers.classCallCheck(this, Component);
-
-				var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Component).call(this, props, context));
-
-				_this.refs = {};
-				_this._refProxies = {};
-				if (opts !== BYPASS_HOOK) {
-					newComponentHook.call(_this, props, context);
-				}
-				return _this;
+		function Component$1(props, context, opts) {
+			preact.Component.call(this, props, context);
+			this.refs = {};
+			this._refProxies = {};
+			if (opts !== BYPASS_HOOK) {
+				newComponentHook.call(this, props, context);
 			}
+		}
+		Component$1.prototype = new preact.Component();
+		extend(Component$1.prototype, {
+			constructor: Component$1,
 
-			babelHelpers.createClass(Component, [{
-				key: 'getDOMNode',
-				value: function getDOMNode() {
-					return this.base;
-				}
-			}, {
-				key: 'isMounted',
-				value: function isMounted() {
-					return !!this.base;
-				}
-			}]);
-			return Component;
-		}(preact.Component);
+			isReactComponent: {},
 
-		var index = { DOM: DOM, PropTypes: PropTypes, Children: Children, render: render$1, createClass: createClass, createFactory: createFactory, createElement: createElement, cloneElement: cloneElement, isValidElement: isValidElement, findDOMNode: findDOMNode, unmountComponentAtNode: unmountComponentAtNode, Component: Component$1 };
+			getDOMNode: function () {
+				return this.base;
+			},
+			isMounted: function () {
+				return !!this.base;
+			}
+		});
 
-		exports.DOM = DOM;
-		exports.PropTypes = PropTypes;
-		exports.Children = Children;
-		exports.render = render$1;
-		exports.createClass = createClass;
-		exports.createFactory = createFactory;
-		exports.createElement = createElement;
-		exports.cloneElement = cloneElement;
-		exports.isValidElement = isValidElement;
-		exports.findDOMNode = findDOMNode;
-		exports.unmountComponentAtNode = unmountComponentAtNode;
-		exports.Component = Component$1;
-		exports['default'] = index;
+		var index = { version: version, DOM: DOM, PropTypes: PropTypes, Children: Children, render: render$1, createClass: createClass, createFactory: createFactory, createElement: createElement, cloneElement: cloneElement$1, isValidElement: isValidElement, findDOMNode: findDOMNode, unmountComponentAtNode: unmountComponentAtNode, Component: Component$1 };
+
+		return index;
 
 	}));
 	//# sourceMappingURL=preact-compat.js.map
