@@ -4,13 +4,22 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
+
 // import radium from 'radium'
 
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
+
+var _preactSvg = require('preact-svg');
+
+var _preactSvg2 = _interopRequireDefault(_preactSvg);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _numericstepper = require('../numericstepper');
 
@@ -36,7 +45,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     and entering values directly.
 */
 
-class Slider extends _preactCompat2.default.Component {
+class Slider extends _preact2.default.Component {
 
     constructor() {
 
@@ -146,19 +155,19 @@ class Slider extends _preactCompat2.default.Component {
         let offsetPercentage = (0, _math.map)((0, _math.clamp)(value, min, max), min, max, 0, 100) + '%';
         value = this.validate(value);
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             { style: _styles.base },
-            includeStepper ? _preactCompat2.default.createElement(_numericstepper2.default, _extends({}, stepperProps, { onChange: this.onNumericStepperChange })) : null,
-            _preactCompat2.default.createElement(
-                'svg',
+            includeStepper ? _preact2.default.h(_numericstepper2.default, _extends({}, stepperProps, { onChange: this.onNumericStepperChange })) : null,
+            _preact2.default.h(
+                _preactSvg2.default,
                 { width: '100%', height: '1em',
                     style: defaultStyle,
                     onMouseDown: this.onMouseDown,
                     onTouchStart: this.onMouseDown },
-                _preactCompat2.default.createElement('rect', { width: '100%', height: '100%', style: _extends({}, defaultStyle, backgroundBar, style.backgroundBar) }),
-                _preactCompat2.default.createElement('rect', { width: '100%', height: '100%', style: _extends({}, defaultStyle, bar, style.bar), width: offsetPercentage }),
-                _preactCompat2.default.createElement('circle', { cy: '50%', cx: offsetPercentage, r: '0.5em', style: _extends({}, defaultStyle, thumb, style.thumb) })
+                _preact2.default.h('rect', { width: '100%', height: '100%', style: _extends({}, defaultStyle, backgroundBar, style.backgroundBar) }),
+                _preact2.default.h('rect', { width: '100%', height: '100%', style: _extends({}, defaultStyle, bar, style.bar), width: offsetPercentage }),
+                _preact2.default.h('circle', { cy: '50%', cx: offsetPercentage, r: '0.5em', style: _extends({}, defaultStyle, thumb, style.thumb) })
             )
         );
     }
@@ -171,42 +180,42 @@ Slider.propTypes = {
     /**
      *  A text label
      */
-    label: _preactCompat2.default.PropTypes.string,
+    label: _propTypes2.default.string,
 
     /**
      *  The value of the slider
      */
-    value: _preactCompat2.default.PropTypes.number.isRequired,
+    value: _propTypes2.default.number.isRequired,
 
     /**
      *  Specifies the minimum value for the component
      */
-    min: _preactCompat2.default.PropTypes.number,
+    min: _propTypes2.default.number,
 
     /**
      *  Specifies the maximum value for the component
      */
-    max: _preactCompat2.default.PropTypes.number,
+    max: _propTypes2.default.number,
 
     /**
      * Specifies the intervals step
      */
-    step: _preactCompat2.default.PropTypes.number,
+    step: _propTypes2.default.number,
 
     /**
     * A callback triggered when the component updates
     */
-    onChange: _preactCompat2.default.PropTypes.func,
+    onChange: _propTypes2.default.func,
 
     /**
      *  If false, the numeric stepper is not displayed
      */
-    includeStepper: _preactCompat2.default.PropTypes.bool,
+    includeStepper: _propTypes2.default.bool,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat2.default.PropTypes.object
+    style: _propTypes2.default.object
 
 };
 

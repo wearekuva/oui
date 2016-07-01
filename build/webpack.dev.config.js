@@ -5,8 +5,8 @@ module.exports = {
   entry: './test/index',
   resolve: {
       alias: {
-          'oui' : '../es2015',
-          'controls': '../es2015/controls'
+          'oui' : '../es2015'
+        //   'controls': '../es2015/controls'
       }
   },
   output: {

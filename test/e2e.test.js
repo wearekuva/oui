@@ -96,7 +96,7 @@ describe( 'e2e', () => {
 
         let Component = _ => <div/>
         Component.propTypes = {
-            value: React.PropTypes.number.isRequired
+            value: PropTypes.number.isRequired
         }
 
         const api = { prop: true }

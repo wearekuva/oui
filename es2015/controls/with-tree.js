@@ -8,9 +8,10 @@
     component rather than directly on the Folder component itself means we can
     normalize the api in 'render-tree'
 */
-
+/** @jsx React.h */
 import Tree from "../render-tree"
-import React, { PropTypes } from 'preact-compat'
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 
 
 export default ( FolderComponent ) => {

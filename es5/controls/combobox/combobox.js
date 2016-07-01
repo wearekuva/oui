@@ -4,9 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styles = require('../styles');
 
@@ -25,7 +29,8 @@ let defaultStyle = {
     of key value tuples, or an object.
 */
 
-class ComboBox extends _preactCompat2.default.Component {
+/** @jsx React.h */
+class ComboBox extends _preact2.default.Component {
 
     render() {
 
@@ -42,13 +47,13 @@ class ComboBox extends _preactCompat2.default.Component {
             arrOptions.push(options[i]);
             if (options[i] === value && !valueSelected) {
                 valueSelected = true;
-                element = _preactCompat2.default.createElement(
+                element = _preact2.default.h(
                     'option',
                     { key: i, value: options[i], selected: true },
                     isArray ? options[i] : i
                 );
             } else {
-                element = _preactCompat2.default.createElement(
+                element = _preact2.default.h(
                     'option',
                     { key: i, value: options[i] },
                     isArray ? options[i] : i
@@ -57,15 +62,15 @@ class ComboBox extends _preactCompat2.default.Component {
             optionsElems.push(element);
         }
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             { style: _styles.base },
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'label',
                 null,
                 label
             ),
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'select',
                 { onChange: e => onChange(arrOptions[e.target.selectedIndex]), style: defaultStyle },
                 optionsElems
@@ -94,13 +99,13 @@ ComboBox.defaultProps = {
 
 ComboBox.propTypes = {
 
-    label: _preactCompat.PropTypes.any,
+    label: _propTypes2.default.any,
 
-    options: _preactCompat.PropTypes.oneOfType([_preactCompat.PropTypes.arrayOf(_preactCompat.PropTypes.any).isRequired, _preactCompat.PropTypes.objectOf(_preactCompat.PropTypes.any).isRequired]),
+    options: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.any).isRequired, _propTypes2.default.objectOf(_propTypes2.default.any).isRequired]),
 
-    value: _preactCompat.PropTypes.any.isRequired,
+    value: _propTypes2.default.any.isRequired,
 
-    onChange: _preactCompat.PropTypes.func
+    onChange: _propTypes2.default.func
 
 };
 

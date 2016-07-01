@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 import { base } from '../styles'
 
 

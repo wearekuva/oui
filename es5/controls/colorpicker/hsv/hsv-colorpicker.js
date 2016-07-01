@@ -4,11 +4,20 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _preactSvg = require('preact-svg');
+
+var _preactSvg2 = _interopRequireDefault(_preactSvg);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _catchDegenerateHsv = require('./catch-degenerate-hsv');
 
@@ -36,7 +45,7 @@ var _shallowCompare2 = _interopRequireDefault(_shallowCompare);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-class HSVColorPicker extends _preactCompat2.default.Component {
+class HSVColorPicker extends _preact2.default.Component {
 
     constructor() {
 
@@ -135,14 +144,14 @@ class HSVColorPicker extends _preactCompat2.default.Component {
         // Used to prevent collisions between fill() refs
         let uuid = Math.floor(Math.random() * 999999999999999);
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             null,
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'div',
                 { style: _extends({}, _styles.base, style) },
-                _preactCompat2.default.createElement(
-                    'svg',
+                _preact2.default.h(
+                    _preactSvg2.default,
                     { width: '100%', height: '100%', version: '1.1', xmlns: 'http://www.w3.org/2000/svg',
                         style: defaultStyle,
                         onMouseDown: this.onMouseDown,
@@ -151,46 +160,46 @@ class HSVColorPicker extends _preactCompat2.default.Component {
                         onTouchStart: this.onMouseDown,
                         onTouchMove: this.state.drag ? this.onMouseMove : null,
                         onTouchEnd: this.onMouseUp },
-                    _preactCompat2.default.createElement(
+                    _preact2.default.h(
                         'defs',
                         null,
-                        _preactCompat2.default.createElement(
+                        _preact2.default.h(
                             'linearGradient',
                             { id: "horizontal-gradient" + uuid },
-                            _preactCompat2.default.createElement('stop', { offset: '0%', 'stop-color': 'white' }),
-                            _preactCompat2.default.createElement('stop', { offset: '100%', 'stop-color': "hsl(" + h + ",100%,50%)" })
+                            _preact2.default.h('stop', { offset: '0%', 'stop-color': 'white' }),
+                            _preact2.default.h('stop', { offset: '100%', 'stop-color': "hsl(" + h + ",100%,50%)" })
                         ),
-                        _preactCompat2.default.createElement(
+                        _preact2.default.h(
                             'linearGradient',
                             { id: "vertical-gradient" + uuid, x1: '0', x2: '0', y1: '0', y2: '1' },
-                            _preactCompat2.default.createElement('stop', { offset: '0%', 'stop-color': 'black', 'stop-opacity': '0' }),
-                            _preactCompat2.default.createElement('stop', { offset: '100%', 'stop-color': 'black' })
+                            _preact2.default.h('stop', { offset: '0%', 'stop-color': 'black', 'stop-opacity': '0' }),
+                            _preact2.default.h('stop', { offset: '100%', 'stop-color': 'black' })
                         ),
-                        _preactCompat2.default.createElement(
+                        _preact2.default.h(
                             'linearGradient',
                             { id: 'alpha-gradient', x1: '0', x2: '1', y1: '0', y2: '0' },
-                            _preactCompat2.default.createElement('stop', { offset: '0%', 'stop-color': "hsl(" + h + ",100%,50%)", 'stop-opacity': '0' }),
-                            _preactCompat2.default.createElement('stop', { offset: '100%', 'stop-color': "hsl(" + h + ",100%,50%)", 'stop-opacity': '100' })
+                            _preact2.default.h('stop', { offset: '0%', 'stop-color': "hsl(" + h + ",100%,50%)", 'stop-opacity': '0' }),
+                            _preact2.default.h('stop', { offset: '100%', 'stop-color': "hsl(" + h + ",100%,50%)", 'stop-opacity': '100' })
                         ),
-                        _preactCompat2.default.createElement(
+                        _preact2.default.h(
                             'linearGradient',
                             { id: 'hsv-gradient' },
                             stops
                         )
                     ),
-                    _preactCompat2.default.createElement('rect', { width: '100%', height: '100%', style: rect, fill: 'url(#horizontal-gradient' + uuid + ')' }),
-                    _preactCompat2.default.createElement('rect', { width: '100%', height: '100%', style: rect, fill: 'url(#vertical-gradient' + uuid + ')' }),
-                    _preactCompat2.default.createElement('circle', { fill: 'none', stroke: 'white', 'stroke-width': '1.5', r: '0.3em', cx: s + '%', cy: 100 - v + '%' })
+                    _preact2.default.h('rect', { width: '100%', height: '100%', style: rect, fill: 'url(#horizontal-gradient' + uuid + ')' }),
+                    _preact2.default.h('rect', { width: '100%', height: '100%', style: rect, fill: 'url(#vertical-gradient' + uuid + ')' }),
+                    _preact2.default.h('circle', { fill: 'none', stroke: 'white', 'stroke-width': '1.5', r: '0.3em', cx: s + '%', cy: 100 - v + '%' })
                 )
             ),
-            _preactCompat2.default.createElement(_slider2.default, { includeStepper: false, label: '', step: 1, min: 1, max: 360, value: h, style: hueSlider, onChange: this.onHueChange }),
-            a !== undefined ? _preactCompat2.default.createElement(_slider2.default, { includeStepper: false, label: 'alpha', step: 0.001, min: 0, max: 1, value: a, style: alphaSlider, onChange: this.onAlphaChange }) : null,
-            _preactCompat2.default.createElement(
+            _preact2.default.h(_slider2.default, { includeStepper: false, label: '', step: 1, min: 1, max: 360, value: h, style: hueSlider, onChange: this.onHueChange }),
+            a !== undefined ? _preact2.default.h(_slider2.default, { includeStepper: false, label: 'alpha', step: 0.001, min: 0, max: 1, value: a, style: alphaSlider, onChange: this.onAlphaChange }) : null,
+            _preact2.default.h(
                 'div',
                 { style: _extends({}, _styles.base, stepperStyle) },
-                _preactCompat2.default.createElement(_numericstepper2.default, { key: 'h', style: componentLabels, step: 1, min: 1, max: 360, value: Math.round(h), onChange: this.onHueChange, label: 'H' }),
-                _preactCompat2.default.createElement(_numericstepper2.default, { key: 's', style: componentLabels, step: 1, min: 1, max: 100, value: Math.round(s), onChange: this.onSaturationChange, label: 'S' }),
-                _preactCompat2.default.createElement(_numericstepper2.default, { key: 'v', style: componentLabels, step: 1, min: 1, max: 100, value: Math.round(v), onChange: this.onValueChange, label: 'V' })
+                _preact2.default.h(_numericstepper2.default, { key: 'h', style: componentLabels, step: 1, min: 1, max: 360, value: Math.round(h), onChange: this.onHueChange, label: 'H' }),
+                _preact2.default.h(_numericstepper2.default, { key: 's', style: componentLabels, step: 1, min: 1, max: 100, value: Math.round(s), onChange: this.onSaturationChange, label: 'S' }),
+                _preact2.default.h(_numericstepper2.default, { key: 'v', style: componentLabels, step: 1, min: 1, max: 100, value: Math.round(v), onChange: this.onValueChange, label: 'V' })
             )
         );
     }
@@ -207,21 +216,21 @@ HSVColorPicker.propTypes = {
     /**
      *  A text label
      */
-    label: _preactCompat2.default.PropTypes.string,
+    label: _propTypes2.default.string,
 
     /**
      * The default color of the component
      */
-    value: _preactCompat2.default.PropTypes.shape({
-        h: _preactCompat2.default.PropTypes.number.isRequired,
-        s: _preactCompat2.default.PropTypes.number.isRequired,
-        v: _preactCompat2.default.PropTypes.number.isRequired
+    value: _propTypes2.default.shape({
+        h: _propTypes2.default.number.isRequired,
+        s: _propTypes2.default.number.isRequired,
+        v: _propTypes2.default.number.isRequired
     }).isRequired,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat2.default.PropTypes.object
+    style: _propTypes2.default.object
 
 };
 
@@ -275,7 +284,7 @@ var createLinearGradientOfSVGStops = steps => {
         stops = [];
 
     while (l++ < steps) {
-        stops.push(_preactCompat2.default.createElement('stop', { offset: String(i * l) + "%", key: l, 'stop-color': "hsl( " + l * 360 / steps + ", 100%, 50% )" }));
+        stops.push(_preact2.default.h('stop', { offset: String(i * l) + "%", key: l, 'stop-color': "hsl( " + l * 360 / steps + ", 100%, 50% )" }));
     }
 
     return stops;

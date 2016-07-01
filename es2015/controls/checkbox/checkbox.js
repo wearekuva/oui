@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React from 'preact'
+import PropTypes from 'proptypes'
 import { base } from '../styles'
 
 /**
@@ -26,18 +28,18 @@ Checkbox.propTypes = {
 	/**
 	 * A text label
 	 */
-	label: React.PropTypes.string,
+	label: PropTypes.string,
 
 	/**
 	 * Determines whether the element is checked or not.
 	 */
-	value: React.PropTypes.bool,
+	value: PropTypes.bool,
 
 
 	/**
 	 * A callback triggered when the checkbox is toggled
 	 */
-	onChange: React.PropTypes.func
+	onChange: PropTypes.func
 
 
 

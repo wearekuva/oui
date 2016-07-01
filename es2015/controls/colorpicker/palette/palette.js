@@ -1,8 +1,10 @@
-import React, { PropTypes } from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 import Colr from 'colr'
 import Button from '../../button'
 import { base } from '../../../controls/styles'
-import MdRemove from 'react-icons/lib/md/remove';
+// import MdRemove from 'react-icons/lib/md/remove';
 
 /**
  * The ColorButton is simply a coloured button used as
@@ -55,7 +57,7 @@ class Palette extends React.Component {
                 onMouseOver={ e => ( areColoursRemoveable && e.shiftKey ? this.setState({hover:i}) : null )}
                 onMouseOut={ areColoursRemoveable ? e => this.setState({hover:null}) : null }
                 onClick={ e => ( e.shiftKey ? onDeselect( color, i ) : onSelect( color ))}>
-                    { i === hover ? <MdRemove/> : null }
+                    { i === hover ? <div/> : null }
                 </ColorButton>
             )}
         </div>
@@ -91,7 +93,7 @@ Palette.propTypes = {
     /**
      * Optional component styling
      */
-    style: React.PropTypes.object
+    style: PropTypes.object
 }
 
 var style = {

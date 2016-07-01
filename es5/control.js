@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _preactCompat = require('preact-compat');
+var _Preact = require('Preact');
 
-var React = _interopRequireWildcard(_preactCompat);
+var _Preact2 = _interopRequireDefault(_Preact);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = Component => React.isValidElement(React.createElement(Component, null)) && Component.propTypes && typeof Component.propTypes === 'object' && typeof Component.propTypes.value === 'function';
+exports.default = Component => _Preact2.default.isValidElement(_Preact2.default.createElement(Component, null)) && Component.propTypes && typeof Component.propTypes === 'object' && typeof Component.propTypes.value === 'function';
 /*
     Validates a control.
 

@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 // import radium from 'radium'
 import { clamp } from '../../math'
 import { base, secondary, highlight } from '../styles'
@@ -58,43 +60,43 @@ NumericStepper.propTypes = {
     /**
      *  A text label
      */
-    label: React.PropTypes.string,
+    label: PropTypes.string,
 
 
     /**
      *  The value of the slider
      */
-    value: React.PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
 
 
     /**
      *  Specifies the minimum value for the component
      */
-    min: React.PropTypes.number,
+    min: PropTypes.number,
 
 
     /**
      *  Specifies the maximum value for the component
      */
-    max: React.PropTypes.number,
+    max: PropTypes.number,
 
 
     /**
      * Specifies the intervals step
      */
-    step: React.PropTypes.number,
+    step: PropTypes.number,
 
 
     /**
 	 * A callback triggered when the component updates
 	 */
-    onChange: React.PropTypes.func,
+    onChange: PropTypes.func,
 
 
     /**
      * Optional component styling
      */
-    style: React.PropTypes.object
+    style: PropTypes.object
 
 }
 

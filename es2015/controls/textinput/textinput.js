@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 // import radium from 'radium'
 import { base, highlight, secondary } from '../styles'
 
@@ -31,25 +33,25 @@ TextInput.propTypes = {
 	/**
 	 * The default value for the text input field
 	 */
-	value: React.PropTypes.string,
+	value: PropTypes.string,
 
 
 	/**
 	 * A function called when the text field changes
 	 */
-	onChange: React.PropTypes.func,
+	onChange: PropTypes.func,
 
 
 	/**
 	 * A text label for the input field
 	 */
-	label: React.PropTypes.string,
+	label: PropTypes.string,
 
 
     /**
      * Optional component styling
      */
-    style: React.PropTypes.object
+    style: PropTypes.object
 
 }
 

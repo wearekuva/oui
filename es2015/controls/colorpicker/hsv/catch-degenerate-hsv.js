@@ -8,7 +8,8 @@
 
 */
 
-import React from 'preact-compat'
+/** @jsx React.h */
+import React from 'preact'
 
 let isDegenerate = ({ h, s, v }) => ( s === 0  )
 

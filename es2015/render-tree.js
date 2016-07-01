@@ -47,8 +47,8 @@
 
   1) An interface may be a React propType:
     {
-      requiredObject: React.PropTypes.object.isRequired,
-      requiredString: React.PropTypes.string.isRequired,
+      requiredObject: PropTypes.object.isRequired,
+      requiredString: PropTypes.string.isRequired,
     }
 
     This can actually be validated, but
@@ -82,8 +82,8 @@ import { colorpicker } from 'custom-comps'
 ```
 */
 
-
-import * as React from 'preact-compat'
+/** @jsx React.h */
+import React from 'preact'
 import { getAnnotation }  from './annotate'
 import primitives from './primitive-components'
 import { validateProp } from './validation'

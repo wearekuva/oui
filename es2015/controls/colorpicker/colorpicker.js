@@ -1,9 +1,11 @@
-import React, { Component, PropTypes } from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 import HSVColorPicker from './hsv/hsv-colorpicker'
 import Colr from 'colr'
 import Palette from './palette/palette'
-import FaAdd from 'react-icons/lib/md/add';
-
+// // import FaAdd from 'react-icons/lib/md/add';
+//
 import { base, secondary, highlight } from '../../controls/styles'
 import getConverterForColorType from './color-converter'
 import { rgbObject, rgbArray, hsvObject, hslObject } from './validators'
@@ -85,7 +87,7 @@ class ColorPicker extends Component {
                     <HSVColorPicker style={ style } value={ hsvColor } onChange={ this.onColorChange } />
                     <Palette key={'user-palette'} values={ palette.map( toHsv ) } onSelect={ this.onColorChange } />
                     <Palette key={'system-palette'} values={ this.getSystemColors() } onSelect={ this.onColorChange } onDeselect={ this.onRemoveColorClick.bind( this ) } />
-                    <FaAdd onClick={ e => this.onAddColorClick( toHsv( value )) }/>
+                    <div onClick={ e => this.onAddColorClick( toHsv( value )) }/>
                 </div>
             : null }
         </div>

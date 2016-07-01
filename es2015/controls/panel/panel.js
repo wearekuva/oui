@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { Component, h } from 'preact'
+import PropTypes from 'propTypes'
 import { base, secondary } from '../styles'
 import MdChevronLeft from '../../icons/expand-less'
 import MdExpandMore from '../../icons/expand-more'

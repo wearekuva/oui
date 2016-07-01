@@ -1,4 +1,7 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import SVG from 'preact-svg'
+import PropTypes from 'propTypes'
 import hsvCatch from './catch-degenerate-hsv'
 import Slider from '../../../controls/slider'
 import NumericStepper from '../../../controls/numericstepper'
@@ -128,7 +131,7 @@ class HSVColorPicker extends React.Component {
 
         return <div>
             <div style={{ ...base, ...style }}>
-                <svg width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
+                <SVG width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
                     style={defaultStyle}
                     onMouseDown={this.onMouseDown}
                     onMouseMove={this.state.drag ? this.onMouseMove : null}
@@ -154,7 +157,7 @@ class HSVColorPicker extends React.Component {
                     <rect width='100%' height='100%' style={rect} fill={'url(#horizontal-gradient'+uuid+')'}/>
                     <rect width='100%' height='100%' style={rect} fill={'url(#vertical-gradient'+uuid+')'}/>
                     <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
-                </svg>
+                </SVG>
             </div>
             <Slider includeStepper={false} label={''} step={1} min={1} max={360} value={h} style={hueSlider} onChange={this.onHueChange}/>
             { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={this.onAlphaChange}/> : null }
@@ -180,23 +183,23 @@ HSVColorPicker.propTypes = {
     /**
      *  A text label
      */
-    label: React.PropTypes.string,
+    label: PropTypes.string,
 
 
     /**
      * The default color of the component
      */
-    value: React.PropTypes.shape({
-        h: React.PropTypes.number.isRequired,
-        s: React.PropTypes.number.isRequired,
-        v: React.PropTypes.number.isRequired
+    value: PropTypes.shape({
+        h: PropTypes.number.isRequired,
+        s: PropTypes.number.isRequired,
+        v: PropTypes.number.isRequired
     }).isRequired,
 
 
     /**
      * Optional component styling
      */
-    style: React.PropTypes.object
+    style: PropTypes.object
 
 }
 

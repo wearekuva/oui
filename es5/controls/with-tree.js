@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -14,14 +14,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                                                                                                                                                                                                                                                                       component rather than directly on the Folder component itself means we can
                                                                                                                                                                                                                                                                       normalize the api in 'render-tree'
                                                                                                                                                                                                                                                                   */
+/** @jsx React.h */
 
-var _renderTree = require("../render-tree");
+
+var _renderTree = require('../render-tree');
 
 var _renderTree2 = _interopRequireDefault(_renderTree);
 
-var _preactCompat = require("preact-compat");
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,19 +49,19 @@ exports.default = FolderComponent => {
 
         render() {
 
-            return _preactCompat2.default.createElement(FolderComponent, _extends({}, this.props, { value: this.tree }));
+            return _preact2.default.h(FolderComponent, _extends({}, this.props, { value: this.tree }));
         }
     }
 
     WrappedComponent.propTypes = {
 
-        value: _preactCompat.PropTypes.oneOfType([_preactCompat.PropTypes.object, _preactCompat.PropTypes.array]).isRequired,
+        value: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array]).isRequired,
 
-        onChange: _preactCompat.PropTypes.func,
+        onChange: _propTypes2.default.func,
 
-        label: _preactCompat.PropTypes.string,
+        label: _propTypes2.default.string,
 
-        style: _preactCompat.PropTypes.object
+        style: _propTypes2.default.object
 
     };
 

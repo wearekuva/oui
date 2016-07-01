@@ -4,13 +4,18 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
+
 // import radium from 'radium'
 
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styles = require('../styles');
 
@@ -23,21 +28,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 */
 
-class TextInput extends _preactCompat2.default.Component {
+class TextInput extends _preact2.default.Component {
 
 	render() {
 
 		const { value, label, onChange, style } = this.props;
 
-		return _preactCompat2.default.createElement(
+		return _preact2.default.h(
 			'div',
 			{ style: _extends({}, _styles.base, style, { display: 'flex' }) },
-			_preactCompat2.default.createElement(
+			_preact2.default.h(
 				'label',
 				null,
 				label
 			),
-			_preactCompat2.default.createElement('input', { type: 'text', value: value,
+			_preact2.default.h('input', { type: 'text', value: value,
 				style: _extends({}, defaultStyle), onInput: evt => onChange(evt.target.value) })
 		);
 	}
@@ -50,22 +55,22 @@ TextInput.propTypes = {
 	/**
   * The default value for the text input field
   */
-	value: _preactCompat2.default.PropTypes.string,
+	value: _propTypes2.default.string,
 
 	/**
   * A function called when the text field changes
   */
-	onChange: _preactCompat2.default.PropTypes.func,
+	onChange: _propTypes2.default.func,
 
 	/**
   * A text label for the input field
   */
-	label: _preactCompat2.default.PropTypes.string,
+	label: _propTypes2.default.string,
 
 	/**
   * Optional component styling
   */
-	style: _preactCompat2.default.PropTypes.object
+	style: _propTypes2.default.object
 
 };
 

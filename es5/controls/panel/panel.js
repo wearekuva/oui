@@ -4,11 +4,16 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styles = require('../styles');
 
@@ -22,7 +27,7 @@ var _expandMore2 = _interopRequireDefault(_expandMore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-class Panel extends _preactCompat2.default.Component {
+class Panel extends _preact2.default.Component {
 
     constructor() {
 
@@ -39,25 +44,25 @@ class Panel extends _preactCompat2.default.Component {
             { open } = this.state,
             Chevron = open ? _expandMore2.default : _expandLess2.default;
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             { style: _extends({}, _styles.base, style), 'class': 'oui-panel' },
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'header',
                 { style: { lineHeight: '11px' }, onClick: this.toggleOpen },
-                _preactCompat2.default.createElement(
+                _preact2.default.h(
                     'div',
                     { style: { display: 'flex' } },
-                    _preactCompat2.default.createElement(
+                    _preact2.default.h(
                         'label',
                         null,
                         'Panel'
                     ),
-                    _preactCompat2.default.createElement(Chevron, { style: { marginLeft: 'auto' } })
+                    _preact2.default.h(Chevron, { style: { marginLeft: 'auto' } })
                 ),
-                open ? _preactCompat2.default.createElement('hr', { style: lineStyle }) : null
+                open ? _preact2.default.h('hr', { style: lineStyle }) : null
             ),
-            open ? _preactCompat2.default.createElement(
+            open ? _preact2.default.h(
                 'div',
                 { style: { overflowY: 'scroll', maxHeight: '90%' } },
                 children

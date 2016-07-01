@@ -4,9 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _radium = require('radium');
 
@@ -38,7 +42,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 */
 
-class Dial extends _preactCompat.Component {
+/** @jsx React.h */
+class Dial extends _preact.Component {
 
     constructor() {
 
@@ -103,18 +108,18 @@ class Dial extends _preactCompat.Component {
             for future reference
         */
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             { style: [_styles.base, style, { height: 'auto' }] },
-            _preactCompat2.default.createElement(_numericstepper2.default, stepperProps),
-            _preactCompat2.default.createElement(
+            _preact2.default.h(_numericstepper2.default, stepperProps),
+            _preact2.default.h(
                 'svg',
                 { style: [svgStyle, { transform }], width: style.width, height: style.width, xmlns: 'http://www.w3.org/2000/svg',
                     ref: ref => this.domRef = ref,
                     onMouseDown: this.onMouseDown,
                     onTouchStart: this.onMouseDown },
-                _preactCompat2.default.createElement('circle', { r: radius, cx: radius, cy: radius, strokeDasharray: b, fill: 'transparent', stroke: _styles.secondary.color, strokeWidth: radius }),
-                value > 0 ? _preactCompat2.default.createElement('circle', { r: radius, cx: radius, cy: radius, strokeDasharray: a, fill: 'transparent', stroke: _styles.highlight.color, strokeWidth: radius }) : null
+                _preact2.default.h('circle', { r: radius, cx: radius, cy: radius, strokeDasharray: b, fill: 'transparent', stroke: _styles.secondary.color, strokeWidth: radius }),
+                value > 0 ? _preact2.default.h('circle', { r: radius, cx: radius, cy: radius, strokeDasharray: a, fill: 'transparent', stroke: _styles.highlight.color, strokeWidth: radius }) : null
             )
         );
     }
@@ -127,37 +132,37 @@ Dial.propTypes = {
     /**
      *  A text label
      */
-    label: _preactCompat.PropTypes.string,
+    label: _propTypes2.default.string,
 
     /**
      *  The default value
      */
-    value: _preactCompat.PropTypes.number.isRequired,
+    value: _propTypes2.default.number.isRequired,
 
     /**
      *  Specifies the minimum value for the component
      */
-    min: _preactCompat.PropTypes.number,
+    min: _propTypes2.default.number,
 
     /**
      *  Specifies the maximum value for the component
      */
-    max: _preactCompat.PropTypes.number,
+    max: _propTypes2.default.number,
 
     /**
      * Specifies the intervals step
      */
-    step: _preactCompat.PropTypes.number,
+    step: _propTypes2.default.number,
 
     /**
     * A callback triggered when the component updates
     */
-    onChange: _preactCompat.PropTypes.func,
+    onChange: _propTypes2.default.func,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat2.default.PropTypes.object
+    style: _propTypes2.default.object
 
 };
 

@@ -4,11 +4,20 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _preactSvg = require('preact-svg');
+
+var _preactSvg2 = _interopRequireDefault(_preactSvg);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styles = require('../../controls/styles');
 
@@ -42,7 +51,7 @@ the suplied data.
 Handy for plotting functions, visualising sound information and graphing general data
 */
 
-class Graph extends _preactCompat2.default.Component {
+class Graph extends _preact2.default.Component {
 
     render() {
 
@@ -87,57 +96,57 @@ class Graph extends _preactCompat2.default.Component {
             If our domain is degenerate, then don't bother rendering the polyline
         */
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             { style: _styles.base },
             label,
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'div',
                 { style: style },
-                _preactCompat2.default.createElement(
-                    'svg',
+                _preact2.default.h(
+                    _preactSvg2.default,
                     { style: _extends({}, _styles.base, { display: 'block' }), width: '100%', height: '100%', viewBox: '0 0 100 100', preserveAspectRatio: 'none' },
-                    _preactCompat2.default.createElement('rect', { style: _extends({}, defaultStyle.rect, defaultStyle.nonScalingStroke), width: '100%', height: '100%' }),
-                    min < max ? _preactCompat2.default.createElement('polyline', { style: defaultStyle.nonScalingStroke, fill: fill ? _styles.highlight.color : 'none', stroke: _styles.highlight.color, points: value2D }) : null
+                    _preact2.default.h('rect', { style: _extends({}, defaultStyle.rect, defaultStyle.nonScalingStroke), width: '100%', height: '100%' }),
+                    min < max ? _preact2.default.h('polyline', { style: defaultStyle.nonScalingStroke, fill: fill ? _styles.highlight.color : 'none', stroke: _styles.highlight.color, points: value2D }) : null
                 )
             )
         );
     }
 }
 
-let arrayLikeStructures = [_preactCompat.PropTypes.arrayOf(_preactCompat.PropTypes.number), _preactCompat.PropTypes.instanceOf(Int8Array), _preactCompat.PropTypes.instanceOf(Uint8Array), _preactCompat.PropTypes.instanceOf(Uint8ClampedArray), _preactCompat.PropTypes.instanceOf(Int16Array), _preactCompat.PropTypes.instanceOf(Uint16Array), _preactCompat.PropTypes.instanceOf(Int32Array), _preactCompat.PropTypes.instanceOf(Uint32Array), _preactCompat.PropTypes.instanceOf(Float32Array), _preactCompat.PropTypes.instanceOf(Float64Array)];
+let arrayLikeStructures = [_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.instanceOf(Int8Array), _propTypes2.default.instanceOf(Uint8Array), _propTypes2.default.instanceOf(Uint8ClampedArray), _propTypes2.default.instanceOf(Int16Array), _propTypes2.default.instanceOf(Uint16Array), _propTypes2.default.instanceOf(Int32Array), _propTypes2.default.instanceOf(Uint32Array), _propTypes2.default.instanceOf(Float32Array), _propTypes2.default.instanceOf(Float64Array)];
 
 Graph.propTypes = {
 
     /**
      * A text label
      */
-    label: _preactCompat2.default.PropTypes.string,
+    label: _propTypes2.default.string,
 
     /**
      * An array of numerical data
      */
-    value: _preactCompat.PropTypes.oneOfType(arrayLikeStructures).isRequired,
+    value: _propTypes2.default.oneOfType(arrayLikeStructures).isRequired,
 
     /**
      * Defines the minimum range of the graph.
      */
-    min: _preactCompat.PropTypes.number,
+    min: _propTypes2.default.number,
 
     /**
      * Defines the maximum range of the graph.
      */
-    max: _preactCompat.PropTypes.number,
+    max: _propTypes2.default.number,
 
     /**
      * If true, the graph will be a solid color
      */
-    fill: _preactCompat.PropTypes.bool,
+    fill: _propTypes2.default.bool,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat.PropTypes.object
+    style: _propTypes2.default.object
 
 };
 

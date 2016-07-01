@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
 
 var _renderTree = require('./render-tree');
 
@@ -30,6 +30,41 @@ var _warn2 = _interopRequireDefault(_warn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// proxy render() since React returns a Component reference.
+
+
+/*
+    Oui is mostly a stateless library. UI is declared using plain js objects and
+    oui simply maps them to controllers. This workflow serves the functional
+    community quite well, however many people prefer a more idiomatic imperative
+    api without having to maintain state themselves.
+
+    This module covers those scenarios where you just want to fire up the ui,
+    without having to worry about merging in UI changes.
+
+    Changes are deeply merged into the api object and the UI is automatically
+    re-rendered.
+*/
+
+/** @jsx React.h */
+function prender(vnode, parent, callback) {
+    let prev = parent._preactCompatRendered;
+    if (prev && prev.parentNode !== parent) prev = null;
+    let out = (0, _preact.render)(vnode, parent, prev);
+    parent._preactCompatRendered = out;
+    if (typeof callback === 'function') callback();
+    return out && out._component;
+}
+
+function unmountComponentAtNode(container) {
+    let existing = container._preactCompatRendered;
+    if (existing && existing.parentNode === container) {
+        (0, _preact.render)(h(EmptyComponent), container, existing);
+        return true;
+    }
+    return false;
+}
+
 exports.default = opts => {
 
     let container = null;
@@ -38,7 +73,7 @@ exports.default = opts => {
 
         if (!api) {
 
-            _preactCompat2.default.unmountComponentAtNode(container);
+            unmountComponentAtNode(container);
             _dom2.default.removeChild(container);
             container = null;
         } else if (container === null) {
@@ -61,27 +96,14 @@ exports.default = opts => {
                 }
             };
 
-            let Element = _preactCompat2.default.createElement(
+            let Element = _preact2.default.h(
                 _panel2.default,
                 opts,
                 (0, _renderTree2.default)(api, onChange)
             );
-            _preactCompat2.default.render(Element, container);
+            prender(Element, container);
         }
     };
 
     return render;
 };
-
-/*
-    Oui is mostly a stateless library. UI is declared using plain js objects and
-    oui simply maps them to controllers. This workflow serves the functional
-    community quite well, however many people prefer a more idiomatic imperative
-    api without having to maintain state themselves.
-
-    This module covers those scenarios where you just want to fire up the ui,
-    without having to worry about merging in UI changes.
-
-    Changes are deeply merged into the api object and the UI is automatically
-    re-rendered.
-*/

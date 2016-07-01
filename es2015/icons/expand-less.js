@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import svg from 'preact-svg';
 
 export default props => <svg
     fill="currentColor"

@@ -4,11 +4,16 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _colr = require('colr');
 
@@ -20,11 +25,9 @@ var _button2 = _interopRequireDefault(_button);
 
 var _styles = require('../../../controls/styles');
 
-var _remove = require('react-icons/lib/md/remove');
-
-var _remove2 = _interopRequireDefault(_remove);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import MdRemove from 'react-icons/lib/md/remove';
 
 /**
  * The ColorButton is simply a coloured button used as
@@ -49,14 +52,14 @@ let ColorButton = props => {
         }
     };
 
-    return _preactCompat2.default.createElement(
+    return _preact2.default.h(
         _button2.default,
         _extends({ label: '' }, props, { style: style }),
         children
     );
 };
 
-class Palette extends _preactCompat2.default.Component {
+class Palette extends _preact2.default.Component {
 
     constructor() {
         super();
@@ -74,16 +77,16 @@ class Palette extends _preactCompat2.default.Component {
         // If we have no colors then don't bother showing anything
         if (!values || values.length === 0) return null;
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             null,
-            values.map((color, i) => _preactCompat2.default.createElement(
+            values.map((color, i) => _preact2.default.h(
                 ColorButton,
                 { key: i, value: color,
                     onMouseOver: e => areColoursRemoveable && e.shiftKey ? this.setState({ hover: i }) : null,
                     onMouseOut: areColoursRemoveable ? e => this.setState({ hover: null }) : null,
                     onClick: e => e.shiftKey ? onDeselect(color, i) : onSelect(color) },
-                i === hover ? _preactCompat2.default.createElement(_remove2.default, null) : null
+                i === hover ? _preact2.default.h('div', null) : null
             ))
         );
     }
@@ -102,16 +105,16 @@ Palette.defaultProps = {
 
 Palette.propTypes = {
 
-    values: _preactCompat.PropTypes.arrayOf(_preactCompat.PropTypes.shape({ h: _preactCompat.PropTypes.number.isRequired, s: _preactCompat.PropTypes.number.isRequired, v: _preactCompat.PropTypes.number.isRequired })).isRequired,
+    values: _propTypes2.default.arrayOf(_propTypes2.default.shape({ h: _propTypes2.default.number.isRequired, s: _propTypes2.default.number.isRequired, v: _propTypes2.default.number.isRequired })).isRequired,
 
-    onSelect: _preactCompat.PropTypes.func,
+    onSelect: _propTypes2.default.func,
 
-    onDeselect: _preactCompat.PropTypes.func,
+    onDeselect: _propTypes2.default.func,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat2.default.PropTypes.object
+    style: _propTypes2.default.object
 };
 
 var style = {

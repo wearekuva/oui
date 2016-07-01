@@ -13,14 +13,34 @@
     re-rendered.
 */
 
-
-import React from 'preact-compat'
-import dom from 'preact-compat'
+/** @jsx React.h */
+import React, { render as preactRender } from 'preact'
 import Tree from './render-tree'
 import Panel from './controls/panel'
 import domElement from './dom'
 import merge from './deep-merge'
 import warn from './warn'
+
+
+// proxy render() since React returns a Component reference.
+function prender(vnode, parent, callback) {
+	let prev = parent._preactCompatRendered;
+	if (prev && prev.parentNode!==parent) prev = null;
+	let out = preactRender(vnode, parent, prev);
+	parent._preactCompatRendered = out;
+	if (typeof callback==='function') callback();
+	return out && out._component;
+}
+
+
+function unmountComponentAtNode(container) {
+	let existing = container._preactCompatRendered;
+	if (existing && existing.parentNode===container) {
+		preactRender(h(EmptyComponent), container, existing);
+		return true;
+	}
+	return false;
+}
 
 
 export default opts => {
@@ -31,7 +51,7 @@ export default opts => {
 
         if( !api ){
 
-            dom.unmountComponentAtNode( container )
+            unmountComponentAtNode( container )
             domElement.removeChild( container )
             container = null
 
@@ -57,7 +77,7 @@ export default opts => {
             }
 
             let Element = <Panel { ...opts }>{ Tree( api, onChange )}</Panel>
-            dom.render( Element , container )
+            prender( Element, container )
         }
     }
 

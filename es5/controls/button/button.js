@@ -4,11 +4,16 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _proptypes = require('proptypes');
+
+var _proptypes2 = _interopRequireDefault(_proptypes);
 
 var _styles = require('../../controls/styles');
 
@@ -34,7 +39,7 @@ let defaultStyle = {
     Pretty self explanatory. Documentation included for completeness
 */
 
-let Button = props => _preactCompat2.default.createElement(
+let Button = props => _preact2.default.h(
     'button',
     _extends({}, props, { style: _extends({}, _styles.base, defaultStyle, props.style), onClick: props.value }),
     props.label
@@ -51,17 +56,17 @@ Button.propTypes = {
     /*
         function to call on click
     */
-    value: _preactCompat2.default.PropTypes.func.isRequired,
+    value: _proptypes2.default.func.isRequired,
 
     /**
      * A text label
      */
-    label: _preactCompat2.default.PropTypes.string,
+    label: _proptypes2.default.string,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat2.default.PropTypes.object
+    style: _proptypes2.default.object
 
 };
 

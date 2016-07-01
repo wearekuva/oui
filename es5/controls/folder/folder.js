@@ -4,9 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _styles = require('../styles');
 
@@ -25,7 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     To render it's children, it accepts an array or object of react elements.
 */
 
-class Folder extends _preactCompat.Component {
+class Folder extends _preact.Component {
 
     constructor() {
 
@@ -42,20 +46,20 @@ class Folder extends _preactCompat.Component {
             { open } = this.state,
             Chevron = open ? _expandMore2.default : _expandLess2.default;
 
-        return _preactCompat2.default.createElement(
+        return _preact2.default.h(
             'div',
             { style: _styles.base },
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'div',
                 { onClick: this.toggleOpen, style: { display: 'flex', alignItems: 'center' } },
-                _preactCompat2.default.createElement(
+                _preact2.default.h(
                     'label',
                     null,
                     label
                 ),
-                _preactCompat2.default.createElement(Chevron, { style: { marginLeft: 'auto' } })
+                _preact2.default.h(Chevron, { style: { marginLeft: 'auto' } })
             ),
-            open ? _preactCompat2.default.createElement(
+            open ? _preact2.default.h(
                 'div',
                 { style: { padding: '1em', backgroundColor: 'rgba( 1, 1, 1, 0.04 )', borderRadius: 2 } },
                 value()
@@ -68,6 +72,7 @@ class Folder extends _preactCompat.Component {
 
 // import radium from 'radium'
 // import Tree from "../../render-tree"
+/** @jsx React.h */
 Folder.defaultProps = {
 
     label: 'Folder',
@@ -82,13 +87,13 @@ Folder.propTypes = {
     //     PropTypes.array,
     // ]).isRequired,
 
-    value: _preactCompat.PropTypes.func.isRequired,
+    value: _propTypes2.default.func.isRequired,
 
-    onChange: _preactCompat.PropTypes.func,
+    onChange: _propTypes2.default.func,
 
-    label: _preactCompat.PropTypes.string,
+    label: _propTypes2.default.string,
 
-    style: _preactCompat.PropTypes.object
+    style: _propTypes2.default.object
 
 };
 

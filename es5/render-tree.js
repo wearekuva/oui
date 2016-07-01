@@ -53,8 +53,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   1) An interface may be a React propType:
     {
-      requiredObject: React.PropTypes.object.isRequired,
-      requiredString: React.PropTypes.string.isRequired,
+      requiredObject: PropTypes.object.isRequired,
+      requiredString: PropTypes.string.isRequired,
     }
 
     This can actually be validated, but
@@ -88,9 +88,12 @@ import { colorpicker } from 'custom-comps'
 ```
 */
 
-var _preactCompat = require('preact-compat');
+/** @jsx React.h */
 
-var React = _interopRequireWildcard(_preactCompat);
+
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
 
 var _annotate = require('./annotate');
 
@@ -105,8 +108,6 @@ var _warn = require('./warn');
 var _warn2 = _interopRequireDefault(_warn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 exports.default = (obj, onChange) => {
 
@@ -163,7 +164,7 @@ exports.default = (obj, onChange) => {
             Create the Element based on the provided annotaions and the required Component
         */
         if (Component) {
-            components.push(React.createElement(Component, _extends({ key: prop, id: prop, label: prop }, annotation, { onChange: onChange, value: value })));
+            components.push(_preact2.default.h(Component, _extends({ key: prop, id: prop, label: prop }, annotation, { onChange: onChange, value: value })));
         }
     }
 

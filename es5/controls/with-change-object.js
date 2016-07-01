@@ -10,10 +10,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                                                                                                                                                                                                                                                                       the slot. This makes it easy to reconcile what changed in the ui without having
                                                                                                                                                                                                                                                                       to have unneccesary references directly in components.
                                                                                                                                                                                                                                                                   */
+/** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,7 +36,7 @@ exports.default = Comp => {
 
         render() {
 
-            return _preactCompat2.default.createElement(Comp, _extends({}, this.props, { 'class': 'oui-control', onChange: this.onChildChange }));
+            return _preact2.default.h(Comp, _extends({}, this.props, { 'class': 'oui-control', onChange: this.onChildChange }));
         }
     }
 
@@ -38,9 +44,9 @@ exports.default = Comp => {
 
     WrappedComponent.propTypes = {
 
-        onChange: _preactCompat.PropTypes.func.isRequired,
+        onChange: _propTypes2.default.func.isRequired,
 
-        id: _preactCompat.PropTypes.string.isRequired,
+        id: _propTypes2.default.string.isRequired,
 
         value: Comp.propTypes.value
 

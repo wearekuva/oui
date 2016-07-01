@@ -4,11 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _proptypes = require('proptypes');
+
+var _proptypes2 = _interopRequireDefault(_proptypes);
 
 var _styles = require('../styles');
 
@@ -18,21 +23,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  	Another stupidly simple component, it effectively wraps the native checkbox.
 	Documentation included for completeness
  */
-class Checkbox extends _preactCompat2.default.Component {
+class Checkbox extends _preact2.default.Component {
 
 	render() {
 
 		const { value, label, onChange } = this.props;
 
-		return _preactCompat2.default.createElement(
+		return _preact2.default.h(
 			'div',
 			{ style: _extends({}, _styles.base, defaultStyle, { alignItems: 'center' }), onClick: evt => onChange(!value) },
-			_preactCompat2.default.createElement(
+			_preact2.default.h(
 				'label',
 				{ style: _styles.base },
 				label
 			),
-			_preactCompat2.default.createElement('input', { checked: value, style: alignRight, type: 'checkbox', onChange: evt => onChange(evt.target.checked) })
+			_preact2.default.h('input', { checked: value, style: alignRight, type: 'checkbox', onChange: evt => onChange(evt.target.checked) })
 		);
 	}
 }
@@ -44,17 +49,17 @@ Checkbox.propTypes = {
 	/**
   * A text label
   */
-	label: _preactCompat2.default.PropTypes.string,
+	label: _proptypes2.default.string,
 
 	/**
   * Determines whether the element is checked or not.
   */
-	value: _preactCompat2.default.PropTypes.bool,
+	value: _proptypes2.default.bool,
 
 	/**
   * A callback triggered when the checkbox is toggled
   */
-	onChange: _preactCompat2.default.PropTypes.func
+	onChange: _proptypes2.default.func
 
 };
 

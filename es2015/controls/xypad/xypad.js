@@ -1,4 +1,7 @@
-import React, { PropTypes } from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import SVG from 'preact-svg'
+import PropTypes from 'propTypes'
 import NumericStepper from '../../controls/numericstepper'
 import { map } from '../../math'
 import throttle from '../../controls/utils/throttle'
@@ -96,6 +99,8 @@ class XYPad extends React.Component {
         let xVis = map( x, min.x, max.x, 0, 100 ) + '%',
             yVis = map( y, min.y, max.y, 0, 100 ) + '%'
 
+        console.log( SVG )
+
 
         return <div style={{ ...base, height:'auto' }}>
             <div style={{display:'flex', alignItems: 'center'}}>
@@ -105,7 +110,7 @@ class XYPad extends React.Component {
                     <NumericStepper style={ componentLabels } min={min.y} max={max.y} value={y} onChange={ this.onYChange } label={'Y'}/>
                 </div>
             </div>
-            { open ? <svg width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
+            { open ? <SVG width='100%' height='100%' xmlns="http://www.w3.org/2000/svg"
                 style={{ ...defaultStyle, ...style }}
                 ref={ref => this.domRef = ref}
                 onMouseDown={ this.onMouseDown}
@@ -116,11 +121,11 @@ class XYPad extends React.Component {
                 onTouchMove={ this.onTouchMove }
                 onTouchEnd={ this.onMouseUp }>
 
-                <rect fill='none' stroke={secondary.color} strokeWidth='1' width='100%' height='100%' />
+                <rect fill='none' stroke={secondary.color} stroke-width='1' width='100%' height='100%' />
                 <line x1={xVis} x2={xVis} y1={0} y2='100%' style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <line x1={0} x2='100%' y1={yVis} y2={yVis} style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <circle r={3} cx={xVis} cy={yVis} style={circle} />
-            </svg> : null }
+            </SVG> : null }
         </div>
     }
 }

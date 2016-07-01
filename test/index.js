@@ -1,7 +1,9 @@
-import { oui, oneOf, panel } from 'oui'
-import { color } from 'controls/colorpicker'
-import { xypad } from 'controls/xypad'
-import { graph } from 'controls/graph'
+import oui from 'oui'
+import panel from 'oui/imperative-api'
+import { color } from 'oui/controls/colorpicker'
+import { xypad } from 'oui/controls/xypad'
+import { graph } from 'oui/controls/graph'
+import { oneOf } from 'oui/controls/combobox'
 
 
 
@@ -13,7 +15,7 @@ let a = {
     //
     // },
     // oneof: ['a', 'b', 'c'],
-    // col1:[ 1, 1, 1],
+    col1:[ 1, 1, 1],
     // col2:[ 1, 1, 1 ],
     // someProp2:10,
     // 'bool':false,
@@ -98,7 +100,7 @@ oneOf({ options:[ 'a', 'b', 'd', 'e' ] })( c, 'baaahh' )
 // oneOf({ options:[20, 10, 40] })( a, 'b' )
 // color({open:true})( a.dir, 'col' )
 color({open:true})( b.folder, 'col' )
-// color({open:true})( a, 'col1' )
+color({open:true})( a, 'col1' )
 // color({open:true})( a, 'col2' )
 xypad()( b, 'someProp3' )
 graph({fill:true})( b, 'someGraph' )
@@ -119,13 +121,14 @@ let ppp = panel()
 
 let drawOui = t => {
     b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
-    oui( {})
-    // pp( b )
-    // ppp( c )
+    // oui( a )
+    p( a )
+    pp( b )
+    ppp( c )
 
     // a.sdfsdf = 20
 
-    requestAnimationFrame( drawOui )
+    // requestAnimationFrame( drawOui )
 }
 
 drawOui( Date.now())

@@ -1,4 +1,7 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import SVG from 'preact-svg'
+import PropTypes from 'propTypes'
 import NumericStepper from '../numericstepper'
 import shallowCompare from '../../shallow-compare'
 import { map, clamp } from '../../math'
@@ -143,14 +146,14 @@ class Slider extends React.Component{
 
         return <div style={ base }>
             { includeStepper ? <NumericStepper {...stepperProps} onChange={ this.onNumericStepperChange }/> : null }
-            <svg width='100%' height="1em"
+            <SVG width='100%' height="1em"
                 style={ defaultStyle }
                 onMouseDown={this.onMouseDown}
                 onTouchStart={this.onMouseDown}>
                 <rect width='100%' height="100%" style={{ ...defaultStyle, ...backgroundBar, ...style.backgroundBar }}/>
                 <rect width='100%' height="100%" style={{ ...defaultStyle, ...bar, ...style.bar }} width={ offsetPercentage }/>
                 <circle cy={'50%'} cx={offsetPercentage} r='0.5em' style={{ ...defaultStyle, ...thumb, ...style.thumb }}/>
-            </svg>
+            </SVG>
         </div>
     }
 }
@@ -162,44 +165,44 @@ Slider.propTypes = {
     /**
      *  A text label
      */
-    label: React.PropTypes.string,
+    label: PropTypes.string,
 
     /**
      *  The value of the slider
      */
-    value: React.PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
 
     /**
      *  Specifies the minimum value for the component
      */
-    min: React.PropTypes.number,
+    min: PropTypes.number,
 
     /**
      *  Specifies the maximum value for the component
      */
-    max: React.PropTypes.number,
+    max: PropTypes.number,
 
     /**
      * Specifies the intervals step
      */
-    step: React.PropTypes.number,
+    step: PropTypes.number,
 
     /**
 	 * A callback triggered when the component updates
 	 */
-    onChange: React.PropTypes.func,
+    onChange: PropTypes.func,
 
 
     /**
      *  If false, the numeric stepper is not displayed
      */
-    includeStepper: React.PropTypes.bool,
+    includeStepper: PropTypes.bool,
 
 
     /**
      * Optional component styling
      */
-    style: React.PropTypes.object,
+    style: PropTypes.object,
 
 
 }

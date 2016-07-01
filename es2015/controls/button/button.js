@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React, { h } from 'preact'
+import PropTypes from 'proptypes'
 import { base, highlight } from '../../controls/styles'
 
 let defaultStyle = {
@@ -35,18 +37,18 @@ Button.propTypes = {
     /*
         function to call on click
     */
-    value: React.PropTypes.func.isRequired,
+    value: PropTypes.func.isRequired,
 
     /**
      * A text label
      */
-    label: React.PropTypes.string,
+    label: PropTypes.string,
 
 
     /**
      * Optional component styling
      */
-    style: React.PropTypes.object
+    style: PropTypes.object
 
 
 }

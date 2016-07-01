@@ -6,7 +6,7 @@
     object containing a `value` field. `onChange` and `label` are optional.*
 */
 
-import * as React from 'preact-compat'
+import React from 'Preact'
 
 export default Component => (
 

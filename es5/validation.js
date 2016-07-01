@@ -9,11 +9,9 @@ var _warn = require('./warn');
 
 var _warn2 = _interopRequireDefault(_warn);
 
-var _preactCompat = require('preact-compat');
+var _preact = require('preact');
 
-var React = _interopRequireWildcard(_preactCompat);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _preact2 = _interopRequireDefault(_preact);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,4 +33,4 @@ const validateProp = exports.validateProp = (prop, propName, Comp) => {
     Validates an object against a components `propTypes`
 */
 
-const isValidControl = exports.isValidControl = Control => React.isValidElement(React.createElement(Control, null)) && Control.propTypes && typeof Control.propTypes === 'object' && typeof Control.propTypes.value === 'function';
+const isValidControl = exports.isValidControl = Control => _preact2.default.isValidElement(_preact2.default.createElement(Control, null)) && Control.propTypes && typeof Control.propTypes === 'object' && typeof Control.propTypes.value === 'function';

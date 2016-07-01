@@ -4,11 +4,20 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /** @jsx React.h */
 
-var _preactCompat = require('preact-compat');
 
-var _preactCompat2 = _interopRequireDefault(_preactCompat);
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+var _preactSvg = require('preact-svg');
+
+var _preactSvg2 = _interopRequireDefault(_preactSvg);
+
+var _propTypes = require('propTypes');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _numericstepper = require('../../controls/numericstepper');
 
@@ -33,7 +42,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 */
 
-class XYPad extends _preactCompat2.default.Component {
+class XYPad extends _preact2.default.Component {
 
     constructor() {
 
@@ -100,26 +109,28 @@ class XYPad extends _preactCompat2.default.Component {
         let xVis = (0, _math.map)(x, min.x, max.x, 0, 100) + '%',
             yVis = (0, _math.map)(y, min.y, max.y, 0, 100) + '%';
 
-        return _preactCompat2.default.createElement(
+        console.log(_preactSvg2.default);
+
+        return _preact2.default.h(
             'div',
             { style: _extends({}, _styles.base, { height: 'auto' }) },
-            _preactCompat2.default.createElement(
+            _preact2.default.h(
                 'div',
                 { style: { display: 'flex', alignItems: 'center' } },
-                _preactCompat2.default.createElement(
+                _preact2.default.h(
                     'label',
                     { onClick: v => this.setState({ open: !open }) },
                     label
                 ),
-                _preactCompat2.default.createElement(
+                _preact2.default.h(
                     'div',
                     { style: { display: 'flex', marginLeft: 'auto' } },
-                    _preactCompat2.default.createElement(_numericstepper2.default, { style: componentLabels, min: min.x, max: max.x, value: x, onChange: this.onXChange, label: 'X' }),
-                    _preactCompat2.default.createElement(_numericstepper2.default, { style: componentLabels, min: min.y, max: max.y, value: y, onChange: this.onYChange, label: 'Y' })
+                    _preact2.default.h(_numericstepper2.default, { style: componentLabels, min: min.x, max: max.x, value: x, onChange: this.onXChange, label: 'X' }),
+                    _preact2.default.h(_numericstepper2.default, { style: componentLabels, min: min.y, max: max.y, value: y, onChange: this.onYChange, label: 'Y' })
                 )
             ),
-            open ? _preactCompat2.default.createElement(
-                'svg',
+            open ? _preact2.default.h(
+                _preactSvg2.default,
                 { width: '100%', height: '100%', xmlns: 'http://www.w3.org/2000/svg',
                     style: _extends({}, defaultStyle, style),
                     ref: ref => this.domRef = ref,
@@ -130,10 +141,10 @@ class XYPad extends _preactCompat2.default.Component {
                     onTouchStart: this.onMouseDown,
                     onTouchMove: this.onTouchMove,
                     onTouchEnd: this.onMouseUp },
-                _preactCompat2.default.createElement('rect', { fill: 'none', stroke: _styles.secondary.color, strokeWidth: '1', width: '100%', height: '100%' }),
-                _preactCompat2.default.createElement('line', { x1: xVis, x2: xVis, y1: 0, y2: '100%', style: _extends({}, defaultStyle, style, crisp) }),
-                _preactCompat2.default.createElement('line', { x1: 0, x2: '100%', y1: yVis, y2: yVis, style: _extends({}, defaultStyle, style, crisp) }),
-                _preactCompat2.default.createElement('circle', { r: 3, cx: xVis, cy: yVis, style: circle })
+                _preact2.default.h('rect', { fill: 'none', stroke: _styles.secondary.color, 'stroke-width': '1', width: '100%', height: '100%' }),
+                _preact2.default.h('line', { x1: xVis, x2: xVis, y1: 0, y2: '100%', style: _extends({}, defaultStyle, style, crisp) }),
+                _preact2.default.h('line', { x1: 0, x2: '100%', y1: yVis, y2: yVis, style: _extends({}, defaultStyle, style, crisp) }),
+                _preact2.default.h('circle', { r: 3, cx: xVis, cy: yVis, style: circle })
             ) : null
         );
     }
@@ -144,32 +155,32 @@ XYPad.propTypes = {
     /**
      * A text label
      */
-    label: _preactCompat.PropTypes.string,
+    label: _propTypes2.default.string,
 
     /**
      *  The initial value of the component
      */
-    value: _preactCompat.PropTypes.shape({ x: _preactCompat.PropTypes.number.isRequired, y: _preactCompat.PropTypes.number.isRequired }).isRequired,
+    value: _propTypes2.default.shape({ x: _propTypes2.default.number.isRequired, y: _propTypes2.default.number.isRequired }).isRequired,
 
     /**
      *  The minimum bounding range
      */
-    min: _preactCompat.PropTypes.shape({ x: _preactCompat.PropTypes.number, y: _preactCompat.PropTypes.number }),
+    min: _propTypes2.default.shape({ x: _propTypes2.default.number, y: _propTypes2.default.number }),
 
     /**
      *  The maximum bounding range
      */
-    max: _preactCompat.PropTypes.shape({ x: _preactCompat.PropTypes.number, y: _preactCompat.PropTypes.number }),
+    max: _propTypes2.default.shape({ x: _propTypes2.default.number, y: _propTypes2.default.number }),
 
     /**
      *  Called when the component updates
      */
-    onChange: _preactCompat.PropTypes.func,
+    onChange: _propTypes2.default.func,
 
     /**
      * Optional component styling
      */
-    style: _preactCompat.PropTypes.object
+    style: _propTypes2.default.object
 
 };
 

@@ -4,8 +4,9 @@
     the slot. This makes it easy to reconcile what changed in the ui without having
     to have unneccesary references directly in components.
 */
-
-import React, { PropTypes } from 'preact-compat'
+/** @jsx React.h */
+import React, { Component } from 'preact'
+import PropTypes from 'propTypes'
 
 
 export default Comp => {
