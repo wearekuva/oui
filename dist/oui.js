@@ -693,7 +693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return preact;
 	});
 	//# sourceMappingURL=preact.js.map
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate))
 
 /***/ },
 /* 2 */
@@ -1047,6 +1047,35 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.hasAnnotation=exports.getAnnotation=exports.annotate=undefined;__webpack_require__(38); /*
+	  Annotate
+	  An Annotation defines meta-data about a property
+
+	  Specifically, rendering a controller for a given property requires
+	  additional information other than it's value. Some of this can be obtained
+	  from it's property descriptor via `Object.getOwnPropertyDescriptor()` but
+	  we may also need additional information.
+
+	  This module provides a way to provide such additional information. Note that
+	  we do not assume the format or structure of the data.
+
+	  An example of a property metadata might be
+	  {
+	    description: 'This property is the background color',
+	    controller: Slider,
+	    max: 10,
+	    min: 2
+	  }
+
+	  @annotate({ description, max, min })
+
+
+	*/var DUI_KEY=Symbol('Oui, Oui');var annotate=exports.annotate=function annotate(value){return function(obj,prop){return Reflect.defineMetadata(DUI_KEY,value,obj,prop);};};var getAnnotation=exports.getAnnotation=function getAnnotation(obj,prop){return Reflect.getMetadata(DUI_KEY,obj,prop);};var hasAnnotation=exports.hasAnnotation=function hasAnnotation(obj,prop){return getAnnotation(obj,prop)!==null;};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
 	(function (global, factory) {
 		 true ? module.exports = factory(__webpack_require__(1)) :
 		typeof define === 'function' && define.amd ? define(['preact'], factory) :
@@ -1265,7 +1294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=preact-svg.js.map
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(39).nextTick;
@@ -1344,48 +1373,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate, __webpack_require__(6).clearImmediate))
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.hasAnnotation=exports.getAnnotation=exports.annotate=undefined;__webpack_require__(38); /*
-	  Annotate
-	  An Annotation defines meta-data about a property
-
-	  Specifically, rendering a controller for a given property requires
-	  additional information other than it's value. Some of this can be obtained
-	  from it's property descriptor via `Object.getOwnPropertyDescriptor()` but
-	  we may also need additional information.
-
-	  This module provides a way to provide such additional information. Note that
-	  we do not assume the format or structure of the data.
-
-	  An example of a property metadata might be
-	  {
-	    description: 'This property is the background color',
-	    controller: Slider,
-	    max: 10,
-	    min: 2
-	  }
-
-	  @annotate({ description, max, min })
-
-
-	*/var DUI_KEY=Symbol('Oui, Oui');var annotate=exports.annotate=function annotate(value){return function(obj,prop){return Reflect.defineMetadata(DUI_KEY,value,obj,prop);};};var getAnnotation=exports.getAnnotation=function getAnnotation(obj,prop){return Reflect.getMetadata(DUI_KEY,obj,prop);};var hasAnnotation=exports.hasAnnotation=function hasAnnotation(obj,prop){return getAnnotation(obj,prop)!==null;};
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7).setImmediate, __webpack_require__(7).clearImmediate))
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;}; /** @jsx React.h */var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _preactSvg=__webpack_require__(5);var _preactSvg2=_interopRequireDefault(_preactSvg);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=function(props){return _preact2.default.h(_preactSvg2.default,{fill:'currentColor',fit:'true',height:'1em',width:'1em',viewBox:'0 0 40 40',preserveAspectRatio:'xMidYMid meet',style:_extends({verticalAlign:'middle'},props.style)},_preact2.default.h('g',null,_preact2.default.h('path',{d:'m20 13.4l10 10-2.3 2.3-7.7-7.7-7.7 7.7-2.3-2.3z'})));};
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;}; /** @jsx React.h */var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _preactSvg=__webpack_require__(6);var _preactSvg2=_interopRequireDefault(_preactSvg);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=function(props){return _preact2.default.h(_preactSvg2.default,{fill:'currentColor',fit:'true',height:'1em',width:'1em',viewBox:'0 0 40 40',preserveAspectRatio:'xMidYMid meet',style:_extends({verticalAlign:'middle'},props.style)},_preact2.default.h('g',null,_preact2.default.h('path',{d:'m20 13.4l10 10-2.3 2.3-7.7-7.7-7.7 7.7-2.3-2.3z'})));};
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;}; /** @jsx React.h */var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _preactSvg=__webpack_require__(5);var _preactSvg2=_interopRequireDefault(_preactSvg);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=function(props){return _preact2.default.h(_preactSvg2.default,{fill:'currentColor',fit:'true',height:'1em',width:'1em',viewBox:'0 0 40 40',preserveAspectRatio:'xMidYMid meet',style:_extends({verticalAlign:'middle'},props.style)},_preact2.default.h('g',null,_preact2.default.h('path',{d:'m27.7 14.3l2.3 2.3-10 10-10-10 2.3-2.3 7.7 7.7z'})));};
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;}; /** @jsx React.h */var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _preactSvg=__webpack_require__(6);var _preactSvg2=_interopRequireDefault(_preactSvg);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=function(props){return _preact2.default.h(_preactSvg2.default,{fill:'currentColor',fit:'true',height:'1em',width:'1em',viewBox:'0 0 40 40',preserveAspectRatio:'xMidYMid meet',style:_extends({verticalAlign:'middle'},props.style)},_preact2.default.h('g',null,_preact2.default.h('path',{d:'m27.7 14.3l2.3 2.3-10 10-10-10 2.3-2.3 7.7 7.7z'})));};
 
 /***/ },
 /* 10 */
@@ -1487,7 +1487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	}
 	```
-	*/ /** @jsx React.h */var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _annotate=__webpack_require__(7);var _primitiveComponents=__webpack_require__(35);var _primitiveComponents2=_interopRequireDefault(_primitiveComponents);var _validation=__webpack_require__(37);var _warn=__webpack_require__(4);var _warn2=_interopRequireDefault(_warn);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=function(obj,onChange){var annotation=void 0,Component=void 0,components=[]; /*
+	*/ /** @jsx React.h */var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _annotate=__webpack_require__(5);var _primitiveComponents=__webpack_require__(35);var _primitiveComponents2=_interopRequireDefault(_primitiveComponents);var _validation=__webpack_require__(37);var _warn=__webpack_require__(4);var _warn2=_interopRequireDefault(_warn);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=function(obj,onChange){var annotation=void 0,Component=void 0,components=[]; /*
 	        Iterate through enumerable properties of `obj`
 	    */for(var prop in obj){var Element=void 0,_Component=void 0,value=obj[prop]; /*
 	            Null properties are discarded regardless of type annotation
@@ -1538,7 +1538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.button=undefined;var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _button=__webpack_require__(14);var _button2=_interopRequireDefault(_button);var _annotate=__webpack_require__(7);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=_button2.default;var button=exports.button=function button(options){return (0,_annotate.annotate)(_extends({},options,{control:_button2.default}));};
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.button=undefined;var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _button=__webpack_require__(14);var _button2=_interopRequireDefault(_button);var _annotate=__webpack_require__(5);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=_button2.default;var button=exports.button=function button(options){return (0,_annotate.annotate)(_extends({},options,{control:_button2.default}));};
 
 /***/ },
 /* 16 */
@@ -1641,7 +1641,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value" in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _preactSvg=__webpack_require__(5);var _preactSvg2=_interopRequireDefault(_preactSvg);var _propTypes=__webpack_require__(3);var _propTypes2=_interopRequireDefault(_propTypes);var _numericstepper=__webpack_require__(20);var _numericstepper2=_interopRequireDefault(_numericstepper);var _shallowCompare=__webpack_require__(12);var _shallowCompare2=_interopRequireDefault(_shallowCompare);var _math=__webpack_require__(10);var _throttle=__webpack_require__(28);var _throttle2=_interopRequireDefault(_throttle);var _styles=__webpack_require__(2);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else {obj[key]=value;}return obj;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;} /** @jsx React.h */ // import radium from 'radium'
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value" in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _preact=__webpack_require__(1);var _preact2=_interopRequireDefault(_preact);var _preactSvg=__webpack_require__(6);var _preactSvg2=_interopRequireDefault(_preactSvg);var _propTypes=__webpack_require__(3);var _propTypes2=_interopRequireDefault(_propTypes);var _numericstepper=__webpack_require__(20);var _numericstepper2=_interopRequireDefault(_numericstepper);var _shallowCompare=__webpack_require__(12);var _shallowCompare2=_interopRequireDefault(_shallowCompare);var _math=__webpack_require__(10);var _throttle=__webpack_require__(28);var _throttle2=_interopRequireDefault(_throttle);var _styles=__webpack_require__(2);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else {obj[key]=value;}return obj;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;} /** @jsx React.h */ // import radium from 'radium'
 	/**
 	    A classic numerical slider, useful for representing numbers within a bounded
 	    range. It also contains a `NumericalStepper` for displaying the text value
@@ -1797,7 +1797,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _imperativeApi=__webpack_require__(33);var _imperativeApi2=_interopRequireDefault(_imperativeApi);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.default=(0,_imperativeApi2.default)();
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _imperativeApi=__webpack_require__(33);var _imperativeApi2=_interopRequireDefault(_imperativeApi);var _annotate=__webpack_require__(5);var _annotate2=_interopRequireDefault(_annotate);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var p=(0,_imperativeApi2.default)();p.panel=_imperativeApi2.default;p.annotate=_annotate2.default;exports.default=p;
 
 /***/ },
 /* 35 */

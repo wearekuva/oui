@@ -1,2 +1,7 @@
 import panel from './imperative-api'
-export default panel()
+import annotate from './annotate'
+
+let p = panel()
+p.panel = panel
+p.annotate = annotate
+export default p
