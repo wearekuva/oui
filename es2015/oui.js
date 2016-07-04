@@ -4,5 +4,5 @@ import { annotate } from './annotate'
 import { color } from './controls/colorpicker'
 import { combobox } from './controls/combobox'
 
-export let oui = panel()
-export default { panel, annotate, color, combobox }
+let oui = panel()
+export default { oui, panel, annotate, color, combobox }
