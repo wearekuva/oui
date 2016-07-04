@@ -2312,9 +2312,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _imperativeApi=__webpack_require__(43);var _imperativeApi2=_interopRequireDefault(_imperativeApi);var _annotate=__webpack_require__(4);var _annotate2=_interopRequireDefault(_annotate);var _colorpicker=__webpack_require__(28);var _combobox=__webpack_require__(31);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var oui=(0,_imperativeApi2.default)(); // p.panel = panel
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.oui=undefined;var _imperativeApi=__webpack_require__(43);var _imperativeApi2=_interopRequireDefault(_imperativeApi);var _annotate=__webpack_require__(4);var _colorpicker=__webpack_require__(28);var _combobox=__webpack_require__(31);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var oui=exports.oui=(0, // p.panel = panel
 	// p.annotate = annotate
-	exports.default={oui:oui,panel:_imperativeApi2.default,annotate:_annotate2.default,controls:{color:_colorpicker.color,combo:combo}};
+	_imperativeApi2.default)();exports.default={panel:_imperativeApi2.default,annotate:_annotate.annotate,color:_colorpicker.color,combo:combo};
 
 /***/ },
 /* 45 */
