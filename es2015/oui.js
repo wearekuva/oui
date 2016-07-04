@@ -7,4 +7,4 @@ import { combobox } from './controls/combobox'
 export let oui = panel()
 // p.panel = panel
 // p.annotate = annotate
-export default { panel, annotate, color, combo }
+export default { panel, annotate, color, combobox }

@@ -20,4 +20,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 let oui = exports.oui = (0,
 // p.panel = panel
 // p.annotate = annotate
-_imperativeApi2.default)();exports.default = { panel: _imperativeApi2.default, annotate: _annotate.annotate, color: _colorpicker.color, combo };
+_imperativeApi2.default)();exports.default = { panel: _imperativeApi2.default, annotate: _annotate.annotate, color: _colorpicker.color, combobox: _combobox.combobox };
