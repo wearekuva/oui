@@ -3,7 +3,7 @@ import panel from 'oui/imperative-api'
 import { color } from 'oui/controls/colorpicker'
 import { xypad } from 'oui/controls/xypad'
 import { graph } from 'oui/controls/graph'
-import { oneOf } from 'oui/controls/combobox'
+import { combobox } from 'oui/controls/combobox'
 
 
 
@@ -93,8 +93,8 @@ let c = {
 
 }
 
-oneOf({ options:{ 'set a' : ['a', 'b', 'c'], 'set b' : ['q'] }})( a, 'oneof' )
-oneOf({ options:[ 'a', 'b', 'd', 'e' ] })( c, 'baaahh' )
+combobox({ options:{ 'set a' : ['a', 'b', 'c'], 'set b' : ['q'] }})( a, 'oneof' )
+combobox({ options:[ 'a', 'b', 'd', 'e' ] })( c, 'baaahh' )
 
 
 // oneOf({ options:[20, 10, 40] })( a, 'b' )

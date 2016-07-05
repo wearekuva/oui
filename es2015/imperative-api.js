@@ -49,6 +49,10 @@ export default opts => {
 
     const render = ( api, callback = _ => _ ) => {
 
+		if( !document.contains( domElement )){
+			document.body.appendChild( domElement )
+		}
+
         if( !api ){
 
             unmountComponentAtNode( container )
