@@ -111,7 +111,7 @@ graph({fill:true})( b, 'someGraph' )
 
 window.a = a
 
-let p = panel()
+let p = panel({label:'Test'})
 let pp = panel()
 let ppp = panel()
 // p( a )

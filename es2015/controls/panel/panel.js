@@ -19,14 +19,14 @@ class Panel extends React.Component {
 
     render(){
 
-        let { children } = this.props,
+        let { children, label } = this.props,
             { open } = this.state,
             Chevron = open ? MdExpandMore : MdChevronLeft
 
         return <div style={{ ...base, ...style }} class='oui-panel' >
             <header style={{lineHeight:'11px'}} onClick={this.toggleOpen}>
                 <div style={{display:'flex'}}>
-                    <label>Panel</label>
+                    <label>{ label }</label>
                     <Chevron style={{marginLeft:'auto'}} />
                 </div>
                 { open ? <hr style={ lineStyle }/> : null }
@@ -37,6 +37,10 @@ class Panel extends React.Component {
 
         </div>
     }
+}
+
+Panel.defaultProps = {
+    label: 'Panel'
 }
 
 var lineStyle = {
