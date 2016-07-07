@@ -1,4 +1,4 @@
-# Oui
+## Oui
 
 _Objects go in, UI comes out_
 
@@ -6,7 +6,7 @@ _Objects go in, UI comes out_
 
 A super simple way to instrument your code and control your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
-## Getting Started
+### Getting Started
 
 ```
 npm install @wearekuva/oui --save
@@ -18,8 +18,9 @@ If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background and p
 
 ```javascript
 let p = oui.datoui()
-p.add( someObj, 'someNum' )
-p.addFolder( 'dir' )
+p.add( obj, 'someNum' )
+let dir = p.addFolder( 'dir' )
+dir.add( obj, 'nestedProp' )
 ```
 
 #### Functional
@@ -29,18 +30,21 @@ For those who prefer the more functional approach, you can also map entire objec
 ```javascript
 oui({
   someNum : 10,
-  someString : "It's a string!",
   dir: {
     someNestedProp: 10  
   }
 })
 ```
 
-More information
+Both of these create the same UI
+
+
+###More information
 
 - [Constraints](/docs/constraints.md)
-- [Additional Controls]
-- [Custom Controls](/docs/custom_controls.md)
+- [Additional Controls](/docs/additional-controls.md)
+- [Custom Controls](/docs/custom-controls.md)
+- [Annotations](/docs/annotations.md)
 - [API](/docs/api.md)
 
 
