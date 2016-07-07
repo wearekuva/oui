@@ -8,7 +8,6 @@
   "main": "dist/oui.js",
   "scripts": {
     "build": "node build/build.js",
-    "build:cjs": "babel es2015 --out-dir es5",
     "dev": "webpack-dev-server --watch --inline --config build/webpack.dev.config.js --host 0.0.0.0",
     "test": "karma start --single-run --no-auto-watch build/karma.config.js"
   },

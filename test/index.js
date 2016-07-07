@@ -1,4 +1,5 @@
 import oui from 'oui'
+import annotate from 'oui/annotate'
 import panel from 'oui/imperative-api'
 import { color } from 'oui/controls/colorpicker'
 import { xypad } from 'oui/controls/xypad'
@@ -59,6 +60,8 @@ let a = {
 }
 window.a = a
 
+
+
 let b = {
 
     // b: 10,
@@ -93,6 +96,7 @@ let c = {
 
 }
 
+oui.annotate({label:'test 2 stuff'})( a, 'button' )
 combobox({ options:{ 'set a' : ['a', 'b', 'c'], 'set b' : ['q'] }})( a, 'oneof' )
 combobox({ options:[ 'a', 'b', 'd', 'e' ] })( c, 'baaahh' )
 

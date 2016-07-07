@@ -6,6 +6,6 @@ import { combobox } from './controls/combobox'
 import { graph } from './controls/graph'
 import { xypad } from './controls/xypad'
 
-let oui = panel()
+let oui = panel({label:'Master'})
 
 export default { oui, panel, annotate, color, combobox, graph, xypad }
