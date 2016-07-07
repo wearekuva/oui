@@ -4,11 +4,7 @@ _Objects go in, UI comes out_
 
 ![Oui](http://i.imgur.com/GCqgzWw.png)
 
-![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square)
-
-A super simple way to instrument your code and controls your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
-
-> This is still experimental. The api is likely to change. You have been warned!
+> ![experimental](https://img.shields.io/badge/stability-experimental-red.svg?style=flat-square) This is still experimental. The api is likely to change. You have been warned!
 
 ## Usage
 
@@ -16,15 +12,17 @@ A super simple way to instrument your code and controls your data. Pass it an ob
 npm install @wearekuva/oui --save
 ```
 
-If you're from a [dat.gui](https://github.com/dataarts/dat.gui) and prefer an imperative style api, then oui exposes a similar interface
+### Imperative
+
+If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background and prefer an imperative style api, oui exposes a familar interface
 
 ```javascript
 let p = oui.datoui()
 p.add( someObj, 'someNum' )
-p.add( someObj, 'someString' )
-let dir = p.addFolder( 'dir' )
-dir.add( obj, 'someNestedProp' )
+p.addFolder( 'dir' )
 ```
+
+### Functional
 
 For those who prefer the more functional approach, you can also map entire objects to a interface. This is useful when you want to understand the shape of an object.
 
