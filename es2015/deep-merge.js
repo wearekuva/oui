@@ -6,7 +6,7 @@ import warn from './warn'
 
 const isWritable = ( obj, prop ) => {
     let propDesc = Object.getOwnPropertyDescriptor( obj, prop )
-    return propDesc ? propDesc.writable === true : true
+    return propDesc.writable || propDesc.set !== undefined
 }
 
 let deepmerge = ( a, b ) => {
