@@ -29,7 +29,7 @@ let ColorButton = props => {
         }
     }
 
-    return <Button label='' {...props} style={style} >{ children }</Button>
+    return <Button label='' {...props} style={style} value={onClick}>{ children }</Button>
 
 }
 

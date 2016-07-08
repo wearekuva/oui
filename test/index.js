@@ -63,17 +63,17 @@ window.a = a
 
 
 let b = {
-    dd:{
-        c:false,
-    },
+    // dd:{
+    //     c:false,
+    // },
     // b: 10,
-    someGraph: new Float32Array(50),
-    folder:{
-        someProp:10,
-        col:[ 1, 1, 1],
-    },
-    someProp2:50,
-    someProp3:{x:10, y:30},
+    // someGraph: new Float32Array(50),
+    // folder:{
+    //     someProp:10,
+        col1:[ 1, 1, 1],
+    // },
+    // someProp2:50,
+    // someProp3:{x:10, y:30},
 
 }
 
@@ -105,8 +105,10 @@ combobox({ options:[ 'a', 'b', 'd', 'e' ] })( c, 'baaahh' )
 
 // oneOf({ options:[20, 10, 40] })( a, 'b' )
 // color({open:true})( a.dir, 'col' )
-color({open:true})( b.folder, 'col' )
-color({open:true})( a, 'col1' )
+// color({open:true})( b.folder, 'col' )
+color({palette:[[ 1, 1, 1 ], [ 1, 0, 0 ]]})( a, 'col1' )
+color({palette:[[ 0, 0, 0 ], [ 1, 0, 0 ]]})( a, 'col1' )
+
 // color({open:true})( a, 'col2' )
 xypad()( b, 'someProp3' )
 graph({fill:true})( b, 'someGraph' )
@@ -118,19 +120,19 @@ graph({fill:true})( b, 'someGraph' )
 window.a = a
 
 let p = panel({label:'Test'})
-let pp = panel()
-let ppp = panel()
+// let pp = panel()
+// let ppp = panel()
 // p( a )
 // p( a )
 // p( a )
 // p( a )
 
 let drawOui = t => {
-    b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
+    // b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
     // oui( a )
     p( a )
-    pp( b, _ => console.log( b.dd.c ))
-    ppp( c )
+    // pp( b, _ => console.log( b.dd.c ))
+    // ppp( c )
 
     // a.sdfsdf = 20
 

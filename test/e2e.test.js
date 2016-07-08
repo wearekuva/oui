@@ -2,7 +2,7 @@
 import React from 'preact'
 import PropTypes from 'proptypes'
 import simulant from 'simulant'
-import ReactTestUtils from 'react-addons-test-utils'
+//import ReactTestUtils from 'react-addons-test-utils'
 // import sinon from 'sinon'
 
 import imperative from '../es2015/imperative-api'

@@ -25,10 +25,10 @@ module.exports = {
             "plugins": [
                 "transform-es2015-modules-commonjs",
                 "transform-object-rest-spread",
-                ["transform-runtime", {
-                    "polyfill": false,
-                    "regenerator": false
-                }]
+                // ["transform-runtime", {
+                //     "polyfill": false,
+                //     "regenerator": false
+                // }]
             ]
         }
     }]
