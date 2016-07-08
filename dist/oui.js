@@ -1,6 +1,6 @@
 /*!
  * 
- * Oui.js v0.0.12
+ * Oui.js v0.0.13
  * © 2016 Mark Lundin
  * Released under the MIT License.
  * 
@@ -84,7 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(84).default;}oui.version='0.0.12';module.exports=oui;
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(84).default;}oui.version='0.0.13';module.exports=oui;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(54)))
 
 /***/ },
@@ -2680,7 +2680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * The ColorButton is simply a coloured button used as
 	 * square glyph in the colour palette
 	 */var ColorButton=function ColorButton(props){var value=props.value;var onClick=props.onClick;var children=props.children;var color=_colr2.default.fromHsvObject(value).toHex();var style={backgroundColor:color,width:'1em',height:'1em',// marginLeft: '0.3em',
-	marginBottom:'0.5em',marginRight:'0.5em',padding:'0.5em',display:'inline-block',':hover':{backgroundColor:color}};return _preact2.default.h(_button2.default,(0,_extends3.default)({label:''},props,{style:style}),children);};/** @jsx React.h */var Palette=function(_React$Component){(0,_inherits3.default)(Palette,_React$Component);function Palette(){(0,_classCallCheck3.default)(this,Palette);var _this=(0,_possibleConstructorReturn3.default)(this,Object.getPrototypeOf(Palette).call(this));_this.state={hover:null};return _this;}(0,_createClass3.default)(Palette,[{key:'render',value:function render(){var _this2=this;var _props=this.props;var values=_props.values;var onSelect=_props.onSelect;var onDeselect=_props.onDeselect;var hover=this.state.hover;//
+	marginBottom:'0.5em',marginRight:'0.5em',padding:'0.5em',display:'inline-block',':hover':{backgroundColor:color}};return _preact2.default.h(_button2.default,(0,_extends3.default)({label:''},props,{style:style,value:onClick}),children);};/** @jsx React.h */var Palette=function(_React$Component){(0,_inherits3.default)(Palette,_React$Component);function Palette(){(0,_classCallCheck3.default)(this,Palette);var _this=(0,_possibleConstructorReturn3.default)(this,Object.getPrototypeOf(Palette).call(this));_this.state={hover:null};return _this;}(0,_createClass3.default)(Palette,[{key:'render',value:function render(){var _this2=this;var _props=this.props;var values=_props.values;var onSelect=_props.onSelect;var onDeselect=_props.onDeselect;var hover=this.state.hover;//
 	var areColoursRemoveable=onDeselect!==undefined;// If we have no colors then don't bother showing anything
 	if(!values||values.length===0)return null;return _preact2.default.h('div',null,values.map(function(color,i){return _preact2.default.h(ColorButton,{key:i,value:color,onMouseOver:function onMouseOver(e){return areColoursRemoveable&&e.shiftKey?_this2.setState({hover:i}):null;},onMouseOut:areColoursRemoveable?function(e){return _this2.setState({hover:null});}:null,onClick:function onClick(e){return e.shiftKey?onDeselect(color,i):onSelect(color);}},i===hover?_preact2.default.h('div',null):null);}));}}]);return Palette;}(_preact2.default.Component);Palette.defaultProps={/**
 	     * An array of colors
