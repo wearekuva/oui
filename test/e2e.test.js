@@ -148,6 +148,45 @@ describe( 'Oui', () => {
         expect( dom.children.length ).toBe( 3 )
 
     })
+})
+
+import datoui from '../es2015/datoui'
+
+describe( 'dat oui:', () => {
+
+    afterEach(() => {
+        while( dom.children.length > 0 ){
+            dom.children[dom.children.length -1].remove()
+        }
+    })
+
+    it( 'should render a Panel in the page', () => {
+
+        var api = { test: 10 }
+
+        var gui = datoui()
+        gui.add( api, 'test' )
+
+        expect( dom.children.length ).toBe( 1 )
+
+    })
+
+
+    it( 'should render the correct number of Panels in the page', () => {
+
+        var api = { test: 10 }
+
+        var gui = datoui()
+        gui.add( api, 'test' )
+
+        var gui2 = datoui()
+        gui2.add( api, 'test' )
+
+        expect( dom.children.length ).toBe( 2 )
+
+    })
+
+
 
 
 })
