@@ -6,7 +6,7 @@ _Objects go in, UI comes out_
 
 A super simple way to instrument your code and control your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
 
-### Getting Started
+## Getting Started
 
 ```
 npm install @wearekuva/oui --save
@@ -25,7 +25,7 @@ dir.add( obj, 'nestedProp' )
 
 #### Functional
 
-For those who prefer the more functional approach, you can also map entire objects to a interface. This is useful when you want to understand the shape of an object.
+For those who prefer the more functional approach, you can also map entire objects to an interface. This is useful when you want to visualise the shape of an object.
 
 ```javascript
 oui({
@@ -36,8 +36,7 @@ oui({
 })
 ```
 
-Both of these create the same UI
-
+Both of these approaches create the same UI, each with it's own pros and cons. The first is useful for hacking on your own code, the second for quickly testing your own api, or visualing the api of a 3rd party. 
 
 ###More information
 
