@@ -99,8 +99,6 @@ class XYPad extends React.Component {
         let xVis = map( x, min.x, max.x, 0, 100 ) + '%',
             yVis = map( y, min.y, max.y, 0, 100 ) + '%'
 
-        console.log( SVG )
-
 
         return <div style={{ ...base, height:'auto' }}>
             <div style={{display:'flex', alignItems: 'center'}}>
@@ -121,7 +119,7 @@ class XYPad extends React.Component {
                 onTouchMove={ this.onTouchMove }
                 onTouchEnd={ this.onMouseUp }>
 
-                <rect fill='none' stroke={secondary.color} stroke-width='1' width='100%' height='100%' />
+                <rect fill='rgb( 250, 250, 250 )' stroke={secondary.color} stroke-width='1' width='100%' height='100%' />
                 <line x1={xVis} x2={xVis} y1={0} y2='100%' style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <line x1={0} x2='100%' y1={yVis} y2={yVis} style={{ ...defaultStyle, ...style, ...crisp }}/>
                 <circle r={3} cx={xVis} cy={yVis} style={circle} />

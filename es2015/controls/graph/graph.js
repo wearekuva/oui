@@ -87,7 +87,7 @@ class Graph extends React.Component{
             { label }
             <div style={ style }>
                 <SVG style={{ ...base, display:'block' }} width='100%' height='100%' viewBox='0 0 100 100' preserveAspectRatio='none'>
-                    <rect style={{ ...defaultStyle.rect, ...defaultStyle.nonScalingStroke }} width='100%' height='100%' />
+                    <rect style={{ ...defaultStyle.rect, ...defaultStyle.nonScalingStroke }} fill='rgb( 250, 250, 250 )' width='100%' height='100%' />
                     { min < max ? <polyline style={defaultStyle.nonScalingStroke} fill={ fill ? highlight.color : 'none' } stroke={highlight.color} points={value2D} /> : null }
                 </SVG>
             </div>
