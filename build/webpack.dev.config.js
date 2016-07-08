@@ -14,8 +14,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
-      {
+    loaders: [{
         test: /\.js$/,
         loader: 'babel',
         query: {
@@ -23,10 +22,16 @@ module.exports = {
             // loose:false,
             babelrc: false,
             presets: ["es2015",  'react' ],
-            "plugins": ["transform-es2015-modules-commonjs", "transform-object-rest-spread"]
+            "plugins": [
+                "transform-es2015-modules-commonjs",
+                "transform-object-rest-spread",
+                ["transform-runtime", {
+                    "polyfill": false,
+                    "regenerator": false
+                }]
+            ]
         }
-        }
-    ]
+    }]
   },
   // plugins: [
   //   new webpack.DefinePlugin({

@@ -11,7 +11,14 @@ module.exports = Object.assign( {}, config, {
                     compact: true,
                     // babelrc: false,
                     presets: ["es2015",  'react' ],
-                    "plugins": ["transform-es2015-modules-commonjs", "transform-object-rest-spread"]
+                    "plugins": [
+                        "transform-es2015-modules-commonjs",
+                        "transform-object-rest-spread",
+                        ["transform-runtime", {
+                            "polyfill": false,
+                            "regenerator": false
+                        }]
+                    ]
                 }
             }
         ]
