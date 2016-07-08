@@ -7,5 +7,5 @@ if( process.env.NODE_ENV !== 'production' ){
 
 }
 
-oui.version = '0.0.11'
+oui.version = '0.0.12'
 module.exports = oui

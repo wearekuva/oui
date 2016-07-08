@@ -32,7 +32,7 @@ class Panel extends React.Component {
                 { open ? <hr style={ lineStyle }/> : null }
             </header>
             { open ?
-                <div style={{overflowY:'scroll', maxHeight: '90%'}}>{ children }</div>
+                <div>{ children }</div>
             : null }
 
         </div>
