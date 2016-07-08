@@ -1,15 +1,11 @@
-## Oui
-
-_Objects go in, UI comes out_
-
 ![Oui](http://i.imgur.com/GCqgzWw.png)
 
-A super simple way to instrument your code and control your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime.
+A super simple way to instrument your code and control your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime. _Objects go in, UI comes out_
 
 ## Getting Started
 
 ```
-npm install @wearekuva/oui --save
+npm install ouioui --save
 ```
 
 #### Imperative
@@ -36,7 +32,7 @@ oui({
 })
 ```
 
-Both of these approaches create the same UI, each with it's own pros and cons. The first is useful for hacking on your own code, the second for quickly testing your own api, or visualing the api of a 3rd party. 
+Both of these approaches create the same UI, each with it's own pros and cons. The first is useful for hacking on your own code, the second for quickly testing your own api, or visualing the api of a 3rd party.
 
 ###More information
 
