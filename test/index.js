@@ -63,7 +63,9 @@ window.a = a
 
 
 let b = {
-
+    dd:{
+        c:false,
+    },
     // b: 10,
     someGraph: new Float32Array(50),
     folder:{
@@ -127,7 +129,7 @@ let drawOui = t => {
     b.someGraph.forEach(( v, i ) => b.someGraph[i] = Math.sin( i/8 + ( t*0.005 )))
     // oui( a )
     p( a )
-    pp( b )
+    pp( b, _ => console.log( b.dd.c ))
     ppp( c )
 
     // a.sdfsdf = 20
