@@ -1,4 +1,6 @@
-import React from 'preact-compat'
+/** @jsx React.h */
+import React from 'preact'
+import PropTypes from 'proptypes'
 import simulant from 'simulant'
 import ReactTestUtils from 'react-addons-test-utils'
 // import sinon from 'sinon'

@@ -1,16 +1,14 @@
 import { annotate, getAnnotation, hasAnnotation } from '../es2015/annotate'
-// import { graph } from '../es2015/components'
-// import Graph from 'core-controllers/es5/graph'
-// import { xypad } from '../es2015/components'
-// import XYPad from 'core-controllers/es5/xypad'
+import Graph, { graph } from '../es2015/controls/graph'
+import XYPad, { xypad } from '../es2015/controls/xypad'
 // import { dial } from '../es2015/components'
 // import Dial from 'core-controllers/es5/dial'
-// import { color } from '../es2015/components'
+import ColorPicker, { color } from '../es2015/controls/colorpicker'
 // import ColorPicker from 'core-controllers/es5/colorpicker'
 // import { stepper } from '../es2015/components'
 // import NumericStepper from 'core-controllers/es5/numericstepper'
 // import { combobox } from '../es2015/components'
-//import ComboBox, { oneOf } from '../es2015/controls/combobox'
+import ComboBox, { combobox } from '../es2015/controls/combobox'
 
 
 describe( 'Annotations:', () => {
@@ -45,63 +43,44 @@ describe( 'Annotations:', () => {
     })
 
 
-    // it( '`oneOf` decorator creates a ComboBox annotation', () => {
-    //
-    //     const obj = { b: 'c'}
-    //     oneOf(['a', 'b', 'c'])( obj, 'c' )
-    //
-    //     const expected = getAnnotation( obj, 'c' ).type
-    //     expect( expected ).toBe( ComboBox )
-    // })
+    it( '`combobox` decorator creates a `ComboBox` annotation', () => {
+
+        const obj = { b: 'c'}
+        combobox()( obj, 'b' )
+
+        const expected = getAnnotation( obj, 'b' ).control
+        expect( expected ).toBe( ComboBox )
+    })
 
 
-    // it( 'expects a `graph()` adds a type annotation whose value is `Graph`', () => {
-    //
-    //     const obj = { prop: true }
-    //     graph({})( obj, 'prop' )
-    //     var type = getAnnotation( obj, 'prop' ).control
-    //     expect( type ).toBe( Graph )
-    // })
-    //
-    //
-    // it( 'expects `xypad()` adds a type annotation whose value is `XYPad`', () => {
-    //     const obj = { prop: true }
-    //     xypad({})( obj, 'prop' )
-    //     var type = getAnnotation( obj, 'prop' ).control
-    //     expect( type ).toBe( XYPad )
-    // })
-    //
-    //
-    // it( 'expects `dial()` adds a type annotation whose value is `Dial`', () => {
-    //     const obj = { prop: true }
-    //     dial({})( obj, 'prop' )
-    //     var type = getAnnotation( obj, 'prop' ).control
-    //     expect( type ).toBe( Dial )
-    // })
-    //
-    //
-    // it( 'expects `color()` adds a type annotation whose value is `ColorPicker`', () => {
-    //     const obj = { prop: true }
-    //     color({})( obj, 'prop' )
-    //     var type = getAnnotation( obj, 'prop' ).control
-    //     expect( type ).toBe( ColorPicker )
-    // })
-    //
-    //
-    // it( 'expects `stepper()` adds a type annotation whose value is `NumericStepper`', () => {
-    //     const obj = { prop: true }
-    //     stepper({})( obj, 'prop' )
-    //     var type = getAnnotation( obj, 'prop' ).control
-    //     expect( type ).toBe( NumericStepper )
-    // })
-    //
-    //
-    // it( 'expect `combo()` adds a type annotation whose value is `ComboBox`', () => {
-    //     const obj = { prop: true }
-    //     combobox({})( obj, 'prop' )
-    //     var type = getAnnotation( obj, 'prop' ).control
-    //     expect( type ).toBe( Combobox )
-    // })
+    it( 'expects `graph()` annotation to contain the `Graph` control', () => {
+
+        const obj = { prop: {x:10, y:10} }
+        graph({})( obj, 'prop' )
+
+        var expected = getAnnotation( obj, 'prop' ).control
+        expect( expected ).toBe( Graph )
+    })
+
+
+    it( 'expects `xypad()` annotation to contain the `XYPad` control', () => {
+
+        const obj = { prop: true }
+        xypad({})( obj, 'prop' )
+
+        var expected = getAnnotation( obj, 'prop' ).control
+        expect( expected ).toBe( XYPad )
+
+    })
+
+
+
+    it( 'expects `color()`  annotation to contain the `ColorPicker` control', () => {
+        const obj = { prop: true }
+        color({})( obj, 'prop' )
+        var expected = getAnnotation( obj, 'prop' ).control
+        expect( expected ).toBe( ColorPicker )
+    })
 
 
 })
@@ -202,7 +181,7 @@ describe( 'Merging', () => {
         Object.freeze( target )
         const source = { b : 20 }
         const a = merge( target, source )
-        console.log( a, target )
+
         expect( console.warn ).toHaveBeenCalled()
 
     })
@@ -233,11 +212,24 @@ describe( 'Merging', () => {
 
     it( 'merges arrays', () => {
 
+        const source = [ 5, 4, 3, 2, 1, 0, 'a', 'a' ]
+        const target = [ 0, 1, 2, 3, 4, 5 ]
+
+        const actual = merge( target, source )
+        const expected = [ 5, 4, 3, 2, 1, 0, 'a', 'a' ]
+
+        expect( actual ).toEqual( expected )
+
+    })
+
+
+    it( 'merges arrays and restricts to source length', () => {
+
         const source = [ 0, 1, 2, 3, 4, 5 ]
         const target = [ 5, 4, 3, 2, 1, 0, 'a', 'a']
 
         const actual = merge( target, source )
-        const expected = [ 0, 1, 2, 3, 4, 5, 'a', 'a' ]
+        const expected = [ 0, 1, 2, 3, 4, 5 ]
 
         expect( actual ).toEqual( expected )
 

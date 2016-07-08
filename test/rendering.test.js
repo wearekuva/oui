@@ -1,4 +1,4 @@
-import React from 'preact-compat'
+import React from 'preact'
 // import {shallow, mount} from 'enzyme'
 import Tree from '../es2015/render-tree'
 

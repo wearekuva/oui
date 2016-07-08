@@ -33,10 +33,11 @@ function prender(vnode, parent, callback) {
 }
 
 
+const EmptyComponent = () => null;
 function unmountComponentAtNode(container) {
 	let existing = container._preactCompatRendered;
 	if (existing && existing.parentNode===container) {
-		preactRender(h(EmptyComponent), container, existing);
+		preactRender(React.h(EmptyComponent), container, existing);
 		return true;
 	}
 	return false;
