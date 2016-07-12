@@ -85,7 +85,7 @@ import { colorpicker } from 'custom-comps'
 /** @jsx React.h */
 import React from 'preact'
 import { getAnnotation }  from './annotate'
-// import primitives from './primitive-components'
+import primitives from './primitive-components'
 import { validateProp } from './validation'
 import warn from './warn'
 

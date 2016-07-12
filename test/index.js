@@ -1,11 +1,12 @@
-import datoui from 'oui/datoui'
-import ColorPicker from 'oui/controls/colorpicker'
-console.log( ColorPicker )
-let gui = datoui()
+import oui from 'oui'
+let control = oui.controls.ColorPicker
+// import ColorPicker from 'oui/controls/colorpicker'
+console.log( oui.controls.ColorPicker )
+let gui = oui.datoui()
 let a = { test: {r:1, g:0.5, b:0}}
 let b = {test:10}
-gui.add( a, 'test', {control:ColorPicker} )
-// gui.add( b, 'test' )
+gui.add( a, 'test', { control } )
+gui.add( b, 'test', {options:[10, 20, 30, 40], control:oui.controls.ComboBox} )
 
 window.a = a
 window.b = b
