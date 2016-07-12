@@ -1,16 +1,18 @@
 import datoui from 'oui/datoui'
-
+import ColorPicker from 'oui/controls/colorpicker'
+console.log( ColorPicker )
 let gui = datoui()
-let a = {test:10}
+let a = { test: {r:1, g:0.5, b:0}}
 let b = {test:10}
-gui.add( a, 'test' )
-gui.add( b, 'test' )
+gui.add( a, 'test', {control:ColorPicker} )
+// gui.add( b, 'test' )
 
-
+window.a = a
+window.b = b
 
 // import annotate from 'oui/annotate'
 // import panel from 'oui/imperative-api'
-// import { color } from 'oui/controls/colorpicker'
+
 // import { xypad } from 'oui/controls/xypad'
 // import { graph } from 'oui/controls/graph'
 // import { combobox } from 'oui/controls/combobox'
