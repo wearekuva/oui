@@ -7,21 +7,9 @@ A super simple way to instrument your code and control your data. Pass it an obj
 ```
 npm install ouioui --save
 ```
-
-#### Imperative
-
-If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background and prefer an imperative style api, oui exposes a familar interface
-
-```javascript
-let p = oui.datoui()
-p.add( obj, 'someNum' )
-let dir = p.addFolder( 'dir' )
-dir.add( obj, 'nestedProp' )
-```
-
 #### Functional
 
-For those who prefer the more functional approach, you can also map entire objects to an interface. This is useful when you want to visualise the shape of an object.
+Oui provides a stateless declarative api that maps entire objects to UI. This is useful when you want understand the shape of an object, or you want to test out an api.
 
 ```javascript
 oui({
@@ -32,7 +20,18 @@ oui({
 })
 ```
 
-Both of these approaches create the same UI, each with it's own pros and cons. The first is useful for hacking on your own code, the second for quickly testing your own api, or visualing the api of a 3rd party.
+#### Imperative
+
+If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background or prefer an imperative style api, datoui provides a tiny wrapper with a familiar interface. This is often useful when you want to quickly hack on a project.
+
+```javascript
+let p = oui.datoui()
+p.add( obj, 'someNum' )
+let dir = p.addFolder( 'dir' )
+dir.add( obj, 'nestedProp' )
+```
+
+Both of these approaches are equivalent and can be used in parallel. Which one you chose depends on your codings style and use case. As a general rule though, `datoui` is handy for quickly hacking on code and testing parameters. As code matures however, parameters become more defined and are often abstracted into an api. This is when the functional approach of `oui()` may be more applicable.
 
 ###More information
 
