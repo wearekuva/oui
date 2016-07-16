@@ -1,12 +1,17 @@
 import oui from 'oui'
 let control = oui.controls.ColorPicker
 // import ColorPicker from 'oui/controls/colorpicker'
-console.log( oui.controls.ColorPicker )
+// console.log( oui.controls.ColorPicker )
 let gui = oui.datoui()
 let a = { test: {r:1, g:0.5, b:0}}
 let b = {test:10}
-gui.add( a, 'test', { control } )
-gui.add( b, 'test', {options:[10, 20, 30, 40], control:oui.controls.ComboBox} )
+// gui.add( a, 'test', { control } )
+// gui.add( b, 'test', {options:[10, 20, 30, 40], control:oui.controls.ComboBox} )
+
+var f1 = gui.addFolder( 'test', {open:true} )
+f1.add( a, 'test', { control } )
+var f2 = gui.addFolder( 'test2' )
+f2.add( b, 'test' )
 
 window.a = a
 window.b = b

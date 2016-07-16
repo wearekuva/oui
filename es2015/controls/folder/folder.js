@@ -24,6 +24,9 @@ class Folder extends Component {
 
     }
 
+    componentWillMount(){
+        this.setState({ open: this.props.open })
+    }
 
     render(){
 

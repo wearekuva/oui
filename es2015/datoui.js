@@ -1,7 +1,7 @@
 import panel from './imperative-api'
 import { setAnnotation } from './annotate'
 
-let add = ( obj, propName, annotation, target ) => {
+let add = ( obj, propName, annotation = {}, target ) => {
     setAnnotation( target, target.length, { label:propName, ...annotation })
     Object.defineProperty( target, target.length, {
         get: _ => obj[propName],
@@ -12,7 +12,11 @@ let add = ( obj, propName, annotation, target ) => {
 
 let addFolder = target => ({
     add: ( obj, propName, annotation ) => add( obj, propName, annotation, target ),
-    addFolder: propName => addFolder( target[propName] = [] )
+    addFolder: ( propName, annotation ) => {
+        let api = []
+        setAnnotation( target, target.push( api ) - 1, { label:propName, ...annotation })
+        return addFolder( api )
+    }
 })
 
 export default opts => {
