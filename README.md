@@ -33,7 +33,7 @@ dir.add( obj, 'nestedProp' )
 
 Both of these approaches are equivalent and can be used in parallel. Which one you chose depends on your codings style and use case. As a general rule though, `datoui` is handy for quickly hacking on code and testing parameters. As code matures however, parameters become more defined and are often abstracted into an api. This is when the functional approach of `oui()` may be more applicable.
 
-###More information
+### More information
 
 - [Constraints](/docs/constraints.md)
 - [Additional Controls](/docs/additional-controls.md)
@@ -42,6 +42,7 @@ Both of these approaches are equivalent and can be used in parallel. Which one y
 - [API](/docs/api.md)
 
 
-####### License
+###### License
 [MIT](./LICENSE.md)
-Copyright © 2016 Mark Lundin
+
+© 2016 Mark Lundin
