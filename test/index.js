@@ -8,9 +8,9 @@ let b = {test:10}
 // gui.add( a, 'test', { control } )
 // gui.add( b, 'test', {options:[10, 20, 30, 40], control:oui.controls.ComboBox} )
 
-var f1 = gui.addFolder( 'test', {open:true} )
+var f1 = gui.addFolder({label:'test', open:true})
 f1.add( a, 'test', { control } )
-var f2 = gui.addFolder( 'test2' )
+var f2 = gui.addFolder({ label: 'test2' })
 f2.add( b, 'test' )
 
 window.a = a

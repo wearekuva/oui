@@ -1,6 +1,6 @@
 /*!
  * 
- * Oui.js v0.0.15
+ * Oui.js v0.0.16
  * © 2016 Mark Lundin
  * Released under the MIT License.
  * 
@@ -84,7 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(84).default;}oui.version='0.0.15';module.exports=oui;
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(84).default;}oui.version='0.0.16';module.exports=oui;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(54)))
 
 /***/ },
@@ -2969,7 +2969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends2=__webpack_require__(1);var _extends3=_interopRequireDefault(_extends2);var _imperativeApi=__webpack_require__(41);var _imperativeApi2=_interopRequireDefault(_imperativeApi);var _annotate=__webpack_require__(10);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var _add=function _add(obj,propName){var annotation=arguments.length<=2||arguments[2]===undefined?{}:arguments[2];var target=arguments[3];(0,_annotate.setAnnotation)(target,target.length,(0,_extends3.default)({label:propName},annotation));Object.defineProperty(target,target.length,{get:function get(_){return obj[propName];},set:function set(v){return obj[propName]=v;},enumerable:true,configurable:true});};var _addFolder=function _addFolder(target){return{add:function add(obj,propName,annotation){return _add(obj,propName,annotation,target);},addFolder:function addFolder(propName,annotation){var api=[];(0,_annotate.setAnnotation)(target,target.push(api)-1,(0,_extends3.default)({label:propName},annotation));return _addFolder(api);}};};exports.default=function(opts){var api=[];var p=(0,_imperativeApi2.default)(opts);var draw=function draw(_){p(api);requestAnimationFrame(draw);};draw();return _addFolder(api);};
+	'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _extends2=__webpack_require__(1);var _extends3=_interopRequireDefault(_extends2);var _imperativeApi=__webpack_require__(41);var _imperativeApi2=_interopRequireDefault(_imperativeApi);var _annotate=__webpack_require__(10);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var _add=function _add(obj,propName){var annotation=arguments.length<=2||arguments[2]===undefined?{}:arguments[2];var target=arguments[3];(0,_annotate.setAnnotation)(target,target.length,(0,_extends3.default)({label:propName},annotation));Object.defineProperty(target,target.length,{get:function get(_){return obj[propName];},set:function set(v){return obj[propName]=v;},enumerable:true,configurable:true});};var _addFolder=function _addFolder(target){return{add:function add(obj,propName,annotation){return _add(obj,propName,annotation,target);},addFolder:function addFolder(annotation){var api=[];(0,_annotate.setAnnotation)(target,target.push(api)-1,(0,_extends3.default)({label:'folder'},annotation));return _addFolder(api);}};};exports.default=function(opts){var api=[];var p=(0,_imperativeApi2.default)(opts);var draw=function draw(_){p(api);requestAnimationFrame(draw);};draw();return _addFolder(api);};
 
 /***/ },
 /* 82 */

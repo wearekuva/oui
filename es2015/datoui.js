@@ -12,9 +12,9 @@ let add = ( obj, propName, annotation = {}, target ) => {
 
 let addFolder = target => ({
     add: ( obj, propName, annotation ) => add( obj, propName, annotation, target ),
-    addFolder: ( propName, annotation ) => {
+    addFolder: annotation => {
         let api = []
-        setAnnotation( target, target.push( api ) - 1, { label:propName, ...annotation })
+        setAnnotation( target, target.push( api ) - 1, { label:'folder', ...annotation })
         return addFolder( api )
     }
 })
