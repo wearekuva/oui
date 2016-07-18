@@ -7,7 +7,7 @@ A super simple way to instrument your code and control your data. Pass it an obj
 ```
 npm install ouioui --save
 ```
-#### Functional
+### Functional
 
 Oui provides a stateless declarative api that maps entire objects to UI. This is useful when you want understand the shape of an object, or you want to test out an api.
 
@@ -20,9 +20,11 @@ oui({
 })
 ```
 
-#### Imperative
+### Imperative
 
-If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background or prefer an imperative style api, datoui provides a tiny wrapper with a familiar interface. This is often useful when you want to quickly hack on a project.
+If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background or prefer a more traditional imperative api, datoui provides a tiny wrapper with a similar interface. This is often useful when you want to quickly hack on projects.
+
+>> Note that while datoui has a similar interface as [dat.gui](https://github.com/dataarts/dat.gui), it will never likely have an exact mapping. datoui is simply a wrapper around Oui to handle certain use cases.
 
 ```javascript
 let p = oui.datoui()
