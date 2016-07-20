@@ -17,6 +17,10 @@ class Panel extends React.Component {
 
     }
 
+    componentWillMount(){
+        this.setState({ open: this.props.open })
+    }
+
     render(){
 
         let { children, label } = this.props,
