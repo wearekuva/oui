@@ -1,5 +1,6 @@
 let element = document.createElement( 'div' )
 
+element.className = 'oui'
 element.style.position = 'absolute'
 element.style.left = '0'
 element.style.top = '0'
