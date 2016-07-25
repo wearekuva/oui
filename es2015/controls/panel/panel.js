@@ -55,7 +55,7 @@ var lineStyle = {
     borderTopColor: secondary.color,
     borderRightColor: secondary.color,
     borderLeftColor: secondary.color,
-    borderBottomColor: secondary.color
+    borderBottomColor: 'rgba( 1, 1, 1, 0.05 )'
 }
 
 var style = {

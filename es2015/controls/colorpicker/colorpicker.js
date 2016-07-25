@@ -78,7 +78,7 @@ class ColorPicker extends Component {
 
 
         return <div style={{ ...base, ...style, height:'auto'}}>
-            <div style={{display:'flex', alignItems: 'baseline'}} onClick={ v => this.setState({open:!open})}>
+            <div style={{display:'flex', alignItems: 'center'}} onClick={ v => this.setState({open:!open})}>
                 <label>{ label }</label>
                 <span style={{ ...colorDropletStyle, marginLeft:'auto', backgroundColor:Colr.fromHsvObject( hsvColor ).toHex() }}></span>
             </div>
