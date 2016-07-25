@@ -4,7 +4,7 @@ Annotating properties is not just useful for choosing alternative controls, it's
 Here's an example of how you'd constrain a number to within 3 and 100.
 
 ```javascript
-import annotate form 'oui/annotate'
+import annotate from 'oui/annotate'
 
 oui({
 
