@@ -51,7 +51,8 @@ class Folder extends Component {
 Folder.defaultProps = {
 
     label: 'Folder',
-    onChange: a=>a
+    onChange: a=>a,
+    open: false
 
 }
 
