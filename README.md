@@ -24,7 +24,7 @@ oui({
 
 If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background or prefer a more traditional imperative api, datoui provides a tiny wrapper with a similar interface. This is often useful when you want to quickly hack on projects.
 
->> Note that while datoui has a similar interface as [dat.gui](https://github.com/dataarts/dat.gui), it will never likely have an exact mapping. datoui is simply a wrapper around Oui to handle certain use cases.
+> Note that while datoui has a similar interface as [dat.gui](https://github.com/dataarts/dat.gui), it will never likely have an exact mapping. datoui is simply a wrapper around Oui to handle certain use cases.
 
 ```javascript
 let p = oui.datoui()
