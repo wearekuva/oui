@@ -22,7 +22,6 @@ class Panel extends React.Component {
     }
 
     render(){
-
         let { children, label } = this.props,
             { open } = this.state,
             Chevron = open ? MdExpandMore : MdChevronLeft
@@ -44,7 +43,8 @@ class Panel extends React.Component {
 }
 
 Panel.defaultProps = {
-    label: 'Panel'
+    label: 'Panel',
+    open: true
 }
 
 var lineStyle = {
