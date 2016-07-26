@@ -2,7 +2,7 @@ import oui from 'oui'
 let control = oui.controls.ColorPicker
 // import ColorPicker from 'oui/controls/colorpicker'
 // console.log( oui.controls.ColorPicker )
-let gui = oui.datoui()
+let gui = oui.datoui(null, _=> console.log( _ ))
 let a = { test: {r:1, g:0.5, b:0}}
 let b = {test:10}
 // gui.add( a, 'test', { control } )

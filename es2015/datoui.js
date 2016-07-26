@@ -19,11 +19,11 @@ let addFolder = target => ({
     }
 })
 
-export default opts => {
+export default ( opts, callback ) => {
     let api = []
-    let p = panel(opts)
+    let p = panel( opts )
     let draw = _ => {
-        p( api )
+        p( api, callback )
         requestAnimationFrame( draw )
     }
     draw()
