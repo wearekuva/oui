@@ -9,6 +9,7 @@ then
   echo "Releasing $VERSION ..."
 
   # lint and test
+  npm run test 2>/dev/null
   # npm run lint 2>/dev/null
   # npm run unit 2>/dev/null
   # npm run cover 2>/dev/null
