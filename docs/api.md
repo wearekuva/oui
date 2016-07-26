@@ -30,7 +30,7 @@ let PanelApi = {
 /*
     Create a new empty Oui Panel
 */
-oui.datoui( { label: String } ) : OuiFolder
+oui.datoui( { label: String }, callback : Function ) : OuiFolder
 
 
 let OuiFolder = {
