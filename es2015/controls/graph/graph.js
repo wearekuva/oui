@@ -1,7 +1,7 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
 import SVG from 'preact-svg'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 import { base, secondary, highlight } from '../../controls/styles'
 import { map } from '../../math'
 import warning from '../../controls/utils/warning'

@@ -1,7 +1,7 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
 import SVG from 'preact-svg'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 import hsvCatch from './catch-degenerate-hsv'
 import Slider from '../../../controls/slider'
 import NumericStepper from '../../../controls/numericstepper'

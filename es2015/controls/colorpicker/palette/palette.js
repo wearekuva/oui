@@ -1,6 +1,6 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 import Colr from 'colr'
 import Button from '../../button'
 import { base } from '../../../controls/styles'

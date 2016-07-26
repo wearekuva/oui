@@ -1,6 +1,6 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 import HSVColorPicker from './hsv/hsv-colorpicker'
 import Colr from 'colr'
 import Palette from './palette/palette'

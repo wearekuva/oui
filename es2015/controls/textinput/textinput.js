@@ -1,6 +1,6 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 // import radium from 'radium'
 import { base, highlight, secondary } from '../styles'
 

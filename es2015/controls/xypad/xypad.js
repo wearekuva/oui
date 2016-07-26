@@ -1,7 +1,7 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
 import SVG from 'preact-svg'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 import NumericStepper from '../../controls/numericstepper'
 import { map } from '../../math'
 import throttle from '../../controls/utils/throttle'

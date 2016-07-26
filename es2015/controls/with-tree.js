@@ -11,7 +11,7 @@
 /** @jsx React.h */
 import Tree from "../render-tree"
 import React, { Component } from 'preact'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 
 
 export default ( FolderComponent ) => {

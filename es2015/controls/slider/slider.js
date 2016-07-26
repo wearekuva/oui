@@ -1,7 +1,7 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
 import SVG from 'preact-svg'
-import PropTypes from 'propTypes'
+import PropTypes from 'proptypes'
 import NumericStepper from '../numericstepper'
 import shallowCompare from '../../shallow-compare'
 import { map, clamp } from '../../math'
