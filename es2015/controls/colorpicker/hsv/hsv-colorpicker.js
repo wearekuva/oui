@@ -73,8 +73,6 @@ class HSVColorPicker extends React.Component {
 
         this.onMouseUp = e => {
 
-            console.log( 'mouse up')
-
             document.removeEventListener( 'mousemove', this.onMouseMove )
             document.removeEventListener( 'touchmove', this.onMouseMove )
             document.removeEventListener( 'mouseup', this.onMouseUp )
@@ -86,13 +84,7 @@ class HSVColorPicker extends React.Component {
 
         this.onHueChange = h => {
             let { s, v, a } = this.props.value
-            //
-            // if( isDegenerate( this.props.value ) ){
-            //     this.setState({ value:{ h, s, v, a }})
-            // }else{
-            //     this.setState({value:null})
-                this.props.onChange({ h, s, v, a })
-            // }
+            this.props.onChange({ h, s, v, a })
         }
 
         this.onSaturationChange = s => {
