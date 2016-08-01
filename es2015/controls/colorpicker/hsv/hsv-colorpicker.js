@@ -52,6 +52,13 @@ class HSVColorPicker extends React.Component {
 
             var rect = e.currentTarget.getBoundingClientRect()
 
+
+            document.addEventListener( 'mousemove', this.onMouseMove )
+            document.addEventListener( 'touchmove', this.onMouseMove )
+            document.addEventListener( 'mouseup', this.onMouseUp )
+            document.addEventListener( 'touchend', this.onMouseUp )
+
+
             let hsv = computeHsvaFromMouseEvent( e, rect )
             this.setState({drag:true, boundingRect: rect })
             this.props.onChange( hsv )
@@ -65,6 +72,14 @@ class HSVColorPicker extends React.Component {
 
 
         this.onMouseUp = e => {
+
+            console.log( 'mouse up')
+
+            document.removeEventListener( 'mousemove', this.onMouseMove )
+            document.removeEventListener( 'touchmove', this.onMouseMove )
+            document.removeEventListener( 'mouseup', this.onMouseUp )
+            document.removeEventListener( 'touchend', this.onMouseUp )
+
             this.setState({drag:false})
         }
 
@@ -134,10 +149,8 @@ class HSVColorPicker extends React.Component {
                 <SVG width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
                     style={defaultStyle}
                     onMouseDown={this.onMouseDown}
-                    onMouseMove={this.state.drag ? this.onMouseMove : null}
                     onMouseUp={this.onMouseUp}
                     onTouchStart={this.onMouseDown}
-                    onTouchMove={this.state.drag ? this.onMouseMove : null}
                     onTouchEnd={this.onMouseUp}>
                     <defs>
                         <linearGradient id={"horizontal-gradient" + uuid }>
