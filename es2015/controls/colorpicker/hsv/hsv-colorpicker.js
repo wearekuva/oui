@@ -31,6 +31,9 @@ class HSVColorPicker extends React.Component {
                 v = ( bounds.height - ( y - bounds.top )) / bounds.height * 100,
                 a = this.props.value.a
 
+            s = Math.min( 100, Math.max( 0, s ))
+            v = Math.min( 100, Math.max( 0, v ))
+
             return a === undefined ? { h, s, v } : { h, s, v, a }
         }
 
@@ -164,12 +167,12 @@ class HSVColorPicker extends React.Component {
                     <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
                 </SVG>
             </div>
-            <Slider includeStepper={false} label={''} step={1} min={1} max={360} value={h} style={hueSlider} onChange={this.onHueChange}/>
+            <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={this.onHueChange}/>
             { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={this.onAlphaChange}/> : null }
             <div style={{ ...base, ...stepperStyle }}>
-                <NumericStepper key="h" style={componentLabels} step={1} min={1} max={360} value={Math.round(h)} onChange={this.onHueChange} label={'H'}/>
-                <NumericStepper key="s" style={componentLabels} step={1} min={1} max={100} value={Math.round(s)} onChange={this.onSaturationChange} label={'S'}/>
-                <NumericStepper key="v" style={componentLabels} step={1} min={1} max={100} value={Math.round(v)} onChange={this.onValueChange} label={'V'}/>
+                <NumericStepper key="h" style={componentLabels} step={1} min={0} max={359} value={Math.round(h)} onChange={this.onHueChange} label={'H'}/>
+                <NumericStepper key="s" style={componentLabels} step={1} min={0} max={100} value={Math.round(s)} onChange={this.onSaturationChange} label={'S'}/>
+                <NumericStepper key="v" style={componentLabels} step={1} min={0} max={100} value={Math.round(v)} onChange={this.onValueChange} label={'V'}/>
             </div>
         </div>
 

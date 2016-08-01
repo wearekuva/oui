@@ -11,7 +11,7 @@
 /** @jsx React.h */
 import React from 'preact'
 
-let isDegenerate = ({ h, s, v }) => ( s === 0  )
+let isDegenerate = ({ h, s, v }) => ( s === 0 || v === 0 )
 
 export default Comp => class RGB2HSV extends React.Component {
 
