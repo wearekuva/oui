@@ -1,10 +1,12 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
 import SVG from 'preact-svg'
+import colr from 'colr'
 import PropTypes from 'proptypes'
 import hsvCatch from './catch-degenerate-hsv'
 import Slider from '../../../controls/slider'
 import NumericStepper from '../../../controls/numericstepper'
+import TextInput from '../../../controls/textinput'
 import { map } from '../../../math'
 import throttle from '../../../controls/utils/throttle'
 import { base, secondary } from '../../../controls/styles'
@@ -84,25 +86,12 @@ class HSVColorPicker extends React.Component {
             this.setState({drag:false})
         }
 
-
-        this.onHueChange = h => {
-            let { s, v, a } = this.props.value
-            this.props.onChange({ h, s, v, a })
+        this.onChannelChange = channel => {
+            this.props.onChange({ ...this.props.value, channel })
         }
 
-        this.onSaturationChange = s => {
-            let { h, v, a } = this.props.value
-            this.props.onChange({ h, s, v, a })
-        }
-
-        this.onValueChange = v => {
-            let { h, s, a } = this.props.value
-            this.props.onChange({ h, s, v, a })
-        }
-
-        this.onAlphaChange = a => {
-            let { h, s, v } = this.props.value
-            this.props.onChange({ h, s, v, a })
+        this.onHexChange = hex => {
+            this.props.onChange({ ...this.props.value, ...colr.fromHex( hex ).toHsvObject() })
         }
     }
 
@@ -167,13 +156,9 @@ class HSVColorPicker extends React.Component {
                     <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
                 </SVG>
             </div>
-            <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={this.onHueChange}/>
-            { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={this.onAlphaChange}/> : null }
-            <div style={{ ...base, ...stepperStyle }}>
-                <NumericStepper key="h" style={componentLabels} step={1} min={0} max={359} value={Math.round(h)} onChange={this.onHueChange} label={'H'}/>
-                <NumericStepper key="s" style={componentLabels} step={1} min={0} max={100} value={Math.round(s)} onChange={this.onSaturationChange} label={'S'}/>
-                <NumericStepper key="v" style={componentLabels} step={1} min={0} max={100} value={Math.round(v)} onChange={this.onValueChange} label={'V'}/>
-            </div>
+            <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={this.onChannelChange}/>
+            { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={this.onChannelChange}/> : null }
+            <TextInput label='#' value={ colr.fromHsvObject( value ).toHex().slice( 1 ).toUpperCase() } pattern={/^[0-9A-F]{2,6}$/i} onSubmit={this.onHexChange}/>
         </div>
 
     }
