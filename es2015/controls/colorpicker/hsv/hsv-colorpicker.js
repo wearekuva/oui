@@ -87,7 +87,7 @@ class HSVColorPicker extends React.Component {
         }
 
         this.onChannelChange = channel => {
-            this.props.onChange({ ...this.props.value, channel })
+            this.props.onChange({ ...this.props.value, ...channel })
         }
 
         this.onHexChange = hex => {
@@ -127,7 +127,6 @@ class HSVColorPicker extends React.Component {
         // Used to prevent collisions between fill() refs
         let uuid = Math.floor( Math.random() * 999999999999999 )
 
-
         return <div>
             <div style={{ ...base, ...style }}>
                 <SVG width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -156,8 +155,8 @@ class HSVColorPicker extends React.Component {
                     <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
                 </SVG>
             </div>
-            <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={this.onChannelChange}/>
-            { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={this.onChannelChange}/> : null }
+            <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={ h => this.onChannelChange({ h })}/>
+            { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={ a => this.onChannelChange({ a })}/> : null }
             <TextInput label='#' value={ colr.fromHsvObject( value ).toHex().slice( 1 ).toUpperCase() } pattern={/^[0-9A-F]{2,6}$/i} onSubmit={this.onHexChange}/>
         </div>
 
