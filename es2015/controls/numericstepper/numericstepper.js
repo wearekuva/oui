@@ -35,6 +35,11 @@ class NumericStepper extends React.Component{
                 if( !isNaN( value )) this.props.onChange( validate( value ))
             }
 
+        // Weak comparison in diffAttributes() fails for 0 as property value.
+        // Workaround for https://github.com/developit/preact/issues/327
+        const strProps = { min: min + '', max: max + '', step: step + '' }
+        value += ''
+
         return <div style={{ ...base, display:'flex', alignItems: 'baseline', ...style }}>
             <label >{ label }</label>
             <style>{`
@@ -48,7 +53,7 @@ class NumericStepper extends React.Component{
                     -webkit-appearance: none;
                 }
             `}</style>
-            <input type='number' {...this.props} style={ defaultStyle } value={value} onInput={ onChange } onChange={ onChange } ref={ref => (this.domRef = ref )} />
+            <input type='number' {...strProps} style={ defaultStyle } value={value} onInput={ onChange } onChange={ onChange } ref={ref => (this.domRef = ref )} />
         </div>
     }
 }
