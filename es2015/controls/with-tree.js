@@ -9,50 +9,42 @@
     normalize the api in 'render-tree'
 */
 /** @jsx React.h */
-import Tree from "../render-tree"
-import React, { Component } from 'preact'
+import Tree from '../render-tree'
+import React from 'preact'
 import PropTypes from 'proptypes'
 
+export default FolderComponent => {
+  // let style = {
+  //     paddingBottom: '0.5em',
+  //     paddingTop: '0.5em',
+  //     borderBottom: '1px solid rgb( 230, 230, 230 )'
+  // }
 
-export default ( FolderComponent ) => {
+  class WrappedComponent extends FolderComponent {
 
-    // let style = {
-    //     paddingBottom: '0.5em',
-    //     paddingTop: '0.5em',
-    //     borderBottom: '1px solid rgb( 230, 230, 230 )'
-    // }
-
-    class WrappedComponent extends FolderComponent {
-
-        constructor(){
-
-            super()
-            this.tree = _ => Tree( this.props.value, this.props.onChange )
-
-        }
-
-        render(){
-
-            return <FolderComponent { ...this.props } value={ this.tree } />
-
-        }
+    constructor () {
+      super()
+      this.tree = _ => Tree(this.props.value, this.props.onChange)
     }
 
-    WrappedComponent.propTypes = {
-
-        value : PropTypes.oneOfType([
-            PropTypes.object,
-            PropTypes.array,
-        ]).isRequired,
-
-        onChange: PropTypes.func,
-
-        label: PropTypes.string,
-
-        style: PropTypes.object
-
+    render () {
+      return <FolderComponent { ...this.props } value={this.tree} />
     }
+  }
 
-    return WrappedComponent
+  WrappedComponent.propTypes = {
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array
+    ]).isRequired,
 
+    onChange: PropTypes.func,
+
+    label: PropTypes.string,
+
+    style: PropTypes.object
+
+  }
+
+  return WrappedComponent
 }

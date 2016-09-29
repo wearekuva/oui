@@ -22,12 +22,11 @@ import 'es7-reflect-metadata'
 
   @annotate({ description, max, min })
 
-
 */
 
 const DUI_KEY = Symbol('Oui, Oui')
 
-export let annotate = value => ( obj, prop ) => Reflect.defineMetadata( DUI_KEY, value, obj, prop )
-export let setAnnotation = ( obj, prop, value ) => Reflect.defineMetadata( DUI_KEY, value, obj, prop )
-export let getAnnotation = ( obj, prop ) => Reflect.getMetadata( DUI_KEY, obj, prop )
-export let hasAnnotation = ( obj, prop ) => getAnnotation( obj, prop ) !== null
+export let annotate = value => (obj, prop) => Reflect.defineMetadata(DUI_KEY, value, obj, prop)
+export let setAnnotation = (obj, prop, value) => Reflect.defineMetadata(DUI_KEY, value, obj, prop)
+export let getAnnotation = (obj, prop) => Reflect.getMetadata(DUI_KEY, obj, prop)
+export let hasAnnotation = (obj, prop) => getAnnotation(obj, prop) !== null

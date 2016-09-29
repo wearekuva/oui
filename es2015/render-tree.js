@@ -53,7 +53,6 @@
 
     This can actually be validated, but
 
-
 import { colorpicker } from 'custom-comps'
 {
   // requires explicit knowledge of controller types
@@ -84,82 +83,63 @@ import { colorpicker } from 'custom-comps'
 
 /** @jsx React.h */
 import React from 'preact'
-import { getAnnotation }  from './annotate'
+import { getAnnotation } from './annotate'
 import primitives from './primitive-components'
 import { validateProp } from './validation'
-import warn from './warn'
 
+export default (obj, onChange) => {
+  let annotation
+  let Component
+  let components = []
 
-export default ( obj, onChange ) => {
-
-    let annotation,
-        Component,
-        components = []
+  /*
+      Iterate through enumerable properties of `obj`
+  */
+  for (var prop in obj) {
+    let Component
+    let value = obj[prop]
 
     /*
-        Iterate through enumerable properties of `obj`
+        Null properties are discarded regardless of type annotation
     */
-    for( var prop in obj ){
 
+    if (value === null) continue
 
-        let Element,
-            Component,
-            value = obj[prop]
+    /*
+        If there's any annotation associated with the property collect them
+        and pass them along to the Component instance
+    */
+    annotation = getAnnotation(obj, prop) || {}
 
+    /*
+        Users can associate a property with a specific Components by including
+        the `control` annotation
+    */
+    Component = annotation.control
 
-        /*
-            Null properties are discarded regardless of type annotation
-        */
+    /*
+        If the property has a type annotation, validate the property against
+        the controls propTypes.
+    */
 
-        if( value === null ) continue
+    if (Component) {
+      validateProp(obj, prop, Component)
+    } else if (!Component && primitives.has(typeof value)) {
+      /*
+          However if no Component has been declared and the value is one of the
+          primtive types, use one of the default Components
+      */
 
-
-        /*
-            If there's any annotation associated with the property collect them
-            and pass them along to the Component instance
-        */
-        annotation = getAnnotation( obj, prop ) || {}
-
-
-        /*
-            Users can associate a property with a specific Components by including
-            the `control` annotation
-        */
-        Component = annotation.control
-
-
-
-        /*
-            If the property has a type annotation, validate the property against
-            the controls propTypes.
-        */
-
-        if( Component ){
-
-            validateProp( obj, prop, Component )
-
-        }else if ( !Component && primitives.has( typeof value )){
-
-            /*
-                However if no Component has been declared and the value is one of the
-                primtive types, use one of the default Components
-            */
-
-            Component = primitives.get( typeof value )
-
-        }
-
-
-        /*
-            Create the Element based on the provided annotaions and the required Component
-        */
-        if( Component ){
-            components.push( <Component key={prop} id={prop} label={prop} {...annotation} onChange={onChange} value={value} /> )
-        }
-
-
+      Component = primitives.get(typeof value)
     }
 
-    return components
+    /*
+        Create the Element based on the provided annotaions and the required Component
+    */
+    if (Component) {
+      components.push(<Component key={prop} id={prop} label={prop} {...annotation} onChange={onChange} value={value} />)
+    }
+  }
 
+  return components
 }

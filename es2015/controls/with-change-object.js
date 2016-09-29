@@ -8,38 +8,30 @@
 import React, { Component } from 'preact'
 import PropTypes from 'proptypes'
 
-
 export default Comp => {
+  class WrappedComponent extends Comp {
 
-    class WrappedComponent extends Comp {
+    constructor () {
+      super()
 
-        constructor(){
-
-            super()
-
-            this.onChildChange = change => this.props.onChange({ [this.props.id]: change })
-
-        }
-
-        render() {
-
-            return <Comp { ...this.props } class='oui-control' onChange={ this.onChildChange } />
-
-        }
+      this.onChildChange = change => this.props.onChange({ [this.props.id]: change })
     }
 
-    // WrappedComponent.name = 'Wrapped'+Comp.name
-
-    WrappedComponent.propTypes = {
-
-        onChange : PropTypes.func.isRequired,
-
-        id : PropTypes.string.isRequired,
-
-        value: Comp.propTypes.value
-
+    render () {
+      return <Comp { ...this.props } class='oui-control' onChange={this.onChildChange} />
     }
+  }
 
-    return WrappedComponent
+  // WrappedComponent.name = 'Wrapped'+Comp.name
 
+  WrappedComponent.propTypes = {
+    onChange: PropTypes.func.isRequired,
+
+    id: PropTypes.string.isRequired,
+
+    value: Comp.propTypes.value
+
+  }
+
+  return WrappedComponent
 }

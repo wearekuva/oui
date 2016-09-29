@@ -1,5 +1,3 @@
-
-
 /*
     Oui is mostly a stateless library. UI is declared using plain js objects and
     oui simply maps them to controllers. This workflow serves the functional
@@ -21,71 +19,59 @@ import domElement from './dom'
 import merge from './deep-merge'
 import warn from './warn'
 
-
 // proxy render() since React returns a Component reference.
-function prender(vnode, parent, callback) {
-	let prev = parent._preactCompatRendered;
-	if (prev && prev.parentNode!==parent) prev = null;
-	let out = preactRender(vnode, parent, prev);
-	parent._preactCompatRendered = out;
-	if (typeof callback==='function') callback();
-	return out && out._component;
+function prender (vnode, parent, callback) {
+  let prev = parent._preactCompatRendered
+  if (prev && prev.parentNode !== parent) prev = null
+  let out = preactRender(vnode, parent, prev)
+  parent._preactCompatRendered = out
+  if (typeof callback === 'function') callback()
+  return out && out._component
 }
 
-
-const EmptyComponent = () => null;
-function unmountComponentAtNode(container) {
-	let existing = container._preactCompatRendered;
-	if (existing && existing.parentNode===container) {
-		preactRender(React.h(EmptyComponent), container, existing);
-		return true;
-	}
-	return false;
+const EmptyComponent = () => null
+function unmountComponentAtNode (container) {
+  let existing = container._preactCompatRendered
+  if (existing && existing.parentNode === container) {
+    preactRender(React.h(EmptyComponent), container, existing)
+    return true
+  }
+  return false
 }
-
 
 export default opts => {
+  let container = null
 
-    let container = null
-
-    const render = ( api, callback = _ => _ ) => {
-
-		if( !document.contains( domElement )){
-			document.body.appendChild( domElement )
-		}
-
-        if( !api ){
-
-            unmountComponentAtNode( container )
-            domElement.removeChild( container )
-            container = null
-
-        }else if( container === null ){
-
-            container = document.createElement('div')
-            container.style.margin = '0.25em'
-            container.style.flexBasis = 'auto'
-            domElement.appendChild( container )
-
-        }
-
-        if( api ){
-
-            let onChange = change => {
-
-                let isFrozen = Object.isFrozen( api )
-                warn( Object.isFrozen( api ), 'The `api` object is frozen an cannot be mutated.' )
-                if( !isFrozen ) {
-                    render( merge( api, change ), callback )
-                    callback( api )
-                }
-            }
-
-            let Element = <Panel { ...opts }>{ Tree( api, onChange )}</Panel>
-            prender( Element, container )
-        }
+  const render = (api, callback = _ => _) => {
+    if (!document.contains(domElement)) {
+      document.body.appendChild(domElement)
     }
 
-    return render
+    if (!api) {
+      unmountComponentAtNode(container)
+      domElement.removeChild(container)
+      container = null
+    } else if (container === null) {
+      container = document.createElement('div')
+      container.style.margin = '0.25em'
+      container.style.flexBasis = 'auto'
+      domElement.appendChild(container)
+    }
 
+    if (api) {
+      let onChange = change => {
+        let isFrozen = Object.isFrozen(api)
+        warn(Object.isFrozen(api), 'The `api` object is frozen an cannot be mutated.')
+        if (!isFrozen) {
+          render(merge(api, change), callback)
+          callback(api)
+        }
+      }
+
+      let Element = <Panel { ...opts }>{Tree(api, onChange)}</Panel>
+      prender(Element, container)
+    }
+  }
+
+  return render
 }

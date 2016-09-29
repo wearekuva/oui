@@ -1,4 +1,3 @@
-
 import shallowEqual from './shallow-equal'
 
 /**
@@ -7,8 +6,8 @@ import shallowEqual from './shallow-equal'
  * See also https://facebook.github.io/react/docs/shallow-compare.html
  */
 const shallowCompare = (instance, nextProps, nextState) => (
-    !shallowEqual(instance.props, nextProps) ||
-    !shallowEqual(instance.state, nextState)
+  !shallowEqual(instance.props, nextProps) ||
+  !shallowEqual(instance.state, nextState)
 )
 
-export default shallowCompare;
+export default shallowCompare

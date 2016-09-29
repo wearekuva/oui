@@ -7,9 +7,9 @@ import withChangeObject from './controls/with-change-object'
 import withTree from './controls/with-Tree'
 
 export default new Map([
-  [ 'function', Button ],
-  [ 'number', withChangeObject( Slider ) ],
-  [ 'string', withChangeObject( TextInput )],
-  [ 'boolean', withChangeObject( Checkbox )],
-  [ 'object', withChangeObject( withTree( Folder ))]
+  ['function', Button],
+  ['number', withChangeObject(Slider)],
+  ['string', withChangeObject(TextInput)],
+  ['boolean', withChangeObject(Checkbox)],
+  ['object', withChangeObject(withTree(Folder))]
 ])

@@ -3,40 +3,33 @@
 */
 import warn from './warn'
 
-
-const isWritable = ( obj, prop ) => {
-    let propDesc = Object.getOwnPropertyDescriptor( obj, prop )
-    return propDesc ? propDesc.writable === true || propDesc.set !== undefined : true
+const isWritable = (obj, prop) => {
+  let propDesc = Object.getOwnPropertyDescriptor(obj, prop)
+  return propDesc ? propDesc.writable === true || propDesc.set !== undefined : true
 }
 
-let deepmerge = ( a, b ) => {
+let deepmerge = (a, b) => {
+  let isFrozen = Object.isFrozen(a) || !Object.isExtensible(a)
+  warn(isFrozen, 'The merge target is frozen and cannot be mutated')
+  if (isFrozen) return a
 
-    let isFrozen = Object.isFrozen( a ) || !Object.isExtensible( a )
-    warn( isFrozen, 'The merge target is frozen and cannot be mutated' )
-    if( isFrozen ) return a
+  let breakOn = Array.isArray(a) && b.length
+  let index = 0
 
-    let breakOn = Array.isArray( a ) && b.length
-    let index = 0
-
-    for( var prop in b ){
-        if( typeof a[prop] === 'object' ){
-
-            let isFrozen = Object.isFrozen( a[prop] )
-            warn( isFrozen, 'The property `' + prop + '` is frozen and cannot be mutated.' )
-            if( !isFrozen ) deepmerge( a[prop], b[prop] )
-
-        }else{
-
-            let writable = isWritable( a, prop )
-            warn( !writable, 'The property `' + prop + '` is not writable and cannot be mutated.' )
-            if( writable ) a[prop] = b[prop]
-
-        }
-
-        if( breakOn === ++index ) a.splice( breakOn )
-
+  for (var prop in b) {
+    if (typeof a[prop] === 'object') {
+      let isFrozen = Object.isFrozen(a[prop])
+      warn(isFrozen, 'The property `' + prop + '` is frozen and cannot be mutated.')
+      if (!isFrozen) deepmerge(a[prop], b[prop])
+    } else {
+      let writable = isWritable(a, prop)
+      warn(!writable, 'The property `' + prop + '` is not writable and cannot be mutated.')
+      if (writable) a[prop] = b[prop]
     }
-    return a
+
+    if (breakOn === ++index) a.splice(breakOn)
+  }
+  return a
 }
 
 export default deepmerge

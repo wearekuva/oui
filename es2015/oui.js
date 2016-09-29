@@ -8,8 +8,8 @@ import Graph, { graph } from './controls/graph'
 import NumericStepper, { numericstepper } from './controls/numericstepper'
 import XYPad, { xypad } from './controls/xypad'
 
-let oui = panel({label:'Master'})
+let oui = panel({label: 'Master'})
 
-const controls = { ColorPicker, ComboBox, Graph, NumericStepper, XYPad }
+const controls = {ColorPicker, ComboBox, Graph, NumericStepper, XYPad}
 
-export default { oui, panel, datoui, annotate, color, combobox, graph, numericstepper, xypad, controls }
+export default {oui, panel, datoui, annotate, color, combobox, graph, numericstepper, xypad, controls}

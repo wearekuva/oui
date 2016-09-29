@@ -1,4 +1,4 @@
-let element = document.createElement( 'div' )
+let element = document.createElement('div')
 
 element.className = 'oui'
 element.style.position = 'absolute'
