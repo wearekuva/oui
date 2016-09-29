@@ -21,12 +21,8 @@ export default Comp => class RGB2HSV extends React.Component {
         this.state = {value:null}
 
         this.conditionalChange = value => {
-            if( isDegenerate( value )){
-                this.setState({ value })
-            }else{
-                this.setState({ value:null })
-                this.props.onChange( value )
-            }
+            this.setState( isDegenerate( value ) ? { value } : { value:null })
+            this.props.onChange( value )
         }
 
     }

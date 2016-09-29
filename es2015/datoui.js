@@ -1,6 +1,15 @@
 import panel from './imperative-api'
 import { setAnnotation } from './annotate'
 
+/*
+  Provides a stateful imperative interface to Oui
+*/
+
+
+/*
+  Defines and optionally annotates an property on an object
+*/
+
 let add = ( obj, propName, annotation = {}, target ) => {
     setAnnotation( target, target.length, { label:propName, ...annotation })
     Object.defineProperty( target, target.length, {
@@ -10,6 +19,9 @@ let add = ( obj, propName, annotation = {}, target ) => {
     })
 }
 
+/*
+  Returns an imperative interface to mutate an object with properties and 'folders'
+*/
 let addFolder = target => ({
     add: ( obj, propName, annotation ) => add( obj, propName, annotation, target ),
     addFolder: annotation => {
@@ -19,6 +31,9 @@ let addFolder = target => ({
     }
 })
 
+/*
+  An 'watching' interface to oui that redraws every frame
+*/
 export default ( opts, callback ) => {
     let api = []
     let p = panel( opts )
