@@ -26,7 +26,7 @@ class Slider extends React.Component {
       let { min, max, step } = this.props
 
       value = clamp(value, min, max)
-      value = Math.round(value * (1 / step)) / (1 / step)
+      if (step !== undefined) value = Math.round(value * (1 / step)) / (1 / step)
 
       return value
     }
@@ -39,7 +39,9 @@ class Slider extends React.Component {
         Compute the numerical value from a touch/mouse event
     */
 
-    let computeValuefromMouseEvent = (e, bounds) => map(e.clientX === undefined ? e.touches[0].clientX : e.clientX, bounds.left, bounds.right, this.props.min, this.props.max)
+    let computeValuefromMouseEvent = (e, bounds) => map(
+      e.clientX === undefined ? e.touches[0].clientX : e.clientX,
+      bounds.left, bounds.right, this.props.min, this.props.max)
 
     /*
         Computes the value on mouse/touch down and triggers an `onChange`
@@ -49,6 +51,7 @@ class Slider extends React.Component {
       e.preventDefault()
 
       let { min, max, step, onChange } = this.props
+      step = step || (max - min) / 1000
       let validate = v => Math.round(clamp(v, min, max) * (1 / step)) / (1 / step)
 
       /*
@@ -64,7 +67,8 @@ class Slider extends React.Component {
       var rect = e.currentTarget.getBoundingClientRect()
 
       this.setState({drag: true, rect})
-      onChange(validate(computeValuefromMouseEvent(e, rect)))
+      const value = validate(computeValuefromMouseEvent(e, this.state.rect))
+      if (this.props.value !== value) onChange(value)
     }
 
     /*
@@ -73,18 +77,22 @@ class Slider extends React.Component {
 
     this.onMouseMove = throttle(e => {
       let { min, max, step, onChange } = this.props
+      step = step || (max - min) / 1000
       let validate = v => Math.round(clamp(v, min, max) * (1 / step)) / (1 / step)
 
-      onChange(validate(computeValuefromMouseEvent(e, this.state.rect)))
+      const value = validate(computeValuefromMouseEvent(e, this.state.rect))
+      if (this.props.value !== value) onChange(value)
     })
 
     this.onTouchMove = throttle(e => {
       e.preventDefault()
 
       let { min, max, step, onChange } = this.props
+      step = step || (max - min) / 1000
       let validate = v => Math.round(clamp(v, min, max) * (1 / step)) / (1 / step)
 
-      onChange(validate(computeValuefromMouseEvent(e, this.state.rect)))
+      const value = validate(computeValuefromMouseEvent(e, this.state.rect))
+      if (this.props.value !== value) onChange(value)
     })
 
     /*
@@ -119,7 +127,9 @@ class Slider extends React.Component {
     let stepperProps = { value, label, min, max, step, onChange }
 
     let offsetPercentage = map(clamp(value, min, max), min, max, 0, 100) + '%'
+    console.log( 'pre', value )
     value = this.validate(value)
+    console.log( 'post', value )
 
     return <div style={base}>
      {includeStepper ? <NumericStepper {...stepperProps} onChange={this.onNumericStepperChange} /> : null}
@@ -183,7 +193,6 @@ Slider.defaultProps = {
   includeStepper: true,
   min: 0,
   max: 100,
-  step: 1,
   onChange: a => a,
   style: {width: '100%'}
 

@@ -19,13 +19,17 @@ class NumericStepper extends React.Component {
   }
 
   render () {
-    let { label, min, max, step, style } = this.props
-    let validate = v => Math.round(clamp(v, min, max) * (1 / step)) / (1 / step)
-    let value = validate(this.props.value)
+    let { label, min, max, step, style, value } = this.props
+    value = clamp(value, min, max)
+    let validate = v => step !== undefined
+      ? Math.round(v * (1 / step)) / (1 / step)
+      : v
+
+    value = validate(value)
     let onChange = e => {
-        e.preventDefault()
-        let value = parseFloat(e.currentTarget.value)
-        if (!isNaN(value)) this.props.onChange(validate(value))
+      e.preventDefault()
+      let value = parseFloat(e.currentTarget.value)
+      if (!isNaN(value)) this.props.onChange(validate(value))
     }
 
     return <div style={{ ...base, display: 'flex', alignItems: 'baseline', ...style }}>
@@ -94,7 +98,6 @@ NumericStepper.defaultProps = {
   min: 0,
   max: 100,
   style: {width: '100%'},
-  step: 0.1,
   onChange: a => a
 
 }
@@ -107,7 +110,7 @@ var defaultStyle = {
   borderRadius: 2,
   backgroundColor: 'transparent',
   outline: 'none',
-  textAlign: 'center',
+  textAlign: 'left',
   width: 30,
   fontSize: base.fontSize,
   // lineHeight: '15  px',
