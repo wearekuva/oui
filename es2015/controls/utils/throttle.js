@@ -4,36 +4,30 @@
     for updates that involve a repaint, which tbh is probably most things
 */
 
-
 export default fn => {
+  let rafID
 
-    let rafID, t;
+  /*
+      Create a debounced wrapper
+  */
 
+  let debounced = (a) => {
+    // console.log( performance.now() - t)
+    fn(a)
+    cancelAnimationFrame(rafID)
+    rafID = null
+  }
 
-    /*
-        Create a debounced wrapper
-    */
+  /*
+      Return a function that only executes when rafID has fired
+  */
 
-    let debounced = ( a ) => {
-        // console.log( performance.now() - t)
-        fn( a )
-        cancelAnimationFrame( rafID )
-        rafID = null
+  return e => {
+    if (!rafID) {
+      if (e && e.persist) e.persist()
+      requestAnimationFrame(_ => {
+        rafID = requestAnimationFrame(debounced.bind(this, e))
+      })
     }
-
-    /*
-        Return a function that only executes when rafID has fired
-    */
-
-    return e => {
-
-        //t = performance.now()
-        if( !rafID ){
-            // fn( e )
-            if( e && e.persist ) e.persist()
-            requestAnimationFrame( _ => {
-                rafID = requestAnimationFrame( debounced.bind( this, e ))
-            })
-        }
-    }
+  }
 }

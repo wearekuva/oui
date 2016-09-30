@@ -1,8 +1,6 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
 import PropTypes from 'proptypes'
-// import radium from 'radium'
-// import Tree from "../../render-tree"
 import { base } from '../styles'
 import MdChevronLeft from '../../icons/expand-less'
 import MdExpandMore from '../../icons/expand-more'
@@ -14,71 +12,63 @@ import MdExpandMore from '../../icons/expand-more'
 
 class Folder extends Component {
 
-    constructor(){
+  constructor () {
+    super()
 
-        super()
+    this.state = { open: false }
 
-        this.state = { open: false }
+    this.toggleOpen = _ => this.setState({ open: !this.state.open })
+  }
 
-        this.toggleOpen = _ => this.setState({ open:!this.state.open })
+  componentWillMount () {
+    this.setState({ open: this.props.open })
+  }
 
-    }
+  render () {
+    let { label, value } = this.props
+    let { open } = this.state
+    let Chevron = open ? MdExpandMore : MdChevronLeft
 
-    componentWillMount(){
-        this.setState({ open: this.props.open })
-    }
-
-    render(){
-
-        let { label, value, style } = this.props,
-            { open } = this.state,
-            Chevron = open ? MdExpandMore : MdChevronLeft
-
-        return <div style={base}>
-                <div onClick={this.toggleOpen} style={{display:'flex', alignItems: 'center'}}>
-                    <label>{ label }</label>
-                    <Chevron style={{marginLeft: 'auto'}}/>
-                </div>
-                { open ? <div style={{padding:'1em', backgroundColor: 'rgba( 1, 1, 1, 0.04 )', borderRadius:2}}>{ value() }</div> : null }
-        </div>
-    }
+    return <div style={base}>
+      <div onClick={this.toggleOpen} style={{display: 'flex', alignItems: 'center'}}>
+        <label>{label}</label>
+        <Chevron style={{marginLeft: 'auto'}} />
+      </div>
+      {open ? <div style={{padding: '1em', backgroundColor: 'rgba( 1, 1, 1, 0.04 )', borderRadius: 2}}>{value()}</div> : null}
+    </div>
+  }
 }
-
 
 // Folder = radium( Folder )
 
-
 Folder.defaultProps = {
-
-    label: 'Folder',
-    onChange: a=>a,
-    open: false
+  label: 'Folder',
+  onChange: a => a,
+  open: false
 
 }
 
-
 Folder.propTypes = {
 
-    // value : PropTypes.oneOfType([
-    //     PropTypes.object,
-    //     PropTypes.array,
-    // ]).isRequired,
+  // value : PropTypes.oneOfType([
+  //     PropTypes.object,
+  //     PropTypes.array,
+  // ]).isRequired,
 
-    value: PropTypes.func.isRequired,
+  value: PropTypes.func.isRequired,
 
+  onChange: PropTypes.func,
 
-    onChange: PropTypes.func,
+  label: PropTypes.string,
 
+  style: PropTypes.object,
 
-    label: PropTypes.string,
-
-
-    style: PropTypes.object
+  open: PropTypes.bool
 
 }
 
 var floatRight = {
-    // float: 'right'
+  // float: 'right'
 }
 
 export default Folder

@@ -3,12 +3,11 @@ import React, { Component } from 'preact'
 import PropTypes from 'proptypes'
 import { base } from '../styles'
 
-
 let defaultStyle = {
-    float:'right',
-    ":focus":{
-        outline:'none'
-    }
+  float: 'right',
+  ':focus': {
+    outline: 'none'
+  }
 }
 
 /**
@@ -19,66 +18,63 @@ let defaultStyle = {
 
 class ComboBox extends React.Component {
 
-    render() {
+  render () {
+    let { label, options, value, onChange } = this.props
 
-        let { label, options, value, onChange } = this.props
+    let isArray = Array.isArray(options)
+    let valueSelected = false
 
-        let isArray = Array.isArray( options )
-        let valueSelected = false
+    var optionsElems = []
+    let arrOptions = []
 
-        var optionsElems = [],
-            arrOptions = []
-
-        for( var i in options ){
-            let element;
-            arrOptions.push( options[i] )
-            if( options[i] === value && !valueSelected){
-                valueSelected = true
-                element = <option key={i} value={options[i]} selected >{ isArray? options[i] : i }</option>
-            } else {
-                element = <option key={i} value={options[i]}>{ isArray? options[i] : i }</option>
-            }
-            optionsElems.push( element )
-        }
-
-        return <div style={base}>
-            <label>{ label }</label>
-            <select onChange={ e => onChange( arrOptions[e.target.selectedIndex] )} style={defaultStyle}>{ optionsElems }</select>
-        </div>
-
+    for (var i in options) {
+      let element
+      arrOptions.push(options[i])
+      if (options[i] === value && !valueSelected) {
+        valueSelected = true
+        element = <option key={i} value={options[i]} selected>{isArray ? options[i] : i}</option>
+      } else {
+        element = <option key={i} value={options[i]}>{isArray ? options[i] : i}</option>
+      }
+      optionsElems.push(element)
     }
+
+    return <div style={base}>
+      <label>{label}</label>
+      <select onChange={e => onChange(arrOptions[e.target.selectedIndex])} style={defaultStyle}>{optionsElems}</select>
+    </div>
+  }
 }
 
 ComboBox.defaultProps = {
 
-    /**
+  /**
 	 * A text label
 	 */
-    label:'ComboBox',
+  label: 'ComboBox',
 
-    /**
+  /**
 	 * An array of options to populate the combobox
 	 */
-    options:[],
+  options: [],
 
-    /**
+  /**
 	 * A callback triggered when the component updates
 	 */
-    onChange:a=>a
+  onChange: a => a
 }
 
 ComboBox.propTypes = {
+  label: PropTypes.any,
 
-    label: PropTypes.any,
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.any).isRequired,
+    PropTypes.objectOf(PropTypes.any).isRequired
+  ]),
 
-    options: PropTypes.oneOfType([
-        PropTypes.arrayOf( PropTypes.any ).isRequired,
-        PropTypes.objectOf( PropTypes.any ).isRequired,
-    ]),
+  value: PropTypes.any.isRequired,
 
-    value: PropTypes.any.isRequired,
-
-    onChange: PropTypes.func
+  onChange: PropTypes.func
 
 }
 

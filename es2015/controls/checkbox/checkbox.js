@@ -9,56 +9,49 @@ import { base } from '../styles'
  */
 class Checkbox extends React.Component {
 
+  render () {
+    const { value, label, onChange } = this.props
 
-	render(){
-
-		const { value, label, onChange } = this.props
-
-		return <div style={{...base, ...defaultStyle, alignItems:'center' }} onClick={evt => onChange( !value )}>
-			<label style={base}>{ label }</label>
-			<input checked={ value } style={alignRight} type="checkbox" onChange={evt => onChange( evt.target.checked )} />
+    return <div style={{ ...base, ...defaultStyle, alignItems: 'center' }} onClick={evt => onChange(!value)}>
+			<label style={base}>{label}</label>
+			<input checked={value} style={alignRight} type='checkbox' onChange={evt => onChange(evt.target.checked)} />
 		</div>
-	}
+  }
 }
 
 // Checkbox = radium( Checkbox )
 
 Checkbox.propTypes = {
 
-	/**
-	 * A text label
-	 */
-	label: PropTypes.string,
+  /**
+   * A text label
+   */
+  label: PropTypes.string,
 
-	/**
-	 * Determines whether the element is checked or not.
-	 */
-	value: PropTypes.bool,
+  /**
+   * Determines whether the element is checked or not.
+   */
+  value: PropTypes.bool,
 
-
-	/**
-	 * A callback triggered when the checkbox is toggled
-	 */
-	onChange: PropTypes.func
-
-
+  /**
+   * A callback triggered when the checkbox is toggled
+   */
+  onChange: PropTypes.func
 
 }
 
 Checkbox.defaultProps = {
-	label: 'Checkbox',
-	value: false,
-	onChange: a=>a
+  label: 'Checkbox',
+  value: false,
+  onChange: a => a
 }
 
-
 var defaultStyle = {
-	display: 'flex'
+  display: 'flex'
 }
 
 var alignRight = {
-	marginLeft: 'auto'
+  marginLeft: 'auto'
 }
-
 
 export default Checkbox

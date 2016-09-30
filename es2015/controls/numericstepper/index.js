@@ -1,2 +1,2 @@
-import NumericStepper from "./numericstepper"
+import NumericStepper from './numericstepper'
 export default NumericStepper

@@ -5,234 +5,197 @@ import colr from 'colr'
 import PropTypes from 'proptypes'
 import hsvCatch from './catch-degenerate-hsv'
 import Slider from '../../../controls/slider'
-import NumericStepper from '../../../controls/numericstepper'
 import TextInput from '../../../controls/textinput'
-import { map } from '../../../math'
 import throttle from '../../../controls/utils/throttle'
-import { base, secondary } from '../../../controls/styles'
+import { base } from '../../../controls/styles'
 import shallowCompare from '../../../shallow-compare'
 
+class HSVColorPicker extends Component {
 
-class HSVColorPicker extends React.Component {
+  constructor () {
+    super()
 
-    constructor(){
+    this.state = {drag: false, boundingRect: null}
 
-        super()
+    let computeHsvaFromMouseEvent = (e, bounds) => {
+      let x = e.clientX === undefined ? e.touches[0].clientX : e.clientX
+      let y = e.clientY === undefined ? e.touches[0].clientY : e.clientY
 
-        this.state = {drag:false, boundingRect: null};
+      let value = this.props.value
 
-        let computeHsvaFromMouseEvent = ( e, bounds ) => {
+      let h = value.h
+      let s = (x - bounds.left) / bounds.width * 100
+      let v = (bounds.height - (y - bounds.top)) / bounds.height * 100
+      let a = this.props.value.a
 
-            let x = e.clientX === undefined ? e.touches[0].clientX : e.clientX,
-                y = e.clientY === undefined ? e.touches[0].clientY : e.clientY
+      s = Math.min(100, Math.max(0, s))
+      v = Math.min(100, Math.max(0, v))
 
-            let value = this.props.value
-
-            let h = value.h,
-                s = ( x - bounds.left ) / bounds.width * 100,
-                v = ( bounds.height - ( y - bounds.top )) / bounds.height * 100,
-                a = this.props.value.a
-
-            s = Math.min( 100, Math.max( 0, s ))
-            v = Math.min( 100, Math.max( 0, v ))
-
-            return a === undefined ? { h, s, v } : { h, s, v, a }
-        }
-
-
-        this.onMouseDown = e => {
-
-            e.preventDefault()
-
-            /*
-                For performance reasons we pre calculate the bounding rect on
-                mouse down, this means we don't need to do this on every mouse move
-                event and therefore we avoid any layout thrashing.
-
-                The caveat is that any sizing changes that occur between mousedown
-                will cause mean the cached boundingRect is invalid and causes incorrect
-                results. However because of performance gains, this is acceptable
-                behaviour as changes to size are expected to be rare enough
-            */
-
-            var rect = e.currentTarget.getBoundingClientRect()
-
-
-            document.addEventListener( 'mousemove', this.onMouseMove )
-            document.addEventListener( 'touchmove', this.onMouseMove )
-            document.addEventListener( 'mouseup', this.onMouseUp )
-            document.addEventListener( 'touchend', this.onMouseUp )
-
-
-            let hsv = computeHsvaFromMouseEvent( e, rect )
-            this.setState({drag:true, boundingRect: rect })
-            this.props.onChange( hsv )
-        }
-
-
-        this.onMouseMove = throttle( e => {
-            e.preventDefault()
-            if( this.state.drag ) this.props.onChange( computeHsvaFromMouseEvent( e, this.state.boundingRect ))
-        })
-
-
-        this.onMouseUp = e => {
-
-            document.removeEventListener( 'mousemove', this.onMouseMove )
-            document.removeEventListener( 'touchmove', this.onMouseMove )
-            document.removeEventListener( 'mouseup', this.onMouseUp )
-            document.removeEventListener( 'touchend', this.onMouseUp )
-
-            this.setState({drag:false})
-        }
-
-        this.onChannelChange = channel => {
-            this.props.onChange({ ...this.props.value, ...channel })
-        }
-
-        this.onHexChange = hex => {
-            this.props.onChange({ ...this.props.value, ...colr.fromHex( hex ).toHsvObject() })
-        }
+      return a === undefined ? { h, s, v } : { h, s, v, a }
     }
 
+    this.onMouseDown = e => {
+      e.preventDefault()
 
-    shouldComponentUpdate( nextProps, nextState ){
+      /*
+          For performance reasons we pre calculate the bounding rect on
+          mouse down, this means we don't need to do this on every mouse move
+          event and therefore we avoid any layout thrashing.
 
-        let { h, s, v, a } = this.props.value,
-            color = nextProps.value
+          The caveat is that any sizing changes that occur between mousedown
+          will cause mean the cached boundingRect is invalid and causes incorrect
+          results. However because of performance gains, this is acceptable
+          behaviour as changes to size are expected to be rare enough
+      */
 
-        return ( h !== color.h
-            || s !== color.s
-            || v !== color.v
-            || a !== color.a )
-            && shallowCompare( this, nextProps, nextState )
+      var rect = e.currentTarget.getBoundingClientRect()
 
+      document.addEventListener('mousemove', this.onMouseMove)
+      document.addEventListener('touchmove', this.onMouseMove)
+      document.addEventListener('mouseup', this.onMouseUp)
+      document.addEventListener('touchend', this.onMouseUp)
+
+      let hsv = computeHsvaFromMouseEvent(e, rect)
+      this.setState({ drag: true, boundingRect: rect })
+      this.props.onChange(hsv)
     }
 
+    this.onMouseMove = throttle(e => {
+      e.preventDefault()
+      if (this.state.drag) this.props.onChange(computeHsvaFromMouseEvent(e, this.state.boundingRect))
+    })
 
+    this.onMouseUp = e => {
+      document.removeEventListener('mousemove', this.onMouseMove)
+      document.removeEventListener('touchmove', this.onMouseMove)
+      document.removeEventListener('mouseup', this.onMouseUp)
+      document.removeEventListener('touchend', this.onMouseUp)
 
-
-
-    render(){
-
-
-        let { label, onChange, value, style } = this.props,
-            { h, s, v, a } = value
-
-
-        // Preact does not pick up Components defaultProps
-        style = style || HSVColorPicker.defaultProps.style
-
-
-        // Used to prevent collisions between fill() refs
-        let uuid = Math.floor( Math.random() * 999999999999999 )
-
-        return <div>
-            <div style={{ ...base, ...style }}>
-                <SVG width='100%' height='100%' version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    style={defaultStyle}
-                    onMouseDown={this.onMouseDown}
-                    onMouseUp={this.onMouseUp}
-                    onTouchStart={this.onMouseDown}
-                    onTouchEnd={this.onMouseUp}>
-                    <defs>
-                        <linearGradient id={"horizontal-gradient" + uuid }>
-                            <stop offset="0%" stop-color="white"/>
-                            <stop offset="100%" stop-color={"hsl("+h+",100%,50%)"}/>
-                        </linearGradient>
-                        <linearGradient id={"vertical-gradient" + uuid } x1="0" x2="0" y1="0" y2="1">
-                            <stop offset="0%" stop-color="black" stop-opacity="0"/>
-                            <stop offset="100%" stop-color="black"/>
-                        </linearGradient>
-                        <linearGradient id="alpha-gradient" x1="0" x2="1" y1="0" y2="0">
-                            <stop offset="0%" stop-color={"hsl("+h+",100%,50%)"} stop-opacity="0"/>
-                            <stop offset="100%" stop-color={"hsl("+h+",100%,50%)"} stop-opacity="100"/>
-                        </linearGradient>
-                        <linearGradient id='hsv-gradient'>{ stops }</linearGradient>
-                    </defs>
-                    <rect width='100%' height='100%' style={rect} fill={'url(#horizontal-gradient'+uuid+')'}/>
-                    <rect width='100%' height='100%' style={rect} fill={'url(#vertical-gradient'+uuid+')'}/>
-                    <circle fill='none' stroke='white' stroke-width="1.5" r='0.3em' cx={s+'%'} cy={(100 - v)+'%'}/>
-                </SVG>
-            </div>
-            <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={ h => this.onChannelChange({ h })}/>
-            { a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={ a => this.onChannelChange({ a })}/> : null }
-            <TextInput label='#' value={ colr.fromHsvObject( value ).toHex().slice( 1 ).toUpperCase() } pattern={/^[0-9A-F]{2,6}$/i} onSubmit={this.onHexChange}/>
-        </div>
-
+      this.setState({drag: false})
     }
+
+    this.onChannelChange = channel => {
+      this.props.onChange({ ...this.props.value, ...channel })
+    }
+
+    this.onHexChange = hex => {
+      this.props.onChange({ ...this.props.value, ...colr.fromHex(hex).toHsvObject() })
+    }
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    let { h, s, v, a } = this.props.value
+    let color = nextProps.value
+
+    return (h !== color.h ||
+      s !== color.s ||
+      v !== color.v ||
+      a !== color.a) &&
+      shallowCompare(this, nextProps, nextState)
+  }
+
+  render () {
+    let { value, style } = this.props
+    let { h, s, v, a } = value
+
+    // Preact does not pick up Components defaultProps
+    style = style || HSVColorPicker.defaultProps.style
+
+    // Used to prevent collisions between fill() refs
+    let uuid = Math.floor(Math.random() * 999999999999999)
+
+    return <div>
+             <div style={{ ...base, ...style }}>
+               <SVG width='100%' height='100%' version='1.1' xmlns='http://www.w3.org/2000/svg' style={defaultStyle}
+                 onMouseDown={this.onMouseDown}
+                 onMouseUp={this.onMouseUp}
+                 onTouchStart={this.onMouseDown}
+                 onTouchEnd={this.onMouseUp}>
+                 <defs>
+                   <linearGradient id={'horizontal-gradient' + uuid}>
+                     <stop offset='0%' stop-color='white' />
+                     <stop offset='100%' stop-color={'hsl(' + h + ',100%,50%)'} />
+                   </linearGradient>
+                   <linearGradient id={'vertical-gradient' + uuid} x1='0' x2='0' y1='0' y2='1'>
+                     <stop offset='0%' stop-color='black' stop-opacity='0' />
+                     <stop offset='100%' stop-color='black' />
+                   </linearGradient>
+                   <linearGradient id='alpha-gradient' x1='0' x2='1' y1='0' y2='0'>
+                     <stop offset='0%' stop-color={'hsl(' + h + ',100%,50%)'} stop-opacity='0' />
+                     <stop offset='100%' stop-color={'hsl(' + h + ',100%,50%)'} stop-opacity='100' />
+                   </linearGradient>
+                   <linearGradient id='hsv-gradient'>{stops}</linearGradient>
+                 </defs>
+                 <rect width='100%' height='100%' style={rect} fill={'url(#horizontal-gradient' + uuid + ')'} />
+                 <rect width='100%' height='100%' style={rect} fill={'url(#vertical-gradient' + uuid + ')'} />
+                 <circle fill='none' stroke='white' stroke-width='1.5' r='0.3em' cx={s + '%'} cy={(100 - v) + '%'} />
+               </SVG>
+             </div>
+             <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={h => this.onChannelChange({ h })} />
+            {a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={a => this.onChannelChange({ a })} /> : null}
+             <TextInput
+               label='#'
+               value={colr.fromHsvObject(value).toHex().slice(1).toUpperCase()}
+               pattern={/^[0-9A-F]{2,6}$/i}
+               onSubmit={this.onHexChange} />
+           </div>
+  }
 }
 
-
 HSVColorPicker.defaultProps = {
-    label: 'HSVColorPicker',
-    style:{ width:'100%', height: 150 },
-    value:{ h:0, s:80, l:50 }
+  label: 'HSVColorPicker',
+  style: { width: '100%', height: 150 },
+  value: { h: 0, s: 80, l: 50 }
 }
 
 HSVColorPicker.propTypes = {
 
-    /**
-     *  A text label
-     */
-    label: PropTypes.string,
+  /**
+   *  A text label
+   */
+  label: PropTypes.string,
 
+  /**
+   * The default color of the component
+   */
+  value: PropTypes.shape({
+    h: PropTypes.number.isRequired,
+    s: PropTypes.number.isRequired,
+    v: PropTypes.number.isRequired,
+    a: PropTypes.number
+  }).isRequired,
 
-    /**
-     * The default color of the component
-     */
-    value: PropTypes.shape({
-        h: PropTypes.number.isRequired,
-        s: PropTypes.number.isRequired,
-        v: PropTypes.number.isRequired
-    }).isRequired,
+  /**
+   * Optional component styling
+   */
+  style: PropTypes.object,
 
-
-    /**
-     * Optional component styling
-     */
-    style: PropTypes.object
-
+  onChange: PropTypes.func
 }
 
 let defaultStyle = {
-    cursor: 'default',
-    display: 'block'
- }
+  cursor: 'default',
+  display: 'block'
+}
 
 var hueSlider = {
-    backgroundBar:{ fill:'url(#hsv-gradient)'},
-    bar: { fill : 'none' },
-    thumb: { fill : 'white' },
-    padding: '1em'
+  backgroundBar: { fill: 'url(#hsv-gradient)' },
+  bar: { fill: 'none' },
+  thumb: { fill: 'white' },
+  padding: '1em'
 }
 
 var alphaSlider = {
-    backgroundBar:{ fill:'url(#alpha-gradient)'},
-    bar: { fill : 'none' },
-    thumb: { fill : 'white' },
-    padding: '1em'
+  backgroundBar: { fill: 'url(#alpha-gradient)' },
+  bar: { fill: 'none' },
+  thumb: { fill: 'white' },
+  padding: '1em'
 }
 
-var stepperStyle = {
-    // marginLeft: '0.3em',
-    // marginRight: '0.3em'
+var rect = {
+  rx: base.borderRadius,
+  ry: base.borderRadius
 }
-
-var componentLabels = {display:'inline'}
-
-var colorDrop = {
-    borderRadius:"50%",
-    width: '1em',
-    height: '1em',
-    float:'right'
-}
-
-var rect ={
-    rx: base.borderRadius,
-    ry: base.borderRadius,
-}
-
 
 /*
     Creates an array of svg `<stop>` elements representing a full linear gradient
@@ -240,24 +203,20 @@ var rect ={
 */
 
 var createLinearGradientOfSVGStops = steps => {
+  let l = 0
+  let i = 100 / steps
+  let stops = []
 
-    let l = 0,
-        i = 100/steps,
-        stops = []
+  while (l++ < steps) {
+    stops.push(<stop offset={String(i * l) + '%'} key={l} stop-color={'hsl( ' + (l * 360 / steps) + ', 100%, 50% )'} />)
+  }
 
-    while( l++ < steps ){
-        stops.push(<stop offset={String(i*l)+"%"} key={l} stop-color={"hsl( "+(l*360/steps)+", 100%, 50% )"} />)
-    }
-
-    return stops
+  return stops
 }
 
 /*
     Pre calculate an array of `<stops>` to use as the slider gradient
 */
-var stops = createLinearGradientOfSVGStops( 100 )
+var stops = createLinearGradientOfSVGStops(100)
 
-
-
-
-export default hsvCatch( HSVColorPicker )
+export default hsvCatch(HSVColorPicker)
