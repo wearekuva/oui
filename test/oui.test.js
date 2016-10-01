@@ -9,10 +9,18 @@ import ColorPicker, { color } from '../es2015/controls/colorpicker'
 // import NumericStepper from 'core-controllers/es5/numericstepper'
 // import { combobox } from '../es2015/components'
 import ComboBox, { combobox } from '../es2015/controls/combobox'
+import simulant from 'simulant'
+import dom from '../es2015/dom'
+import imperative from '../es2015/imperative-api'
 
 
 describe( 'Annotations:', () => {
 
+    afterEach(() => {
+        while( dom.children.length > 0 ){
+            dom.children[dom.children.length -1].remove()
+        }
+    })
 
     it( 'expects an annotation can be set', () => {
         const obj = {prop:10}
@@ -83,6 +91,19 @@ describe( 'Annotations:', () => {
     })
 
 
+    it( 'expects an `onChange` callback annotation to be called when value changes', () => {
+        const obj = { prop: true }
+        let on = { change: _=> _ }
+        spyOn( on, 'change' )
+
+        annotate({ onChange: on.change })( obj, 'prop' )
+        imperative()(obj)
+
+        const input = dom.querySelector('input')
+        simulant.fire( input, 'click', { target: { checked: false }});
+
+        expect( on.change ).toHaveBeenCalled()
+    })
 })
 
 

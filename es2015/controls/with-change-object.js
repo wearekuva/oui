@@ -14,7 +14,9 @@ export default Comp => {
     constructor () {
       super()
 
-      this.onChildChange = change => this.props.onChange({ [this.props.id]: change })
+      this.onChildChange = (change, path = []) => this.props.onChange(
+        {[this.props.id]: change},
+        path.concat([this.props.id]))
     }
 
     render () {

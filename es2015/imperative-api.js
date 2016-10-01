@@ -18,6 +18,7 @@ import Panel from './controls/panel'
 import domElement from './dom'
 import merge from './deep-merge'
 import warn from './warn'
+import { getAnnotation } from './annotate'
 
 // proxy render() since React returns a Component reference.
 function prender (vnode, parent, callback) {
@@ -39,6 +40,20 @@ function unmountComponentAtNode (container) {
   return false
 }
 
+const resolveValue = (obj, pathArr) => pathArr.reduce((obj, i) => obj[i], obj)
+const resolvePath = (obj, pathArr) => {
+  let key = pathArr.shift()
+  if (pathArr.length === 0) return [ obj, key ]
+  return resolvePath(obj[key], pathArr)
+}
+
+const setValue = (object, value, path) => {
+  const { obj, key } = resolvePath(object, path)
+  obj[key] = value
+}
+
+window.resolvePath = resolvePath
+
 export default opts => {
   let container = null
 
@@ -59,10 +74,12 @@ export default opts => {
     }
 
     if (api) {
-      let onChange = change => {
+      let onChange = (change, path) => {
         let isFrozen = Object.isFrozen(api)
         warn(Object.isFrozen(api), 'The `api` object is frozen an cannot be mutated.')
         if (!isFrozen) {
+          let annotation = getAnnotation(...resolvePath(api, path))
+          if (annotation && annotation.onChange) annotation.onChange()
           render(merge(api, change), callback)
           callback(api)
         }
