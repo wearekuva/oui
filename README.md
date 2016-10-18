@@ -22,6 +22,4 @@ oui({
 
 
 ###### License
-[MIT](./LICENSE.md)
-
-© 2016 Mark Lundin
+[MIT](./LICENSE.md) © 2016 Mark Lundin
