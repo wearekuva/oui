@@ -1,17 +1,7 @@
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 ![Oui](http://i.imgur.com/GCqgzWw.png)
 
-A super simple way to instrument your code and control your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime. _Objects go in, UI comes out_
-
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-
-## Getting Started
-
-```
-npm install ouioui --save
-```
-### Functional
-
-Oui provides a stateless declarative api that maps entire objects to UI. This is useful when you want understand the shape of an object, or you want to test out an api.
+A super simple way to create UI from data. Oui maps data to a user interface. Pass it an object and Oui creates a set of controls. _O_bjects go in, _UI_ comes out
 
 ```javascript
 oui({
@@ -21,21 +11,6 @@ oui({
   }
 })
 ```
-
-### Imperative
-
-If you're from a [dat.gui](https://github.com/dataarts/dat.gui) background or prefer a more traditional imperative api, datoui provides a tiny wrapper with a similar interface. This is often useful when you want to quickly hack on projects.
-
-> Note that while datoui has a similar interface as [dat.gui](https://github.com/dataarts/dat.gui), it will never likely have an exact mapping. datoui is simply a wrapper around Oui to handle certain use cases.
-
-```javascript
-let p = oui.datoui()
-p.add( obj, 'someNum' )
-let dir = p.addFolder( 'dir' )
-dir.add( obj, 'nestedProp' )
-```
-
-Both of these approaches are equivalent and can be used in parallel. Which one you chose depends on your codings style and use case. As a general rule though, `datoui` is handy for quickly hacking on code and testing parameters. As code matures however, parameters become more defined and are often abstracted into an api. This is when the functional approach of `oui()` may be more applicable.
 
 ### More information
 
@@ -47,6 +22,4 @@ Both of these approaches are equivalent and can be used in parallel. Which one y
 
 
 ###### License
-[MIT](./LICENSE.md)
-
-© 2016 Mark Lundin
+[MIT](./LICENSE.md) © 2016 Mark Lundin
