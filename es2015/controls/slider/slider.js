@@ -127,9 +127,7 @@ class Slider extends React.Component {
     let stepperProps = { value, label, min, max, step, onChange }
 
     let offsetPercentage = map(clamp(value, min, max), min, max, 0, 100) + '%'
-    console.log( 'pre', value )
     value = this.validate(value)
-    console.log( 'post', value )
 
     return <div style={base}>
      {includeStepper ? <NumericStepper {...stepperProps} onChange={this.onNumericStepperChange} /> : null}
