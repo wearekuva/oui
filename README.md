@@ -6,7 +6,7 @@ A super simple way to instrument your code and control your data. Pass it an obj
 
 ## Getting Started
 
-```
+```html
 <script src="//unpkg.com/ouioui@0.0.20/dist/oui.min.js"></script>
 ```
 
