@@ -1,7 +1,19 @@
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 ![Oui](http://i.imgur.com/GCqgzWw.png)
 
-A super simple way to create UI from data. Oui maps data to a user interface. Pass it an object and Oui creates a set of controls. _O_bjects go in, _UI_ comes out
+A super simple way to instrument your code and control your data. Pass it an object and Oui creates a set of controls that allow you to visualise and shape your app at runtime. _Objects go in, UI comes out_
+
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
+## Getting Started
+
+```
+<script src="//unpkg.com/ouioui@0.0.20/dist/oui.min.js"></script>
+```
+
+```
+npm install ouioui --save
+```
+Oui provides a stateless declarative api that maps entire objects to UI. This is useful when you want understand the shape of an object, or you want to test out an api.
 
 ```javascript
 oui({
@@ -22,4 +34,6 @@ oui({
 
 
 ###### License
-[MIT](./LICENSE.md) © 2016 Mark Lundin
+[MIT](./LICENSE.md)
+
+© 2016 Mark Lundin
