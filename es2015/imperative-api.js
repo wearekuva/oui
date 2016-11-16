@@ -47,9 +47,9 @@ const resolvePath = (obj, pathArr) => {
   return resolvePath(obj[key], pathArr)
 }
 
-const setValue = (object, value, path) => {
-  const { obj, key } = resolvePath(object, path)
-  obj[key] = value
+const getValue = (object, path) => {
+  const [obj, key] = resolvePath(object, path.slice())
+  return obj[key]
 }
 
 window.resolvePath = resolvePath
@@ -78,8 +78,8 @@ export default opts => {
         let isFrozen = Object.isFrozen(api)
         warn(Object.isFrozen(api), 'The `api` object is frozen an cannot be mutated.')
         if (!isFrozen) {
-          let annotation = getAnnotation(...resolvePath(api, path))
-          if (annotation && annotation.onChange) annotation.onChange()
+          let annotation = getAnnotation(...resolvePath(api, path.slice()))
+          if (annotation && annotation.onChange) annotation.onChange(getValue(change, path.slice()))
           render(merge(api, change), callback)
           callback(api)
         }
