@@ -1,6 +1,5 @@
 /** @jsx React.h */
 import React from 'preact'
-import SVG from 'preact-svg'
 import PropTypes from 'proptypes'
 import NumericStepper from '../../controls/numericstepper'
 import { map } from '../../math'
@@ -93,7 +92,7 @@ class XYPad extends React.Component {
                  <NumericStepper style={componentLabels} min={min.y} max={max.y} value={y} onChange={this.onYChange} label={'Y'} />
                </div>
              </div>
-             {open ? <SVG width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style={{ ...defaultStyle, ...style }} ref={ref => this.domRef = ref}
+             {open ? <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' style={{ ...defaultStyle, ...style }} ref={ref => this.domRef = ref}
                 onMouseDown={this.onMouseDown}
                 onMouseMove={this.state.drag ? this.onMouseMove : null}
                 onMouseUp={this.onMouseUp}
@@ -104,7 +103,7 @@ class XYPad extends React.Component {
                 <line x1={xVis} x2={xVis} y1={0} y2='100%' style={{ ...defaultStyle, ...style, ...crisp }} />
                 <line x1={0} x2='100%' y1={yVis} y2={yVis} style={{ ...defaultStyle, ...style, ...crisp }} />
                 <circle r={3} cx={xVis} cy={yVis} style={circle} />
-             </SVG> : null}
+             </svg> : null}
            </div>
   }
 }

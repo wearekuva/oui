@@ -18,7 +18,6 @@
     "colr": "^1.2.2",
     "es7-reflect-metadata": "^1.6.0",
     "preact": "^6.1.0",
-    "preact-svg": "^1.6.0",
     "proptypes": "^0.14.3"
   },
   "devDependencies": {

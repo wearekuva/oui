@@ -1,8 +1,7 @@
 /** @jsx React.h */
 import React from 'preact'
-import SVG from 'preact-svg'
 
-export default props => <SVG
+export default props => <svg
   fill='currentColor'
   fit='true'
   height='1em'
@@ -13,4 +12,4 @@ export default props => <SVG
   <g>
     <path d='m27.7 14.3l2.3 2.3-10 10-10-10 2.3-2.3 7.7 7.7z'></path>
   </g>
-</SVG>
+</svg>

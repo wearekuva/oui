@@ -1,6 +1,5 @@
 /** @jsx React.h */
 import React from 'preact'
-import SVG from 'preact-svg'
 import PropTypes from 'proptypes'
 import NumericStepper from '../numericstepper'
 import shallowCompare from '../../shallow-compare'
@@ -131,11 +130,11 @@ class Slider extends React.Component {
 
     return <div style={base}>
      {includeStepper ? <NumericStepper {...stepperProps} onChange={this.onNumericStepperChange} /> : null}
-     <SVG width='100%' height='1em' style={defaultStyle} onMouseDown={this.onMouseDown} onTouchStart={this.onMouseDown}>
+     <svg width='100%' height='1em' style={defaultStyle} onMouseDown={this.onMouseDown} onTouchStart={this.onMouseDown}>
        <rect width='100%' height='100%' style={{ ...defaultStyle, ...backgroundBar, ...style.backgroundBar }} />
        <rect height='100%' style={{ ...defaultStyle, ...bar, ...style.bar }} width={offsetPercentage} />
        <circle cy={'50%'} cx={offsetPercentage} r='0.5em' style={{ ...defaultStyle, ...thumb, ...style.thumb }} />
-     </SVG>
+     </svg>
    </div>
   }
 }

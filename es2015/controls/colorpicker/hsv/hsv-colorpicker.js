@@ -1,6 +1,5 @@
 /** @jsx React.h */
 import React, { Component } from 'preact'
-import SVG from 'preact-svg'
 import colr from 'colr'
 import PropTypes from 'proptypes'
 import hsvCatch from './catch-degenerate-hsv'
@@ -106,7 +105,7 @@ class HSVColorPicker extends Component {
 
     return <div>
              <div style={{ ...base, ...style }}>
-               <SVG width='100%' height='100%' version='1.1' xmlns='http://www.w3.org/2000/svg' style={defaultStyle}
+               <svg width='100%' height='100%' version='1.1' xmlns='http://www.w3.org/2000/svg' style={defaultStyle}
                  onMouseDown={this.onMouseDown}
                  onMouseUp={this.onMouseUp}
                  onTouchStart={this.onMouseDown}
@@ -129,7 +128,7 @@ class HSVColorPicker extends Component {
                  <rect width='100%' height='100%' style={rect} fill={'url(#horizontal-gradient' + uuid + ')'} />
                  <rect width='100%' height='100%' style={rect} fill={'url(#vertical-gradient' + uuid + ')'} />
                  <circle fill='none' stroke='white' stroke-width='1.5' r='0.3em' cx={s + '%'} cy={(100 - v) + '%'} />
-               </SVG>
+               </svg>
              </div>
              <Slider includeStepper={false} label={''} step={1} min={0} max={359} value={h} style={hueSlider} onChange={h => this.onChannelChange({ h })} />
             {a !== undefined ? <Slider includeStepper={false} label={'alpha'} step={0.001} min={0} max={1} value={a} style={alphaSlider} onChange={a => this.onChannelChange({ a })} /> : null}
