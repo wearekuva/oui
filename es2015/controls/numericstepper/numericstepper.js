@@ -37,13 +37,13 @@ class NumericStepper extends React.Component {
       <style>
        {`
         input[type=number] {
-            -moz-appearance:textfield
+            -moz-appearance:textfield;
         }
 
         input::-webkit-inner-spin-button,
         input::-webkit-outer-spin-button{
-            margin: 0
-            -webkit-appearance: none
+            margin: 0;
+            -webkit-appearance: none;
         }
       `}
       </style>
@@ -110,8 +110,8 @@ var defaultStyle = {
   borderRadius: 2,
   backgroundColor: 'transparent',
   outline: 'none',
-  textAlign: 'left',
-  width: 30,
+  // textAlign: 'right',
+  // width: 30,
   fontSize: base.fontSize,
   // lineHeight: '15  px',
   color: base.color,
