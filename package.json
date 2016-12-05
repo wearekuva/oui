@@ -2,7 +2,7 @@
   "name": "ouioui",
   "description": "A stupidly simple way of instrumenting code and making user interfaces",
   "homepage": "https://github.com/marklundin/oui#readme",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "author": "Mark Lundin <hi@mark-lundin.com>",
   "license": "MIT",
   "main": "dist/oui.js",
