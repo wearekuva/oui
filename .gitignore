@@ -33,5 +33,5 @@ node_modules
 .node_repl_history
 
 coverage
-
+dist/oui.min.js.gz
 .DS_Store
