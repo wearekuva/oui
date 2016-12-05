@@ -1,6 +1,6 @@
 /*!
  * 
- * Oui.js v0.0.20
+ * Oui.js v0.0.21
  * © 2016 Mark Lundin
  * Released under the MIT License.
  * 
@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(100).default;}oui.version='0.0.20';module.exports=oui;
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(100).default;}oui.version='0.0.21';module.exports=oui;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(158)))
 
 /***/ },
