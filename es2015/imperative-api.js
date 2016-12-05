@@ -52,8 +52,6 @@ const getValue = (object, path) => {
   return obj[key]
 }
 
-window.resolvePath = resolvePath
-
 export default opts => {
   let container = null
 
