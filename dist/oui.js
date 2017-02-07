@@ -1,6 +1,6 @@
 /*!
  * 
- * Oui.js v0.0.21
+ * Oui.js v0.0.22
  * © 2017 Mark Lundin
  * Released under the MIT License.
  * 
@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(100).default;}oui.version='0.0.21';module.exports=oui;
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';var oui=function oui(){};if(process.env.NODE_ENV!=='production'){oui=__webpack_require__(100).default;}oui.version='0.0.22';module.exports=oui;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(158)))
 
 /***/ },
@@ -2074,7 +2074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    Changes are deeply merged into the api object and the UI is automatically
 	    re-rendered.
-	*//** @jsx React.h */var EmptyComponent=function EmptyComponent(){return null;};function unmountComponentAtNode(container){var existing=container._preactCompatRendered;if(existing&&existing.parentNode===container){(0,_preact.render)(_preact2.default.h(EmptyComponent),container,existing);return true;}return false;}var resolveValue=function resolveValue(obj,pathArr){return pathArr.reduce(function(obj,i){return obj[i];},obj);};var resolvePath=function resolvePath(obj,pathArr){var key=pathArr.shift();if(pathArr.length===0)return[obj,key];return resolvePath(obj[key],pathArr);};var getValue=function getValue(object,path){var _resolvePath=resolvePath(object,path.slice());var _resolvePath2=(0,_slicedToArray3.default)(_resolvePath,2);var obj=_resolvePath2[0];var key=_resolvePath2[1];return obj[key];};exports.default=function(opts){var container=null;var element=opts.domElement||_dom2.default;var render=function render(api){var callback=arguments.length<=1||arguments[1]===undefined?function(_){return _;}:arguments[1];if(!document.contains(element)){document.body.appendChild(element);}if(!api){unmountComponentAtNode(container);element.removeChild(container);container=null;}else if(container===null){container=document.createElement('div');container.style.margin='0.25em';container.style.flexBasis='auto';element.appendChild(container);}if(api){var onChange=function onChange(change,path){var isFrozen=Object.isFrozen(api);(0,_warn2.default)(Object.isFrozen(api),'The `api` object is frozen an cannot be mutated.');if(!isFrozen){var annotation=_annotate.getAnnotation.apply(undefined,(0,_toConsumableArray3.default)(resolvePath(api,path.slice())));if(annotation&&annotation.onChange)annotation.onChange(getValue(change,path.slice()));render((0,_deepMerge2.default)(api,change),callback);callback(api);}};var Element=_preact2.default.h(_panel2.default,opts,(0,_renderTree2.default)(api,onChange));prender(Element,container);}};return render;};
+	*//** @jsx React.h */var EmptyComponent=function EmptyComponent(){return null;};function unmountComponentAtNode(container){var existing=container._preactCompatRendered;if(existing&&existing.parentNode===container){(0,_preact.render)(_preact2.default.h(EmptyComponent),container,existing);return true;}return false;}var resolveValue=function resolveValue(obj,pathArr){return pathArr.reduce(function(obj,i){return obj[i];},obj);};var resolvePath=function resolvePath(obj,pathArr){var key=pathArr.shift();if(pathArr.length===0)return[obj,key];return resolvePath(obj[key],pathArr);};var getValue=function getValue(object,path){var _resolvePath=resolvePath(object,path.slice());var _resolvePath2=(0,_slicedToArray3.default)(_resolvePath,2);var obj=_resolvePath2[0];var key=_resolvePath2[1];return obj[key];};exports.default=function(){var opts=arguments.length<=0||arguments[0]===undefined?{}:arguments[0];var container=null;var element=opts.domElement||_dom2.default;var render=function render(api){var callback=arguments.length<=1||arguments[1]===undefined?function(_){return _;}:arguments[1];if(!document.contains(element)){document.body.appendChild(element);}if(!api){unmountComponentAtNode(container);element.removeChild(container);container=null;}else if(container===null){container=document.createElement('div');container.style.margin='0.25em';container.style.flexBasis='auto';element.appendChild(container);}if(api){var onChange=function onChange(change,path){var isFrozen=Object.isFrozen(api);(0,_warn2.default)(Object.isFrozen(api),'The `api` object is frozen an cannot be mutated.');if(!isFrozen){var annotation=_annotate.getAnnotation.apply(undefined,(0,_toConsumableArray3.default)(resolvePath(api,path.slice())));if(annotation&&annotation.onChange)annotation.onChange(getValue(change,path.slice()));render((0,_deepMerge2.default)(api,change),callback);callback(api);}};var Element=_preact2.default.h(_panel2.default,opts,(0,_renderTree2.default)(api,onChange));prender(Element,container);}};return render;};
 
 /***/ },
 /* 60 */

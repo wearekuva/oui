@@ -52,7 +52,7 @@ const getValue = (object, path) => {
   return obj[key]
 }
 
-export default opts => {
+export default (opts = {}) => {
   let container = null
   let element = opts.domElement || domElement
 
