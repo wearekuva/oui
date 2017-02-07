@@ -2,19 +2,39 @@ import oui from 'oui'
 let control = oui.controls.ColorPicker
 // import ColorPicker from 'oui/controls/colorpicker'
 // console.log( oui.controls.ColorPicker )
-let gui = oui.datoui(null, _=> console.log( _ ))
-let a = { test: {r:1, g:0.5, b:0}}
-let b = {test:10}
+// let gui = oui.datoui(null, _=> console.log( _ ))
+// let a = { test: {r:1, g:0.5, b:0}}
+// let b = {test:10}
 // gui.add( a, 'test', { control } )
 // gui.add( b, 'test', {options:[10, 20, 30, 40], control:oui.controls.ComboBox} )
 
-var f1 = gui.addFolder({label:'test', open:true})
-f1.add( a, 'test', { control } )
-var f2 = gui.addFolder({ label: 'test2' })
-f2.add( b, 'test' )
+// var f1 = gui.addFolder({label:'test', open:true})
+// f1.add( a, 'test', { control } )
+// var f2 = gui.addFolder({ label: 'test2' })
+// f2.add( b, 'test' )
 
-window.a = a
-window.b = b
+let d = document.createElement('div')
+d.id='IN-HERE'
+
+let p = oui.panel({domElement:d})
+
+window.a = {
+  n:10
+}
+p(a)
+//
+// p({
+//   n:5,
+//   s:'sdfsd'
+// })
+
+// let foo = {a: 0.5}
+// let gui = oui.datoui()
+//   let fooFolder = gui.addFolder({label: 'foo'})
+//   fooFolder.add(foo, 'a', {min: 0, max: 1})
+
+// window.a = a
+// window.b = b
 
 // import annotate from 'oui/annotate'
 // import panel from 'oui/imperative-api'

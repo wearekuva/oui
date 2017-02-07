@@ -54,21 +54,22 @@ const getValue = (object, path) => {
 
 export default opts => {
   let container = null
+  let element = opts.domElement || domElement
 
   const render = (api, callback = _ => _) => {
-    if (!document.contains(domElement)) {
-      document.body.appendChild(domElement)
+    if (!document.contains(element)) {
+      document.body.appendChild(element)
     }
 
     if (!api) {
       unmountComponentAtNode(container)
-      domElement.removeChild(container)
+      element.removeChild(container)
       container = null
     } else if (container === null) {
       container = document.createElement('div')
       container.style.margin = '0.25em'
       container.style.flexBasis = 'auto'
-      domElement.appendChild(container)
+      element.appendChild(container)
     }
 
     if (api) {
