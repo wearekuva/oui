@@ -80,7 +80,7 @@ export default (opts = {}) => {
           let annotation = getAnnotation(...resolvePath(api, path.slice()))
           if (annotation && annotation.onChange) annotation.onChange(getValue(change, path.slice()))
           render(merge(api, change), callback)
-          callback(api)
+          callback(change, path)
         }
       }
 
